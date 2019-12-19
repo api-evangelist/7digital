@@ -1,0 +1,1122 @@
+{
+    "id": "6ca95c3f28b170aa3f96720e50feed01",
+    "name": "7digital Purchasing API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "3491af6457f2abc08e7d1907bcd35c56",
+            "name": "artist\/browse",
+            "url": "httpsapi.7digital.com1.2\/artist\/browse",
+            "description": "This method returns a list of artists from the 7digital catalogue whose names match the start letter(s) supplied.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "artistId",
+                    "description": "unique identifier of the artist",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "letter",
+                    "description": "The first letter(s) of the artist name to browse.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "period",
+                    "description": "The time period for which the chart is generated. Default value is a week.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "toDate",
+                    "description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "type",
+                    "description": "Releases can be of type album, single or video. If specified, results are filtered by release type.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "e0de10373f45f2e6a2e16df4de516ade",
+            "name": "basket",
+            "url": "httpsapi.7digital.com1.2\/basket",
+            "description": "Basket.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "<h4 ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "amountDue",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "artistName",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "basket id",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "basketId",
+                    "description": "nttttttttThe unique identifier of the basket as acquired by basket\/create methodnttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "basketItem id",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "basketItems",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "discount",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "itemCount",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "itemName",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "package",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "price",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "releaseId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "trackId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "type",
+                    "description": "Releases can be of type album, single or video. If specified, results are filtered by release type.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "4c640fbba09bc10b9e3d9cdd31e16298",
+            "name": "basket\/addpriceditem",
+            "url": "httpsapi.7digital.com1.2\/basket\/addpriceditem",
+            "description": "This method allows an item to be added to a basket with a specified price. The specified price can be higher or lower than the 7digital catalogue price, including a price of 0.00 to make an item free.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "basketId",
+                    "description": "nttttttttThe unique identifier of the basket as acquired by basket\/create methodnttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country\/shopId",
+                    "description": "nttttttttA Country Code needs to be provided if you are delivering content from a 7digital international shop. Provide a shop ID if you have a dedicated pool of content and you have been assigned a shop ID by 7digital.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "emailAddress",
+                    "description": "The email address of the User.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "price",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "purchaseid",
+                    "description": "purchase id identifying the transaction at 7digitals end that the refunded item belongs to",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "releaseId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "retailPrice",
+                    "description": "Compulsory if you are charging your users different prices than 7digital RRP. If youre giving away items for free please use retailPrice=0, if youre using vouchers or youre not sure what to report please contact our sales team.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "shopid",
+                    "description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "trackId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "transactionId",
+                    "description": "The transaction ID provided will be stored along with a 7digital purchase ID in the 7digital transactions log.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "44f1afd4ebdbfb55b933f571fadfdb52",
+            "name": "playlists",
+            "url": "httpsapi.7digital.com1.2\/playlists",
+            "description": "Returns a list of all public playlists. If an oauth_token is provided then also given users private playlists will be included in the response.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "user",
+                    "description": "This allows you to pass the id of a user you wish to view the playlists of a specific user. It must be in the format id:{userId}",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "b9c2d8b3c2a24bfb74bdcc1d963b1202",
+            "name": "playlists\/{playlistId}",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}",
+            "description": "Returns playlist details and track listing. Access to private playlists is only allowed when an oauth_token of the playlist owner is provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "4f77d3cfcb98507cd64d15539decb8b5",
+            "name": "playlists\/{playlistId}\/details",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/details",
+            "description": "Updates playlist details at {playlistId} with the supplied playlist details. It does not affect playlist tracks. Use this method e.g. for changing visibility of the playlist from private to public. The playlist details can only be updated by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "0ef48dc4e822ec6d369bd1390ee28f7b",
+            "name": "playlists\/{playlistId}\/tracks\/{playlisttrackid}",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/tracks\/{playlisttrackid}",
+            "description": "Removes the specified track {playlisttrackid} from the specified playlist at {playlistId}.  Tracks can only be removed by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "3cdfbe96cb78f05edce0ebdaceac04a4",
+            "name": "release\/chart",
+            "url": "httpsapi.7digital.com1.2\/release\/chart",
+            "description": "This endpoint returns a chart of the most purchased releases for given week. Only albums are included in this chart. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "toDate",
+                    "description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "c2cbe06cf233e9089a484cadb103a50a",
+            "name": "tag",
+            "url": "httpsapi.7digital.com1.2\/tag",
+            "description": "This method returns a list of all available tags.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "artistId",
+                    "description": "unique identifier of the artist",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tags",
+                    "description": "A single or comma separated list of tags.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "9eb9c2c766a8277e049d4b0ca467b680",
+            "name": "track\/chart",
+            "url": "httpsapi.7digital.com1.2\/track\/chart",
+            "description": "This endpoint returns a chart of the most purchased tracks for given week. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "toDate",
+                    "description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "d6658d00eec2b0bd75af18257706fbf7",
+            "name": "user\/locker",
+            "url": "httpsapi.7digital.com1.2\/user\/locker",
+            "description": "Returns a paged list of releases and tracks for a users locker (collection of all purchased tracks). This method must be OAuth signed.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "purchaseid",
+                    "description": "purchase id identifying the transaction at 7digitals end that the refunded item belongs to",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "releaseId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "sort",
+                    "description": "nttttttOrders the returned results. Supplied as a string in the format: {sortColumn} {sortOrder}, for example: purchaseDate desc ntttwill show recent purchases first. Currently you can sort by releaseTitle (asc or desc), purchaseDate (asc or desc) and artistName (asc or desc). If no sort is ntttsupplied, the default is releaseTitle asc. If no order is supplied the default is ascending.nttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "trackId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "d113847f7cd20f650acf088d624de444",
+            "name": "user\/purchase\/basket",
+            "url": "httpsapi.7digital.com1.2\/user\/purchase\/basket",
+            "description": "This method allows a user to purchase a basket with items that have been added via basket\/additem or basket\/addpriceditem. It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "basketId",
+                    "description": "nttttttttThe unique identifier of the basket as acquired by basket\/create methodnttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "shopid",
+                    "description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tag_*key*",
+                    "description": "nttttttttAdditional data to be stored with successful transactions, for the purposes such as tagging affiliated or marketing information.nttttttttup to 10 tags can be stored. A tag key can be a maximum of 50 characters, and a tag value a maximum of 100 characters.nttttttttE.g. tag_MyPartner=MagazinePromoABC&amp;tag_ApplicationVersion=1.5.nttttttttThis data will only be available to API clients subscribing to customized sales reports service.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "97dc77b2f194c2ad6b53dcffd8c6c816",
+            "name": "user\/purchase\/item",
+            "url": "httpsapi.7digital.com1.2\/user\/purchase\/item",
+            "description": "This method allows a user to purchase an item at the price as advertised on 7digital.com. It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.nttttttFor a user purchase to be processed, the user should already have a default debit or credit card set up for payments.ntttThis method allows users to take advantage of 7digital.com promotional offers ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "price",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "releaseId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "shopid",
+                    "description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tag_*key*",
+                    "description": "nttttttttAdditional data to be stored with successful transactions, for the purposes such as tagging affiliated or marketing information.nttttttttup to 10 tags can be stored. A tag key can be a maximum of 50 characters, and a tag value a maximum of 100 characters.nttttttttE.g. tag_MyPartner=MagazinePromoABC&amp;tag_ApplicationVersion=1.5.nttttttttThis data will only be available to API clients subscribing to customized sales reports service.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "trackId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "6eb6d3426dc0c8dd438ec7223847d3dc",
+            "name": "user\/purchase\/rrpItem",
+            "url": "httpsapi.7digital.com1.2\/user\/purchase\/rrpItem",
+            "description": "This method allows a user to purchase an item at 7digital recommended retail price (RRP). It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.nttttttFor a user purchase to be processed, the user should already have a default debit or credit card set up for payments.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "users OAuth accesstoken",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "price",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "releaseId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "shopid",
+                    "description": "nttttttttThe shop ID that all basket items were selected from.  The shop ID will default to the 7digital UK shop if it is not provided.nttttttttIf the shop ID is provided, the country parameter will be ignored.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tag_*key*",
+                    "description": "nttttttttAdditional data to be stored with successful transactions, for the purposes such as tagging affiliated or marketing information.nttttttttup to 10 tags can be stored. A tag key can be a maximum of 50 characters, and a tag value a maximum of 100 characters.nttttttttE.g. tag_MyPartner=MagazinePromoABC&amp;tag_ApplicationVersion=1.5.nttttttttThis data will only be available to API clients subscribing to customized sales reports service.nttttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "trackId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        },
+        {
+            "id": "0ffdee7a8725ff1a7590c6ad0e336383",
+            "name": "user\/purchase\/{purchaseid}\/track\/{trackid}",
+            "url": "httpsapi.7digital.com1.2\/user\/purchase\/{purchaseid}\/track\/{trackid}",
+            "description": "This method allows a user to remove a purchase of a track from the sales report when the purchase has been refunded.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "purchaseid",
+                    "description": "purchase id identifying the transaction at 7digitals end that the refunded item belongs to",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "trackId",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "rawModeData": ""
+        }
+    ]
+}
