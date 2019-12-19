@@ -1,0 +1,224 @@
+{
+    "id": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+    "name": "7digital Playlist API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "cf2ca725a1140e376ff59f1a8120ac8c",
+            "name": "playlists",
+            "url": "httpsapi.7digital.com1.2\/playlists",
+            "description": "Returns a list of all public playlists. If an oauth_token is provided then also given users private playlists will be included in the response.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "nttttttPage number of the result set. If not supplied, defaults to 1nttttt",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied, defaults to 10. Maximum page size is 500",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "user",
+                    "description": "This allows you to pass the id of a user you wish to view the playlists of a specific user. It must be in the format id:{userId}",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "rawModeData": ""
+        },
+        {
+            "id": "cef539646714dc0c231fa32d9e55ceeb",
+            "name": "playlists\/{playlistId}",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}",
+            "description": "Deletes the playlist at {playlistId}. The playlist can only be deleted by its owner, i.e. oauth_token representing the user has to be provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "rawModeData": ""
+        },
+        {
+            "id": "9aacc0f59f7247648b0d9d93e2cde474",
+            "name": "playlists\/{playlistId}",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}",
+            "description": "Returns playlist details and track listing. Access to private playlists is only allowed when an oauth_token of the playlist owner is provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "rawModeData": ""
+        },
+        {
+            "id": "b94de6321ae00d68dea06255c7d4ebc5",
+            "name": "playlists\/{playlistId}\/details",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/details",
+            "description": "Updates playlist details at {playlistId} with the supplied playlist details. It does not affect playlist tracks. Use this method e.g. for changing visibility of the playlist from private to public. The playlist details can only be updated by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "rawModeData": ""
+        },
+        {
+            "id": "81576ea8b4d36b85732e6fe32e7308d1",
+            "name": "playlists\/{playlistId}\/tracks\/{playlisttrackid}",
+            "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/tracks\/{playlisttrackid}",
+            "description": "Removes the specified track {playlisttrackid} from the specified playlist at {playlistId}.  Tracks can only be removed by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "oauth_token",
+                    "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "rawModeData": ""
+        }
+    ]
+}
