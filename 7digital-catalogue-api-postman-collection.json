@@ -1,0 +1,340 @@
+{
+    "id": "ddacc1a01da0f0bb983b3674abd84c5f",
+    "name": "7digital Catalogue API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "00bce1606c7d1ec59b665cd657e66f0a",
+            "name": "artist\/browse",
+            "url": "api.7digital.com1.2\/artist\/browse",
+            "description": "This method returns a list of artists from the 7digital catalogue whose names match the start letter(s) supplied.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "artistId",
+                    "description": "unique identifier of the artist",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "letter",
+                    "description": "The first letter(s) of the artist name to browse.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "period",
+                    "description": "The time period for which the chart is generated. Default value is a week.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "toDate",
+                    "description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "type",
+                    "description": "Releases can be of type album, single or video. If specified, results are filtered by release type.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "ddacc1a01da0f0bb983b3674abd84c5f",
+            "rawModeData": ""
+        },
+        {
+            "id": "bf7e3a68842d7d713b7ef0f2128ee3df",
+            "name": "release\/chart",
+            "url": "api.7digital.com1.2\/release\/chart",
+            "description": "This endpoint returns a chart of the most purchased releases for given week. Only albums are included in this chart. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "toDate",
+                    "description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "ddacc1a01da0f0bb983b3674abd84c5f",
+            "rawModeData": ""
+        },
+        {
+            "id": "baabcc4be9178604419ad56043eea091",
+            "name": "tag",
+            "url": "api.7digital.com1.2\/tag",
+            "description": "This method returns a list of all available tags.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "artistId",
+                    "description": "unique identifier of the artist",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "tags",
+                    "description": "A single or comma separated list of tags.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "ddacc1a01da0f0bb983b3674abd84c5f",
+            "rawModeData": ""
+        },
+        {
+            "id": "2e43408e5eb765f9acee2f8f565bbc96",
+            "name": "track\/chart",
+            "url": "api.7digital.com1.2\/track\/chart",
+            "description": "This endpoint returns a chart of the most purchased tracks for given week. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get ",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "country",
+                    "description": "nttttttt 2 letter ISO country code of the country whose releases you would like to searchntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "imageSize",
+                    "description": "nttttttt The requested width of the image in pixelsntttttt ",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "page",
+                    "description": "Page number of the result set. If not supplied, defaults to 1",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "pageSize",
+                    "description": "Number of items to be returned per page. If not supplied this defaults to 10. Maximum page size is 50",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "streamable",
+                    "description": "If provided search results will contain only releases that can\/cannot be streamed",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "toDate",
+                    "description": "The last day the chart should include data for. If not provided, by default the most recent chart for requested period will be returned.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "ddacc1a01da0f0bb983b3674abd84c5f",
+            "rawModeData": ""
+        }
+    ]
+}
