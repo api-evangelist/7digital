@@ -1,0 +1,130 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.2",
+        "title": "7digital Playlist API",
+        "description": "The Playlist API provides access to playlists created by 7digital users. Users can see a list of their own playlists and public playlists of other users, create a new playlist, replace an existing one and add or delete indvidual tracks",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.7digital.com1.2\/"
+    ],
+    "paths": {
+        "playlists": {
+            "get ": {
+                "summary": "playlists",
+                "description": "Returns a list of all public playlists. If an oauth_token is provided then also given users private playlists will be included in the response.",
+                "operationId": "Playlists",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "oauth_token",
+                        "in": "query",
+                        "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "nttttttPage number of the result set. If not supplied, defaults to 1nttttt"
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "Number of items to be returned per page. If not supplied, defaults to 10. Maximum page size is 500"
+                    },
+                    {
+                        "name": "user",
+                        "in": "query",
+                        "description": "This allows you to pass the id of a user you wish to view the playlists of a specific user. It must be in the format id:{userId}"
+                    }
+                ]
+            }
+        },
+        "playlists\/{playlistId}": {
+            "delete ": {
+                "summary": "playlists\/{playlistId}",
+                "description": "Deletes the playlist at {playlistId}. The playlist can only be deleted by its owner, i.e. oauth_token representing the user has to be provided.",
+                "operationId": "Playlistsplaylistid",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "oauth_token",
+                        "in": "query",
+                        "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them"
+                    }
+                ]
+            },
+            "get ": {
+                "summary": "playlists\/{playlistId}",
+                "description": "Returns playlist details and track listing. Access to private playlists is only allowed when an oauth_token of the playlist owner is provided.",
+                "operationId": "Playlistsplaylistid",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "oauth_token",
+                        "in": "query",
+                        "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them"
+                    }
+                ]
+            }
+        },
+        "playlists\/{playlistId}\/details": {
+            "post ": {
+                "summary": "playlists\/{playlistId}\/details",
+                "description": "Updates playlist details at {playlistId} with the supplied playlist details. It does not affect playlist tracks. Use this method e.g. for changing visibility of the playlist from private to public. The playlist details can only be updated by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+                "operationId": "Playlistsplaylistiddetails",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "oauth_token",
+                        "in": "query",
+                        "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them"
+                    }
+                ]
+            }
+        },
+        "playlists\/{playlistId}\/tracks\/{playlisttrackid}": {
+            "delete ": {
+                "summary": "playlists\/{playlistId}\/tracks\/{playlisttrackid}",
+                "description": "Removes the specified track {playlisttrackid} from the specified playlist at {playlistId}.  Tracks can only be removed by the playlist owner, i.e. oauth_token representing the user has to be provided.",
+                "operationId": "Playlistsplaylistidtracksplaylisttrackid",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "oauth_token",
+                        "in": "query",
+                        "description": "Users OAuth access token - allows user to view Private playlist if it belongs to them"
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
