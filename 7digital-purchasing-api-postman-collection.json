@@ -1,5 +1,5 @@
 {
-    "id": "6ca95c3f28b170aa3f96720e50feed01",
+    "id": "bbacf942d770199e272b11108e533d13",
     "name": "7digital Purchasing API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "3491af6457f2abc08e7d1907bcd35c56",
+            "id": "4e0ad690a3a79d7bfec9e94a63503dab",
             "name": "artist\/browse",
             "url": "httpsapi.7digital.com1.2\/artist\/browse",
             "description": "This method returns a list of artists from the 7digital catalogue whose names match the start letter(s) supplied.",
@@ -107,11 +107,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "e0de10373f45f2e6a2e16df4de516ade",
+            "id": "c88785960517ae662bac7e6a6c813f51",
             "name": "basket",
             "url": "httpsapi.7digital.com1.2\/basket",
             "description": "Basket.",
@@ -243,11 +243,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "4c640fbba09bc10b9e3d9cdd31e16298",
+            "id": "a59c0e8249941c29a2f335e2ec41e762",
             "name": "basket\/addpriceditem",
             "url": "httpsapi.7digital.com1.2\/basket\/addpriceditem",
             "description": "This method allows an item to be added to a basket with a specified price. The specified price can be higher or lower than the 7digital catalogue price, including a price of 0.00 to make an item free.",
@@ -358,11 +358,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "44f1afd4ebdbfb55b933f571fadfdb52",
+            "id": "a54a9b82cb6248a5536a31960c7832b6",
             "name": "playlists",
             "url": "httpsapi.7digital.com1.2\/playlists",
             "description": "Returns a list of all public playlists. If an oauth_token is provided then also given users private playlists will be included in the response.",
@@ -417,11 +417,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "b9c2d8b3c2a24bfb74bdcc1d963b1202",
+            "id": "72ae0dcaed5f8758e524256874cfd3ff",
             "name": "playlists\/{playlistId}",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}",
             "description": "Returns playlist details and track listing. Access to private playlists is only allowed when an oauth_token of the playlist owner is provided.",
@@ -455,11 +455,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "4f77d3cfcb98507cd64d15539decb8b5",
+            "id": "a1769a55a70263898b9a2a141c5a5dad",
             "name": "playlists\/{playlistId}\/details",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/details",
             "description": "Updates playlist details at {playlistId} with the supplied playlist details. It does not affect playlist tracks. Use this method e.g. for changing visibility of the playlist from private to public. The playlist details can only be updated by the playlist owner, i.e. oauth_token representing the user has to be provided.",
@@ -493,11 +493,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "0ef48dc4e822ec6d369bd1390ee28f7b",
+            "id": "9989629cf08e8be3549499236a046478",
             "name": "playlists\/{playlistId}\/tracks\/{playlisttrackid}",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/tracks\/{playlisttrackid}",
             "description": "Removes the specified track {playlisttrackid} from the specified playlist at {playlistId}.  Tracks can only be removed by the playlist owner, i.e. oauth_token representing the user has to be provided.",
@@ -531,11 +531,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "3cdfbe96cb78f05edce0ebdaceac04a4",
+            "id": "5c36bc146e9816b5cab930e529492dcd",
             "name": "release\/chart",
             "url": "httpsapi.7digital.com1.2\/release\/chart",
             "description": "This endpoint returns a chart of the most purchased releases for given week. Only albums are included in this chart. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
@@ -604,11 +604,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "c2cbe06cf233e9089a484cadb103a50a",
+            "id": "4881167fe746d225bf196dc380b5ccd6",
             "name": "tag",
             "url": "httpsapi.7digital.com1.2\/tag",
             "description": "This method returns a list of all available tags.",
@@ -684,11 +684,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "9eb9c2c766a8277e049d4b0ca467b680",
+            "id": "b665ef88b4222d942397738ee905c4cf",
             "name": "track\/chart",
             "url": "httpsapi.7digital.com1.2\/track\/chart",
             "description": "This endpoint returns a chart of the most purchased tracks for given week. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
@@ -757,11 +757,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "d6658d00eec2b0bd75af18257706fbf7",
+            "id": "4233973972e91fadbb72d87183c6398d",
             "name": "user\/locker",
             "url": "httpsapi.7digital.com1.2\/user\/locker",
             "description": "Returns a paged list of releases and tracks for a users locker (collection of all purchased tracks). This method must be OAuth signed.",
@@ -844,11 +844,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "d113847f7cd20f650acf088d624de444",
+            "id": "ce44a8f327609275e5d4b2a22dde1b4b",
             "name": "user\/purchase\/basket",
             "url": "httpsapi.7digital.com1.2\/user\/purchase\/basket",
             "description": "This method allows a user to purchase a basket with items that have been added via basket\/additem or basket\/addpriceditem. It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.",
@@ -910,11 +910,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "97dc77b2f194c2ad6b53dcffd8c6c816",
+            "id": "842464cb105783dc16a63e0189409e4b",
             "name": "user\/purchase\/item",
             "url": "httpsapi.7digital.com1.2\/user\/purchase\/item",
             "description": "This method allows a user to purchase an item at the price as advertised on 7digital.com. It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.nttttttFor a user purchase to be processed, the user should already have a default debit or credit card set up for payments.ntttThis method allows users to take advantage of 7digital.com promotional offers ",
@@ -990,11 +990,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "6eb6d3426dc0c8dd438ec7223847d3dc",
+            "id": "e4ca61f434a90a6e8226cd6d22d92c26",
             "name": "user\/purchase\/rrpItem",
             "url": "httpsapi.7digital.com1.2\/user\/purchase\/rrpItem",
             "description": "This method allows a user to purchase an item at 7digital recommended retail price (RRP). It will return the download URL of each item purchased. For example, if a release consisting of multiple tracks was purchased, then the download URL of each item constituting the release will be returned.nttttttFor a user purchase to be processed, the user should already have a default debit or credit card set up for payments.",
@@ -1070,11 +1070,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         },
         {
-            "id": "0ffdee7a8725ff1a7590c6ad0e336383",
+            "id": "d1224029e763ef9765394f536b49b36e",
             "name": "user\/purchase\/{purchaseid}\/track\/{trackid}",
             "url": "httpsapi.7digital.com1.2\/user\/purchase\/{purchaseid}\/track\/{trackid}",
             "description": "This method allows a user to remove a purchase of a track from the sales report when the purchase has been refunded.",
@@ -1115,7 +1115,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6ca95c3f28b170aa3f96720e50feed01",
+            "collectionId": "bbacf942d770199e272b11108e533d13",
             "rawModeData": ""
         }
     ]
