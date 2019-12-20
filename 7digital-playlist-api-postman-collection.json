@@ -1,5 +1,5 @@
 {
-    "id": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+    "id": "570aacb9aed165475b931ba8685cc29c",
     "name": "7digital Playlist API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "cf2ca725a1140e376ff59f1a8120ac8c",
+            "id": "b1bac645a820ddbd7720dcadc69d2b35",
             "name": "playlists",
             "url": "httpsapi.7digital.com1.2\/playlists",
             "description": "Returns a list of all public playlists. If an oauth_token is provided then also given users private playlists will be included in the response.",
@@ -65,11 +65,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "collectionId": "570aacb9aed165475b931ba8685cc29c",
             "rawModeData": ""
         },
         {
-            "id": "cef539646714dc0c231fa32d9e55ceeb",
+            "id": "f81586bf7a760c4982466ff22231f7c9",
             "name": "playlists\/{playlistId}",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}",
             "description": "Deletes the playlist at {playlistId}. The playlist can only be deleted by its owner, i.e. oauth_token representing the user has to be provided.",
@@ -103,11 +103,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "collectionId": "570aacb9aed165475b931ba8685cc29c",
             "rawModeData": ""
         },
         {
-            "id": "9aacc0f59f7247648b0d9d93e2cde474",
+            "id": "2ede7ed6d286c9a14079132222fa11ca",
             "name": "playlists\/{playlistId}",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}",
             "description": "Returns playlist details and track listing. Access to private playlists is only allowed when an oauth_token of the playlist owner is provided.",
@@ -141,11 +141,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "collectionId": "570aacb9aed165475b931ba8685cc29c",
             "rawModeData": ""
         },
         {
-            "id": "b94de6321ae00d68dea06255c7d4ebc5",
+            "id": "fda81cbf41e4849ac38170dafe38327f",
             "name": "playlists\/{playlistId}\/details",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/details",
             "description": "Updates playlist details at {playlistId} with the supplied playlist details. It does not affect playlist tracks. Use this method e.g. for changing visibility of the playlist from private to public. The playlist details can only be updated by the playlist owner, i.e. oauth_token representing the user has to be provided.",
@@ -179,11 +179,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "collectionId": "570aacb9aed165475b931ba8685cc29c",
             "rawModeData": ""
         },
         {
-            "id": "81576ea8b4d36b85732e6fe32e7308d1",
+            "id": "97a0c7e7f54cbaed80903cfa9944218b",
             "name": "playlists\/{playlistId}\/tracks\/{playlisttrackid}",
             "url": "httpsapi.7digital.com1.2\/playlists\/{playlistId}\/tracks\/{playlisttrackid}",
             "description": "Removes the specified track {playlisttrackid} from the specified playlist at {playlistId}.  Tracks can only be removed by the playlist owner, i.e. oauth_token representing the user has to be provided.",
@@ -217,7 +217,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4de68cbdf5bdd90ef27ba88bf09a1c2b",
+            "collectionId": "570aacb9aed165475b931ba8685cc29c",
             "rawModeData": ""
         }
     ]
