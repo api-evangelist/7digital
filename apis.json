@@ -14,8 +14,8 @@
         "stores",
         "streaming"
     ],
-    "created": "2019-12-19",
-    "modified": "2019-12-19",
+    "created": "2019-12-20",
+    "modified": "2019-12-20",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/7digital\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -29,19 +29,11 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-catalogue-api-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/7digital\/master\/7digital-catalogue-api-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/7digital-catalogue-api.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-catalogue-api-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-catalogue-api-postman-collection.json"
                 }
             ]
         },
@@ -55,19 +47,11 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-playlist-api-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/7digital\/master\/7digital-playlist-api-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/7digital-playlist-api.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-playlist-api-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-playlist-api-postman-collection.json"
                 }
             ]
         },
@@ -81,19 +65,11 @@
             "properties": [
                 {
                     "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-purchasing-api-openapi.json"
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/7digital\/master\/7digital-purchasing-api-openapi.json"
                 },
                 {
                     "type": "x-openapi",
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/7digital-purchasing-api.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-purchasing-api-postman-collection.json"
-                },
-                {
-                    "type": "x-postman-collecction",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/7digital-purchasing-api-postman-collection.json"
                 }
             ]
         }
