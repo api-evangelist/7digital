@@ -1,5 +1,5 @@
 {
-    "id": "77ce69a3979ed003cffe1d40123caaf7",
+    "id": "1f31a73c912aa5aa848385784cd07508",
     "name": "7digital Catalogue API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "b79e960ef95facbbfe13a35303f0c1f5",
+            "id": "12f16fdc23d7bba7b3cfcd6fbf1c72e6",
             "name": "artist\/browse",
             "url": "api.7digital.com1.2\/artist\/browse",
             "description": "This method returns a list of artists from the 7digital catalogue whose names match the start letter(s) supplied.",
@@ -107,11 +107,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "77ce69a3979ed003cffe1d40123caaf7",
+            "collectionId": "1f31a73c912aa5aa848385784cd07508",
             "rawModeData": ""
         },
         {
-            "id": "4ef20bf0536b61d188a49f50ff0dd18b",
+            "id": "34150daddf15bab3d065929431de8951",
             "name": "release\/chart",
             "url": "api.7digital.com1.2\/release\/chart",
             "description": "This endpoint returns a chart of the most purchased releases for given week. Only albums are included in this chart. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
@@ -180,11 +180,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "77ce69a3979ed003cffe1d40123caaf7",
+            "collectionId": "1f31a73c912aa5aa848385784cd07508",
             "rawModeData": ""
         },
         {
-            "id": "8f83adab713895af50dca1895c550652",
+            "id": "80cb25b0d6ca6357af6f5789f1ed770c",
             "name": "tag",
             "url": "api.7digital.com1.2\/tag",
             "description": "This method returns a list of all available tags.",
@@ -260,11 +260,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "77ce69a3979ed003cffe1d40123caaf7",
+            "collectionId": "1f31a73c912aa5aa848385784cd07508",
             "rawModeData": ""
         },
         {
-            "id": "ae306e070fbe74e92ac0039b07a275e6",
+            "id": "bab8732ecd1073ba08bfa7687ec3af0e",
             "name": "track\/chart",
             "url": "api.7digital.com1.2\/track\/chart",
             "description": "This endpoint returns a chart of the most purchased tracks for given week. To retrieve the most recent charts as published on 7digital.com the toDate parameter should be omitted.",
@@ -333,7 +333,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "77ce69a3979ed003cffe1d40123caaf7",
+            "collectionId": "1f31a73c912aa5aa848385784cd07508",
             "rawModeData": ""
         }
     ]
