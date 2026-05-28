@@ -1,0 +1,32 @@
+aid: 7digital
+name: 7digital
+description: "Api of Music store 7digital"
+url: https://docs.7digital.com/reference
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Music"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Music
+  - Public APIs
+apis:
+  - name: 7digital
+    description: "Api of Music store 7digital"
+    humanURL: https://docs.7digital.com/reference
+    baseURL: https://docs.7digital.com/reference
+    tags:
+      - Music
+    properties:
+      - type: Documentation
+        url: https://docs.7digital.com/reference
+common:
+  - type: Website
+    url: https://docs.7digital.com/reference
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
