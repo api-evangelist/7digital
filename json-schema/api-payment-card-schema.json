@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-payment-card-schema.json",
+  "title": "PaymentCard",
+  "description": "PaymentCard schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "cardId": {
+      "type": "string",
+      "example": "card-789012"
+    },
+    "last4": {
+      "type": "string",
+      "example": "4242"
+    },
+    "brand": {
+      "type": "string",
+      "enum": [
+        "visa",
+        "mastercard",
+        "amex",
+        "discover"
+      ],
+      "example": "visa"
+    },
+    "expiryMonth": {
+      "type": "integer",
+      "example": 12
+    },
+    "expiryYear": {
+      "type": "integer",
+      "example": 2028
+    },
+    "isDefault": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

@@ -1,0 +1,187 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital / MassiveMusic Streaming Platform API — Download Purchases
+  description: '7digital / MassiveMusic Streaming Platform API — Download Purchases. 3 operations. Lead operation: 7digital Download Purchase Zip. Self-contained Naftiko capability covering one 7digital
+    / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Download Purchases
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: streaming-platform-download-purchases
+    baseUri: https://api.7digital.com
+    description: 7digital / MassiveMusic Streaming Platform API — Download Purchases business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: users-userid-downloads-purchases-purchaseid
+      path: /users/{userId}/downloads/purchases/{purchaseId}
+      operations:
+      - name: downloadPurchaseZip
+        method: GET
+        description: 7digital Download Purchase Zip
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: Partner-scoped 7digital user id.
+        - name: purchaseId
+          in: path
+          type: string
+          required: true
+          description: 7digital purchase id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-userid-downloads-releases-releaseid
+      path: /users/{userId}/downloads/releases/{releaseId}
+      operations:
+      - name: downloadPurchasedReleaseZip
+        method: GET
+        description: 7digital Download Purchased Release Zip
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: Partner-scoped 7digital user id.
+        - name: releaseId
+          in: path
+          type: string
+          required: true
+          description: 7digital release id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-userid-downloads-tracks-trackid
+      path: /users/{userId}/downloads/tracks/{trackId}
+      operations:
+      - name: downloadPurchasedTrack
+        method: GET
+        description: 7digital Download Purchased Track
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: Partner-scoped 7digital user id.
+        - name: trackId
+          in: path
+          type: string
+          required: true
+          description: 7digital track id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: streaming-platform-download-purchases-rest
+    port: 8080
+    description: REST adapter for 7digital / MassiveMusic Streaming Platform API — Download Purchases. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/{user-id}/downloads/purchases/{purchase-id}
+      name: users-user-id-downloads-purchases-purchase-id
+      description: REST surface for users-user-id-downloads-purchases-purchase-id.
+      operations:
+      - method: GET
+        name: downloadPurchaseZip
+        description: 7digital Download Purchase Zip
+        call: streaming-platform-download-purchases.downloadPurchaseZip
+        with:
+          userId: rest.userId
+          purchaseId: rest.purchaseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{user-id}/downloads/releases/{release-id}
+      name: users-user-id-downloads-releases-release-id
+      description: REST surface for users-user-id-downloads-releases-release-id.
+      operations:
+      - method: GET
+        name: downloadPurchasedReleaseZip
+        description: 7digital Download Purchased Release Zip
+        call: streaming-platform-download-purchases.downloadPurchasedReleaseZip
+        with:
+          userId: rest.userId
+          releaseId: rest.releaseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{user-id}/downloads/tracks/{track-id}
+      name: users-user-id-downloads-tracks-track-id
+      description: REST surface for users-user-id-downloads-tracks-track-id.
+      operations:
+      - method: GET
+        name: downloadPurchasedTrack
+        description: 7digital Download Purchased Track
+        call: streaming-platform-download-purchases.downloadPurchasedTrack
+        with:
+          userId: rest.userId
+          trackId: rest.trackId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: streaming-platform-download-purchases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital / MassiveMusic Streaming Platform API — Download Purchases. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: download-purchase-zip
+      description: 7digital Download Purchase Zip
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: streaming-platform-download-purchases.downloadPurchaseZip
+      with:
+        userId: tools.userId
+        purchaseId: tools.purchaseId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: download-purchased-release-zip
+      description: 7digital Download Purchased Release Zip
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: streaming-platform-download-purchases.downloadPurchasedReleaseZip
+      with:
+        userId: tools.userId
+        releaseId: tools.releaseId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: download-purchased-track
+      description: 7digital Download Purchased Track
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: streaming-platform-download-purchases.downloadPurchasedTrack
+      with:
+        userId: tools.userId
+        trackId: tools.trackId
+      outputParameters:
+      - type: object
+        mapping: $.

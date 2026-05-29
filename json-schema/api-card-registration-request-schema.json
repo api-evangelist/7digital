@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-card-registration-request-schema.json",
+  "title": "CardRegistrationRequest",
+  "description": "CardRegistrationRequest schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "cardNumber": {
+      "type": "string",
+      "example": "4242424242424242"
+    },
+    "expiryMonth": {
+      "type": "integer",
+      "example": 12
+    },
+    "expiryYear": {
+      "type": "integer",
+      "example": 2028
+    },
+    "cvv": {
+      "type": "string",
+      "example": "123"
+    },
+    "cardholderName": {
+      "type": "string",
+      "example": "Jane Smith"
+    }
+  },
+  "required": [
+    "cardNumber",
+    "expiryMonth",
+    "expiryYear",
+    "cvv"
+  ]
+}

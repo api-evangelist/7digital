@@ -1,0 +1,80 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-basket-structure.json",
+  "name": "Basket",
+  "description": "Basket schema from 7digital API",
+  "properties": {
+    "id": {
+      "type": "uuid",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "example": "item-789012"
+          },
+          "releaseId": {
+            "type": "string",
+            "nullable": true,
+            "example": "11700062"
+          },
+          "trackId": {
+            "type": "string",
+            "nullable": true,
+            "example": "123456"
+          },
+          "price": {
+            "type": "object",
+            "description": "A price quoted in the requested territory's currency.",
+            "properties": {
+              "formattedPrice": {
+                "type": "string",
+                "example": "\u00a39.99"
+              },
+              "amount": {
+                "type": "double",
+                "description": "Numeric price value.",
+                "example": 9.99
+              },
+              "currency": {
+                "type": "string",
+                "description": "ISO 4217 currency code.",
+                "example": "GBP"
+              }
+            }
+          }
+        }
+      }
+    },
+    "total": {
+      "type": "object",
+      "description": "A price quoted in the requested territory's currency.",
+      "properties": {
+        "formattedPrice": {
+          "type": "string",
+          "example": "\u00a39.99"
+        },
+        "amount": {
+          "type": "double",
+          "description": "Numeric price value.",
+          "example": 9.99
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code.",
+          "example": "GBP"
+        }
+      }
+    },
+    "voucherCode": {
+      "type": "string",
+      "nullable": true,
+      "example": "SUMMER25"
+    }
+  }
+}

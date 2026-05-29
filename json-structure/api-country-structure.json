@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-country-structure.json",
+  "name": "Country",
+  "description": "Country schema from 7digital API",
+  "properties": {
+    "countryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 code.",
+      "example": "GB"
+    },
+    "name": {
+      "type": "string",
+      "example": "United Kingdom"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code.",
+      "example": "GBP"
+    }
+  }
+}

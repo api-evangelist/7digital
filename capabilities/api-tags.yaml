@@ -1,0 +1,74 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital API — Tags
+  description: '7digital API — Tags. 1 operations. Lead operation: 7digital Get All Tags. Self-contained Naftiko capability covering one 7digital / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Tags
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: api-tags
+    baseUri: https://api.7digital.com/1.2
+    description: 7digital API — Tags business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: tag
+      path: /tag
+      operations:
+      - name: getAllTags
+        method: GET
+        description: 7digital Get All Tags
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: api-tags-rest
+    port: 8080
+    description: REST adapter for 7digital API — Tags. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/tag
+      name: tag
+      description: REST surface for tag.
+      operations:
+      - method: GET
+        name: getAllTags
+        description: 7digital Get All Tags
+        call: api-tags.getAllTags
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-tags-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital API — Tags. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-all-tags
+      description: 7digital Get All Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-tags.getAllTags
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

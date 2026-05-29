@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-artist-list-response-structure.json",
+  "name": "ArtistListResponse",
+  "description": "ArtistListResponse schema from 7digital API",
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "ok"
+    },
+    "page": {
+      "type": "int32",
+      "example": 1
+    },
+    "pageSize": {
+      "type": "int32",
+      "example": 20
+    },
+    "totalItems": {
+      "type": "int32",
+      "example": 42
+    },
+    "artists": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A 7digital artist.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "7digital artist id.",
+            "example": "12345"
+          },
+          "name": {
+            "type": "string",
+            "description": "Artist name.",
+            "example": "The Beatles"
+          },
+          "url": {
+            "type": "uri",
+            "description": "Artist page URL on 7digital.",
+            "example": "https://uk.7digital.com/artist/the-beatles"
+          },
+          "image": {
+            "type": "uri",
+            "description": "Artist image URL.",
+            "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+          },
+          "sortName": {
+            "type": "string",
+            "description": "Sort form of the artist name.",
+            "example": "Beatles, The"
+          },
+          "appearsAs": {
+            "type": "string",
+            "description": "Alternative spellings under which the artist appears.",
+            "example": "Beatles, The"
+          }
+        }
+      }
+    }
+  }
+}

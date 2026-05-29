@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-user-update-request-schema.json",
+  "title": "UserUpdateRequest",
+  "description": "UserUpdateRequest schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "jane.smith@example.com"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Smith"
+    },
+    "country": {
+      "type": "string",
+      "example": "GB"
+    }
+  }
+}

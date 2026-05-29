@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-basket-item-structure.json",
+  "name": "BasketItem",
+  "description": "BasketItem schema from 7digital API",
+  "properties": {
+    "itemId": {
+      "type": "string",
+      "example": "item-789012"
+    },
+    "releaseId": {
+      "type": "string",
+      "nullable": true,
+      "example": "11700062"
+    },
+    "trackId": {
+      "type": "string",
+      "nullable": true,
+      "example": "123456"
+    },
+    "price": {
+      "type": "object",
+      "description": "A price quoted in the requested territory's currency.",
+      "properties": {
+        "formattedPrice": {
+          "type": "string",
+          "example": "\u00a39.99"
+        },
+        "amount": {
+          "type": "double",
+          "description": "Numeric price value.",
+          "example": 9.99
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO 4217 currency code.",
+          "example": "GBP"
+        }
+      }
+    }
+  }
+}

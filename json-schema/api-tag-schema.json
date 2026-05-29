@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-tag-schema.json",
+  "title": "Tag",
+  "description": "A genre/tag label.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "rock"
+    },
+    "name": {
+      "type": "string",
+      "example": "Rock"
+    },
+    "parentId": {
+      "type": "string",
+      "nullable": true,
+      "example": null
+    }
+  }
+}

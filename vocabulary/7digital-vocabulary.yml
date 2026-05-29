@@ -1,0 +1,425 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "7digital / MassiveMusic"
+  description: >-
+    Unified taxonomy for the 7digital (now MassiveMusic) B2B music-licensing and
+    streaming platform. Captures the operational dimension (OpenAPI operations,
+    schemas, parameters) and the capability dimension (Naftiko workflows that
+    compose those operations into customer-facing licensing, streaming, and
+    royalty-reporting flows).
+  created: '2026-05-28'
+  modified: '2026-05-28'
+
+# OPERATIONAL DIMENSION (from OpenAPI)
+operational:
+  apis:
+    - name: "7digital API"
+      namespace: "7digital-api"
+      version: "1.2"
+      baseUrl: "https://api.7digital.com/1.2"
+      status: active
+      description: >-
+        Classic 7digital REST API powering catalogue browse, search, charts,
+        baskets, purchases, lockers, payment, and user management.
+    - name: "MassiveMusic Streaming Platform API"
+      namespace: "streaming-platform"
+      version: "2026.05"
+      baseUrl: "https://api.7digital.com"
+      status: active
+      description: >-
+        Modern streaming-platform API surface — Catalogue (with batch),
+        Interactive Radio sessions, Logging (catalogue/preview/subscriber),
+        HLS + HTTP Progressive streaming, Offline Devices, Download Purchases,
+        Playlists, Sales, Subscriptions, User Management, Content Delivery.
+
+  resources:
+    - name: Artist
+      apis: ["7digital-api", "streaming-platform"]
+      actions: [browse, search, get, getChart, getReleases, getSimilar, getTopTracks, getTags, matchById, getTopByTags]
+    - name: Release
+      apis: ["7digital-api", "streaming-platform"]
+      actions: [getByDate, getDetails, getEditorial, getChart, getRecommendations, search, getTracks, getTags, matchById, getNewByTags, getTopByTags, getBatchDetails]
+    - name: Track
+      apis: ["7digital-api", "streaming-platform"]
+      actions: [getChart, getDetails, search, matchById, getBatchDetails, download]
+    - name: Tag
+      apis: ["7digital-api"]
+      actions: [getAll]
+    - name: Basket
+      apis: ["7digital-api"]
+      actions: [get, create, addItem, removeItem, applyVoucher, addPricedItem, getPayPalUrl, completePayPalPurchase]
+    - name: Locker
+      apis: ["7digital-api", "streaming-platform"]
+      actions: [get]
+    - name: Subscription
+      apis: ["7digital-api", "streaming-platform"]
+      actions: [get, update, create]
+    - name: PaymentCard
+      apis: ["7digital-api"]
+      actions: [list, select, delete, register, getRegistration]
+    - name: Purchase
+      apis: ["7digital-api"]
+      actions: [purchaseItem, purchaseRrpItem, purchaseBasket, purchasePricedItem, deliverItem]
+    - name: User
+      apis: ["7digital-api", "streaming-platform"]
+      actions: [signup, create, getDetails, authenticate, find, update]
+    - name: RadioSession
+      apis: ["streaming-platform"]
+      actions: [create, delete, getNextTrack, postPlaybackEvents]
+    - name: StreamLog
+      apis: ["streaming-platform"]
+      actions: [reportCatalogueStream, reportPreviewStream, reportSubscriberStream]
+    - name: Stream
+      apis: ["streaming-platform"]
+      actions: [streamPreview, streamCatalogueHls, streamCatalogueProgressive, streamLockerHls, streamLockerProgressive, streamSubscriptionHls, streamSubscriptionProgressive, streamSubscriptionOfflineHls, streamSubscriptionOfflineProgressive]
+    - name: OfflineDevice
+      apis: ["streaming-platform"]
+      actions: [authorize, getStatus, list]
+    - name: DownloadPurchase
+      apis: ["streaming-platform"]
+      actions: [downloadPurchaseZip, downloadReleaseZip, downloadTrack]
+    - name: Playlist
+      apis: ["streaming-platform"]
+      actions: [list, create, update, addTracks]
+    - name: Sale
+      apis: ["streaming-platform"]
+      actions: [creditItem, reportReleaseRefund, reportTrackRefund]
+    - name: ContentDelivery
+      apis: ["streaming-platform"]
+      actions: [transferMedia]
+    - name: Country
+      apis: ["7digital-api"]
+      actions: [list, resolveForIp]
+    - name: Translation
+      apis: ["7digital-api"]
+      actions: [get]
+    - name: Editorial
+      apis: ["7digital-api"]
+      actions: [list, getRelease]
+    - name: Voucher
+      apis: ["7digital-api"]
+      actions: [getDetails, apply]
+
+  actions:
+    - name: list
+      method: GET
+      pattern: read
+    - name: get
+      method: GET
+      pattern: read
+    - name: search
+      method: GET
+      pattern: query
+    - name: browse
+      method: GET
+      pattern: query
+    - name: create
+      method: POST
+      pattern: write
+    - name: update
+      method: PUT
+      pattern: write
+    - name: delete
+      method: DELETE
+      pattern: destructive
+    - name: stream
+      method: GET
+      pattern: read
+    - name: download
+      method: GET
+      pattern: read
+    - name: report
+      method: POST
+      pattern: write
+    - name: authorize
+      method: POST
+      pattern: write
+    - name: purchase
+      method: GET
+      pattern: write
+    - name: credit
+      method: POST
+      pattern: write
+    - name: refund
+      method: POST
+      pattern: write
+    - name: transfer
+      method: GET
+      pattern: read
+
+  schemas:
+    catalogue:
+      - { name: Artist, properties: [id, name, url, image, sortName, appearsAs] }
+      - { name: Release, properties: [id, title, version, type, artist, url, image, releaseDate, label, explicit, upc, price] }
+      - { name: Track, properties: [id, title, version, artist, release, trackNumber, duration, explicit, isrc, previewUrl, price] }
+      - { name: Tag, properties: [id, name, parentId] }
+      - { name: UsageType, properties: [id, name, description] }
+    commerce:
+      - { name: Basket, properties: [id, items, total, voucherCode] }
+      - { name: BasketItem, properties: [itemId, releaseId, trackId, price] }
+      - { name: Purchase, properties: [purchaseId, status, total, items, receiptUrl] }
+      - { name: Voucher, properties: [code, value, type, expiresAt, redeemed] }
+      - { name: Price, properties: [formattedPrice, amount, currency] }
+      - { name: PaymentCard, properties: [cardId, last4, brand, expiryMonth, expiryYear, isDefault] }
+      - { name: CardRegistration, properties: [registrationId, status, cardId] }
+    streaming:
+      - { name: RadioSession, properties: [sessionId, userId, ruleset, skipsRemaining, createdAt] }
+      - { name: RadioTrack, properties: [track, streamUrl, skipAllowed] }
+      - { name: PlaybackEvent, properties: [trackId, eventType, timestamp, durationPlayed] }
+      - { name: StreamLog, properties: [trackId, userId, clientId, timestamp, durationPlayed, country] }
+      - { name: DeviceAuthorisation, properties: [deviceId, deviceName, platform, status, authorisedAt] }
+      - { name: Playlist, properties: [id, name, description, visibility, userId, trackCount, tracks, createdAt, modifiedAt] }
+    accounts:
+      - { name: User, properties: [id, email, firstName, lastName, country, accessToken, accessTokenSecret] }
+      - { name: Locker, properties: [status, page, pageSize, totalItems, releases, tracks] }
+      - { name: SubscriptionStatus, properties: [userId, status, startDate, endDate, productId] }
+      - { name: Subscription, properties: [subscriptionId, userId, productId, status, startDate, endDate] }
+    geography:
+      - { name: Country, properties: [countryCode, name, currency] }
+
+  parameters:
+    pagination: [page, pageSize]
+    identifiers: [artistId, releaseId, trackId, userId, basketId, playlistId, sessionId, deviceId]
+    filters: [country, type, period, tags, format, bitrate]
+    queries: [q, letter]
+
+  enums:
+    releaseType: [album, single, ep, compilation]
+    period: [day, week, month, year]
+    interactiveRadioRuleset: [dmca, gvl, custom]
+    devicePlatform: [ios, android, web, windows, macos]
+    deviceStatus: [authorised, deauthorised]
+    purchaseStatus: [completed, pending, failed]
+    subscriptionStatus: [active, cancelled, expired]
+    playlistVisibility: [private, public]
+    playbackEventType: [start, complete, skip, pause, resume]
+    cardBrand: [visa, mastercard, amex, discover]
+    cardRegistrationStatus: [pending, registered, failed]
+    audioFormat: [mp3, flac, aac]
+    audioBitrate: [128, 192, 256, 320, 1411]
+    errorCategories:
+      input: [1001, 1002, 1003, 1006, 1007, 1008]
+      resource: [2001, 2002, 2003]
+      user: [3003, 3201]
+      auth: [401]
+      application: [7001, 7002, 7003]
+      server: [9001]
+
+  authentication:
+    scheme: OAuth 1.0
+    flows:
+      - name: 2-legged
+        description: Consumer key + secret only. Used for partner-scoped operations (no user context).
+      - name: 3-legged
+        description: Consumer key + secret PLUS a user access token + secret. Used for user-context operations (locker, purchases, subscriptions, streaming).
+    parameter: oauth_consumer_key
+    placement: query
+
+# CAPABILITY DIMENSION (from Naftiko)
+capability:
+  workflows:
+    - id: 7digital-catalogue-browser
+      name: "Catalogue Browser"
+      apis: ["7digital-api", "streaming-platform"]
+      description: Search, browse, and look up artists, releases, and tracks across the 7digital catalogue.
+      tools: 27
+      personas: [music-product-engineer, content-discovery-engineer]
+      domains: [catalogue, discovery]
+    - id: 7digital-music-store
+      name: "Music Store Checkout"
+      apis: ["7digital-api"]
+      description: Basket lifecycle — add/remove items, apply vouchers, PayPal checkout, purchase delivery, payment cards.
+      tools: 18
+      personas: [music-retail-engineer]
+      domains: [commerce, payments]
+    - id: 7digital-interactive-radio
+      name: "Interactive Radio"
+      apis: ["streaming-platform"]
+      description: DMCA/GVL-compliant lean-back radio — session create/delete, next-track, playback events.
+      tools: 4
+      personas: [radio-product-engineer]
+      domains: [streaming, compliance]
+    - id: 7digital-streaming
+      name: "Streaming Delivery"
+      apis: ["streaming-platform"]
+      description: HLS and HTTP Progressive streaming endpoints for previews, catalogue, locker and subscriber playback.
+      tools: 9
+      personas: [streaming-platform-engineer]
+      domains: [streaming, delivery]
+    - id: 7digital-royalty-reporting
+      name: "Royalty Reporting"
+      apis: ["streaming-platform"]
+      description: Compliance logging for catalogue, preview, and subscriber streams — drives licensor royalty calculation.
+      tools: 3
+      personas: [compliance-engineer, royalty-operations]
+      domains: [compliance, reporting]
+    - id: 7digital-subscription-mgmt
+      name: "Subscription Management"
+      apis: ["7digital-api", "streaming-platform"]
+      description: Create and renew user subscriptions, manage subscription state, authorise offline devices.
+      tools: 6
+      personas: [subscription-product-engineer]
+      domains: [subscriptions, accounts]
+    - id: 7digital-content-delivery
+      name: "Content Delivery"
+      apis: ["streaming-platform"]
+      description: Bulk media transfer for licensed content delivery / ingestion partners.
+      tools: 1
+      personas: [content-ingestion-engineer]
+      domains: [delivery, ingestion]
+
+  personas:
+    - id: music-product-engineer
+      name: "Music Product Engineer"
+      description: Builds catalogue browse / search UX on top of 7digital.
+      workflows: [7digital-catalogue-browser]
+    - id: content-discovery-engineer
+      name: "Content Discovery Engineer"
+      description: Builds recommendation and discovery features driven by 7digital metadata.
+      workflows: [7digital-catalogue-browser]
+    - id: music-retail-engineer
+      name: "Music Retail Engineer"
+      description: Operates the digital music store — basket, voucher, checkout, locker delivery.
+      workflows: [7digital-music-store]
+    - id: radio-product-engineer
+      name: "Radio Product Engineer"
+      description: Builds DMCA/GVL-compliant lean-back radio experiences.
+      workflows: [7digital-interactive-radio]
+    - id: streaming-platform-engineer
+      name: "Streaming Platform Engineer"
+      description: Integrates HLS / HTTP Progressive streaming and offline caching into clients.
+      workflows: [7digital-streaming]
+    - id: compliance-engineer
+      name: "Compliance Engineer"
+      description: Ensures stream logs are produced accurately and on time for licensor reporting.
+      workflows: [7digital-royalty-reporting]
+    - id: royalty-operations
+      name: "Royalty Operations"
+      description: Reconciles stream logs and sales against label statements.
+      workflows: [7digital-royalty-reporting]
+    - id: subscription-product-engineer
+      name: "Subscription Product Engineer"
+      description: Manages user subscriptions, renewals, and offline device entitlement.
+      workflows: [7digital-subscription-mgmt]
+    - id: content-ingestion-engineer
+      name: "Content Ingestion Engineer"
+      description: Operates the SFTP/DDEX/API content-delivery pipeline.
+      workflows: [7digital-content-delivery]
+
+  domains:
+    - id: catalogue
+      name: "Catalogue"
+      description: Artist / release / track metadata, tags, usage types.
+    - id: discovery
+      name: "Discovery"
+      description: Search, browse, charts, recommendations.
+    - id: commerce
+      name: "Commerce"
+      description: Baskets, vouchers, purchases, lockers.
+    - id: payments
+      name: "Payments"
+      description: Payment cards, PayPal, voucher redemption.
+    - id: streaming
+      name: "Streaming"
+      description: HLS and HTTP Progressive playback (preview, catalogue, locker, subscription).
+    - id: compliance
+      name: "Compliance"
+      description: DMCA / GVL rulesets, stream logging, licensor reporting.
+    - id: reporting
+      name: "Reporting"
+      description: Royalty and usage reporting to licensors.
+    - id: subscriptions
+      name: "Subscriptions"
+      description: Subscription lifecycle and offline device entitlement.
+    - id: accounts
+      name: "Accounts"
+      description: User signup, authentication, profile management.
+    - id: delivery
+      name: "Content Delivery"
+      description: Bulk media transfer and signed download URLs.
+    - id: ingestion
+      name: "Ingestion"
+      description: DDEX / SFTP catalogue ingestion.
+
+  namespaces:
+    consumed:
+      - { name: "api-releases", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-artists", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-tracks", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-tags", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-basket", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-user", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-users", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-territories", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-translations", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-iplookup", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-editorial", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-catalogue", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "api-payment", baseUri: "https://api.7digital.com/1.2" }
+      - { name: "streaming-platform-catalogue", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-interactive-radio", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-logging", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-streaming", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-offline-devices", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-download-purchases", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-playlists", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-sales", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-subscriptions", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-user-management", baseUri: "https://api.7digital.com" }
+      - { name: "streaming-platform-content-delivery", baseUri: "https://api.7digital.com" }
+    rest: { port: 8080 }
+    mcp: { port: 9090, transport: http }
+
+  binds:
+    - name: SEVENDIGITAL_CONSUMER_KEY
+      description: 7digital OAuth 1.0 consumer key issued under your commercial agreement.
+    - name: SEVENDIGITAL_CONSUMER_SECRET
+      description: 7digital OAuth 1.0 consumer secret used to sign requests.
+
+# CROSS-REFERENCE
+crossReference:
+  - resource: Artist
+    operations: [browseArtists, searchArtists, getArtistDetails, getArtistReleases, getArtistChart, getSimilarArtists, getArtistTopTracks, getArtistTags, matchArtistById, getTopArtistsByTags, browseArtistsByName]
+    workflows: [7digital-catalogue-browser]
+    personas: [music-product-engineer, content-discovery-engineer]
+  - resource: Release
+    operations: [getReleasesByDate, getReleaseDetails, getReleaseChart, getReleaseRecommendations, searchReleases, getReleaseTracks, getReleaseTags, getReleaseEditorial, matchReleaseById, getNewReleasesByTags, getTopReleasesByTags, getReleasesBatchDetails]
+    workflows: [7digital-catalogue-browser]
+    personas: [music-product-engineer, content-discovery-engineer]
+  - resource: Track
+    operations: [getTrackChart, getTrackDetails, searchTracks, matchTrackById, getTracksBatchDetails, downloadTrack]
+    workflows: [7digital-catalogue-browser, 7digital-streaming]
+    personas: [music-product-engineer, streaming-platform-engineer]
+  - resource: Basket
+    operations: [getBasket, createBasket, addBasketItem, removeBasketItem, applyBasketVoucher, addPricedBasketItem, getBasketPayPalUrl, completeBasketPayPalPurchase]
+    workflows: [7digital-music-store]
+    personas: [music-retail-engineer]
+  - resource: RadioSession
+    operations: [createInteractiveRadioSession, deleteInteractiveRadioSession, getInteractiveRadioNextTrack, postInteractiveRadioPlaybackEvents]
+    workflows: [7digital-interactive-radio]
+    personas: [radio-product-engineer]
+  - resource: StreamLog
+    operations: [reportCatalogueStream, reportPreviewStream, reportSubscriberStream]
+    workflows: [7digital-royalty-reporting]
+    personas: [compliance-engineer, royalty-operations]
+  - resource: Stream
+    operations: [streamPreviewClip, streamCatalogueTrackHls, streamCatalogueTrackProgressive, streamLockerTrackHls, streamLockerTrackProgressive, streamSubscriptionTrackHls, streamSubscriptionTrackProgressive, streamSubscriptionTrackOfflineHls, streamSubscriptionTrackOfflineProgressive]
+    workflows: [7digital-streaming]
+    personas: [streaming-platform-engineer]
+  - resource: OfflineDevice
+    operations: [authorizeOfflineDevice, getOfflineDeviceStatus, listOfflineDevices]
+    workflows: [7digital-subscription-mgmt]
+    personas: [subscription-product-engineer]
+  - resource: Subscription
+    operations: [createSubscription, getUserUnlimitedStreaming, updateUserUnlimitedStreaming]
+    workflows: [7digital-subscription-mgmt]
+    personas: [subscription-product-engineer]
+  - resource: Sale
+    operations: [creditSalesItem, reportReleaseRefund, reportTrackRefund]
+    workflows: [7digital-music-store]
+    personas: [music-retail-engineer]
+  - resource: ContentDelivery
+    operations: [transferMedia]
+    workflows: [7digital-content-delivery]
+    personas: [content-ingestion-engineer]

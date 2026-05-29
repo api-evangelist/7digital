@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "usageTypes": [
+    {
+      "id": "subscription-streaming",
+      "name": "Subscription Streaming",
+      "description": "Streaming to subscribers in interactive playback."
+    },
+    {
+      "id": "subscription-streaming",
+      "name": "Subscription Streaming",
+      "description": "Streaming to subscribers in interactive playback."
+    }
+  ]
+}

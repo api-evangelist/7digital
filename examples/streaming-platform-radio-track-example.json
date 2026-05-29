@@ -1,0 +1,39 @@
+{
+  "track": {
+    "id": "123456",
+    "title": "Come Together",
+    "version": "Remastered 2019",
+    "artist": {
+      "id": "12345",
+      "name": "The Beatles",
+      "url": "https://uk.7digital.com/artist/the-beatles",
+      "image": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg",
+      "sortName": "Beatles, The"
+    },
+    "release": {
+      "id": "11700062",
+      "title": "Abbey Road",
+      "type": "album",
+      "artist": {
+        "id": {},
+        "name": {},
+        "url": {},
+        "image": {},
+        "sortName": {}
+      },
+      "url": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062",
+      "image": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg",
+      "releaseDate": "1969-09-26",
+      "label": "Apple Records",
+      "upc": "00602445912025",
+      "explicit": false
+    },
+    "trackNumber": 1,
+    "duration": 259,
+    "explicit": false,
+    "isrc": "GBAYE6900477",
+    "previewUrl": "https://previews.7digital.com/clip/123456"
+  },
+  "streamUrl": "https://streaming.7digital.com/hls/123456.m3u8",
+  "skipAllowed": true
+}

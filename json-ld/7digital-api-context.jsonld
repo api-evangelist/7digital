@@ -1,0 +1,320 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sevendigital": "https://docs.7digital.com/schema/",
+    "massivemusic": "https://docs.massivemusic.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Artist": "sevendigital:Artist",
+    "ArtistDetailsResponse": "sevendigital:ArtistDetailsResponse",
+    "ArtistListResponse": "sevendigital:ArtistListResponse",
+    "Release": "sevendigital:Release",
+    "ReleaseDetailsResponse": "sevendigital:ReleaseDetailsResponse",
+    "ReleaseListResponse": "sevendigital:ReleaseListResponse",
+    "Track": "sevendigital:Track",
+    "TrackDetailsResponse": "sevendigital:TrackDetailsResponse",
+    "TrackListResponse": "sevendigital:TrackListResponse",
+    "Tag": "sevendigital:Tag",
+    "TagListResponse": "sevendigital:TagListResponse",
+    "Price": "sevendigital:Price",
+    "Basket": "sevendigital:Basket",
+    "BasketItem": "sevendigital:BasketItem",
+    "Purchase": "sevendigital:Purchase",
+    "SubscriptionStatus": "sevendigital:SubscriptionStatus",
+    "Locker": "sevendigital:Locker",
+    "PaymentCard": "sevendigital:PaymentCard",
+    "CardRegistrationRequest": "sevendigital:CardRegistrationRequest",
+    "CardRegistration": "sevendigital:CardRegistration",
+    "User": "sevendigital:User",
+    "UserSignupRequest": "sevendigital:UserSignupRequest",
+    "UserUpdateRequest": "sevendigital:UserUpdateRequest",
+    "Country": "sevendigital:Country",
+    "Voucher": "sevendigital:Voucher",
+    "EditorialItem": "sevendigital:EditorialItem",
+    "EditorialListResponse": "sevendigital:EditorialListResponse",
+    "EditorialResponse": "sevendigital:EditorialResponse",
+    "id": {
+      "@id": "sevendigital:id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "sortName": {
+      "@id": "sevendigital:sort_name",
+      "@type": "xsd:string"
+    },
+    "appearsAs": {
+      "@id": "sevendigital:appears_as",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "sevendigital:status",
+      "@type": "xsd:string"
+    },
+    "artist": {
+      "@id": "sevendigital:artist",
+      "@type": "xsd:string"
+    },
+    "page": {
+      "@id": "sevendigital:page",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "sevendigital:page_size",
+      "@type": "xsd:integer"
+    },
+    "totalItems": {
+      "@id": "sevendigital:total_items",
+      "@type": "xsd:integer"
+    },
+    "artists": {
+      "@id": "sevendigital:artists",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "sevendigital:title",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "sevendigital:type",
+      "@type": "xsd:string"
+    },
+    "releaseDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:date"
+    },
+    "label": {
+      "@id": "sevendigital:label",
+      "@type": "xsd:string"
+    },
+    "explicit": {
+      "@id": "sevendigital:explicit",
+      "@type": "xsd:boolean"
+    },
+    "upc": {
+      "@id": "sevendigital:upc",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "sevendigital:price",
+      "@type": "xsd:string"
+    },
+    "release": {
+      "@id": "sevendigital:release",
+      "@type": "xsd:string"
+    },
+    "releases": {
+      "@id": "sevendigital:releases",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "trackNumber": {
+      "@id": "sevendigital:track_number",
+      "@type": "xsd:integer"
+    },
+    "duration": {
+      "@id": "schema:duration",
+      "@type": "xsd:integer"
+    },
+    "isrc": {
+      "@id": "sevendigital:isrc",
+      "@type": "xsd:string"
+    },
+    "previewUrl": {
+      "@id": "sevendigital:preview_url",
+      "@type": "@id"
+    },
+    "track": {
+      "@id": "sevendigital:track",
+      "@type": "xsd:string"
+    },
+    "tracks": {
+      "@id": "sevendigital:tracks",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "parentId": {
+      "@id": "sevendigital:parent_id",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "sevendigital:tags",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "formattedPrice": {
+      "@id": "sevendigital:formatted_price",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "sevendigital:amount",
+      "@type": "xsd:decimal"
+    },
+    "currency": {
+      "@id": "sevendigital:currency",
+      "@type": "xsd:string"
+    },
+    "items": {
+      "@id": "sevendigital:items",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "total": {
+      "@id": "sevendigital:total",
+      "@type": "xsd:string"
+    },
+    "voucherCode": {
+      "@id": "sevendigital:voucher_code",
+      "@type": "xsd:string"
+    },
+    "itemId": {
+      "@id": "sevendigital:item_id",
+      "@type": "xsd:string"
+    },
+    "releaseId": {
+      "@id": "sevendigital:release_id",
+      "@type": "xsd:string"
+    },
+    "trackId": {
+      "@id": "sevendigital:track_id",
+      "@type": "xsd:string"
+    },
+    "purchaseId": {
+      "@id": "sevendigital:purchase_id",
+      "@type": "xsd:string"
+    },
+    "receiptUrl": {
+      "@id": "sevendigital:receipt_url",
+      "@type": "@id"
+    },
+    "userId": {
+      "@id": "sevendigital:user_id",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "sevendigital:start_date",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "sevendigital:end_date",
+      "@type": "xsd:date"
+    },
+    "productId": {
+      "@id": "sevendigital:product_id",
+      "@type": "xsd:string"
+    },
+    "cardId": {
+      "@id": "sevendigital:card_id",
+      "@type": "xsd:string"
+    },
+    "last4": {
+      "@id": "sevendigital:last4",
+      "@type": "xsd:string"
+    },
+    "brand": {
+      "@id": "sevendigital:brand",
+      "@type": "xsd:string"
+    },
+    "expiryMonth": {
+      "@id": "sevendigital:expiry_month",
+      "@type": "xsd:integer"
+    },
+    "expiryYear": {
+      "@id": "sevendigital:expiry_year",
+      "@type": "xsd:integer"
+    },
+    "isDefault": {
+      "@id": "sevendigital:is_default",
+      "@type": "xsd:boolean"
+    },
+    "cardNumber": {
+      "@id": "sevendigital:card_number",
+      "@type": "xsd:string"
+    },
+    "cvv": {
+      "@id": "sevendigital:cvv",
+      "@type": "xsd:string"
+    },
+    "cardholderName": {
+      "@id": "sevendigital:cardholder_name",
+      "@type": "xsd:string"
+    },
+    "registrationId": {
+      "@id": "sevendigital:registration_id",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "sevendigital:first_name",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "sevendigital:last_name",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "sevendigital:country",
+      "@type": "xsd:string"
+    },
+    "accessToken": {
+      "@id": "sevendigital:access_token",
+      "@type": "xsd:string"
+    },
+    "accessTokenSecret": {
+      "@id": "sevendigital:access_token_secret",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "sevendigital:password",
+      "@type": "xsd:string"
+    },
+    "countryCode": {
+      "@id": "sevendigital:country_code",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "sevendigital:code",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "sevendigital:value",
+      "@type": "xsd:string"
+    },
+    "expiresAt": {
+      "@id": "sevendigital:expires_at",
+      "@type": "xsd:dateTime"
+    },
+    "redeemed": {
+      "@id": "sevendigital:redeemed",
+      "@type": "xsd:boolean"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "editorial": {
+      "@id": "sevendigital:editorial",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

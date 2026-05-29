@@ -1,0 +1,36 @@
+{
+  "status": "ok",
+  "page": 1,
+  "pageSize": 20,
+  "totalItems": 12,
+  "playlists": [
+    {
+      "id": "playlist-789012",
+      "name": "Morning Run",
+      "description": "High-energy tracks for early-morning runs.",
+      "visibility": "public",
+      "userId": "500123",
+      "trackCount": 24,
+      "tracks": [
+        {},
+        {}
+      ],
+      "createdAt": "2026-05-28T14:30:00Z",
+      "modifiedAt": "2026-05-28T15:00:00Z"
+    },
+    {
+      "id": "playlist-789012",
+      "name": "Morning Run",
+      "description": "High-energy tracks for early-morning runs.",
+      "visibility": "public",
+      "userId": "500123",
+      "trackCount": 24,
+      "tracks": [
+        {},
+        {}
+      ],
+      "createdAt": "2026-05-28T14:30:00Z",
+      "modifiedAt": "2026-05-28T15:00:00Z"
+    }
+  ]
+}

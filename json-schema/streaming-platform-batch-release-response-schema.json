@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-batch-release-response-schema.json",
+  "title": "BatchReleaseResponse",
+  "description": "BatchReleaseResponse schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "ok"
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "11700062"
+          },
+          "title": {
+            "type": "string",
+            "example": "Abbey Road"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "album",
+              "single",
+              "ep",
+              "compilation"
+            ],
+            "example": "album"
+          },
+          "artist": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "12345"
+              },
+              "name": {
+                "type": "string",
+                "example": "The Beatles"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://uk.7digital.com/artist/the-beatles"
+              },
+              "image": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+              },
+              "sortName": {
+                "type": "string",
+                "example": "Beatles, The"
+              }
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "example": "1969-09-26"
+          },
+          "label": {
+            "type": "string",
+            "example": "Apple Records"
+          },
+          "upc": {
+            "type": "string",
+            "example": "00602445912025"
+          },
+          "explicit": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "example": 2001
+          },
+          "message": {
+            "type": "string",
+            "example": "Release not found"
+          },
+          "index": {
+            "type": "integer",
+            "example": 1
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: 7digital / MassiveMusic
+providerId: 7digital
+created: '2026-05-28'
+modified: '2026-05-28'
+reconciled: false
+tags:
+  - Music
+  - Streaming
+  - Licensing
+  - B2B
+  - Catalogue
+description: >-
+  7digital (now branded MassiveMusic following a corporate pivot) sells access
+  to its 100M+ track licensed music catalogue and streaming infrastructure
+  exclusively under commercial agreements. The platform does NOT publish self-
+  serve pricing tiers — every customer engages through a Client Success contact
+  who scopes pricing on a per-product, per-territory, per-volume basis. The
+  effective billing surface tends to be: per-stream / per-download licence fees
+  remitted via royalty-style reporting, plus an integration/platform fee for
+  API access. Pricing therefore reads as a single "contact sales" platform
+  plan, broken into the product lines (Catalogue + Streaming + Subscription
+  Streaming + Interactive Radio + Background Music + Content Delivery +
+  Download) that customers actually license.
+sources:
+  - https://docs.massivemusic.com/docs/partners
+  - https://docs.massivemusic.com/docs/external-partner-network-and-integrations
+  - https://docs.massivemusic.com/docs/sla
+  - https://docs.massivemusic.com/reference/about-this-api
+plans:
+  - id: 7digital-platform-pricing-overview
+    name: Platform Pricing Overview
+    type: enterprise
+    description: >-
+      Single commercial-agreement plan covering all 7digital / MassiveMusic API
+      products. Pricing is negotiated with Client Success and is a combination
+      of licence fees per stream / per download per licensor and a platform /
+      integration fee. Non-live (sandbox) keys are free but rate-limited.
+    elements:
+      - name: Catalogue API access (search, browse, batch lookup)
+      - name: Standard + Enhanced Metadata
+      - name: Interactive Radio (DMCA / GVL rulesets)
+      - name: Catalogue streaming (HLS + HTTP Progressive)
+      - name: Subscription streaming (online + offline)
+      - name: Preview clip streaming
+      - name: Locker streaming + download delivery
+      - name: Playlist management API
+      - name: Sales / Subscriptions / User Management APIs
+      - name: Royalty + usage reporting (S3 logs + Label Reports)
+      - name: DDEX / SFTP content delivery
+      - name: Compliance testing with Client Success
+      - name: Standard SLA
+    entries:
+      - label: Platform / integration fee
+        name: platform_integration_fee
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: 'contact sales'
+        userMultiplied: false
+      - label: Catalogue streaming licence fees
+        name: catalogue_stream_licence
+        type: metered
+        metric: stream
+        limit: -1
+        timeFrame: usage
+        geo: 'per-territory, per-licensor'
+        unit: 1
+        price: 'per-licensor rate — see Client Success'
+        userMultiplied: false
+      - label: Subscription streaming licence fees
+        name: subscription_stream_licence
+        type: metered
+        metric: stream
+        limit: -1
+        timeFrame: usage
+        geo: 'per-territory, per-licensor'
+        unit: 1
+        price: 'per-licensor rate — see Client Success'
+        userMultiplied: false
+      - label: Preview clip licence fees
+        name: preview_stream_licence
+        type: metered
+        metric: stream
+        limit: -1
+        timeFrame: usage
+        geo: 'per-territory, per-licensor'
+        unit: 1
+        price: 'per-licensor rate — see Client Success'
+        userMultiplied: false
+      - label: Download / purchase wholesale fees
+        name: download_wholesale_fee
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: 'per-territory'
+        unit: 1
+        price: 'wholesale RRP — see Client Success'
+        userMultiplied: false
+      - label: Media transfer / content delivery (bulk media)
+        name: media_transfer_fee
+        type: metered
+        metric: transaction
+        limit: -1
+        timeFrame: usage
+        geo: 'global'
+        unit: 1
+        price: 'contact sales (requires additional licensor due diligence)'
+        userMultiplied: false
+      - label: Sandbox / non-live API access
+        name: sandbox_access
+        type: flat
+        metric: month
+        limit: 4000
+        timeFrame: day
+        geo: global
+        unit: 1
+        price: 'free (rate-limited to ~4,000 requests/day per non-live key)'
+        userMultiplied: false

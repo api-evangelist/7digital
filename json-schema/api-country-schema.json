@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-country-schema.json",
+  "title": "Country",
+  "description": "Country schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "countryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 code.",
+      "example": "GB"
+    },
+    "name": {
+      "type": "string",
+      "example": "United Kingdom"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code.",
+      "example": "GBP"
+    }
+  }
+}

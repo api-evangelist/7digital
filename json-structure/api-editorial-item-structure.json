@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-editorial-item-structure.json",
+  "name": "EditorialItem",
+  "description": "EditorialItem schema from 7digital API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "feature",
+        "banner",
+        "slot"
+      ],
+      "example": "feature"
+    },
+    "id": {
+      "type": "string",
+      "example": "editorial-789012"
+    },
+    "name": {
+      "type": "string",
+      "example": "New Releases This Week"
+    },
+    "description": {
+      "type": "string",
+      "example": "Our pick of the freshest releases this week."
+    },
+    "url": {
+      "type": "uri",
+      "example": "https://uk.7digital.com/editorial/new-releases-this-week"
+    },
+    "image": {
+      "type": "uri",
+      "example": "https://artwork-cdn.7static.com/static/img/editorial/789012.jpg"
+    }
+  }
+}

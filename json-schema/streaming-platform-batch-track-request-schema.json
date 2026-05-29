@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-batch-track-request-schema.json",
+  "title": "BatchTrackRequest",
+  "description": "BatchTrackRequest schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "trackIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "123456",
+        "123457"
+      ]
+    },
+    "showErrors": {
+      "type": "boolean",
+      "example": true
+    }
+  },
+  "required": [
+    "trackIds"
+  ]
+}

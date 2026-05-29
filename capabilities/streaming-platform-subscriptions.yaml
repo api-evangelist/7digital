@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital / MassiveMusic Streaming Platform API — Subscriptions
+  description: '7digital / MassiveMusic Streaming Platform API — Subscriptions. 1 operations. Lead operation: 7digital Create Subscription. Self-contained Naftiko capability covering one 7digital / MassiveMusic
+    business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Subscriptions
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: streaming-platform-subscriptions
+    baseUri: https://api.7digital.com
+    description: 7digital / MassiveMusic Streaming Platform API — Subscriptions business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: subscriptions
+      path: /subscriptions
+      operations:
+      - name: createSubscription
+        method: POST
+        description: 7digital Create Subscription
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: streaming-platform-subscriptions-rest
+    port: 8080
+    description: REST adapter for 7digital / MassiveMusic Streaming Platform API — Subscriptions. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions
+      name: subscriptions
+      description: REST surface for subscriptions.
+      operations:
+      - method: POST
+        name: createSubscription
+        description: 7digital Create Subscription
+        call: streaming-platform-subscriptions.createSubscription
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: streaming-platform-subscriptions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital / MassiveMusic Streaming Platform API — Subscriptions. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: create-subscription
+      description: 7digital Create Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: streaming-platform-subscriptions.createSubscription
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

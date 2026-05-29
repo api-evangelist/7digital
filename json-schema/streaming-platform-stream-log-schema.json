@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-stream-log-schema.json",
+  "title": "StreamLog",
+  "description": "StreamLog schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "trackId": {
+      "type": "string",
+      "example": "123456"
+    },
+    "userId": {
+      "type": "string",
+      "example": "500123"
+    },
+    "clientId": {
+      "type": "string",
+      "example": "device-789012"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-05-28T14:30:45Z"
+    },
+    "durationPlayed": {
+      "type": "integer",
+      "description": "Seconds streamed.",
+      "example": 259
+    },
+    "country": {
+      "type": "string",
+      "example": "GB"
+    }
+  },
+  "required": [
+    "trackId",
+    "timestamp"
+  ]
+}

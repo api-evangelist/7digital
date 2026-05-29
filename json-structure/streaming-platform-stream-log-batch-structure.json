@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-stream-log-batch-structure.json",
+  "name": "StreamLogBatch",
+  "description": "StreamLogBatch schema from 7digital API",
+  "properties": {
+    "logs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trackId": {
+            "type": "string",
+            "example": "123456"
+          },
+          "userId": {
+            "type": "string",
+            "example": "500123"
+          },
+          "clientId": {
+            "type": "string",
+            "example": "device-789012"
+          },
+          "timestamp": {
+            "type": "datetime",
+            "example": "2026-05-28T14:30:45Z"
+          },
+          "durationPlayed": {
+            "type": "int32",
+            "description": "Seconds streamed.",
+            "example": 259
+          },
+          "country": {
+            "type": "string",
+            "example": "GB"
+          }
+        },
+        "required": [
+          "trackId",
+          "timestamp"
+        ]
+      }
+    }
+  },
+  "required": [
+    "logs"
+  ]
+}

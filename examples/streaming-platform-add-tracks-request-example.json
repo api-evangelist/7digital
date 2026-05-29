@@ -1,0 +1,20 @@
+{
+  "tracks": [
+    {
+      "trackId": "123456",
+      "title": "Come Together",
+      "artist": "The Beatles",
+      "source": "7digital",
+      "audioUrl": "file://a.specific.file.location.mp3",
+      "image": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+    },
+    {
+      "trackId": "123456",
+      "title": "Come Together",
+      "artist": "The Beatles",
+      "source": "7digital",
+      "audioUrl": "file://a.specific.file.location.mp3",
+      "image": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+    }
+  ]
+}

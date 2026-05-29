@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-refund-request-structure.json",
+  "name": "RefundRequest",
+  "description": "RefundRequest schema from 7digital API",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "example": "500123"
+    },
+    "purchaseId": {
+      "type": "string",
+      "example": "purchase-789012"
+    },
+    "reason": {
+      "type": "string",
+      "example": "Customer request"
+    }
+  },
+  "required": [
+    "userId",
+    "purchaseId"
+  ]
+}

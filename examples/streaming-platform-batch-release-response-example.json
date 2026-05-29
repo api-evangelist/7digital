@@ -1,0 +1,53 @@
+{
+  "status": "ok",
+  "releases": [
+    {
+      "id": "11700062",
+      "title": "Abbey Road",
+      "type": "album",
+      "artist": {
+        "id": {},
+        "name": {},
+        "url": {},
+        "image": {},
+        "sortName": {}
+      },
+      "url": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062",
+      "image": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg",
+      "releaseDate": "1969-09-26",
+      "label": "Apple Records",
+      "upc": "00602445912025",
+      "explicit": false
+    },
+    {
+      "id": "11700062",
+      "title": "Abbey Road",
+      "type": "album",
+      "artist": {
+        "id": {},
+        "name": {},
+        "url": {},
+        "image": {},
+        "sortName": {}
+      },
+      "url": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062",
+      "image": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg",
+      "releaseDate": "1969-09-26",
+      "label": "Apple Records",
+      "upc": "00602445912025",
+      "explicit": false
+    }
+  ],
+  "errors": [
+    {
+      "code": 2001,
+      "message": "Release not found",
+      "index": 1
+    },
+    {
+      "code": 2001,
+      "message": "Release not found",
+      "index": 1
+    }
+  ]
+}

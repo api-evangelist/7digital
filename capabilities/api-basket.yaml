@@ -1,0 +1,417 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital API — Basket
+  description: '7digital API — Basket. 8 operations. Lead operation: 7digital Get Basket. Self-contained Naftiko capability covering one 7digital / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Basket
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: api-basket
+    baseUri: https://api.7digital.com/1.2
+    description: 7digital API — Basket business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: basket
+      path: /basket
+      operations:
+      - name: getBasket
+        method: GET
+        description: 7digital Get Basket
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-create
+      path: /basket/create
+      operations:
+      - name: createBasket
+        method: GET
+        description: 7digital Create Basket
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-additem
+      path: /basket/addItem
+      operations:
+      - name: addBasketItem
+        method: GET
+        description: 7digital Add Basket Item
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        - name: releaseId
+          in: query
+          type: string
+          required: false
+          description: Release id to add.
+        - name: trackId
+          in: query
+          type: string
+          required: false
+          description: Track id to add.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-removeitem
+      path: /basket/removeItem
+      operations:
+      - name: removeBasketItem
+        method: GET
+        description: 7digital Remove Basket Item
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        - name: itemId
+          in: query
+          type: string
+          required: true
+          description: Basket item id to remove.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-applyvoucher
+      path: /basket/applyVoucher
+      operations:
+      - name: applyBasketVoucher
+        method: POST
+        description: 7digital Apply Basket Voucher
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-addpriceditem
+      path: /basket/addpriceditem
+      operations:
+      - name: addPricedBasketItem
+        method: GET
+        description: 7digital Add Priced Basket Item
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        - name: releaseId
+          in: query
+          type: string
+          required: false
+          description: Release id to add.
+        - name: price
+          in: query
+          type: number
+          required: true
+          description: Price to apply to the item (in minor units).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-paypalurl
+      path: /basket/paypalurl
+      operations:
+      - name: getBasketPayPalUrl
+        method: GET
+        description: 7digital Get Basket PayPal Url
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: basket-completepaypalpurchase
+      path: /basket/completepaypalpurchase
+      operations:
+      - name: completeBasketPayPalPurchase
+        method: POST
+        description: 7digital Complete Basket PayPal Purchase
+        inputParameters:
+        - name: basketId
+          in: query
+          type: string
+          required: true
+          description: 7digital basket id.
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: api-basket-rest
+    port: 8080
+    description: REST adapter for 7digital API — Basket. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/basket
+      name: basket
+      description: REST surface for basket.
+      operations:
+      - method: GET
+        name: getBasket
+        description: 7digital Get Basket
+        call: api-basket.getBasket
+        with:
+          basketId: rest.basketId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/create
+      name: basket-create
+      description: REST surface for basket-create.
+      operations:
+      - method: GET
+        name: createBasket
+        description: 7digital Create Basket
+        call: api-basket.createBasket
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/add-item
+      name: basket-add-item
+      description: REST surface for basket-add-item.
+      operations:
+      - method: GET
+        name: addBasketItem
+        description: 7digital Add Basket Item
+        call: api-basket.addBasketItem
+        with:
+          basketId: rest.basketId
+          releaseId: rest.releaseId
+          trackId: rest.trackId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/remove-item
+      name: basket-remove-item
+      description: REST surface for basket-remove-item.
+      operations:
+      - method: GET
+        name: removeBasketItem
+        description: 7digital Remove Basket Item
+        call: api-basket.removeBasketItem
+        with:
+          basketId: rest.basketId
+          itemId: rest.itemId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/apply-voucher
+      name: basket-apply-voucher
+      description: REST surface for basket-apply-voucher.
+      operations:
+      - method: POST
+        name: applyBasketVoucher
+        description: 7digital Apply Basket Voucher
+        call: api-basket.applyBasketVoucher
+        with:
+          basketId: rest.basketId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/addpriceditem
+      name: basket-addpriceditem
+      description: REST surface for basket-addpriceditem.
+      operations:
+      - method: GET
+        name: addPricedBasketItem
+        description: 7digital Add Priced Basket Item
+        call: api-basket.addPricedBasketItem
+        with:
+          basketId: rest.basketId
+          releaseId: rest.releaseId
+          price: rest.price
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/paypalurl
+      name: basket-paypalurl
+      description: REST surface for basket-paypalurl.
+      operations:
+      - method: GET
+        name: getBasketPayPalUrl
+        description: 7digital Get Basket PayPal Url
+        call: api-basket.getBasketPayPalUrl
+        with:
+          basketId: rest.basketId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/basket/completepaypalpurchase
+      name: basket-completepaypalpurchase
+      description: REST surface for basket-completepaypalpurchase.
+      operations:
+      - method: POST
+        name: completeBasketPayPalPurchase
+        description: 7digital Complete Basket PayPal Purchase
+        call: api-basket.completeBasketPayPalPurchase
+        with:
+          basketId: rest.basketId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-basket-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital API — Basket. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-basket
+      description: 7digital Get Basket
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-basket.getBasket
+      with:
+        basketId: tools.basketId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-basket
+      description: 7digital Create Basket
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-basket.createBasket
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-basket-item
+      description: 7digital Add Basket Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-basket.addBasketItem
+      with:
+        basketId: tools.basketId
+        releaseId: tools.releaseId
+        trackId: tools.trackId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-basket-item
+      description: 7digital Remove Basket Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-basket.removeBasketItem
+      with:
+        basketId: tools.basketId
+        itemId: tools.itemId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apply-basket-voucher
+      description: 7digital Apply Basket Voucher
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: api-basket.applyBasketVoucher
+      with:
+        basketId: tools.basketId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-priced-basket-item
+      description: 7digital Add Priced Basket Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-basket.addPricedBasketItem
+      with:
+        basketId: tools.basketId
+        releaseId: tools.releaseId
+        price: tools.price
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-basket-pay-pal-url
+      description: 7digital Get Basket PayPal Url
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-basket.getBasketPayPalUrl
+      with:
+        basketId: tools.basketId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: complete-basket-pay-pal-purchase
+      description: 7digital Complete Basket PayPal Purchase
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: api-basket.completeBasketPayPalPurchase
+      with:
+        basketId: tools.basketId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

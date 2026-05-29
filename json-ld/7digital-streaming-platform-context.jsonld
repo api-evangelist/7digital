@@ -1,0 +1,356 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sevendigital": "https://docs.7digital.com/schema/",
+    "massivemusic": "https://docs.massivemusic.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Artist": "sevendigital:Artist",
+    "ArtistListResponse": "sevendigital:ArtistListResponse",
+    "Release": "sevendigital:Release",
+    "ReleaseListResponse": "sevendigital:ReleaseListResponse",
+    "BatchReleaseRequest": "sevendigital:BatchReleaseRequest",
+    "BatchReleaseResponse": "sevendigital:BatchReleaseResponse",
+    "Track": "sevendigital:Track",
+    "TrackListResponse": "sevendigital:TrackListResponse",
+    "BatchTrackRequest": "sevendigital:BatchTrackRequest",
+    "BatchTrackResponse": "sevendigital:BatchTrackResponse",
+    "DownloadUrl": "sevendigital:DownloadUrl",
+    "UsageType": "sevendigital:UsageType",
+    "UsageTypeListResponse": "sevendigital:UsageTypeListResponse",
+    "CreateRadioSessionRequest": "sevendigital:CreateRadioSessionRequest",
+    "RadioSession": "sevendigital:RadioSession",
+    "RadioTrack": "sevendigital:RadioTrack",
+    "PlaybackEvent": "sevendigital:PlaybackEvent",
+    "PlaybackEventBatch": "sevendigital:PlaybackEventBatch",
+    "StreamLog": "sevendigital:StreamLog",
+    "StreamLogBatch": "sevendigital:StreamLogBatch",
+    "DeviceAuthorisationRequest": "sevendigital:DeviceAuthorisationRequest",
+    "DeviceAuthorisation": "sevendigital:DeviceAuthorisation",
+    "Locker": "sevendigital:Locker",
+    "CreditItemRequest": "sevendigital:CreditItemRequest",
+    "RefundRequest": "sevendigital:RefundRequest",
+    "PlaylistTrackInput": "sevendigital:PlaylistTrackInput",
+    "Playlist": "sevendigital:Playlist",
+    "PlaylistListResponse": "sevendigital:PlaylistListResponse",
+    "CreatePlaylistRequest": "sevendigital:CreatePlaylistRequest",
+    "UpdatePlaylistRequest": "sevendigital:UpdatePlaylistRequest",
+    "AddTracksRequest": "sevendigital:AddTracksRequest",
+    "CreateSubscriptionRequest": "sevendigital:CreateSubscriptionRequest",
+    "Subscription": "sevendigital:Subscription",
+    "CreateUserRequest": "sevendigital:CreateUserRequest",
+    "User": "sevendigital:User",
+    "id": {
+      "@id": "sevendigital:id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "sortName": {
+      "@id": "sevendigital:sort_name",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "sevendigital:status",
+      "@type": "xsd:string"
+    },
+    "page": {
+      "@id": "sevendigital:page",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "sevendigital:page_size",
+      "@type": "xsd:integer"
+    },
+    "totalItems": {
+      "@id": "sevendigital:total_items",
+      "@type": "xsd:integer"
+    },
+    "artists": {
+      "@id": "sevendigital:artists",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "sevendigital:title",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "sevendigital:type",
+      "@type": "xsd:string"
+    },
+    "artist": {
+      "@id": "sevendigital:artist",
+      "@type": "xsd:string"
+    },
+    "releaseDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:date"
+    },
+    "label": {
+      "@id": "sevendigital:label",
+      "@type": "xsd:string"
+    },
+    "upc": {
+      "@id": "sevendigital:upc",
+      "@type": "xsd:string"
+    },
+    "explicit": {
+      "@id": "sevendigital:explicit",
+      "@type": "xsd:boolean"
+    },
+    "releases": {
+      "@id": "sevendigital:releases",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "releaseIds": {
+      "@id": "sevendigital:release_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "showErrors": {
+      "@id": "sevendigital:show_errors",
+      "@type": "xsd:boolean"
+    },
+    "errors": {
+      "@id": "sevendigital:errors",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "code": {
+      "@id": "sevendigital:code",
+      "@type": "xsd:integer"
+    },
+    "message": {
+      "@id": "sevendigital:message",
+      "@type": "xsd:string"
+    },
+    "index": {
+      "@id": "sevendigital:index",
+      "@type": "xsd:integer"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "release": {
+      "@id": "sevendigital:release",
+      "@type": "xsd:string"
+    },
+    "trackNumber": {
+      "@id": "sevendigital:track_number",
+      "@type": "xsd:integer"
+    },
+    "duration": {
+      "@id": "schema:duration",
+      "@type": "xsd:integer"
+    },
+    "isrc": {
+      "@id": "sevendigital:isrc",
+      "@type": "xsd:string"
+    },
+    "previewUrl": {
+      "@id": "sevendigital:preview_url",
+      "@type": "@id"
+    },
+    "tracks": {
+      "@id": "sevendigital:tracks",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "trackIds": {
+      "@id": "sevendigital:track_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "expiresAt": {
+      "@id": "sevendigital:expires_at",
+      "@type": "xsd:dateTime"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "usageTypes": {
+      "@id": "sevendigital:usage_types",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "sevendigital:user_id",
+      "@type": "xsd:string"
+    },
+    "playlistIds": {
+      "@id": "sevendigital:playlist_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "ruleset": {
+      "@id": "sevendigital:ruleset",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "sevendigital:country",
+      "@type": "xsd:string"
+    },
+    "sessionId": {
+      "@id": "sevendigital:session_id",
+      "@type": "xsd:string"
+    },
+    "skipsRemaining": {
+      "@id": "sevendigital:skips_remaining",
+      "@type": "xsd:integer"
+    },
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "track": {
+      "@id": "sevendigital:track",
+      "@type": "xsd:string"
+    },
+    "streamUrl": {
+      "@id": "sevendigital:stream_url",
+      "@type": "@id"
+    },
+    "skipAllowed": {
+      "@id": "sevendigital:skip_allowed",
+      "@type": "xsd:boolean"
+    },
+    "trackId": {
+      "@id": "sevendigital:track_id",
+      "@type": "xsd:string"
+    },
+    "eventType": {
+      "@id": "sevendigital:event_type",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "sevendigital:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "durationPlayed": {
+      "@id": "sevendigital:duration_played",
+      "@type": "xsd:integer"
+    },
+    "events": {
+      "@id": "sevendigital:events",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "clientId": {
+      "@id": "sevendigital:client_id",
+      "@type": "xsd:string"
+    },
+    "logs": {
+      "@id": "sevendigital:logs",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "deviceId": {
+      "@id": "sevendigital:device_id",
+      "@type": "xsd:string"
+    },
+    "deviceName": {
+      "@id": "sevendigital:device_name",
+      "@type": "xsd:string"
+    },
+    "platform": {
+      "@id": "sevendigital:platform",
+      "@type": "xsd:string"
+    },
+    "authorisedAt": {
+      "@id": "sevendigital:authorised_at",
+      "@type": "xsd:dateTime"
+    },
+    "releaseId": {
+      "@id": "sevendigital:release_id",
+      "@type": "xsd:string"
+    },
+    "currency": {
+      "@id": "sevendigital:currency",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "sevendigital:price",
+      "@type": "xsd:decimal"
+    },
+    "purchaseId": {
+      "@id": "sevendigital:purchase_id",
+      "@type": "xsd:string"
+    },
+    "reason": {
+      "@id": "sevendigital:reason",
+      "@type": "xsd:string"
+    },
+    "source": {
+      "@id": "sevendigital:source",
+      "@type": "xsd:string"
+    },
+    "audioUrl": {
+      "@id": "sevendigital:audio_url",
+      "@type": "@id"
+    },
+    "visibility": {
+      "@id": "sevendigital:visibility",
+      "@type": "xsd:string"
+    },
+    "trackCount": {
+      "@id": "sevendigital:track_count",
+      "@type": "xsd:integer"
+    },
+    "modifiedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "playlists": {
+      "@id": "sevendigital:playlists",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "productId": {
+      "@id": "sevendigital:product_id",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "sevendigital:start_date",
+      "@type": "xsd:date"
+    },
+    "endDate": {
+      "@id": "sevendigital:end_date",
+      "@type": "xsd:date"
+    },
+    "subscriptionId": {
+      "@id": "sevendigital:subscription_id",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "password": {
+      "@id": "sevendigital:password",
+      "@type": "xsd:string"
+    },
+    "firstName": {
+      "@id": "sevendigital:first_name",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "sevendigital:last_name",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,222 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital / MassiveMusic Streaming Platform API — Sales
+  description: '7digital / MassiveMusic Streaming Platform API — Sales. 4 operations. Lead operation: 7digital Get User Locker. Self-contained Naftiko capability covering one 7digital / MassiveMusic business
+    surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Sales
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: streaming-platform-sales
+    baseUri: https://api.7digital.com
+    description: 7digital / MassiveMusic Streaming Platform API — Sales business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: users-userid-locker
+      path: /users/{userId}/locker
+      operations:
+      - name: getUserLocker
+        method: GET
+        description: 7digital Get User Locker
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: Partner-scoped 7digital user id.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sales-credit-item
+      path: /sales/credit-item
+      operations:
+      - name: creditSalesItem
+        method: POST
+        description: 7digital Credit Sales Item
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sales-refund-release
+      path: /sales/refund/release
+      operations:
+      - name: reportReleaseRefund
+        method: POST
+        description: 7digital Report Release Refund
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: sales-refund-track
+      path: /sales/refund/track
+      operations:
+      - name: reportTrackRefund
+        method: POST
+        description: 7digital Report Track Refund
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body payload.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: streaming-platform-sales-rest
+    port: 8080
+    description: REST adapter for 7digital / MassiveMusic Streaming Platform API — Sales. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/{user-id}/locker
+      name: users-user-id-locker
+      description: REST surface for users-user-id-locker.
+      operations:
+      - method: GET
+        name: getUserLocker
+        description: 7digital Get User Locker
+        call: streaming-platform-sales.getUserLocker
+        with:
+          userId: rest.userId
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sales/credit-item
+      name: sales-credit-item
+      description: REST surface for sales-credit-item.
+      operations:
+      - method: POST
+        name: creditSalesItem
+        description: 7digital Credit Sales Item
+        call: streaming-platform-sales.creditSalesItem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sales/refund/release
+      name: sales-refund-release
+      description: REST surface for sales-refund-release.
+      operations:
+      - method: POST
+        name: reportReleaseRefund
+        description: 7digital Report Release Refund
+        call: streaming-platform-sales.reportReleaseRefund
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sales/refund/track
+      name: sales-refund-track
+      description: REST surface for sales-refund-track.
+      operations:
+      - method: POST
+        name: reportTrackRefund
+        description: 7digital Report Track Refund
+        call: streaming-platform-sales.reportTrackRefund
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: streaming-platform-sales-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital / MassiveMusic Streaming Platform API — Sales. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-user-locker
+      description: 7digital Get User Locker
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: streaming-platform-sales.getUserLocker
+      with:
+        userId: tools.userId
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: credit-sales-item
+      description: 7digital Credit Sales Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: streaming-platform-sales.creditSalesItem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: report-release-refund
+      description: 7digital Report Release Refund
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: streaming-platform-sales.reportReleaseRefund
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: report-track-refund
+      description: 7digital Report Track Refund
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: streaming-platform-sales.reportTrackRefund
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

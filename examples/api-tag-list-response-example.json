@@ -1,0 +1,15 @@
+{
+  "status": "ok",
+  "tags": [
+    {
+      "id": "rock",
+      "name": "Rock",
+      "parentId": null
+    },
+    {
+      "id": "rock",
+      "name": "Rock",
+      "parentId": null
+    }
+  ]
+}

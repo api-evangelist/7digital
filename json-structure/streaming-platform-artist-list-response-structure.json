@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-artist-list-response-structure.json",
+  "name": "ArtistListResponse",
+  "description": "ArtistListResponse schema from 7digital API",
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "ok"
+    },
+    "page": {
+      "type": "int32",
+      "example": 1
+    },
+    "pageSize": {
+      "type": "int32",
+      "example": 20
+    },
+    "totalItems": {
+      "type": "int32",
+      "example": 42
+    },
+    "artists": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "12345"
+          },
+          "name": {
+            "type": "string",
+            "example": "The Beatles"
+          },
+          "url": {
+            "type": "uri",
+            "example": "https://uk.7digital.com/artist/the-beatles"
+          },
+          "image": {
+            "type": "uri",
+            "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+          },
+          "sortName": {
+            "type": "string",
+            "example": "Beatles, The"
+          }
+        }
+      }
+    }
+  }
+}

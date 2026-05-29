@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-add-tracks-request-structure.json",
+  "name": "AddTracksRequest",
+  "description": "AddTracksRequest schema from 7digital API",
+  "properties": {
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trackId": {
+            "type": "string",
+            "example": "123456"
+          },
+          "name": {
+            "type": "string",
+            "example": "Come Together"
+          },
+          "artist": {
+            "type": "string",
+            "example": "The Beatles"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source for the physical file (defaults to `7digital`).",
+            "example": "7digital"
+          },
+          "audioUrl": {
+            "type": "uri",
+            "description": "Optional alternative source URL for the physical file.",
+            "example": "file://a.specific.file.location.mp3"
+          },
+          "image": {
+            "type": "uri",
+            "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+          }
+        },
+        "required": [
+          "trackId",
+          "title",
+          "artist"
+        ]
+      }
+    }
+  },
+  "required": [
+    "tracks"
+  ]
+}

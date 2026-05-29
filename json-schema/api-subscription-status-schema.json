@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-subscription-status-schema.json",
+  "title": "SubscriptionStatus",
+  "description": "SubscriptionStatus schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "example": "500123"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "cancelled",
+        "expired"
+      ],
+      "example": "active"
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-01-01"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2026-02-01"
+    },
+    "productId": {
+      "type": "string",
+      "example": "unlimited-streaming"
+    }
+  }
+}

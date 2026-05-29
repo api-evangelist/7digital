@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-release-structure.json",
+  "name": "Release",
+  "description": "Release schema from 7digital API",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "album",
+        "single",
+        "ep",
+        "compilation"
+      ],
+      "example": "album"
+    },
+    "id": {
+      "type": "string",
+      "example": "11700062"
+    },
+    "name": {
+      "type": "string",
+      "example": "Abbey Road"
+    },
+    "artist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "12345"
+        },
+        "name": {
+          "type": "string",
+          "example": "The Beatles"
+        },
+        "url": {
+          "type": "uri",
+          "example": "https://uk.7digital.com/artist/the-beatles"
+        },
+        "image": {
+          "type": "uri",
+          "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+        },
+        "sortName": {
+          "type": "string",
+          "example": "Beatles, The"
+        }
+      }
+    },
+    "url": {
+      "type": "uri",
+      "example": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062"
+    },
+    "image": {
+      "type": "uri",
+      "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+    },
+    "releaseDate": {
+      "type": "date",
+      "example": "1969-09-26"
+    },
+    "label": {
+      "type": "string",
+      "example": "Apple Records"
+    },
+    "upc": {
+      "type": "string",
+      "example": "00602445912025"
+    },
+    "explicit": {
+      "type": "boolean",
+      "example": false
+    }
+  }
+}

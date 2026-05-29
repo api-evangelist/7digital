@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-credit-item-request-structure.json",
+  "name": "CreditItemRequest",
+  "description": "CreditItemRequest schema from 7digital API",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "example": "500123"
+    },
+    "releaseId": {
+      "type": "string",
+      "example": "11700062"
+    },
+    "trackId": {
+      "type": "string",
+      "example": "123456"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code matching the supplied wholesale price.",
+      "example": "USD"
+    },
+    "price": {
+      "type": "double",
+      "description": "Retail price charged to the user.",
+      "example": 9.99
+    }
+  },
+  "required": [
+    "userId",
+    "currency",
+    "price"
+  ]
+}

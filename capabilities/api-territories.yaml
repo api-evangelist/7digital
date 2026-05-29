@@ -1,0 +1,74 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital API — Territories
+  description: '7digital API — Territories. 1 operations. Lead operation: 7digital Get Countries. Self-contained Naftiko capability covering one 7digital / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Territories
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: api-territories
+    baseUri: https://api.7digital.com/1.2
+    description: 7digital API — Territories business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: countries
+      path: /countries
+      operations:
+      - name: getCountries
+        method: GET
+        description: 7digital Get Countries
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: api-territories-rest
+    port: 8080
+    description: REST adapter for 7digital API — Territories. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/countries
+      name: countries
+      description: REST surface for countries.
+      operations:
+      - method: GET
+        name: getCountries
+        description: 7digital Get Countries
+        call: api-territories.getCountries
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-territories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital API — Territories. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-countries
+      description: 7digital Get Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-territories.getCountries
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.

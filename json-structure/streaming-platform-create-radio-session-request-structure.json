@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-create-radio-session-request-structure.json",
+  "name": "CreateRadioSessionRequest",
+  "description": "CreateRadioSessionRequest schema from 7digital API",
+  "properties": {
+    "userId": {
+      "type": "string",
+      "description": "User the session is created for.",
+      "example": "500123"
+    },
+    "playlistIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "playlist-789012"
+      ]
+    },
+    "ruleset": {
+      "type": "string",
+      "enum": [
+        "dmca",
+        "gvl",
+        "custom"
+      ],
+      "example": "dmca"
+    },
+    "country": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 2,
+      "example": "GB"
+    }
+  },
+  "required": [
+    "userId",
+    "playlistIds"
+  ]
+}

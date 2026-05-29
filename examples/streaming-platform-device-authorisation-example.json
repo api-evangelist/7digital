@@ -1,0 +1,7 @@
+{
+  "deviceId": "device-789012",
+  "deviceName": "Jane's iPhone",
+  "platform": "ios",
+  "status": "authorised",
+  "authorisedAt": "2026-05-01T10:00:00Z"
+}

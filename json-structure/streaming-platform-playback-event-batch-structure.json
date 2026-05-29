@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-playback-event-batch-structure.json",
+  "name": "PlaybackEventBatch",
+  "description": "PlaybackEventBatch schema from 7digital API",
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trackId": {
+            "type": "string",
+            "example": "123456"
+          },
+          "eventType": {
+            "type": "string",
+            "enum": [
+              "start",
+              "complete",
+              "skip",
+              "pause",
+              "resume"
+            ],
+            "example": "complete"
+          },
+          "timestamp": {
+            "type": "datetime",
+            "example": "2026-05-28T14:30:45Z"
+          },
+          "durationPlayed": {
+            "type": "int32",
+            "description": "Seconds of the track that were played.",
+            "example": 259
+          }
+        },
+        "required": [
+          "trackId",
+          "eventType",
+          "timestamp"
+        ]
+      }
+    }
+  },
+  "required": [
+    "events"
+  ]
+}

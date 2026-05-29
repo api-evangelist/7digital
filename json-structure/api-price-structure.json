@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-price-structure.json",
+  "name": "Price",
+  "description": "A price quoted in the requested territory's currency.",
+  "properties": {
+    "formattedPrice": {
+      "type": "string",
+      "example": "\u00a39.99"
+    },
+    "amount": {
+      "type": "double",
+      "description": "Numeric price value.",
+      "example": 9.99
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code.",
+      "example": "GBP"
+    }
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-locker-schema.json",
+  "title": "Locker",
+  "description": "A user's locker of purchased tracks and releases.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "ok"
+    },
+    "page": {
+      "type": "integer",
+      "example": 1
+    },
+    "pageSize": {
+      "type": "integer",
+      "example": 20
+    },
+    "totalItems": {
+      "type": "integer",
+      "example": 42
+    },
+    "releases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A 7digital release (album, single, EP, compilation).",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "7digital release id.",
+            "example": "11700062"
+          },
+          "title": {
+            "type": "string",
+            "description": "Release title.",
+            "example": "Abbey Road"
+          },
+          "version": {
+            "type": "string",
+            "description": "Release version (e.g. `Remastered`).",
+            "example": "Remastered"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "album",
+              "single",
+              "ep",
+              "compilation"
+            ],
+            "example": "album"
+          },
+          "artist": {
+            "type": "object",
+            "description": "A 7digital artist.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "7digital artist id.",
+                "example": "12345"
+              },
+              "name": {
+                "type": "string",
+                "description": "Artist name.",
+                "example": "The Beatles"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "Artist page URL on 7digital.",
+                "example": "https://uk.7digital.com/artist/the-beatles"
+              },
+              "image": {
+                "type": "string",
+                "format": "uri",
+                "description": "Artist image URL.",
+                "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+              },
+              "sortName": {
+                "type": "string",
+                "description": "Sort form of the artist name.",
+                "example": "Beatles, The"
+              },
+              "appearsAs": {
+                "type": "string",
+                "description": "Alternative spellings under which the artist appears.",
+                "example": "Beatles, The"
+              }
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date",
+            "example": "1969-09-26"
+          },
+          "label": {
+            "type": "string",
+            "example": "Apple Records"
+          },
+          "explicit": {
+            "type": "boolean",
+            "example": false
+          },
+          "upc": {
+            "type": "string",
+            "description": "Universal Product Code (UPC/EAN).",
+            "example": "00602445912025"
+          },
+          "price": {
+            "type": "object",
+            "description": "A price quoted in the requested territory's currency.",
+            "properties": {
+              "formattedPrice": {
+                "type": "string",
+                "example": "\u00a39.99"
+              },
+              "amount": {
+                "type": "number",
+                "description": "Numeric price value.",
+                "example": 9.99
+              },
+              "currency": {
+                "type": "string",
+                "description": "ISO 4217 currency code.",
+                "example": "GBP"
+              }
+            }
+          }
+        }
+      }
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A 7digital track.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "7digital track id.",
+            "example": "123456"
+          },
+          "title": {
+            "type": "string",
+            "description": "Track title.",
+            "example": "Come Together"
+          },
+          "version": {
+            "type": "string",
+            "description": "Track version (e.g. `Remastered 2019`).",
+            "example": "Remastered 2019"
+          },
+          "artist": {
+            "type": "object",
+            "description": "A 7digital artist.",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "7digital artist id.",
+                "example": "12345"
+              },
+              "name": {
+                "type": "string",
+                "description": "Artist name.",
+                "example": "The Beatles"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "Artist page URL on 7digital.",
+                "example": "https://uk.7digital.com/artist/the-beatles"
+              },
+              "image": {
+                "type": "string",
+                "format": "uri",
+                "description": "Artist image URL.",
+                "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+              },
+              "sortName": {
+                "type": "string",
+                "description": "Sort form of the artist name.",
+                "example": "Beatles, The"
+              },
+              "appearsAs": {
+                "type": "string",
+                "description": "Alternative spellings under which the artist appears.",
+                "example": "Beatles, The"
+              }
+            }
+          },
+          "release": {
+            "type": "object",
+            "description": "A 7digital release (album, single, EP, compilation).",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "7digital release id.",
+                "example": "11700062"
+              },
+              "title": {
+                "type": "string",
+                "description": "Release title.",
+                "example": "Abbey Road"
+              },
+              "version": {
+                "type": "string",
+                "description": "Release version (e.g. `Remastered`).",
+                "example": "Remastered"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "album",
+                  "single",
+                  "ep",
+                  "compilation"
+                ],
+                "example": "album"
+              },
+              "artist": {
+                "type": "object",
+                "description": "A 7digital artist.",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "7digital artist id.",
+                    "example": "12345"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Artist name.",
+                    "example": "The Beatles"
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Artist page URL on 7digital.",
+                    "example": "https://uk.7digital.com/artist/the-beatles"
+                  },
+                  "image": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Artist image URL.",
+                    "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+                  },
+                  "sortName": {
+                    "type": "string",
+                    "description": "Sort form of the artist name.",
+                    "example": "Beatles, The"
+                  },
+                  "appearsAs": {
+                    "type": "string",
+                    "description": "Alternative spellings under which the artist appears.",
+                    "example": "Beatles, The"
+                  }
+                }
+              },
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062"
+              },
+              "image": {
+                "type": "string",
+                "format": "uri",
+                "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+              },
+              "releaseDate": {
+                "type": "string",
+                "format": "date",
+                "example": "1969-09-26"
+              },
+              "label": {
+                "type": "string",
+                "example": "Apple Records"
+              },
+              "explicit": {
+                "type": "boolean",
+                "example": false
+              },
+              "upc": {
+                "type": "string",
+                "description": "Universal Product Code (UPC/EAN).",
+                "example": "00602445912025"
+              },
+              "price": {
+                "type": "object",
+                "description": "A price quoted in the requested territory's currency.",
+                "properties": {
+                  "formattedPrice": {
+                    "type": "string",
+                    "example": "\u00a39.99"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "Numeric price value.",
+                    "example": 9.99
+                  },
+                  "currency": {
+                    "type": "string",
+                    "description": "ISO 4217 currency code.",
+                    "example": "GBP"
+                  }
+                }
+              }
+            }
+          },
+          "trackNumber": {
+            "type": "integer",
+            "description": "Track number on the release.",
+            "example": 1
+          },
+          "duration": {
+            "type": "integer",
+            "description": "Duration in seconds.",
+            "example": 259
+          },
+          "explicit": {
+            "type": "boolean",
+            "example": false
+          },
+          "isrc": {
+            "type": "string",
+            "description": "International Standard Recording Code.",
+            "example": "GBAYE6900477"
+          },
+          "previewUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL for the 30-second preview clip.",
+            "example": "https://previews.7digital.com/clip/123456"
+          },
+          "price": {
+            "type": "object",
+            "description": "A price quoted in the requested territory's currency.",
+            "properties": {
+              "formattedPrice": {
+                "type": "string",
+                "example": "\u00a39.99"
+              },
+              "amount": {
+                "type": "number",
+                "description": "Numeric price value.",
+                "example": 9.99
+              },
+              "currency": {
+                "type": "string",
+                "description": "ISO 4217 currency code.",
+                "example": "GBP"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

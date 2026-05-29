@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-download-url-structure.json",
+  "name": "DownloadUrl",
+  "description": "DownloadUrl schema from 7digital API",
+  "properties": {
+    "url": {
+      "type": "uri",
+      "example": "https://download.7digital.com/abc123"
+    },
+    "expiresAt": {
+      "type": "datetime",
+      "example": "2026-05-28T16:30:00Z"
+    }
+  }
+}

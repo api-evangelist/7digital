@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-artist-schema.json",
+  "title": "Artist",
+  "description": "A 7digital artist.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "7digital artist id.",
+      "example": "12345"
+    },
+    "name": {
+      "type": "string",
+      "description": "Artist name.",
+      "example": "The Beatles"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Artist page URL on 7digital.",
+      "example": "https://uk.7digital.com/artist/the-beatles"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "description": "Artist image URL.",
+      "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+    },
+    "sortName": {
+      "type": "string",
+      "description": "Sort form of the artist name.",
+      "example": "Beatles, The"
+    },
+    "appearsAs": {
+      "type": "string",
+      "description": "Alternative spellings under which the artist appears.",
+      "example": "Beatles, The"
+    }
+  }
+}

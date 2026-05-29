@@ -1,0 +1,1896 @@
+openapi: 3.0.3
+info:
+  title: 7digital / MassiveMusic Streaming Platform API
+  description: >-
+    The modern 7digital (now branded MassiveMusic) Streaming Platform API
+    covering Catalogue, Streaming (HLS + HTTP Progressive), Interactive Radio,
+    Logging, Playlists, Sales/Subscriptions, User Management and offline device
+    authorisation. All operations are signed with OAuth 1.0 against a partner
+    consumer key issued under a commercial agreement.
+  version: '2026.05'
+  contact:
+    name: MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://docs.massivemusic.com/llms.txt
+servers:
+  - url: https://api.7digital.com
+    description: 7digital / MassiveMusic Streaming Platform API (production)
+tags:
+  - name: Catalogue
+    description: Catalogue browse, search, batch lookup, download metadata, and usage type information.
+  - name: Interactive Radio
+    description: Lean-back, ruleset-governed (DMCA, GVL) radio listening sessions.
+  - name: Logging
+    description: Stream / preview / subscription play reporting required for licensor royalty calculations.
+  - name: Streaming
+    description: HLS and HTTP Progressive streaming for previews, catalogue, locker and subscriber playback.
+  - name: Offline Devices
+    description: Authorise, list, and inspect devices registered for offline subscription playback.
+  - name: Download Purchases
+    description: Download a previously purchased track or release (ZIP or single-file).
+  - name: Playlists
+    description: Partner-level playlist management — create, list, update and add tracks.
+  - name: Sales
+    description: Log sales, log refunds, and manage a user's locker of purchased content.
+  - name: Subscriptions
+    description: Notify the platform of subscription state — required for royalty + entitlement.
+  - name: User Management
+    description: Create and manage user accounts on the partner's behalf.
+  - name: Content Delivery
+    description: Bulk media transfer for content delivery / catalogue ingestion partners.
+security:
+  - oauth1: []
+paths:
+  /artists/browse:
+    get:
+      operationId: browseArtistsByName
+      summary: 7digital Browse Artists By Name
+      description: Get a list of artists from the catalogue whose names match the start letter(s) supplied.
+      tags: [Catalogue]
+      parameters:
+        - name: letter
+          in: query
+          required: true
+          description: One or more starting letters to filter artists by.
+          schema:
+            type: string
+          example: 'B'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of artists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtistListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /artists/{artistId}/details:
+    get:
+      operationId: getArtistDetails
+      summary: 7digital Get Artist Details
+      description: Get all available artist details.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/ArtistIdPath'
+      responses:
+        '200':
+          description: The artist record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Artist'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /artists/{artistId}/releases:
+    get:
+      operationId: getArtistReleases
+      summary: 7digital Get Artist Releases
+      description: Get a list of releases by a given artist. Releases can be filtered by type.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/ArtistIdPath'
+        - $ref: '#/components/parameters/ReleaseType'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /artists/search:
+    get:
+      operationId: searchArtists
+      summary: 7digital Search Artists
+      description: Search the catalogue for artists matching the search query. Responses are weighted by popularity based on platform usage.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of matching artists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtistListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /releases/details/batch:
+    post:
+      operationId: getReleasesBatchDetails
+      summary: 7digital Get Releases Batch Details
+      description: Get details of multiple releases in one request. Invalid releases are omitted unless `showErrors` is true.
+      tags: [Catalogue]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchReleaseRequest'
+      responses:
+        '200':
+          description: A batch of release records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchReleaseResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /releases/{releaseId}/details:
+    get:
+      operationId: getReleaseDetails
+      summary: 7digital Get Release Details
+      description: Get all available details for a given release.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/ReleaseIdPath'
+      responses:
+        '200':
+          description: The release record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Release'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /releases/{releaseId}/tracks:
+    get:
+      operationId: getReleaseTrackListing
+      summary: 7digital Get Release Track Listing
+      description: Get a list of all tracks constituting the release.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/ReleaseIdPath'
+      responses:
+        '200':
+          description: A track listing.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /releases/search:
+    get:
+      operationId: searchReleases
+      summary: 7digital Search Releases
+      description: Search the catalogue for releases matching the search query. Responses are weighted by popularity based on platform usage.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of matching releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tracks/search:
+    get:
+      operationId: searchTracks
+      summary: 7digital Search Tracks
+      description: Search the catalogue for tracks matching the search query. Responses are weighted by popularity based on platform usage.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of matching tracks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tracks/details/batch:
+    post:
+      operationId: getTracksBatchDetails
+      summary: 7digital Get Tracks Batch Details
+      description: Get details of multiple tracks in one request. Invalid tracks are omitted unless `showErrors` is true.
+      tags: [Catalogue]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchTrackRequest'
+      responses:
+        '200':
+          description: A batch of track records.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchTrackResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tracks/{trackId}/details:
+    get:
+      operationId: getTrackDetails
+      summary: 7digital Get Track Details
+      description: Get all available details for a given track.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: The track record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Track'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tracks/{trackId}/download:
+    get:
+      operationId: downloadTrack
+      summary: 7digital Download Track
+      description: Get a signed URL or stream of the track's media file.
+      tags: [Catalogue]
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: A signed download URL.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DownloadUrl'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /usage-types:
+    get:
+      operationId: getUsageTypeInformation
+      summary: 7digital Get Usage Type Information
+      description: List usage types available for content in the catalogue (licensing scopes).
+      tags: [Catalogue]
+      responses:
+        '200':
+          description: A list of usage types.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageTypeListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions:
+    post:
+      operationId: createInteractiveRadioSession
+      summary: 7digital Create Interactive Radio Session
+      description: >-
+        Create an Interactive Radio listening session from one or more playlists.
+        A listening session is required per user, each time they launch a station.
+        It governs which tracks can be played and tracks the skip budget within
+        the configured ruleset (e.g. DMCA, GVL).
+      tags: [Interactive Radio]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRadioSessionRequest'
+      responses:
+        '201':
+          description: A listening session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadioSession'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions/{sessionId}:
+    delete:
+      operationId: deleteInteractiveRadioSession
+      summary: 7digital Delete Interactive Radio Session
+      description: Delete an active listening session.
+      tags: [Interactive Radio]
+      parameters:
+        - $ref: '#/components/parameters/SessionIdPath'
+      responses:
+        '204':
+          description: Session deleted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions/{sessionId}/next-track:
+    get:
+      operationId: getInteractiveRadioNextTrack
+      summary: 7digital Get Interactive Radio Next Track
+      description: Get the next playable track within the listening session, governed by the ruleset configured for your service.
+      tags: [Interactive Radio]
+      parameters:
+        - $ref: '#/components/parameters/SessionIdPath'
+      responses:
+        '200':
+          description: The next track to play.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadioTrack'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions/{sessionId}/events:
+    post:
+      operationId: postInteractiveRadioPlaybackEvents
+      summary: 7digital Post Interactive Radio Playback Events
+      description: Send the user's playback events. These events influence which tracks are allowed to be played and skipped in the current listening session.
+      tags: [Interactive Radio]
+      parameters:
+        - $ref: '#/components/parameters/SessionIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaybackEventBatch'
+      responses:
+        '202':
+          description: Events accepted for processing.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /logging/catalogue:
+    post:
+      operationId: reportCatalogueStream
+      summary: 7digital Report Catalogue Stream
+      description: >-
+        Report a track that has been streamed to a user listening in a radio-style
+        playback. Streams should be logged in near real time, or the same day in
+        batch.
+      tags: [Logging]
+      security:
+        - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StreamLogBatch'
+      responses:
+        '202':
+          description: Stream logs accepted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /logging/preview:
+    post:
+      operationId: reportPreviewStream
+      summary: 7digital Report Preview Stream
+      description: >-
+        Report a preview clip that has been played. Acceptable usage is 5 POST
+        requests per second with batches of up to 500 logs per request.
+      tags: [Logging]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StreamLogBatch'
+      responses:
+        '202':
+          description: Preview logs accepted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /logging/subscriber:
+    post:
+      operationId: reportSubscriberStream
+      summary: 7digital Report Subscriber Stream
+      description: >-
+        Report a track that has been streamed by a subscriber. Logs should be
+        sent in near real-time, or the same day in batches of 10–20 logs per
+        request.
+      tags: [Logging]
+      security:
+        - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StreamLogBatch'
+      responses:
+        '202':
+          description: Subscriber stream logs accepted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/preview/{trackId}:
+    get:
+      operationId: streamPreviewClip
+      summary: 7digital Stream Preview Clip
+      description: Stream a track preview clip (HTTP Progressive). All preview clip plays must be reported via the preview logging endpoint.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+        - $ref: '#/components/parameters/StreamFormat'
+      responses:
+        '200':
+          description: Audio stream bytes (preview clip).
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/catalogue/{trackId}/hls:
+    get:
+      operationId: streamCatalogueTrackHls
+      summary: 7digital Stream Catalogue Track Hls
+      description: >-
+        Stream any catalogue track available in the user's region (HLS). Designed
+        for non-subscription radio-style plays. Tracks can be cached in an
+        encrypted format and all plays must be reported via the catalogue logging
+        endpoint.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/catalogue/{trackId}/progressive:
+    get:
+      operationId: streamCatalogueTrackProgressive
+      summary: 7digital Stream Catalogue Track Progressive
+      description: HTTP Progressive variant of catalogue streaming. Same usage rules as the HLS variant.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/locker/{trackId}/hls:
+    get:
+      operationId: streamLockerTrackHls
+      summary: 7digital Stream Locker Track Hls
+      description: Stream a previously purchased track from a user's locker (HLS). Supports online plays and offline caching.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/locker/{trackId}/progressive:
+    get:
+      operationId: streamLockerTrackProgressive
+      summary: 7digital Stream Locker Track Progressive
+      description: HTTP Progressive variant of locker streaming.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/hls:
+    get:
+      operationId: streamSubscriptionTrackHls
+      summary: 7digital Stream Subscription Track Hls
+      description: >-
+        Stream a track to a valid subscriber (HLS). Requires an active
+        subscription in the user's region. When a clientId is supplied,
+        concurrent multi-device playback is blocked.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+        - name: clientId
+          in: query
+          description: Identifier of the device requesting playback (used for concurrency control).
+          schema:
+            type: string
+          example: 'device-789012'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/progressive:
+    get:
+      operationId: streamSubscriptionTrackProgressive
+      summary: 7digital Stream Subscription Track Progressive
+      description: HTTP Progressive variant of subscription streaming.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/offline/hls:
+    get:
+      operationId: streamSubscriptionTrackOfflineHls
+      summary: 7digital Stream Subscription Track Offline Hls
+      description: >-
+        Bulk-cache a subscription track for offline playback (HLS). Requires the
+        device to be pre-authorised via the offline streaming endpoint. All
+        offline plays must be reported when connectivity is restored.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/offline/progressive:
+    get:
+      operationId: streamSubscriptionTrackOfflineProgressive
+      summary: 7digital Stream Subscription Track Offline Progressive
+      description: HTTP Progressive variant of offline subscription streaming.
+      tags: [Streaming]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/unlimitedStreaming/offline:
+    post:
+      operationId: authorizeOfflineDevice
+      summary: 7digital Authorize Offline Device
+      description: Authorise a device for offline subscription streaming. POST body can be JSON or XML.
+      tags: [Offline Devices]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceAuthorisationRequest'
+      responses:
+        '200':
+          description: Device authorisation record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthorisation'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/unlimitedStreaming/offline/{deviceId}:
+    get:
+      operationId: getOfflineDeviceStatus
+      summary: 7digital Get Offline Device Status
+      description: Get the offline status of a specified device.
+      tags: [Offline Devices]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+        - $ref: '#/components/parameters/DeviceIdPath'
+      responses:
+        '200':
+          description: Device authorisation status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthorisation'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/unlimitedStreaming/devices:
+    get:
+      operationId: listOfflineDevices
+      summary: 7digital List Offline Devices
+      description: Get a list of all of the user's registered devices.
+      tags: [Offline Devices]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+      responses:
+        '200':
+          description: A list of devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeviceAuthorisation'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/downloads/purchases/{purchaseId}:
+    get:
+      operationId: downloadPurchaseZip
+      summary: 7digital Download Purchase Zip
+      description: Download all tracks purchased in a transaction as a single ZIP file. Highest available quality is used.
+      tags: [Download Purchases]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+        - name: purchaseId
+          in: path
+          required: true
+          description: 7digital purchase id.
+          schema:
+            type: string
+          example: 'purchase-789012'
+      responses:
+        '200':
+          description: ZIP file containing the purchased tracks.
+          content:
+            application/zip: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/downloads/releases/{releaseId}:
+    get:
+      operationId: downloadPurchasedReleaseZip
+      summary: 7digital Download Purchased Release Zip
+      description: Download all tracks in a purchased release as a single ZIP file.
+      tags: [Download Purchases]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+        - $ref: '#/components/parameters/ReleaseIdPath'
+      responses:
+        '200':
+          description: ZIP file containing the release tracks.
+          content:
+            application/zip: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/downloads/tracks/{trackId}:
+    get:
+      operationId: downloadPurchasedTrack
+      summary: 7digital Download Purchased Track
+      description: Download a purchased track.
+      tags: [Download Purchases]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+        - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio file bytes.
+          content:
+            audio/mpeg: {}
+            audio/flac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/locker:
+    get:
+      operationId: getUserLocker
+      summary: 7digital Get User Locker
+      description: Get a paged list of releases and tracks in a user's locker.
+      tags: [Sales]
+      security:
+        - oauth1_three_legged: []
+      parameters:
+        - $ref: '#/components/parameters/UserIdPath'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: The user's locker.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locker'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sales/credit-item:
+    post:
+      operationId: creditSalesItem
+      summary: 7digital Credit Sales Item
+      description: >-
+        Log a sale of a track or release for the specified user and add it to
+        their locker. Currency must match the one provided for the content
+        (typically USD). Returns XML responses only.
+      tags: [Sales]
+      security:
+        - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreditItemRequest'
+      responses:
+        '200':
+          description: Sale logged.
+          content:
+            application/xml: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sales/refund/release:
+    post:
+      operationId: reportReleaseRefund
+      summary: 7digital Report Release Refund
+      description: Remove a purchase of a release from the sales report when the purchase has been refunded.
+      tags: [Sales]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund reported.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sales/refund/track:
+    post:
+      operationId: reportTrackRefund
+      summary: 7digital Report Track Refund
+      description: Remove a purchase of a track from the sales report when the purchase has been refunded.
+      tags: [Sales]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund reported.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /playlists:
+    get:
+      operationId: listPlaylists
+      summary: 7digital List Playlists
+      description: Get a list of the partner's playlists.
+      tags: [Playlists]
+      parameters:
+        - name: userId
+          in: query
+          description: Filter playlists by user.
+          schema:
+            type: string
+          example: '500123'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of playlists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlaylistListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createPlaylist
+      summary: 7digital Create Playlist
+      description: >-
+        Create a new playlist tied to your partner consumer key. Can optionally
+        be associated with a user. Initial tracks may be supplied or the playlist
+        can be created empty.
+      tags: [Playlists]
+      parameters:
+        - name: userId
+          in: query
+          description: User to associate the playlist with.
+          schema:
+            type: string
+          example: '500123'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlaylistRequest'
+      responses:
+        '201':
+          description: The newly created playlist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /playlists/{playlistId}:
+    put:
+      operationId: updatePlaylistDetails
+      summary: 7digital Update Playlist Details
+      description: >-
+        Update a playlist's details. Does not affect playlist tracks. Use to,
+        e.g., change visibility from private to public. Descriptions are
+        truncated to 500 characters.
+      tags: [Playlists]
+      parameters:
+        - $ref: '#/components/parameters/PlaylistIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlaylistRequest'
+      responses:
+        '200':
+          description: The updated playlist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /playlists/{playlistId}/tracks:
+    post:
+      operationId: addTracksToPlaylist
+      summary: 7digital Add Tracks To Playlist
+      description: >-
+        Add tracks to the playlist. All metadata must be provided in the call.
+        The `source` and `audioUrl` properties are optional and may indicate an
+        alternative source for the physical file.
+      tags: [Playlists]
+      parameters:
+        - $ref: '#/components/parameters/PlaylistIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddTracksRequest'
+      responses:
+        '200':
+          description: The updated playlist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /subscriptions:
+    post:
+      operationId: createSubscription
+      summary: 7digital Create Subscription
+      description: >-
+        Create a user's subscription. The platform must be notified of all new
+        subscriptions to grant streaming access and to support royalty and
+        usage reporting. Subscriptions last for at most one month and must be
+        renewed each cycle.
+      tags: [Subscriptions]
+      security:
+        - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateSubscriptionRequest'
+      responses:
+        '201':
+          description: The new subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users:
+    post:
+      operationId: createUser
+      summary: 7digital Create User
+      description: >-
+        Create a new user account. The OAuth 1.0 signature base string includes
+        the parameters from the request entity-body if the body is single-part
+        `application/x-www-form-urlencoded`.
+      tags: [User Management]
+      security:
+        - oauth1_two_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: The newly created user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /content-delivery/media-transfer:
+    get:
+      operationId: transferMedia
+      summary: 7digital Transfer Media
+      description: >-
+        Retrieve media files for any track — enables the download of an entire
+        licensed catalogue in any supported format/bitrate. Acceptable usage is
+        50 requests per second. Use of this endpoint requires additional licensor
+        due diligence.
+      tags: [Content Delivery]
+      parameters:
+        - $ref: '#/components/parameters/TrackId'
+        - name: format
+          in: query
+          description: Audio format to retrieve.
+          schema:
+            type: string
+            enum: [mp3, flac, aac]
+          example: 'mp3'
+        - name: bitrate
+          in: query
+          description: Audio bitrate (kbps).
+          schema:
+            type: integer
+            enum: [128, 192, 256, 320, 1411]
+          example: 320
+      responses:
+        '200':
+          description: Audio file bytes.
+          content:
+            audio/mpeg: {}
+            audio/flac: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: 'GB'
+    Page:
+      name: page
+      in: query
+      description: 1-based page number.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: 'beatles'
+    ReleaseType:
+      name: type
+      in: query
+      description: Release type filter.
+      schema:
+        type: string
+        enum: [album, single, ep, compilation]
+      example: 'album'
+    ArtistIdPath:
+      name: artistId
+      in: path
+      required: true
+      description: 7digital artist id.
+      schema:
+        type: string
+      example: '12345'
+    ReleaseIdPath:
+      name: releaseId
+      in: path
+      required: true
+      description: 7digital release id.
+      schema:
+        type: string
+      example: '11700062'
+    TrackIdPath:
+      name: trackId
+      in: path
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
+    TrackId:
+      name: trackId
+      in: query
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: Partner-scoped 7digital user id.
+      schema:
+        type: string
+      example: '500123'
+    DeviceIdPath:
+      name: deviceId
+      in: path
+      required: true
+      description: Identifier of a registered offline device.
+      schema:
+        type: string
+      example: 'device-789012'
+    SessionIdPath:
+      name: sessionId
+      in: path
+      required: true
+      description: Interactive Radio session id.
+      schema:
+        type: string
+        format: uuid
+      example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+    PlaylistIdPath:
+      name: playlistId
+      in: path
+      required: true
+      description: 7digital playlist id.
+      schema:
+        type: string
+      example: 'playlist-789012'
+    StreamFormat:
+      name: format
+      in: query
+      description: Audio format for the stream.
+      schema:
+        type: string
+        enum: [mp3, aac]
+      example: 'mp3'
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: Default OAuth 1.0 partner-scoped signing.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (partner consumer key + user access token).
+  responses:
+    NotFoundError:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'error'
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 2001
+            message:
+              type: string
+              example: 'Resource not found'
+    Artist:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        name:
+          type: string
+          example: 'The Beatles'
+        url:
+          type: string
+          format: uri
+          example: 'https://uk.7digital.com/artist/the-beatles'
+        image:
+          type: string
+          format: uri
+          example: 'https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg'
+        sortName:
+          type: string
+          example: 'Beatles, The'
+    ArtistListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Artist'
+    Release:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '11700062'
+        title:
+          type: string
+          example: 'Abbey Road'
+        type:
+          type: string
+          enum: [album, single, ep, compilation]
+          example: 'album'
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: 'https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062'
+        image:
+          type: string
+          format: uri
+          example: 'https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg'
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: 'Apple Records'
+        upc:
+          type: string
+          example: '00602445912025'
+        explicit:
+          type: boolean
+          example: false
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    BatchReleaseRequest:
+      type: object
+      properties:
+        releaseIds:
+          type: array
+          items:
+            type: string
+          example: ['11700062', '11700063']
+        showErrors:
+          type: boolean
+          example: true
+      required: [releaseIds]
+    BatchReleaseResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 2001
+              message:
+                type: string
+                example: 'Release not found'
+              index:
+                type: integer
+                example: 1
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: 'Come Together'
+        version:
+          type: string
+          example: 'Remastered 2019'
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          example: 'GBAYE6900477'
+        previewUrl:
+          type: string
+          format: uri
+          example: 'https://previews.7digital.com/clip/123456'
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    BatchTrackRequest:
+      type: object
+      properties:
+        trackIds:
+          type: array
+          items:
+            type: string
+          example: ['123456', '123457']
+        showErrors:
+          type: boolean
+          example: true
+      required: [trackIds]
+    BatchTrackResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 2001
+              message:
+                type: string
+                example: 'Track not found'
+              index:
+                type: integer
+                example: 1
+    DownloadUrl:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: 'https://download.7digital.com/abc123'
+        expiresAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T16:30:00Z'
+    UsageType:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'subscription-streaming'
+        name:
+          type: string
+          example: 'Subscription Streaming'
+        description:
+          type: string
+          example: 'Streaming to subscribers in interactive playback.'
+    UsageTypeListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        usageTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageType'
+    CreateRadioSessionRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: User the session is created for.
+          example: '500123'
+        playlistIds:
+          type: array
+          items:
+            type: string
+          example: ['playlist-789012']
+        ruleset:
+          type: string
+          enum: [dmca, gvl, custom]
+          example: 'dmca'
+        country:
+          type: string
+          minLength: 2
+          maxLength: 2
+          example: 'GB'
+      required: [userId, playlistIds]
+    RadioSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+          example: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+        userId:
+          type: string
+          example: '500123'
+        ruleset:
+          type: string
+          enum: [dmca, gvl, custom]
+          example: 'dmca'
+        skipsRemaining:
+          type: integer
+          example: 6
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:00Z'
+    RadioTrack:
+      type: object
+      properties:
+        track:
+          $ref: '#/components/schemas/Track'
+        streamUrl:
+          type: string
+          format: uri
+          example: 'https://streaming.7digital.com/hls/123456.m3u8'
+        skipAllowed:
+          type: boolean
+          example: true
+    PlaybackEvent:
+      type: object
+      properties:
+        trackId:
+          type: string
+          example: '123456'
+        eventType:
+          type: string
+          enum: [start, complete, skip, pause, resume]
+          example: 'complete'
+        timestamp:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:45Z'
+        durationPlayed:
+          type: integer
+          description: Seconds of the track that were played.
+          example: 259
+      required: [trackId, eventType, timestamp]
+    PlaybackEventBatch:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaybackEvent'
+      required: [events]
+    StreamLog:
+      type: object
+      properties:
+        trackId:
+          type: string
+          example: '123456'
+        userId:
+          type: string
+          example: '500123'
+        clientId:
+          type: string
+          example: 'device-789012'
+        timestamp:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:45Z'
+        durationPlayed:
+          type: integer
+          description: Seconds streamed.
+          example: 259
+        country:
+          type: string
+          example: 'GB'
+      required: [trackId, timestamp]
+    StreamLogBatch:
+      type: object
+      properties:
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StreamLog'
+      required: [logs]
+    DeviceAuthorisationRequest:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          example: 'device-789012'
+        deviceName:
+          type: string
+          example: "Jane's iPhone"
+        platform:
+          type: string
+          enum: [ios, android, web, windows, macos]
+          example: 'ios'
+      required: [deviceId]
+    DeviceAuthorisation:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          example: 'device-789012'
+        deviceName:
+          type: string
+          example: "Jane's iPhone"
+        platform:
+          type: string
+          enum: [ios, android, web, windows, macos]
+          example: 'ios'
+        status:
+          type: string
+          enum: [authorised, deauthorised]
+          example: 'authorised'
+        authorisedAt:
+          type: string
+          format: date-time
+          example: '2026-05-01T10:00:00Z'
+    Locker:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    CreditItemRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        releaseId:
+          type: string
+          example: '11700062'
+        trackId:
+          type: string
+          example: '123456'
+        currency:
+          type: string
+          description: ISO 4217 currency code matching the supplied wholesale price.
+          example: 'USD'
+        price:
+          type: number
+          description: Retail price charged to the user.
+          example: 9.99
+      required: [userId, currency, price]
+    RefundRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        purchaseId:
+          type: string
+          example: 'purchase-789012'
+        reason:
+          type: string
+          example: 'Customer request'
+      required: [userId, purchaseId]
+    PlaylistTrackInput:
+      type: object
+      properties:
+        trackId:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: 'Come Together'
+        artist:
+          type: string
+          example: 'The Beatles'
+        source:
+          type: string
+          description: Source for the physical file (defaults to `7digital`).
+          example: '7digital'
+        audioUrl:
+          type: string
+          format: uri
+          description: Optional alternative source URL for the physical file.
+          example: 'file://a.specific.file.location.mp3'
+        image:
+          type: string
+          format: uri
+          example: 'https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg'
+      required: [trackId, title, artist]
+    PlaylistTrack:
+      allOf:
+        - $ref: '#/components/schemas/PlaylistTrackInput'
+        - type: object
+          properties:
+            position:
+              type: integer
+              example: 1
+            addedAt:
+              type: string
+              format: date-time
+              example: '2026-05-28T14:30:00Z'
+    Playlist:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 'playlist-789012'
+        name:
+          type: string
+          example: 'Morning Run'
+        description:
+          type: string
+          maxLength: 500
+          example: 'High-energy tracks for early-morning runs.'
+        visibility:
+          type: string
+          enum: [private, public]
+          example: 'public'
+        userId:
+          type: string
+          nullable: true
+          example: '500123'
+        trackCount:
+          type: integer
+          example: 24
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistTrack'
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:00Z'
+        modifiedAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T15:00:00Z'
+    PlaylistListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: 'ok'
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 12
+        playlists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Playlist'
+    CreatePlaylistRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Morning Run'
+        description:
+          type: string
+          maxLength: 500
+          example: 'High-energy tracks for early-morning runs.'
+        visibility:
+          type: string
+          enum: [private, public]
+          example: 'public'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistTrackInput'
+      required: [name]
+    UpdatePlaylistRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: 'Morning Run'
+        description:
+          type: string
+          maxLength: 500
+          example: 'High-energy tracks for early-morning runs.'
+        visibility:
+          type: string
+          enum: [private, public]
+          example: 'public'
+    AddTracksRequest:
+      type: object
+      properties:
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistTrackInput'
+      required: [tracks]
+    CreateSubscriptionRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        productId:
+          type: string
+          example: 'unlimited-streaming-monthly'
+        startDate:
+          type: string
+          format: date
+          example: '2026-05-28'
+        endDate:
+          type: string
+          format: date
+          description: Subscription expiry. Maximum one month from startDate.
+          example: '2026-06-28'
+        country:
+          type: string
+          example: 'GB'
+      required: [userId, productId, startDate, endDate]
+    Subscription:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+          example: 'sub-789012'
+        userId:
+          type: string
+          example: '500123'
+        productId:
+          type: string
+          example: 'unlimited-streaming-monthly'
+        status:
+          type: string
+          enum: [active, cancelled, expired]
+          example: 'active'
+        startDate:
+          type: string
+          format: date
+          example: '2026-05-28'
+        endDate:
+          type: string
+          format: date
+          example: '2026-06-28'
+    CreateUserRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: 'jane.smith@example.com'
+        password:
+          type: string
+          format: password
+          example: 'P@ssw0rd123!'
+        firstName:
+          type: string
+          example: 'Jane'
+        lastName:
+          type: string
+          example: 'Smith'
+        country:
+          type: string
+          example: 'GB'
+      required: [email, password, country]
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '500123'
+        email:
+          type: string
+          format: email
+          example: 'jane.smith@example.com'
+        firstName:
+          type: string
+          example: 'Jane'
+        lastName:
+          type: string
+          example: 'Smith'
+        country:
+          type: string
+          example: 'GB'
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:00Z'

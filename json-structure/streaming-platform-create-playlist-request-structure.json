@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-create-playlist-request-structure.json",
+  "name": "CreatePlaylistRequest",
+  "description": "CreatePlaylistRequest schema from 7digital API",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Morning Run"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500,
+      "example": "High-energy tracks for early-morning runs."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "private",
+        "public"
+      ],
+      "example": "public"
+    },
+    "tracks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trackId": {
+            "type": "string",
+            "example": "123456"
+          },
+          "name": {
+            "type": "string",
+            "example": "Come Together"
+          },
+          "artist": {
+            "type": "string",
+            "example": "The Beatles"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source for the physical file (defaults to `7digital`).",
+            "example": "7digital"
+          },
+          "audioUrl": {
+            "type": "uri",
+            "description": "Optional alternative source URL for the physical file.",
+            "example": "file://a.specific.file.location.mp3"
+          },
+          "image": {
+            "type": "uri",
+            "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+          }
+        },
+        "required": [
+          "trackId",
+          "title",
+          "artist"
+        ]
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

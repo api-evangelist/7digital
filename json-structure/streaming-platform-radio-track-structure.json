@@ -1,0 +1,152 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-radio-track-structure.json",
+  "name": "RadioTrack",
+  "description": "RadioTrack schema from 7digital API",
+  "properties": {
+    "track": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "123456"
+        },
+        "name": {
+          "type": "string",
+          "example": "Come Together"
+        },
+        "version": {
+          "type": "string",
+          "example": "Remastered 2019"
+        },
+        "artist": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "12345"
+            },
+            "name": {
+              "type": "string",
+              "example": "The Beatles"
+            },
+            "url": {
+              "type": "uri",
+              "example": "https://uk.7digital.com/artist/the-beatles"
+            },
+            "image": {
+              "type": "uri",
+              "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+            },
+            "sortName": {
+              "type": "string",
+              "example": "Beatles, The"
+            }
+          }
+        },
+        "release": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "album",
+                "single",
+                "ep",
+                "compilation"
+              ],
+              "example": "album"
+            },
+            "id": {
+              "type": "string",
+              "example": "11700062"
+            },
+            "name": {
+              "type": "string",
+              "example": "Abbey Road"
+            },
+            "artist": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "12345"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "The Beatles"
+                },
+                "url": {
+                  "type": "uri",
+                  "example": "https://uk.7digital.com/artist/the-beatles"
+                },
+                "image": {
+                  "type": "uri",
+                  "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+                },
+                "sortName": {
+                  "type": "string",
+                  "example": "Beatles, The"
+                }
+              }
+            },
+            "url": {
+              "type": "uri",
+              "example": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062"
+            },
+            "image": {
+              "type": "uri",
+              "example": "https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg"
+            },
+            "releaseDate": {
+              "type": "date",
+              "example": "1969-09-26"
+            },
+            "label": {
+              "type": "string",
+              "example": "Apple Records"
+            },
+            "upc": {
+              "type": "string",
+              "example": "00602445912025"
+            },
+            "explicit": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        },
+        "trackNumber": {
+          "type": "int32",
+          "example": 1
+        },
+        "duration": {
+          "type": "int32",
+          "description": "Duration in seconds.",
+          "example": 259
+        },
+        "explicit": {
+          "type": "boolean",
+          "example": false
+        },
+        "isrc": {
+          "type": "string",
+          "example": "GBAYE6900477"
+        },
+        "previewUrl": {
+          "type": "uri",
+          "example": "https://previews.7digital.com/clip/123456"
+        }
+      }
+    },
+    "streamUrl": {
+      "type": "uri",
+      "example": "https://streaming.7digital.com/hls/123456.m3u8"
+    },
+    "skipAllowed": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

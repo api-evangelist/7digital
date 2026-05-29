@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-card-registration-schema.json",
+  "title": "CardRegistration",
+  "description": "CardRegistration schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "registrationId": {
+      "type": "string",
+      "example": "cardreg-789012"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "registered",
+        "failed"
+      ],
+      "example": "registered"
+    },
+    "cardId": {
+      "type": "string",
+      "nullable": true,
+      "example": "card-789012"
+    }
+  }
+}

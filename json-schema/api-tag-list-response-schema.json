@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-tag-list-response-schema.json",
+  "title": "TagListResponse",
+  "description": "TagListResponse schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "ok"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "A genre/tag label.",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "rock"
+          },
+          "name": {
+            "type": "string",
+            "example": "Rock"
+          },
+          "parentId": {
+            "type": "string",
+            "nullable": true,
+            "example": null
+          }
+        }
+      }
+    }
+  }
+}

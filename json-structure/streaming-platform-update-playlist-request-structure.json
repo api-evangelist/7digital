@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-update-playlist-request-structure.json",
+  "name": "UpdatePlaylistRequest",
+  "description": "UpdatePlaylistRequest schema from 7digital API",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Morning Run"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500,
+      "example": "High-energy tracks for early-morning runs."
+    },
+    "visibility": {
+      "type": "string",
+      "enum": [
+        "private",
+        "public"
+      ],
+      "example": "public"
+    }
+  }
+}

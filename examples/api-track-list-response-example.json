@@ -1,0 +1,82 @@
+{
+  "status": "ok",
+  "page": 1,
+  "pageSize": 20,
+  "totalItems": 13,
+  "tracks": [
+    {
+      "id": "123456",
+      "title": "Come Together",
+      "version": "Remastered 2019",
+      "artist": {
+        "id": {},
+        "name": {},
+        "url": {},
+        "image": {},
+        "sortName": {},
+        "appearsAs": {}
+      },
+      "release": {
+        "id": {},
+        "title": {},
+        "version": {},
+        "type": {},
+        "artist": {},
+        "url": {},
+        "image": {},
+        "releaseDate": {},
+        "label": {},
+        "explicit": {},
+        "upc": {},
+        "price": {}
+      },
+      "trackNumber": 1,
+      "duration": 259,
+      "explicit": false,
+      "isrc": "GBAYE6900477",
+      "previewUrl": "https://previews.7digital.com/clip/123456",
+      "price": {
+        "formattedPrice": {},
+        "amount": {},
+        "currency": {}
+      }
+    },
+    {
+      "id": "123456",
+      "title": "Come Together",
+      "version": "Remastered 2019",
+      "artist": {
+        "id": {},
+        "name": {},
+        "url": {},
+        "image": {},
+        "sortName": {},
+        "appearsAs": {}
+      },
+      "release": {
+        "id": {},
+        "title": {},
+        "version": {},
+        "type": {},
+        "artist": {},
+        "url": {},
+        "image": {},
+        "releaseDate": {},
+        "label": {},
+        "explicit": {},
+        "upc": {},
+        "price": {}
+      },
+      "trackNumber": 1,
+      "duration": 259,
+      "explicit": false,
+      "isrc": "GBAYE6900477",
+      "previewUrl": "https://previews.7digital.com/clip/123456",
+      "price": {
+        "formattedPrice": {},
+        "amount": {},
+        "currency": {}
+      }
+    }
+  ]
+}

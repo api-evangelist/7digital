@@ -1,0 +1,96 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital / MassiveMusic Streaming Platform API — Content Delivery
+  description: '7digital / MassiveMusic Streaming Platform API — Content Delivery. 1 operations. Lead operation: 7digital Transfer Media. Self-contained Naftiko capability covering one 7digital / MassiveMusic
+    business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Content Delivery
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: streaming-platform-content-delivery
+    baseUri: https://api.7digital.com
+    description: 7digital / MassiveMusic Streaming Platform API — Content Delivery business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: content-delivery-media-transfer
+      path: /content-delivery/media-transfer
+      operations:
+      - name: transferMedia
+        method: GET
+        description: 7digital Transfer Media
+        inputParameters:
+        - name: trackId
+          in: query
+          type: string
+          required: true
+          description: 7digital track id.
+        - name: format
+          in: query
+          type: string
+          required: false
+          description: Audio format to retrieve.
+        - name: bitrate
+          in: query
+          type: integer
+          required: false
+          description: Audio bitrate (kbps).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: streaming-platform-content-delivery-rest
+    port: 8080
+    description: REST adapter for 7digital / MassiveMusic Streaming Platform API — Content Delivery. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/content-delivery/media-transfer
+      name: content-delivery-media-transfer
+      description: REST surface for content-delivery-media-transfer.
+      operations:
+      - method: GET
+        name: transferMedia
+        description: 7digital Transfer Media
+        call: streaming-platform-content-delivery.transferMedia
+        with:
+          trackId: rest.trackId
+          format: rest.format
+          bitrate: rest.bitrate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: streaming-platform-content-delivery-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital / MassiveMusic Streaming Platform API — Content Delivery. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: transfer-media
+      description: 7digital Transfer Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: streaming-platform-content-delivery.transferMedia
+      with:
+        trackId: tools.trackId
+        format: tools.format
+        bitrate: tools.bitrate
+      outputParameters:
+      - type: object
+        mapping: $.

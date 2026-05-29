@@ -1,32 +1,340 @@
 aid: 7digital
 name: 7digital
-description: "Api of Music store 7digital"
-url: https://docs.7digital.com/reference
+description: >-
+  7digital (now operating as MassiveMusic following a corporate pivot toward
+  Songtradr-affiliated business music services) is a B2B music platform that
+  licenses a 100M+ track music catalogue and provides the streaming,
+  download-delivery, royalty-reporting, and content-ingestion infrastructure
+  that powers music services for fitness apps, social-media platforms,
+  background-music providers, interactive-radio products, music stores, and
+  subscription streaming services. The API surface is split into a classic
+  REST API (v1.2) and a modern MassiveMusic Streaming Platform API, both
+  signed with OAuth 1.0 and gated behind a commercial agreement.
+url: https://docs.massivemusic.com/reference
 specificationVersion: '0.20'
 created: '2026-05-28'
 modified: '2026-05-28'
 x-source: public-apis/public-apis
-x-category: "Music"
+x-category: Music
 x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+x-tier-reason: bulk-registered-from-public-apis; enriched via full pipeline pass on 2026-05-28
 tags:
   - Music
+  - Streaming
+  - Licensing
+  - Catalogue
+  - B2B
+  - Royalty Reporting
   - Public APIs
 apis:
-  - name: 7digital
-    description: "Api of Music store 7digital"
-    humanURL: https://docs.7digital.com/reference
-    baseURL: https://docs.7digital.com/reference
+  - name: 7digital API
+    description: >-
+      Classic 7digital REST API (v1.2). Covers catalogue browse / search /
+      charts, artist / release / track lookup and recommendations, baskets,
+      vouchers, purchase delivery, lockers, payment cards, editorial,
+      translations, IP-to-country lookup, and user signup / authentication.
+      OAuth 1.0 signed; partner consumer key required.
+    humanURL: https://docs.massivemusic.com/reference
+    baseURL: https://api.7digital.com/1.2
     tags:
-      - Music
+      - Catalogue
+      - Search
+      - Commerce
+      - Payments
+      - Accounts
     properties:
       - type: Documentation
-        url: https://docs.7digital.com/reference
+        url: https://docs.massivemusic.com/reference
+      - type: APIReference
+        url: https://docs.massivemusic.com/reference/about-this-api
+      - type: Authentication
+        url: https://docs.massivemusic.com/reference/authentication
+      - type: OpenAPI
+        url: openapi/7digital-api-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/api-releases.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-artists.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-tracks.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-tags.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-basket.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-user.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-users.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-territories.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-translations.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-iplookup.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-editorial.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-catalogue.yaml
+      - type: NaftikoCapability
+        url: capabilities/api-payment.yaml
+      - type: JSONSchema
+        url: json-schema/
+      - type: JSONStructure
+        url: json-structure/
+      - type: JSON-LD
+        url: json-ld/7digital-api-context.jsonld
+      - type: Example
+        url: examples/
+      - type: SDK
+        title: Node.js SDK
+        url: https://github.com/7digital/7digital-api
+      - type: SDK
+        title: Python SDK
+        url: https://github.com/7digital/python-7digital-api
+      - type: SDK
+        title: '.NET (C#) Wrapper'
+        url: https://github.com/7digital/SevenDigital.Api.Wrapper
+      - type: SDK
+        title: '.NET (C#) Schema'
+        url: https://github.com/7digital/SevenDigital.Api.Schema
+      - type: SDK
+        title: Java Client (Scala)
+        url: https://github.com/7digital/SevenDigital.Api.Client
+      - type: SDK
+        title: iOS SDK (archived)
+        url: https://github.com/7digital/7digital-iOS-SDK
+      - type: SDK
+        title: Android SDK (archived)
+        url: https://github.com/7digital/7digital-Android-SDK
+      - type: CodeExamples
+        title: API Walkthroughs
+        url: https://github.com/7digital/7digital-API-walkthroughs
+      - type: CodeExamples
+        title: Catalogue Feed Fetcher (Ruby)
+        url: https://github.com/7digital/7digital-feed-fetcher-example
+      - type: CodeExamples
+        title: Ruby API Examples (archived)
+        url: https://github.com/7digital/7digital_api_examples
+  - name: MassiveMusic Streaming Platform API
+    description: >-
+      Modern MassiveMusic Streaming Platform API. Covers catalogue with batch
+      lookup, Interactive Radio (DMCA / GVL ruleset listening sessions),
+      Logging (catalogue / preview / subscriber stream reporting required for
+      licensor royalty), HLS and HTTP Progressive streaming (preview,
+      catalogue, locker, subscriber, offline), Offline Device authorisation,
+      Download Purchases (single + ZIP), Playlists, Sales (credit / refund /
+      locker), Subscriptions, User Management, and Content Delivery / bulk
+      media transfer. OAuth 1.0 signed; partner consumer key required.
+    humanURL: https://docs.massivemusic.com/reference
+    baseURL: https://api.7digital.com
+    tags:
+      - Streaming
+      - Interactive Radio
+      - Royalty Reporting
+      - Content Delivery
+      - Playlists
+      - Subscriptions
+    properties:
+      - type: Documentation
+        url: https://docs.massivemusic.com/reference
+      - type: APIReference
+        url: https://docs.massivemusic.com/reference/introduction
+      - type: Authentication
+        url: https://docs.massivemusic.com/reference/authentication
+      - type: RateLimits
+        url: https://docs.massivemusic.com/reference/usage-limits
+      - type: OpenAPI
+        url: openapi/7digital-streaming-platform-openapi.yml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-catalogue.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-interactive-radio.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-logging.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-streaming.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-offline-devices.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-download-purchases.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-playlists.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-sales.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-subscriptions.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-user-management.yaml
+      - type: NaftikoCapability
+        url: capabilities/streaming-platform-content-delivery.yaml
+      - type: JSONSchema
+        url: json-schema/
+      - type: JSONStructure
+        url: json-structure/
+      - type: JSON-LD
+        url: json-ld/7digital-streaming-platform-context.jsonld
+      - type: Example
+        url: examples/
+      - type: PostmanCollection
+        url: https://docs.massivemusic.com/docs/postman-sample-requests
 common:
   - type: Website
-    url: https://docs.7digital.com/reference
+    url: https://uk.7digital.com
+  - type: Documentation
+    url: https://docs.massivemusic.com
+  - type: GettingStarted
+    url: https://docs.massivemusic.com/docs/guides-introduction
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference
+  - type: ChangeLog
+    url: https://docs.massivemusic.com/changelog
+  - type: FAQ
+    url: https://docs.massivemusic.com/docs/faq
+  - type: Support
+    url: https://docs.massivemusic.com/docs/support
+  - type: StatusPage
+    url: https://docs.massivemusic.com/docs/health-dashboards
+  - type: TermsOfService
+    url: https://docs.massivemusic.com/docs/sla
+  - type: GitHubOrganization
+    url: https://github.com/7digital
+  - type: GitHubRepository
+    title: Node.js Client
+    url: https://github.com/7digital/7digital-api
+  - type: GitHubRepository
+    title: Python Client
+    url: https://github.com/7digital/python-7digital-api
+  - type: GitHubRepository
+    title: .NET Wrapper
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: PostmanCollection
+    url: https://www.postman.com/speeding-water-232919/7digital-client-test-suite/overview
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
+  - type: SpectralRules
+    url: rules/7digital-rules.yml
+  - type: Vocabulary
+    url: vocabulary/7digital-vocabulary.yml
+  - type: Plans
+    url: plans/7digital-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/7digital-rate-limits.yml
+  - type: FinOps
+    url: finops/7digital-finops.yml
+  - type: Features
+    data:
+      - name: 100M+ Track Licensed Catalogue
+        description: >-
+          Direct licences with major and independent labels. Standard +
+          Enhanced metadata. Pre-cleared Songtradr catalogue (representated
+          catalogue) for synced uses.
+      - name: Catalogue Search + Browse
+        description: >-
+          Free-text search across artists, releases, and tracks; popularity-
+          weighted ranking; alphabetical browse; batch lookup of releases /
+          tracks in a single request.
+      - name: HLS and HTTP Progressive Streaming
+        description: >-
+          Preview clips, catalogue streaming, locker streaming, subscription
+          streaming (online + offline), in HLS or HTTP Progressive variants.
+      - name: Interactive Radio
+        description: >-
+          DMCA and GVL-compliant lean-back radio sessions. Skip-budget and
+          ruleset enforcement on every Get-Next-Track call. Playback events
+          influence subsequent track selection.
+      - name: Subscription Streaming with Device Concurrency
+        description: >-
+          Subscriber playback gated on a valid subscription record; clientId
+          parameter enforces single-device concurrency.
+      - name: Offline Mode for Subscriptions
+        description: >-
+          Per-device offline authorisation, encrypted on-device caching,
+          deferred play-event reporting when connectivity is restored.
+      - name: Royalty + Usage Reporting
+        description: >-
+          Three logging endpoints (catalogue / preview / subscriber) plus
+          S3-bucket bulk loggers feed Client Usage Reports and Label
+          Reports.
+      - name: Sales Credit + Refund Tracking
+        description: >-
+          Log sales in the originating currency, attach purchased content
+          to the user locker, and remove refunds from the sales report.
+      - name: Content Delivery (DDEX + SFTP + Media Transfer)
+        description: >-
+          DDEX ERN message ingestion via SFTP and bulk media transfer for
+          downloading an entire licensed catalogue at 50 req/sec.
+      - name: Playlist Management API
+        description: >-
+          Partner-scoped playlists with optional user association, public /
+          private visibility, descriptions, and per-track source / audioUrl
+          metadata.
+      - name: User Account + Authentication
+        description: >-
+          OAuth 1.0 user accounts with signup, authenticate, and details
+          endpoints. 2-legged (partner) and 3-legged (user-context) flows.
+      - name: Multi-Territory + Multi-Currency
+        description: >-
+          ISO 3166-1 alpha-2 territory codes, IP-to-country resolution for
+          geo-restriction, per-territory pricing in local currency.
+      - name: Compliance Testing
+        description: >-
+          Pre-launch Compliance Testing with Client Success validates that
+          stream logs are correctly attributed to the right usage type before
+          royalty reporting goes live.
+  - type: UseCases
+    data:
+      - name: Music Streaming Service
+        description: Build a full subscription streaming service on top of licensed catalogue + HLS streaming + subscriber logging.
+      - name: Fitness App with Curated Music
+        description: Stream catalogue tracks to workout sessions, report plays for licensor royalty.
+      - name: Social Media Music
+        description: Either MassiveMusic-managed content delivery or self-managed delivery for short-form video music.
+      - name: Background Music Service
+        description: Lean-back music for retail, hospitality, or workplace using catalogue + ruleset-compliant playback.
+      - name: Interactive Radio Product
+        description: Launch a DMCA / GVL-compliant lean-back radio station with skip budgets and playback-event-driven track selection.
+      - name: Digital Music Storefront
+        description: Sell tracks and releases via basket + payment-card + PayPal flows; deliver downloads from the user locker.
+      - name: White-Label Subscription Service
+        description: Operate a fully white-labelled subscription music service with offline mode and per-territory licensing.
+      - name: Content Delivery / Aggregator
+        description: Ingest catalogue via DDEX + SFTP and bulk-download licensed media for upstream distribution.
+  - type: Integrations
+    data:
+      - name: Warner Music Group
+        description: Documented integration steps for Warner Music Group catalogue + reporting.
+      - name: Universal Music Group
+        description: Security due diligence + integration steps for Universal Music Group.
+      - name: DDEX
+        description: ERN 3.8 message components for catalogue ingestion via SFTP.
+      - name: PayPal
+        description: PayPal Express Checkout integration for basket purchase completion.
+      - name: AWS S3
+        description: S3-bucket bulk loggers for stream / preview / subscription logs and bulk batch submission.
+      - name: Songtradr
+        description: Access to the Songtradr pre-cleared catalogue (the represented catalogue) via the same API surface.
+      - name: Postman
+        description: Public Postman workspace with example requests covering authentication and core operations.
+  - type: Solutions
+    data:
+      - name: Background Music Service
+        description: End-to-end recipe for a lean-back retail / hospitality music product.
+      - name: Content Delivery Service
+        description: End-to-end recipe for a catalogue ingestion + delivery pipeline.
+      - name: Download Service
+        description: End-to-end recipe for a track / release download storefront.
+      - name: Fitness Service
+        description: End-to-end recipe for a fitness app with curated music streams.
+      - name: Interactive Radio Streaming Service
+        description: End-to-end recipe for a DMCA / GVL-compliant radio station.
+      - name: Social Media Service (Managed)
+        description: End-to-end recipe for short-form music with MassiveMusic-managed content delivery.
+      - name: Social Media Service (Self-Managed)
+        description: End-to-end recipe for short-form music with partner-managed content delivery.
+      - name: Streaming Service
+        description: End-to-end recipe for a non-subscription catalogue streaming service.
+      - name: Subscription Streaming Service
+        description: End-to-end recipe for a subscription-based streaming service with offline mode.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

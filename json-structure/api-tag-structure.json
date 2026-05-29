@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-tag-structure.json",
+  "name": "Tag",
+  "description": "A genre/tag label.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "rock"
+    },
+    "name": {
+      "type": "string",
+      "example": "Rock"
+    },
+    "parentId": {
+      "type": "string",
+      "nullable": true,
+      "example": null
+    }
+  }
+}

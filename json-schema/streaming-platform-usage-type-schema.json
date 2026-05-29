@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-usage-type-schema.json",
+  "title": "UsageType",
+  "description": "UsageType schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "subscription-streaming"
+    },
+    "name": {
+      "type": "string",
+      "example": "Subscription Streaming"
+    },
+    "description": {
+      "type": "string",
+      "example": "Streaming to subscribers in interactive playback."
+    }
+  }
+}

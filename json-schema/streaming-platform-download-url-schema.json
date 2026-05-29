@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-download-url-schema.json",
+  "title": "DownloadUrl",
+  "description": "DownloadUrl schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://download.7digital.com/abc123"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-05-28T16:30:00Z"
+    }
+  }
+}

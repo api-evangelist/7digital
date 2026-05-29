@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-device-authorisation-request-schema.json",
+  "title": "DeviceAuthorisationRequest",
+  "description": "DeviceAuthorisationRequest schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "example": "device-789012"
+    },
+    "deviceName": {
+      "type": "string",
+      "example": "Jane's iPhone"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "ios",
+        "android",
+        "web",
+        "windows",
+        "macos"
+      ],
+      "example": "ios"
+    }
+  },
+  "required": [
+    "deviceId"
+  ]
+}

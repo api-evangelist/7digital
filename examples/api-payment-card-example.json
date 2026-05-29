@@ -1,0 +1,8 @@
+{
+  "cardId": "card-789012",
+  "last4": "4242",
+  "brand": "visa",
+  "expiryMonth": 12,
+  "expiryYear": 2028,
+  "isDefault": true
+}

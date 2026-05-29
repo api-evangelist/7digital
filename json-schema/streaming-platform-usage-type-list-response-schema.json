@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-usage-type-list-response-schema.json",
+  "title": "UsageTypeListResponse",
+  "description": "UsageTypeListResponse schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "example": "ok"
+    },
+    "usageTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "subscription-streaming"
+          },
+          "name": {
+            "type": "string",
+            "example": "Subscription Streaming"
+          },
+          "description": {
+            "type": "string",
+            "example": "Streaming to subscribers in interactive playback."
+          }
+        }
+      }
+    }
+  }
+}

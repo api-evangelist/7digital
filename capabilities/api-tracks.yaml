@@ -1,0 +1,249 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital API — Tracks
+  description: '7digital API — Tracks. 4 operations. Lead operation: 7digital Get Track Chart. Self-contained Naftiko capability covering one 7digital / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Tracks
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: api-tracks
+    baseUri: https://api.7digital.com/1.2
+    description: 7digital API — Tracks business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: track-chart
+      path: /track/chart
+      operations:
+      - name: getTrackChart
+        method: GET
+        description: 7digital Get Track Chart
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        - name: period
+          in: query
+          type: string
+          required: false
+          description: Chart period — typically `day`, `week`, `month`, `year`.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: track-details
+      path: /track/details
+      operations:
+      - name: getTrackDetails
+        method: GET
+        description: 7digital Get Track Details
+        inputParameters:
+        - name: trackId
+          in: query
+          type: string
+          required: true
+          description: 7digital track id.
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: track-search
+      path: /track/search
+      operations:
+      - name: searchTracks
+        method: GET
+        description: 7digital Search Tracks
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: true
+          description: Free-text search query.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: track-match-byid
+      path: /track/match/byId
+      operations:
+      - name: matchTrackById
+        method: GET
+        description: 7digital Match Track By Id
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          required: true
+          description: External track identifier to match (e.g. ISRC).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: api-tracks-rest
+    port: 8080
+    description: REST adapter for 7digital API — Tracks. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/track/chart
+      name: track-chart
+      description: REST surface for track-chart.
+      operations:
+      - method: GET
+        name: getTrackChart
+        description: 7digital Get Track Chart
+        call: api-tracks.getTrackChart
+        with:
+          country: rest.country
+          period: rest.period
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/track/details
+      name: track-details
+      description: REST surface for track-details.
+      operations:
+      - method: GET
+        name: getTrackDetails
+        description: 7digital Get Track Details
+        call: api-tracks.getTrackDetails
+        with:
+          trackId: rest.trackId
+          country: rest.country
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/track/search
+      name: track-search
+      description: REST surface for track-search.
+      operations:
+      - method: GET
+        name: searchTracks
+        description: 7digital Search Tracks
+        call: api-tracks.searchTracks
+        with:
+          q: rest.q
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/track/match/by-id
+      name: track-match-by-id
+      description: REST surface for track-match-by-id.
+      operations:
+      - method: GET
+        name: matchTrackById
+        description: 7digital Match Track By Id
+        call: api-tracks.matchTrackById
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-tracks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital API — Tracks. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-track-chart
+      description: 7digital Get Track Chart
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-tracks.getTrackChart
+      with:
+        country: tools.country
+        period: tools.period
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-track-details
+      description: 7digital Get Track Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-tracks.getTrackDetails
+      with:
+        trackId: tools.trackId
+        country: tools.country
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-tracks
+      description: 7digital Search Tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-tracks.searchTracks
+      with:
+        q: tools.q
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: match-track-id
+      description: 7digital Match Track By Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-tracks.matchTrackById
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

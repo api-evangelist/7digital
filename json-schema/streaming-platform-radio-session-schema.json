@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-radio-session-schema.json",
+  "title": "RadioSession",
+  "description": "RadioSession schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "format": "uuid",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "userId": {
+      "type": "string",
+      "example": "500123"
+    },
+    "ruleset": {
+      "type": "string",
+      "enum": [
+        "dmca",
+        "gvl",
+        "custom"
+      ],
+      "example": "dmca"
+    },
+    "skipsRemaining": {
+      "type": "integer",
+      "example": 6
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-05-28T14:30:00Z"
+    }
+  }
+}

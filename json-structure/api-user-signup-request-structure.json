@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-user-signup-request-structure.json",
+  "name": "UserSignupRequest",
+  "description": "UserSignupRequest schema from 7digital API",
+  "properties": {
+    "email": {
+      "type": "string",
+      "example": "jane.smith@example.com"
+    },
+    "password": {
+      "type": "string",
+      "example": "P@ssw0rd123!"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Smith"
+    },
+    "country": {
+      "type": "string",
+      "example": "GB"
+    }
+  },
+  "required": [
+    "email",
+    "password",
+    "country"
+  ]
+}

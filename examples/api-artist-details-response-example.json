@@ -1,0 +1,11 @@
+{
+  "status": "ok",
+  "artist": {
+    "id": "12345",
+    "name": "The Beatles",
+    "url": "https://uk.7digital.com/artist/the-beatles",
+    "image": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg",
+    "sortName": "Beatles, The",
+    "appearsAs": "Beatles, The"
+  }
+}

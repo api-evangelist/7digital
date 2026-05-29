@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-artist-schema.json",
+  "title": "Artist",
+  "description": "Artist schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "12345"
+    },
+    "name": {
+      "type": "string",
+      "example": "The Beatles"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://uk.7digital.com/artist/the-beatles"
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "example": "https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg"
+    },
+    "sortName": {
+      "type": "string",
+      "example": "Beatles, The"
+    }
+  }
+}

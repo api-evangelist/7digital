@@ -1,0 +1,120 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: 7digital / MassiveMusic
+providerId: 7digital
+created: '2026-05-28'
+modified: '2026-05-28'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Music
+  - Streaming
+  - Licensing
+description: >-
+  7digital / MassiveMusic enforces rate limits primarily on non-live (prototype
+  / test) API keys; live commercial keys have higher (but still scope-bound)
+  limits negotiated with Client Success. Some operations also have endpoint-
+  specific "acceptable usage" targets that the provider documents alongside
+  the endpoint reference — notably preview-stream logging (5 POST/sec, 500
+  logs/batch) and media transfer (50 req/sec). Subscription streaming enforces
+  per-clientId concurrency (Device A vs Device B). Bulk batch submission via
+  S3 is offered as the escape valve when documented per-second limits are
+  insufficient.
+sources:
+  - https://docs.massivemusic.com/reference/usage-limits
+  - https://docs.massivemusic.com/reference/report-a-preview-stream
+  - https://docs.massivemusic.com/reference/transfer-media-files-for-content-delivery
+  - https://docs.massivemusic.com/reference/stream-to-subscriber-hls
+  - https://docs.massivemusic.com/docs/sla
+headers:
+  rateLimit: X-RateLimit-Limit
+  rateLimitCurrent: X-RateLimit-Current
+  rateLimitReset: X-RateLimit-Reset
+responseCodes:
+  throttled: 429
+  authError: 401
+limits:
+  - name: Non-live (sandbox / prototype) API key requests
+    scope: key
+    metric: requests_per_day
+    limit: 4000
+    timeFrame: day
+    notes: >-
+      Documented example shows 4,000 requests per period per non-live key.
+      Headers reveal current usage and reset window (X-RateLimit-Limit /
+      X-RateLimit-Current / X-RateLimit-Reset in seconds).
+  - name: Live commercial API key requests
+    scope: key
+    metric: varies
+    limit: 'negotiated under commercial agreement — typically lifted relative to non-live keys'
+    notes: >-
+      Live keys are not subject to the documented daily sandbox cap; the
+      effective ceiling is scoped by Client Success.
+  - name: Preview stream logging (logging/preview)
+    scope: account
+    metric: requests_per_second
+    limit: 5
+    timeFrame: second
+    notes: 'Acceptable usage: 5 POST requests per second, batches of up to 500 logs per request. Beyond this, switch to S3 bulk batch submission.'
+  - name: Catalogue stream logging (catalogue/log)
+    scope: account
+    metric: varies
+    limit: 'near real-time or same-day batch'
+    notes: >-
+      Documented as "near real-time, or same-day in batch" with no explicit
+      per-second number. Compliance testing with Client Success establishes
+      the operational rate for the partner.
+  - name: Subscription stream logging (user/subscription/log)
+    scope: account
+    metric: requests_per_batch
+    limit: 'batches of 10–20 logs per request, near real-time or same-day'
+    notes: 'Smaller batch size than preview logging because of stricter timing requirements.'
+  - name: Media transfer / content delivery (content-delivery/media-transfer)
+    scope: account
+    metric: requests_per_second
+    limit: 50
+    timeFrame: second
+    notes: >-
+      Documented acceptable usage: 50 req/sec. Usage requires coordination
+      with Client Success and additional licensor due diligence.
+  - name: Subscription streaming concurrency
+    scope: clientId
+    metric: concurrent_streams
+    limit: 1
+    notes: >-
+      When clientId is supplied, multiple devices may NOT stream concurrently.
+      Device A can start streaming, but if Device B starts, Device A finishes
+      its current track then is blocked from playing again for a short period.
+      After that, Device A can play again and Device B becomes blocked.
+policies:
+  - name: Sandbox vs Live key differentiation
+    description: >-
+      Public usage limits apply only to non-live (prototype / test) keys.
+      Production-grade keys are issued under commercial agreement and have
+      different (negotiated) limits. Always check X-RateLimit-* headers.
+  - name: OAuth 1.0 signature required on every request
+    description: >-
+      Every request includes oauth_consumer_key. Signed (2-legged or 3-legged)
+      operations also include oauth_signature. Unsigned access to signed
+      endpoints returns 401 rather than counting against rate limits.
+  - name: Batch-via-S3 escape valve
+    description: >-
+      When per-second logging limits are insufficient (e.g. for preview-stream
+      reporting), 7digital offers bulk batch submission via an S3 bucket. This
+      is the documented path past the 5 req/sec preview-log ceiling.
+  - name: Compliance testing before going live
+    description: >-
+      Before logging real user data, the partner's Client Success contact
+      runs Compliance Testing to validate logging accuracy and confirm the
+      correct endpoint is being used.
+  - name: Concurrency control via clientId
+    description: >-
+      For subscription streaming, supply a clientId to enable single-device
+      concurrency enforcement. Without clientId, multiple devices may stream
+      simultaneously against the same subscription.
+  - name: Endpoint-specific acceptable usage
+    description: >-
+      Several endpoints document their own per-second / per-batch acceptable
+      usage in addition to the global per-key cap. Honour the endpoint-level
+      number — it is typically the binding constraint.

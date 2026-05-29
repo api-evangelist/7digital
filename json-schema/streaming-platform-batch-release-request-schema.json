@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/streaming-platform-batch-release-request-schema.json",
+  "title": "BatchReleaseRequest",
+  "description": "BatchReleaseRequest schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "releaseIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "11700062",
+        "11700063"
+      ]
+    },
+    "showErrors": {
+      "type": "boolean",
+      "example": true
+    }
+  },
+  "required": [
+    "releaseIds"
+  ]
+}

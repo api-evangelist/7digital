@@ -1,0 +1,620 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital API — Releases
+  description: '7digital API — Releases. 11 operations. Lead operation: 7digital Get Releases By Date. Self-contained Naftiko capability covering one 7digital / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Releases
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: api-releases
+    baseUri: https://api.7digital.com/1.2
+    description: 7digital API — Releases business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: release-bydate
+      path: /release/byDate
+      operations:
+      - name: getReleasesByDate
+        method: GET
+        description: 7digital Get Releases By Date
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-details
+      path: /release/details
+      operations:
+      - name: getReleaseDetails
+        method: GET
+        description: 7digital Get Release Details
+        inputParameters:
+        - name: releaseId
+          in: query
+          type: string
+          required: true
+          description: 7digital release id.
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-editorial
+      path: /release/editorial
+      operations:
+      - name: getReleaseEditorial
+        method: GET
+        description: 7digital Get Release Editorial
+        inputParameters:
+        - name: releaseId
+          in: query
+          type: string
+          required: true
+          description: 7digital release id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-chart
+      path: /release/chart
+      operations:
+      - name: getReleaseChart
+        method: GET
+        description: 7digital Get Release Chart
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        - name: period
+          in: query
+          type: string
+          required: false
+          description: Chart period — typically `day`, `week`, `month`, `year`.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-recommend
+      path: /release/recommend
+      operations:
+      - name: getReleaseRecommendations
+        method: GET
+        description: 7digital Get Release Recommendations
+        inputParameters:
+        - name: releaseId
+          in: query
+          type: string
+          required: true
+          description: 7digital release id.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-search
+      path: /release/search
+      operations:
+      - name: searchReleases
+        method: GET
+        description: 7digital Search Releases
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: true
+          description: Free-text search query.
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-tracks
+      path: /release/tracks
+      operations:
+      - name: getReleaseTracks
+        method: GET
+        description: 7digital Get Release Tracks
+        inputParameters:
+        - name: releaseId
+          in: query
+          type: string
+          required: true
+          description: 7digital release id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-tags
+      path: /release/tags
+      operations:
+      - name: getReleaseTags
+        method: GET
+        description: 7digital Get Release Tags
+        inputParameters:
+        - name: releaseId
+          in: query
+          type: string
+          required: true
+          description: 7digital release id.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-match-byid
+      path: /release/match/byId
+      operations:
+      - name: matchReleaseById
+        method: GET
+        description: 7digital Match Release By Id
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          required: true
+          description: The external identifier to match (e.g., UPC).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-bytag-new
+      path: /release/bytag/new
+      operations:
+      - name: getNewReleasesByTags
+        method: GET
+        description: 7digital Get New Releases By Tags
+        inputParameters:
+        - name: tags
+          in: query
+          type: string
+          required: true
+          description: One or more tag identifiers, comma-separated.
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: release-bytag-top
+      path: /release/bytag/top
+      operations:
+      - name: getTopReleasesByTags
+        method: GET
+        description: 7digital Get Top Releases By Tags
+        inputParameters:
+        - name: tags
+          in: query
+          type: string
+          required: true
+          description: One or more tag identifiers, comma-separated.
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code for the sales territory.
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 1-based page number for paged endpoints.
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of items per page.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: api-releases-rest
+    port: 8080
+    description: REST adapter for 7digital API — Releases. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/release/by-date
+      name: release-by-date
+      description: REST surface for release-by-date.
+      operations:
+      - method: GET
+        name: getReleasesByDate
+        description: 7digital Get Releases By Date
+        call: api-releases.getReleasesByDate
+        with:
+          country: rest.country
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/details
+      name: release-details
+      description: REST surface for release-details.
+      operations:
+      - method: GET
+        name: getReleaseDetails
+        description: 7digital Get Release Details
+        call: api-releases.getReleaseDetails
+        with:
+          releaseId: rest.releaseId
+          country: rest.country
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/editorial
+      name: release-editorial
+      description: REST surface for release-editorial.
+      operations:
+      - method: GET
+        name: getReleaseEditorial
+        description: 7digital Get Release Editorial
+        call: api-releases.getReleaseEditorial
+        with:
+          releaseId: rest.releaseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/chart
+      name: release-chart
+      description: REST surface for release-chart.
+      operations:
+      - method: GET
+        name: getReleaseChart
+        description: 7digital Get Release Chart
+        call: api-releases.getReleaseChart
+        with:
+          country: rest.country
+          period: rest.period
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/recommend
+      name: release-recommend
+      description: REST surface for release-recommend.
+      operations:
+      - method: GET
+        name: getReleaseRecommendations
+        description: 7digital Get Release Recommendations
+        call: api-releases.getReleaseRecommendations
+        with:
+          releaseId: rest.releaseId
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/search
+      name: release-search
+      description: REST surface for release-search.
+      operations:
+      - method: GET
+        name: searchReleases
+        description: 7digital Search Releases
+        call: api-releases.searchReleases
+        with:
+          q: rest.q
+          country: rest.country
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/tracks
+      name: release-tracks
+      description: REST surface for release-tracks.
+      operations:
+      - method: GET
+        name: getReleaseTracks
+        description: 7digital Get Release Tracks
+        call: api-releases.getReleaseTracks
+        with:
+          releaseId: rest.releaseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/tags
+      name: release-tags
+      description: REST surface for release-tags.
+      operations:
+      - method: GET
+        name: getReleaseTags
+        description: 7digital Get Release Tags
+        call: api-releases.getReleaseTags
+        with:
+          releaseId: rest.releaseId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/match/by-id
+      name: release-match-by-id
+      description: REST surface for release-match-by-id.
+      operations:
+      - method: GET
+        name: matchReleaseById
+        description: 7digital Match Release By Id
+        call: api-releases.matchReleaseById
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/bytag/new
+      name: release-bytag-new
+      description: REST surface for release-bytag-new.
+      operations:
+      - method: GET
+        name: getNewReleasesByTags
+        description: 7digital Get New Releases By Tags
+        call: api-releases.getNewReleasesByTags
+        with:
+          tags: rest.tags
+          country: rest.country
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/release/bytag/top
+      name: release-bytag-top
+      description: REST surface for release-bytag-top.
+      operations:
+      - method: GET
+        name: getTopReleasesByTags
+        description: 7digital Get Top Releases By Tags
+        call: api-releases.getTopReleasesByTags
+        with:
+          tags: rest.tags
+          country: rest.country
+          page: rest.page
+          pageSize: rest.pageSize
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-releases-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital API — Releases. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-releases-date
+      description: 7digital Get Releases By Date
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleasesByDate
+      with:
+        country: tools.country
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-details
+      description: 7digital Get Release Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleaseDetails
+      with:
+        releaseId: tools.releaseId
+        country: tools.country
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-editorial
+      description: 7digital Get Release Editorial
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleaseEditorial
+      with:
+        releaseId: tools.releaseId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-chart
+      description: 7digital Get Release Chart
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleaseChart
+      with:
+        country: tools.country
+        period: tools.period
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-recommendations
+      description: 7digital Get Release Recommendations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleaseRecommendations
+      with:
+        releaseId: tools.releaseId
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-releases
+      description: 7digital Search Releases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.searchReleases
+      with:
+        q: tools.q
+        country: tools.country
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-tracks
+      description: 7digital Get Release Tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleaseTracks
+      with:
+        releaseId: tools.releaseId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-tags
+      description: 7digital Get Release Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getReleaseTags
+      with:
+        releaseId: tools.releaseId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: match-release-id
+      description: 7digital Match Release By Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.matchReleaseById
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-new-releases-tags
+      description: 7digital Get New Releases By Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getNewReleasesByTags
+      with:
+        tags: tools.tags
+        country: tools.country
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-top-releases-tags
+      description: 7digital Get Top Releases By Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-releases.getTopReleasesByTags
+      with:
+        tags: tools.tags
+        country: tools.country
+        page: tools.page
+        pageSize: tools.pageSize
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-schema/api-user-schema.json",
+  "title": "User",
+  "description": "User schema from 7digital API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "500123"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "jane.smith@example.com"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Smith"
+    },
+    "country": {
+      "type": "string",
+      "example": "GB"
+    },
+    "accessToken": {
+      "type": "string",
+      "description": "Partner-scoped user access token (returned on signup / authenticate).",
+      "example": "tok-a1b2c3d4"
+    },
+    "accessTokenSecret": {
+      "type": "string",
+      "description": "Partner-scoped user access token secret.",
+      "example": "sec-a1b2c3d4"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "500123",
+  "email": "jane.smith@example.com",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "country": "GB",
+  "accessToken": "tok-a1b2c3d4",
+  "accessTokenSecret": "sec-a1b2c3d4"
+}

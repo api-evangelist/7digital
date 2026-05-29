@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-subscription-structure.json",
+  "name": "Subscription",
+  "description": "Subscription schema from 7digital API",
+  "properties": {
+    "subscriptionId": {
+      "type": "string",
+      "example": "sub-789012"
+    },
+    "userId": {
+      "type": "string",
+      "example": "500123"
+    },
+    "productId": {
+      "type": "string",
+      "example": "unlimited-streaming-monthly"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "cancelled",
+        "expired"
+      ],
+      "example": "active"
+    },
+    "startDate": {
+      "type": "date",
+      "example": "2026-05-28"
+    },
+    "endDate": {
+      "type": "date",
+      "example": "2026-06-28"
+    }
+  }
+}

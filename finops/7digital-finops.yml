@@ -1,0 +1,130 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: 7digital / MassiveMusic
+providerId: 7digital
+created: '2026-05-28'
+modified: '2026-05-28'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Music
+  - Streaming
+  - Licensing
+  - Royalty
+description: >-
+  FOCUS-aligned FinOps view of 7digital / MassiveMusic — a B2B music platform
+  whose billing surface is dominated by per-stream / per-download licensor
+  royalty pass-through plus a platform / integration fee. Costs are largely
+  variable (driven by streams and downloads) with a smaller fixed platform
+  charge; cost optimisation centres on driving stream volume against the
+  appropriate usage type (preview vs catalogue vs subscriber) and using the
+  S3 bulk-log path to avoid per-second log throttling.
+sources:
+  - https://docs.massivemusic.com/docs/partners
+  - https://docs.massivemusic.com/docs/client-usage-reports-1
+  - https://docs.massivemusic.com/docs/label-reports
+  - https://docs.massivemusic.com/docs/streaming-plays-s3-bucket-logger
+  - https://docs.massivemusic.com/docs/subscription-plays-s3-bucket-logger
+  - https://docs.massivemusic.com/docs/preview-clips-logger
+  - https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: 7digital Group plc (now operating as MassiveMusic / Songtradr)
+serviceCategory: Music Licensing + Streaming Infrastructure
+billingModel:
+  pricingCategory: Royalty Pass-Through + Platform Subscription
+  billingFrequency: Monthly (invoiced) + Continuous (per-stream usage accrued)
+  billingCurrency: USD (commercial agreements often quoted in USD; per-territory retail in local currency)
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Adjustment
+    - Refund
+focusColumns:
+  ServiceName: 7digital / MassiveMusic
+  ServiceCategory: Music Licensing + Streaming Infrastructure
+  ServiceSubcategory: B2B Music Catalogue + Streaming
+  ProviderName: 7digital / MassiveMusic
+  PublisherName: 7digital Group plc / MassiveMusic
+  InvoiceIssuerName: 7digital Group plc / MassiveMusic
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  RegionId: 'per-territory (ISO 3166-1 alpha-2)'
+meters:
+  - name: catalogue_streams
+    unit: stream
+    aggregation: sum
+    dimensions: [country, licensor, ruleset]
+  - name: subscription_streams
+    unit: stream
+    aggregation: sum
+    dimensions: [country, licensor, plan]
+  - name: preview_streams
+    unit: stream
+    aggregation: sum
+    dimensions: [country, licensor]
+  - name: download_purchases
+    unit: transaction
+    aggregation: sum
+    dimensions: [country, licensor, content_type]
+  - name: track_downloads
+    unit: transaction
+    aggregation: sum
+    dimensions: [country, format, bitrate]
+  - name: media_transfers
+    unit: transaction
+    aggregation: sum
+    dimensions: [format, bitrate]
+  - name: api_requests
+    unit: request
+    aggregation: sum
+    dimensions: [endpoint_group, key_environment]
+  - name: platform_integration_fee
+    unit: month
+    aggregation: sum
+    dimensions: [contract_id]
+principles:
+  - name: Visibility
+    description: >-
+      Stream and sales volumes flow into Client Usage Reports and Label
+      Reports; near-real-time stream logging (preview / catalogue /
+      subscriber) is the source of truth. S3 bucket loggers
+      (streaming-plays-s3-bucket-logger, subscription-plays-s3-bucket-logger,
+      preview-clips-logger) provide the bulk dataset for FinOps ingestion;
+      pull these into your warehouse to compute per-territory / per-licensor
+      cost-per-stream.
+  - name: Allocation
+    description: >-
+      Tag streams with the originating service (e.g. fitness app vs radio
+      product vs storefront) by issuing distinct consumer keys per product
+      line — Client Success will scope keys per partner business unit on
+      request. Use FOCUS RegionId (the streaming territory) and
+      ServiceSubcategory (`Preview Clips`, `Catalogue Streaming`,
+      `Subscription Streaming`, `Download`) to allocate cost back to
+      product P&Ls.
+  - name: Optimization
+    description: >-
+      Cost levers: (1) route lean-back / radio plays through the
+      Interactive Radio API instead of catalogue streaming when ruleset
+      compliance is acceptable (some licensors price lean-back lower);
+      (2) cache encrypted catalogue tracks on-device and report from
+      cache to reduce repeat catalogue streams against the same
+      licensor minimum; (3) bulk-submit preview logs via S3 to avoid
+      hitting the 5 req/sec preview-log throttle and the associated
+      compliance fallout; (4) use 3-legged tokens correctly so logger
+      attribution is accurate (mis-attributed logs trigger Compliance
+      Testing rework with Client Success).
+  - name: Accountability
+    description: >-
+      The partner's Client Success Manager is the named contact for
+      both technical and commercial issues. Compliance Testing runs
+      before go-live and on any logger change. Royalty payments to
+      licensors are reconciled via the Label Reports surface; partners
+      reconcile against their own usage reports and sales credits
+      submitted through the /sales/credit-item endpoint.

@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/api-user-update-request-structure.json",
+  "name": "UserUpdateRequest",
+  "description": "UserUpdateRequest schema from 7digital API",
+  "properties": {
+    "email": {
+      "type": "string",
+      "example": "jane.smith@example.com"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Smith"
+    },
+    "country": {
+      "type": "string",
+      "example": "GB"
+    }
+  }
+}

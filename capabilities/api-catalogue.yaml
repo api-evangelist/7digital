@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 7digital API — Catalogue
+  description: '7digital API — Catalogue. 2 operations. Lead operation: 7digital Get Artist Id By Url. Self-contained Naftiko capability covering one 7digital / MassiveMusic business surface.'
+  tags:
+  - 7digital / MassiveMusic
+  - Music
+  - Catalogue
+  created: '2026-05-28'
+  modified: '2026-05-28'
+binds:
+- namespace: env
+  keys:
+    SEVENDIGITAL_CONSUMER_KEY: SEVENDIGITAL_CONSUMER_KEY
+    SEVENDIGITAL_CONSUMER_SECRET: SEVENDIGITAL_CONSUMER_SECRET
+capability:
+  consumes:
+  - type: http
+    namespace: api-catalogue
+    baseUri: https://api.7digital.com/1.2
+    description: 7digital API — Catalogue business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: oauth_consumer_key
+      value: '{{env.SEVENDIGITAL_CONSUMER_KEY}}'
+      placement: query
+    resources:
+    - name: catalogue-artist-byurl
+      path: /catalogue/artist-byurl
+      operations:
+      - name: getArtistIdByUrl
+        method: GET
+        description: 7digital Get Artist Id By Url
+        inputParameters:
+        - name: url
+          in: query
+          type: string
+          required: true
+          description: A 7digital artist web URL.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: catalogue-release-byurl
+      path: /catalogue/release-byurl
+      operations:
+      - name: getReleaseIdByUrl
+        method: GET
+        description: 7digital Get Release Id By Url
+        inputParameters:
+        - name: url
+          in: query
+          type: string
+          required: true
+          description: A 7digital release web URL.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: api-catalogue-rest
+    port: 8080
+    description: REST adapter for 7digital API — Catalogue. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/catalogue/artist-byurl
+      name: catalogue-artist-byurl
+      description: REST surface for catalogue-artist-byurl.
+      operations:
+      - method: GET
+        name: getArtistIdByUrl
+        description: 7digital Get Artist Id By Url
+        call: api-catalogue.getArtistIdByUrl
+        with:
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/catalogue/release-byurl
+      name: catalogue-release-byurl
+      description: REST surface for catalogue-release-byurl.
+      operations:
+      - method: GET
+        name: getReleaseIdByUrl
+        description: 7digital Get Release Id By Url
+        call: api-catalogue.getReleaseIdByUrl
+        with:
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: api-catalogue-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for 7digital API — Catalogue. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: get-artist-id-url
+      description: 7digital Get Artist Id By Url
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-catalogue.getArtistIdByUrl
+      with:
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-release-id-url
+      description: 7digital Get Release Id By Url
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: api-catalogue.getReleaseIdByUrl
+      with:
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.

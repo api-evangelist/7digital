@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/7digital/refs/heads/main/json-structure/streaming-platform-device-authorisation-structure.json",
+  "name": "DeviceAuthorisation",
+  "description": "DeviceAuthorisation schema from 7digital API",
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "example": "device-789012"
+    },
+    "deviceName": {
+      "type": "string",
+      "example": "Jane's iPhone"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "ios",
+        "android",
+        "web",
+        "windows",
+        "macos"
+      ],
+      "example": "ios"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "authorised",
+        "deauthorised"
+      ],
+      "example": "authorised"
+    },
+    "authorisedAt": {
+      "type": "datetime",
+      "example": "2026-05-01T10:00:00Z"
+    }
+  }
+}
