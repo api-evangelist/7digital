@@ -1,0 +1,1212 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital / MassiveMusic Streaming Platform API",
+    "version": "2026.05"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalogue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Browse Artists By Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/artists/browse",
+            "params": [
+              {
+                "name": "letter",
+                "value": "B",
+                "type": "query",
+                "description": "One or more starting letters to filter artists by."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get a list of artists from the catalogue whose names match the start letter(s) supplied."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/artists/:artistId/details",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "path",
+                "description": "7digital artist id."
+              }
+            ]
+          },
+          "docs": "Get all available artist details."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/artists/:artistId/releases",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "path",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "type",
+                "value": "album",
+                "type": "query",
+                "description": "Release type filter."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get a list of releases by a given artist. Releases can be filtered by type."
+        },
+        {
+          "info": {
+            "name": "7digital Search Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/artists/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Search the catalogue for artists matching the search query. Responses are weighted by popularity based on platform usage."
+        },
+        {
+          "info": {
+            "name": "7digital Get Releases Batch Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/releases/details/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get details of multiple releases in one request. Invalid releases are omitted unless `showErrors` is true."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/releases/:releaseId/details",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "path",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get all available details for a given release."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Track Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/releases/:releaseId/tracks",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "path",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get a list of all tracks constituting the release."
+        },
+        {
+          "info": {
+            "name": "7digital Search Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/releases/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Search the catalogue for releases matching the search query. Responses are weighted by popularity based on platform usage."
+        },
+        {
+          "info": {
+            "name": "7digital Search Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/tracks/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Search the catalogue for tracks matching the search query. Responses are weighted by popularity based on platform usage."
+        },
+        {
+          "info": {
+            "name": "7digital Get Tracks Batch Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/tracks/details/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get details of multiple tracks in one request. Invalid tracks are omitted unless `showErrors` is true."
+        },
+        {
+          "info": {
+            "name": "7digital Get Track Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/tracks/:trackId/details",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ]
+          },
+          "docs": "Get all available details for a given track."
+        },
+        {
+          "info": {
+            "name": "7digital Download Track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/tracks/:trackId/download",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ]
+          },
+          "docs": "Get a signed URL or stream of the track's media file."
+        },
+        {
+          "info": {
+            "name": "7digital Get Usage Type Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/usage-types"
+          },
+          "docs": "List usage types available for content in the catalogue (licensing scopes)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Interactive Radio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Create Interactive Radio Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/interactive-radio/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Interactive Radio listening session from one or more playlists. A listening session is required per user, each time they launch a station. It governs which tracks can be played and tracks the skip budget within the configured ruleset (e.g. DMCA, GVL)."
+        },
+        {
+          "info": {
+            "name": "7digital Delete Interactive Radio Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.7digital.com/interactive-radio/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "Interactive Radio session id."
+              }
+            ]
+          },
+          "docs": "Delete an active listening session."
+        },
+        {
+          "info": {
+            "name": "7digital Get Interactive Radio Next Track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/interactive-radio/sessions/:sessionId/next-track",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "Interactive Radio session id."
+              }
+            ]
+          },
+          "docs": "Get the next playable track within the listening session, governed by the ruleset configured for your service."
+        },
+        {
+          "info": {
+            "name": "7digital Post Interactive Radio Playback Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/interactive-radio/sessions/:sessionId/events",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "Interactive Radio session id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send the user's playback events. These events influence which tracks are allowed to be played and skipped in the current listening session."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Logging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Report Catalogue Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/logging/catalogue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Report a track that has been streamed to a user listening in a radio-style playback. Streams should be logged in near real time, or the same day in batch."
+        },
+        {
+          "info": {
+            "name": "7digital Report Preview Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/logging/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Report a preview clip that has been played. Acceptable usage is 5 POST requests per second with batches of up to 500 logs per request."
+        },
+        {
+          "info": {
+            "name": "7digital Report Subscriber Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/logging/subscriber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Report a track that has been streamed by a subscriber. Logs should be sent in near real-time, or the same day in batches of 10–20 logs per request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Streaming",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Stream Preview Clip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/preview/:trackId",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              },
+              {
+                "name": "format",
+                "value": "mp3",
+                "type": "query",
+                "description": "Audio format for the stream."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Stream a track preview clip (HTTP Progressive). All preview clip plays must be reported via the preview logging endpoint."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Catalogue Track Hls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/catalogue/:trackId/hls",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Stream any catalogue track available in the user's region (HLS). Designed for non-subscription radio-style plays. Tracks can be cached in an encrypted format and all plays must be reported via the catalogue logging endpoint."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Catalogue Track Progressive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/catalogue/:trackId/progressive",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "HTTP Progressive variant of catalogue streaming. Same usage rules as the HLS variant."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Locker Track Hls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/locker/:trackId/hls",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Stream a previously purchased track from a user's locker (HLS). Supports online plays and offline caching."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Locker Track Progressive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/locker/:trackId/progressive",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "HTTP Progressive variant of locker streaming."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Subscription Track Hls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/subscription/:trackId/hls",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              },
+              {
+                "name": "clientId",
+                "value": "device-789012",
+                "type": "query",
+                "description": "Identifier of the device requesting playback (used for concurrency control)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Stream a track to a valid subscriber (HLS). Requires an active subscription in the user's region. When a clientId is supplied, concurrent multi-device playback is blocked."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Subscription Track Progressive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/subscription/:trackId/progressive",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "HTTP Progressive variant of subscription streaming."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Subscription Track Offline Hls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/subscription/:trackId/offline/hls",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Bulk-cache a subscription track for offline playback (HLS). Requires the device to be pre-authorised via the offline streaming endpoint. All offline plays must be reported when connectivity is restored."
+        },
+        {
+          "info": {
+            "name": "7digital Stream Subscription Track Offline Progressive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/streaming/subscription/:trackId/offline/progressive",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "HTTP Progressive variant of offline subscription streaming."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Offline Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Authorize Offline Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/users/:userId/unlimitedStreaming/offline",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Authorise a device for offline subscription streaming. POST body can be JSON or XML."
+        },
+        {
+          "info": {
+            "name": "7digital Get Offline Device Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/users/:userId/unlimitedStreaming/offline/:deviceId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "deviceId",
+                "value": "device-789012",
+                "type": "path",
+                "description": "Identifier of a registered offline device."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the offline status of a specified device."
+        },
+        {
+          "info": {
+            "name": "7digital List Offline Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/users/:userId/unlimitedStreaming/devices",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of all of the user's registered devices."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Download Purchases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Download Purchase Zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/users/:userId/downloads/purchases/:purchaseId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "purchaseId",
+                "value": "purchase-789012",
+                "type": "path",
+                "description": "7digital purchase id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Download all tracks purchased in a transaction as a single ZIP file. Highest available quality is used."
+        },
+        {
+          "info": {
+            "name": "7digital Download Purchased Release Zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/users/:userId/downloads/releases/:releaseId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "path",
+                "description": "7digital release id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Download all tracks in a purchased release as a single ZIP file."
+        },
+        {
+          "info": {
+            "name": "7digital Download Purchased Track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/users/:userId/downloads/tracks/:trackId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Download a purchased track."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sales",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get User Locker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/users/:userId/locker",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a paged list of releases and tracks in a user's locker."
+        },
+        {
+          "info": {
+            "name": "7digital Credit Sales Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/sales/credit-item",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Log a sale of a track or release for the specified user and add it to their locker. Currency must match the one provided for the content (typically USD). Returns XML responses only."
+        },
+        {
+          "info": {
+            "name": "7digital Report Release Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/sales/refund/release",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a purchase of a release from the sales report when the purchase has been refunded."
+        },
+        {
+          "info": {
+            "name": "7digital Report Track Refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/sales/refund/track",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a purchase of a track from the sales report when the purchase has been refunded."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Playlists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital List Playlists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/playlists",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "query",
+                "description": "Filter playlists by user."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get a list of the partner's playlists."
+        },
+        {
+          "info": {
+            "name": "7digital Create Playlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/playlists",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "query",
+                "description": "User to associate the playlist with."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new playlist tied to your partner consumer key. Can optionally be associated with a user. Initial tracks may be supplied or the playlist can be created empty."
+        },
+        {
+          "info": {
+            "name": "7digital Update Playlist Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.7digital.com/playlists/:playlistId",
+            "params": [
+              {
+                "name": "playlistId",
+                "value": "playlist-789012",
+                "type": "path",
+                "description": "7digital playlist id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a playlist's details. Does not affect playlist tracks. Use to, e.g., change visibility from private to public. Descriptions are truncated to 500 characters."
+        },
+        {
+          "info": {
+            "name": "7digital Add Tracks To Playlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/playlists/:playlistId/tracks",
+            "params": [
+              {
+                "name": "playlistId",
+                "value": "playlist-789012",
+                "type": "path",
+                "description": "7digital playlist id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add tracks to the playlist. All metadata must be provided in the call. The `source` and `audioUrl` properties are optional and may indicate an alternative source for the physical file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Create Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/subscriptions",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a user's subscription. The platform must be notified of all new subscriptions to grant streaming access and to support royalty and usage reporting. Subscriptions last for at most one month and must be renewed each cycle."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/users",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new user account. The OAuth 1.0 signature base string includes the parameters from the request entity-body if the body is single-part `application/x-www-form-urlencoded`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Content Delivery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Transfer Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/content-delivery/media-transfer",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "7digital track id."
+              },
+              {
+                "name": "format",
+                "value": "mp3",
+                "type": "query",
+                "description": "Audio format to retrieve."
+              },
+              {
+                "name": "bitrate",
+                "value": "320",
+                "type": "query",
+                "description": "Audio bitrate (kbps)."
+              }
+            ]
+          },
+          "docs": "Retrieve media files for any track — enables the download of an entire licensed catalogue in any supported format/bitrate. Acceptable usage is 50 requests per second. Use of this endpoint requires additional licensor due diligence."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

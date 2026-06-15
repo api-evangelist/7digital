@@ -1,0 +1,1725 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Releases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Releases By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/byDate",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List releases by release date window. Supports paging and territory filters."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/details",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              }
+            ]
+          },
+          "docs": "Get all available metadata for a release by 7digital release id."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Editorial",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/editorial",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get editorial commentary and review copy for a release."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/chart",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "period",
+                "value": "week",
+                "type": "query",
+                "description": "Chart period — typically `day`, `week`, `month`, `year`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get the current release chart for a given period and territory."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/recommend",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get recommended releases that fans of a seed release also purchase or stream."
+        },
+        {
+          "info": {
+            "name": "7digital Search Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Free-text search the 7digital catalogue for releases matching a query."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/tracks",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get the track listing for a given release."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/tags",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get the tags / genre labels applied to a release."
+        },
+        {
+          "info": {
+            "name": "7digital Match Release By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/match/byId",
+            "params": [
+              {
+                "name": "id",
+                "value": "00602445912025",
+                "type": "query",
+                "description": "The external identifier to match (e.g., UPC)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Match a release in a partner system to the 7digital release using an external identifier (UPC/EAN/GRid)."
+        },
+        {
+          "info": {
+            "name": "7digital Get New Releases By Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/bytag/new",
+            "params": [
+              {
+                "name": "tags",
+                "value": "rock,indie",
+                "type": "query",
+                "description": "One or more tag identifiers, comma-separated."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List new releases for a given tag or set of tags."
+        },
+        {
+          "info": {
+            "name": "7digital Get Top Releases By Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/bytag/top",
+            "params": [
+              {
+                "name": "tags",
+                "value": "rock,indie",
+                "type": "query",
+                "description": "One or more tag identifiers, comma-separated."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List top-performing releases for a given tag or set of tags."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Artists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Browse Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/browse",
+            "params": [
+              {
+                "name": "letter",
+                "value": "B",
+                "type": "query",
+                "description": "The starting letter or letters to browse by (e.g. `A`, `Be`)."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Browse artists in the 7digital catalogue whose names start with the given letter(s)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/chart",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "period",
+                "value": "week",
+                "type": "query",
+                "description": "Chart period — typically `day`, `week`, `month`, `year`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get the current artist chart for a given period and territory."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/details",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              }
+            ]
+          },
+          "docs": "Get all available metadata for an artist by 7digital artist id."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/releases",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "type",
+                "value": "album",
+                "type": "query",
+                "description": "Release type filter."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List releases by a given artist, optionally filtered by release type (album, single, etc.)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Similar Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/similar",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List artists similar to the seed artist."
+        },
+        {
+          "info": {
+            "name": "7digital Search Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Free-text search the 7digital catalogue for artists matching a query."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Top Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/topTracks",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List the top-streamed tracks by an artist."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/tags",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              }
+            ]
+          },
+          "docs": "Get the tags / genre labels applied to an artist."
+        },
+        {
+          "info": {
+            "name": "7digital Match Artist By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/match/byId",
+            "params": [
+              {
+                "name": "id",
+                "value": "mbid:5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+                "type": "query",
+                "description": "External artist identifier to match."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Match an artist in a partner system to the 7digital artist using an external identifier (e.g. MusicBrainz id)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Top Artists By Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/bytag/top",
+            "params": [
+              {
+                "name": "tags",
+                "value": "rock,indie",
+                "type": "query",
+                "description": "One or more tag identifiers, comma-separated."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List top-performing artists for a given tag or set of tags."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Track Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/chart",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "period",
+                "value": "week",
+                "type": "query",
+                "description": "Chart period — typically `day`, `week`, `month`, `year`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get the current track chart for a given period and territory."
+        },
+        {
+          "info": {
+            "name": "7digital Get Track Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/details",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "7digital track id."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              }
+            ]
+          },
+          "docs": "Get all available metadata for a track by 7digital track id."
+        },
+        {
+          "info": {
+            "name": "7digital Search Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Free-text search the 7digital catalogue for tracks matching a query."
+        },
+        {
+          "info": {
+            "name": "7digital Match Track By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/match/byId",
+            "params": [
+              {
+                "name": "id",
+                "value": "isrc:USRC17607839",
+                "type": "query",
+                "description": "External track identifier to match (e.g. ISRC)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Match a track in a partner system to the 7digital track using an external identifier (e.g. ISRC)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get All Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/tag"
+          },
+          "docs": "List all tags in the 7digital tag vocabulary."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Basket",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/basket",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              }
+            ]
+          },
+          "docs": "Get the current contents of a basket."
+        },
+        {
+          "info": {
+            "name": "7digital Create Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/basket/create"
+          },
+          "docs": "Create a new basket for a session or user."
+        },
+        {
+          "info": {
+            "name": "7digital Add Basket Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/basket/addItem",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              },
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to add."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "Track id to add."
+              }
+            ]
+          },
+          "docs": "Add a track or release to a basket."
+        },
+        {
+          "info": {
+            "name": "7digital Remove Basket Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/basket/removeItem",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              },
+              {
+                "name": "itemId",
+                "value": "item-789012",
+                "type": "query",
+                "description": "Basket item id to remove."
+              }
+            ]
+          },
+          "docs": "Remove a track or release from a basket."
+        },
+        {
+          "info": {
+            "name": "7digital Apply Basket Voucher",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/basket/applyVoucher",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "voucherCode",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Apply a discount voucher to a basket."
+        },
+        {
+          "info": {
+            "name": "7digital Add Priced Basket Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/basket/addpriceditem",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              },
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to add."
+              },
+              {
+                "name": "price",
+                "value": "999",
+                "type": "query",
+                "description": "Price to apply to the item (in minor units)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Add an item with a specific price to a basket (partner pricing flow)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Basket PayPal Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/basket/paypalurl",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              }
+            ]
+          },
+          "docs": "Generate a PayPal checkout URL for a basket."
+        },
+        {
+          "info": {
+            "name": "7digital Complete Basket PayPal Purchase",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/basket/completepaypalpurchase",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "payerId",
+                  "value": ""
+                },
+                {
+                  "name": "token",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Complete a PayPal purchase after the user has authorised payment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get User Unlimited Streaming",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/unlimitedStreaming",
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the status of the unlimited streaming subscription for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Update User Unlimited Streaming",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/unlimitedStreaming",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "userId",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create or update the unlimited streaming subscription for a user (partner-scoped)."
+        },
+        {
+          "info": {
+            "name": "7digital Get User Locker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/locker",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the locker (all purchased tracks and releases) for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/item",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to purchase."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "Track id to purchase."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase a single track or release for the authenticated user using their default payment method."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Rrp Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/rrpitem",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to purchase."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase an item at RRP for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/basket",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase the entire contents of the user's basket."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Priced Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/priceditem",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to purchase."
+              },
+              {
+                "name": "price",
+                "value": "999",
+                "type": "query",
+                "description": "Partner-supplied price (in minor units)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase an item at a partner-supplied price."
+        },
+        {
+          "info": {
+            "name": "7digital List User Payment Cards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/payment/card",
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List the payment cards registered to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Select User Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/payment/card/select",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "cardId",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Set a registered payment card as the user's default card."
+        },
+        {
+          "info": {
+            "name": "7digital Delete User Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/payment/card/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "cardId",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a payment card from the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Register User Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/payment/cardregistration",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Start the registration flow for a new payment card."
+        },
+        {
+          "info": {
+            "name": "7digital Get User Card Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/payment/cardregistration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "cardreg-789012",
+                "type": "path",
+                "description": "Card registration id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Poll the status of a pending card registration."
+        },
+        {
+          "info": {
+            "name": "7digital Deliver User Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/deliveritem",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Purchased release to deliver."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "Purchased track to deliver."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a delivery URL for a purchased item (download or stream link)."
+        },
+        {
+          "info": {
+            "name": "7digital Signup User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/signup",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Sign up a new user with a 7digital account."
+        },
+        {
+          "info": {
+            "name": "7digital Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/create",
+            "params": [
+              {
+                "name": "email",
+                "value": "jane.smith@example.com",
+                "type": "query",
+                "description": "Email address of the new user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new user partner-side (typically as part of an integrated signup flow)."
+        },
+        {
+          "info": {
+            "name": "7digital Get User Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/details",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "query",
+                "description": "The user id to look up."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the profile of a user (partner-scoped lookup)."
+        },
+        {
+          "info": {
+            "name": "7digital Authenticate User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/authenticate",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "email",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Authenticate a user by email and password and return a partner-scoped access token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Find Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/users",
+            "params": [
+              {
+                "name": "email",
+                "value": "jane.smith@example.com",
+                "type": "query",
+                "description": "Filter by user email."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Find users in the partner's user directory."
+        },
+        {
+          "info": {
+            "name": "7digital Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.7digital.com/1.2/users/:id/update",
+            "params": [
+              {
+                "name": "id",
+                "value": "500123",
+                "type": "path",
+                "description": "The user id to update."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Update a user's profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Territories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/countries"
+          },
+          "docs": "List the supported sales territories with ISO country codes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Translations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Translations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/translations",
+            "params": [
+              {
+                "name": "locale",
+                "value": "en-GB",
+                "type": "query",
+                "description": "Locale identifier (BCP 47)."
+              }
+            ]
+          },
+          "docs": "Get localised translation bundles for catalogue strings."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "IpLookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Resolve Country For Ip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/country/resolve",
+            "params": [
+              {
+                "name": "ip",
+                "value": "10.0.0.1",
+                "type": "query",
+                "description": "IPv4 or IPv6 address to look up."
+              }
+            ]
+          },
+          "docs": "Resolve the country for an end-user's IP address (for geo-restriction checks)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Editorial",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Editorial List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/editorial/list",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List 7digital editorial features, banners and curated slots for a territory."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalogue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Artist Id By Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/catalogue/artist-byurl",
+            "params": [
+              {
+                "name": "url",
+                "value": "https://uk.7digital.com/artist/the-beatles",
+                "type": "query",
+                "description": "A 7digital artist web URL."
+              }
+            ]
+          },
+          "docs": "Resolve a 7digital artist id from a 7digital web URL."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Id By Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/catalogue/release-byurl",
+            "params": [
+              {
+                "name": "url",
+                "value": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062",
+                "type": "query",
+                "description": "A 7digital release web URL."
+              }
+            ]
+          },
+          "docs": "Resolve a 7digital release id from a 7digital web URL."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Payment Card Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/payment/card/type"
+          },
+          "docs": "List the payment card types supported by 7digital."
+        },
+        {
+          "info": {
+            "name": "7digital Get Payment Voucher Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/payment/voucher/details",
+            "params": [
+              {
+                "name": "voucherCode",
+                "value": "SUMMER25",
+                "type": "query",
+                "description": "Voucher code to look up."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Look up details for a voucher code (validity, value, redemption status)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
