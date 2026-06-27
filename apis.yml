@@ -50,29 +50,29 @@ apis:
         url: json-schema/
       - type: JSONStructure
         url: json-structure/
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/7digital-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/
-      - type: SDK
+      - type: SDKs
         title: Node.js SDK
         url: https://github.com/7digital/7digital-api
-      - type: SDK
+      - type: SDKs
         title: Python SDK
         url: https://github.com/7digital/python-7digital-api
-      - type: SDK
+      - type: SDKs
         title: .NET (C#) Wrapper
         url: https://github.com/7digital/SevenDigital.Api.Wrapper
-      - type: SDK
+      - type: SDKs
         title: .NET (C#) Schema
         url: https://github.com/7digital/SevenDigital.Api.Schema
-      - type: SDK
+      - type: SDKs
         title: Java Client (Scala)
         url: https://github.com/7digital/SevenDigital.Api.Client
-      - type: SDK
+      - type: SDKs
         title: iOS SDK (archived)
         url: https://github.com/7digital/7digital-iOS-SDK
-      - type: SDK
+      - type: SDKs
         title: Android SDK (archived)
         url: https://github.com/7digital/7digital-Android-SDK
       - type: CodeExamples
@@ -115,9 +115,9 @@ apis:
         url: json-schema/
       - type: JSONStructure
         url: json-structure/
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/7digital-streaming-platform-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/
       - type: PostmanCollection
         url: https://docs.massivemusic.com/docs/postman-sample-requests
