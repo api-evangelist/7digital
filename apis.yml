@@ -122,6 +122,10 @@ apis:
       - type: PostmanCollection
         url: https://docs.massivemusic.com/docs/postman-sample-requests
 common:
+  - type: DomainSecurity
+    url: security/7digital-domain-security.yml
+  - type: Authentication
+    url: authentication/7digital-authentication.yml
   - type: Website
     url: https://uk.7digital.com
   - type: Documentation
