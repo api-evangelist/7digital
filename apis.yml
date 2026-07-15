@@ -122,6 +122,8 @@ apis:
       - type: PostmanCollection
         url: https://docs.massivemusic.com/docs/postman-sample-requests
 common:
+  - type: AgenticAccess
+    url: agentic-access/7digital-agentic-access.yml
   - type: DomainSecurity
     url: security/7digital-domain-security.yml
   - type: Authentication
