@@ -1,0 +1,392 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Tracks API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Tracks
+  description: Search, chart, and look up 7digital track metadata.
+paths:
+  /track/chart:
+    get:
+      operationId: getTrackChart
+      summary: 7digital Get Track Chart
+      description: Get the current track chart for a given period and territory.
+      tags:
+      - Tracks
+      parameters:
+      - $ref: '#/components/parameters/Country'
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A chart of tracks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /track/details:
+    get:
+      operationId: getTrackDetails
+      summary: 7digital Get Track Details
+      description: Get all available metadata for a track by 7digital track id.
+      tags:
+      - Tracks
+      parameters:
+      - $ref: '#/components/parameters/TrackId'
+      - $ref: '#/components/parameters/Country'
+      responses:
+        '200':
+          description: Track metadata payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackDetailsResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /track/search:
+    get:
+      operationId: searchTracks
+      summary: 7digital Search Tracks
+      description: Free-text search the 7digital catalogue for tracks matching a query.
+      tags:
+      - Tracks
+      parameters:
+      - $ref: '#/components/parameters/Query'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of matching tracks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /track/match/byId:
+    get:
+      operationId: matchTrackById
+      summary: 7digital Match Track By Id
+      description: Match a track in a partner system to the 7digital track using an external identifier (e.g. ISRC).
+      tags:
+      - Tracks
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: External track identifier to match (e.g. ISRC).
+        schema:
+          type: string
+        example: isrc:USRC17607839
+      responses:
+        '200':
+          description: A matched track.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackDetailsResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    TrackId:
+      name: trackId
+      in: query
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+  schemas:
+    Track:
+      type: object
+      description: A 7digital track.
+      properties:
+        id:
+          type: string
+          description: 7digital track id.
+          example: '123456'
+        title:
+          type: string
+          description: Track title.
+          example: Come Together
+        version:
+          type: string
+          description: Track version (e.g. `Remastered 2019`).
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          description: Track number on the release.
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          description: International Standard Recording Code.
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          description: URL for the 30-second preview clip.
+          example: https://previews.7digital.com/clip/123456
+        price:
+          $ref: '#/components/schemas/Price'
+    Artist:
+      type: object
+      description: A 7digital artist.
+      properties:
+        id:
+          type: string
+          description: 7digital artist id.
+          example: '12345'
+        name:
+          type: string
+          description: Artist name.
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Release:
+      type: object
+      description: A 7digital release (album, single, EP, compilation).
+      properties:
+        id:
+          type: string
+          description: 7digital release id.
+          example: '11700062'
+        title:
+          type: string
+          description: Release title.
+          example: Abbey Road
+        version:
+          type: string
+          description: Release version (e.g. `Remastered`).
+          example: Remastered
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        explicit:
+          type: boolean
+          example: false
+        upc:
+          type: string
+          description: Universal Product Code (UPC/EAN).
+          example: 00602445912025
+        price:
+          $ref: '#/components/schemas/Price'
+    ErrorResponse:
+      type: object
+      description: Standard 7digital error envelope.
+      properties:
+        status:
+          type: string
+          description: Always `error` on a failure.
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
+              example: 2001
+            message:
+              type: string
+              description: Human-readable error message.
+              example: Resource not found
+            errors:
+              type: array
+              description: Per-item errors for batch requests (code 1008).
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  index:
+                    type: integer
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    TrackDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        track:
+          $ref: '#/components/schemas/Track'
+  responses:
+    NotFoundError:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

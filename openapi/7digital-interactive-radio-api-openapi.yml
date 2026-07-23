@@ -1,0 +1,322 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Interactive Radio API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Interactive Radio
+  description: Lean-back, ruleset-governed (DMCA, GVL) radio listening sessions.
+paths:
+  /interactive-radio/sessions:
+    post:
+      operationId: createInteractiveRadioSession
+      summary: 7digital Create Interactive Radio Session
+      description: Create an Interactive Radio listening session from one or more playlists. A listening session is required per user, each time they launch a station. It governs which tracks can be played and tracks the skip budget within the configured ruleset (e.g. DMCA, GVL).
+      tags:
+      - Interactive Radio
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRadioSessionRequest'
+      responses:
+        '201':
+          description: A listening session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadioSession'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions/{sessionId}:
+    delete:
+      operationId: deleteInteractiveRadioSession
+      summary: 7digital Delete Interactive Radio Session
+      description: Delete an active listening session.
+      tags:
+      - Interactive Radio
+      parameters:
+      - $ref: '#/components/parameters/SessionIdPath'
+      responses:
+        '204':
+          description: Session deleted.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions/{sessionId}/next-track:
+    get:
+      operationId: getInteractiveRadioNextTrack
+      summary: 7digital Get Interactive Radio Next Track
+      description: Get the next playable track within the listening session, governed by the ruleset configured for your service.
+      tags:
+      - Interactive Radio
+      parameters:
+      - $ref: '#/components/parameters/SessionIdPath'
+      responses:
+        '200':
+          description: The next track to play.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RadioTrack'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /interactive-radio/sessions/{sessionId}/events:
+    post:
+      operationId: postInteractiveRadioPlaybackEvents
+      summary: 7digital Post Interactive Radio Playback Events
+      description: Send the user's playback events. These events influence which tracks are allowed to be played and skipped in the current listening session.
+      tags:
+      - Interactive Radio
+      parameters:
+      - $ref: '#/components/parameters/SessionIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlaybackEventBatch'
+      responses:
+        '202':
+          description: Events accepted for processing.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    RadioTrack:
+      type: object
+      properties:
+        track:
+          $ref: '#/components/schemas/Track'
+        streamUrl:
+          type: string
+          format: uri
+          example: https://streaming.7digital.com/hls/123456.m3u8
+        skipAllowed:
+          type: boolean
+          example: true
+    RadioSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        userId:
+          type: string
+          example: '500123'
+        ruleset:
+          type: string
+          enum:
+          - dmca
+          - gvl
+          - custom
+          example: dmca
+        skipsRemaining:
+          type: integer
+          example: 6
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:00Z'
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: Come Together
+        version:
+          type: string
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          example: https://previews.7digital.com/clip/123456
+    PlaybackEventBatch:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaybackEvent'
+      required:
+      - events
+    Artist:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        name:
+          type: string
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          example: Beatles, The
+    CreateRadioSessionRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: User the session is created for.
+          example: '500123'
+        playlistIds:
+          type: array
+          items:
+            type: string
+          example:
+          - playlist-789012
+        ruleset:
+          type: string
+          enum:
+          - dmca
+          - gvl
+          - custom
+          example: dmca
+        country:
+          type: string
+          minLength: 2
+          maxLength: 2
+          example: GB
+      required:
+      - userId
+      - playlistIds
+    Release:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '11700062'
+        title:
+          type: string
+          example: Abbey Road
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        upc:
+          type: string
+          example: 00602445912025
+        explicit:
+          type: boolean
+          example: false
+    PlaybackEvent:
+      type: object
+      properties:
+        trackId:
+          type: string
+          example: '123456'
+        eventType:
+          type: string
+          enum:
+          - start
+          - complete
+          - skip
+          - pause
+          - resume
+          example: complete
+        timestamp:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:45Z'
+        durationPlayed:
+          type: integer
+          description: Seconds of the track that were played.
+          example: 259
+      required:
+      - trackId
+      - eventType
+      - timestamp
+  parameters:
+    SessionIdPath:
+      name: sessionId
+      in: path
+      required: true
+      description: Interactive Radio session id.
+      schema:
+        type: string
+        format: uuid
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

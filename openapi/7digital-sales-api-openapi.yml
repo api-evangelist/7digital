@@ -1,0 +1,308 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Sales API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Sales
+  description: Log sales, log refunds, and manage a user's locker of purchased content.
+paths:
+  /users/{userId}/locker:
+    get:
+      operationId: getUserLocker
+      summary: 7digital Get User Locker
+      description: Get a paged list of releases and tracks in a user's locker.
+      tags:
+      - Sales
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/UserIdPath'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: The user's locker.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locker'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sales/credit-item:
+    post:
+      operationId: creditSalesItem
+      summary: 7digital Credit Sales Item
+      description: Log a sale of a track or release for the specified user and add it to their locker. Currency must match the one provided for the content (typically USD). Returns XML responses only.
+      tags:
+      - Sales
+      security:
+      - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreditItemRequest'
+      responses:
+        '200':
+          description: Sale logged.
+          content:
+            application/xml: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sales/refund/release:
+    post:
+      operationId: reportReleaseRefund
+      summary: 7digital Report Release Refund
+      description: Remove a purchase of a release from the sales report when the purchase has been refunded.
+      tags:
+      - Sales
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund reported.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sales/refund/track:
+    post:
+      operationId: reportTrackRefund
+      summary: 7digital Report Track Refund
+      description: Remove a purchase of a track from the sales report when the purchase has been refunded.
+      tags:
+      - Sales
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund reported.
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: Partner-scoped 7digital user id.
+      schema:
+        type: string
+      example: '500123'
+    Page:
+      name: page
+      in: query
+      description: 1-based page number.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+  schemas:
+    Locker:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    RefundRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        purchaseId:
+          type: string
+          example: purchase-789012
+        reason:
+          type: string
+          example: Customer request
+      required:
+      - userId
+      - purchaseId
+    CreditItemRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        releaseId:
+          type: string
+          example: '11700062'
+        trackId:
+          type: string
+          example: '123456'
+        currency:
+          type: string
+          description: ISO 4217 currency code matching the supplied wholesale price.
+          example: USD
+        price:
+          type: number
+          description: Retail price charged to the user.
+          example: 9.99
+      required:
+      - userId
+      - currency
+      - price
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: Come Together
+        version:
+          type: string
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          example: https://previews.7digital.com/clip/123456
+    Artist:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        name:
+          type: string
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          example: Beatles, The
+    Release:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '11700062'
+        title:
+          type: string
+          example: Abbey Road
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        upc:
+          type: string
+          example: 00602445912025
+        explicit:
+          type: boolean
+          example: false
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

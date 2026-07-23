@@ -1,0 +1,127 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Payment API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Payment
+  description: Payment metadata — supported card types and voucher details.
+paths:
+  /payment/card/type:
+    get:
+      operationId: getPaymentCardTypes
+      summary: 7digital Get Payment Card Types
+      description: List the payment card types supported by 7digital.
+      tags:
+      - Payment
+      responses:
+        '200':
+          description: A list of card types.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cardTypes:
+                    type: array
+                    items:
+                      type: string
+                      example: visa
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /payment/voucher/details:
+    get:
+      operationId: getPaymentVoucherDetails
+      summary: 7digital Get Payment Voucher Details
+      description: Look up details for a voucher code (validity, value, redemption status).
+      tags:
+      - Payment
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - name: voucherCode
+        in: query
+        required: true
+        description: Voucher code to look up.
+        schema:
+          type: string
+        example: SUMMER25
+      responses:
+        '200':
+          description: Voucher details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voucher'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Voucher:
+      type: object
+      properties:
+        code:
+          type: string
+          example: SUMMER25
+        value:
+          $ref: '#/components/schemas/Price'
+        type:
+          type: string
+          enum:
+          - percentage
+          - fixed
+          example: percentage
+        expiresAt:
+          type: string
+          format: date-time
+          example: '2026-12-31T23:59:59Z'
+        redeemed:
+          type: boolean
+          example: false
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

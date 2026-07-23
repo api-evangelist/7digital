@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Offline Devices API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Offline Devices
+  description: Authorise, list, and inspect devices registered for offline subscription playback.
+paths:
+  /users/{userId}/unlimitedStreaming/offline:
+    post:
+      operationId: authorizeOfflineDevice
+      summary: 7digital Authorize Offline Device
+      description: Authorise a device for offline subscription streaming. POST body can be JSON or XML.
+      tags:
+      - Offline Devices
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/UserIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceAuthorisationRequest'
+      responses:
+        '200':
+          description: Device authorisation record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthorisation'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/unlimitedStreaming/offline/{deviceId}:
+    get:
+      operationId: getOfflineDeviceStatus
+      summary: 7digital Get Offline Device Status
+      description: Get the offline status of a specified device.
+      tags:
+      - Offline Devices
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/UserIdPath'
+      - $ref: '#/components/parameters/DeviceIdPath'
+      responses:
+        '200':
+          description: Device authorisation status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceAuthorisation'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /users/{userId}/unlimitedStreaming/devices:
+    get:
+      operationId: listOfflineDevices
+      summary: 7digital List Offline Devices
+      description: Get a list of all of the user's registered devices.
+      tags:
+      - Offline Devices
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/UserIdPath'
+      responses:
+        '200':
+          description: A list of devices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  devices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DeviceAuthorisation'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    DeviceIdPath:
+      name: deviceId
+      in: path
+      required: true
+      description: Identifier of a registered offline device.
+      schema:
+        type: string
+      example: device-789012
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: Partner-scoped 7digital user id.
+      schema:
+        type: string
+      example: '500123'
+  schemas:
+    DeviceAuthorisation:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          example: device-789012
+        deviceName:
+          type: string
+          example: Jane's iPhone
+        platform:
+          type: string
+          enum:
+          - ios
+          - android
+          - web
+          - windows
+          - macos
+          example: ios
+        status:
+          type: string
+          enum:
+          - authorised
+          - deauthorised
+          example: authorised
+        authorisedAt:
+          type: string
+          format: date-time
+          example: '2026-05-01T10:00:00Z'
+    DeviceAuthorisationRequest:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          example: device-789012
+        deviceName:
+          type: string
+          example: Jane's iPhone
+        platform:
+          type: string
+          enum:
+          - ios
+          - android
+          - web
+          - windows
+          - macos
+          example: ios
+      required:
+      - deviceId
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

@@ -1,0 +1,909 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists User API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: User
+  description: Per-user account operations — locker, purchases, payment cards, subscriptions, signup.
+paths:
+  /user/unlimitedStreaming:
+    get:
+      operationId: getUserUnlimitedStreaming
+      summary: 7digital Get User Unlimited Streaming
+      description: Get the status of the unlimited streaming subscription for the authenticated user.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      responses:
+        '200':
+          description: Unlimited streaming subscription details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionStatus'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: updateUserUnlimitedStreaming
+      summary: 7digital Update User Unlimited Streaming
+      description: Create or update the unlimited streaming subscription for a user (partner-scoped).
+      tags:
+      - User
+      security:
+      - oauth1_two_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  description: The user id whose subscription is being updated.
+                  example: '500123'
+                status:
+                  type: string
+                  description: New subscription status.
+                  enum:
+                  - active
+                  - cancelled
+                  - expired
+                  example: active
+              required:
+              - userId
+              - status
+      responses:
+        '200':
+          description: The updated subscription status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionStatus'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/locker:
+    get:
+      operationId: getUserLocker
+      summary: 7digital Get User Locker
+      description: Get the locker (all purchased tracks and releases) for the authenticated user.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: The user's locker contents.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Locker'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/purchase/item:
+    get:
+      operationId: purchaseUserItem
+      summary: 7digital Purchase User Item
+      description: Purchase a single track or release for the authenticated user using their default payment method.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - name: releaseId
+        in: query
+        description: Release id to purchase.
+        schema:
+          type: string
+        example: '11700062'
+      - name: trackId
+        in: query
+        description: Track id to purchase.
+        schema:
+          type: string
+        example: '123456'
+      responses:
+        '200':
+          description: The completed purchase.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/purchase/rrpitem:
+    get:
+      operationId: purchaseUserRrpItem
+      summary: 7digital Purchase User Rrp Item
+      description: Purchase an item at RRP for the authenticated user.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - name: releaseId
+        in: query
+        description: Release id to purchase.
+        schema:
+          type: string
+        example: '11700062'
+      responses:
+        '200':
+          description: The completed purchase.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/purchase/basket:
+    get:
+      operationId: purchaseUserBasket
+      summary: 7digital Purchase User Basket
+      description: Purchase the entire contents of the user's basket.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      responses:
+        '200':
+          description: The completed purchase.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/purchase/priceditem:
+    get:
+      operationId: purchaseUserPricedItem
+      summary: 7digital Purchase User Priced Item
+      description: Purchase an item at a partner-supplied price.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - name: releaseId
+        in: query
+        description: Release id to purchase.
+        schema:
+          type: string
+        example: '11700062'
+      - name: price
+        in: query
+        required: true
+        description: Partner-supplied price (in minor units).
+        schema:
+          type: number
+        example: 999
+      responses:
+        '200':
+          description: The completed purchase.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/payment/card:
+    get:
+      operationId: listUserPaymentCards
+      summary: 7digital List User Payment Cards
+      description: List the payment cards registered to the authenticated user.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      responses:
+        '200':
+          description: A list of payment cards.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cards:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaymentCard'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/payment/card/select:
+    post:
+      operationId: selectUserPaymentCard
+      summary: 7digital Select User Payment Card
+      description: Set a registered payment card as the user's default card.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                cardId:
+                  type: string
+                  description: The card id to mark as default.
+                  example: card-789012
+              required:
+              - cardId
+      responses:
+        '200':
+          description: Card selected.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/payment/card/delete:
+    post:
+      operationId: deleteUserPaymentCard
+      summary: 7digital Delete User Payment Card
+      description: Delete a payment card from the authenticated user.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                cardId:
+                  type: string
+                  description: The card id to delete.
+                  example: card-789012
+              required:
+              - cardId
+      responses:
+        '200':
+          description: Card deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/payment/cardregistration:
+    post:
+      operationId: registerUserPaymentCard
+      summary: 7digital Register User Payment Card
+      description: Start the registration flow for a new payment card.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CardRegistrationRequest'
+      responses:
+        '200':
+          description: A card registration handle.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardRegistration'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/payment/cardregistration/{id}:
+    get:
+      operationId: getUserCardRegistration
+      summary: 7digital Get User Card Registration
+      description: Poll the status of a pending card registration.
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Card registration id.
+        schema:
+          type: string
+        example: cardreg-789012
+      responses:
+        '200':
+          description: The card registration record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardRegistration'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/deliveritem:
+    get:
+      operationId: deliverUserItem
+      summary: 7digital Deliver User Item
+      description: Get a delivery URL for a purchased item (download or stream link).
+      tags:
+      - User
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - name: releaseId
+        in: query
+        description: Purchased release to deliver.
+        schema:
+          type: string
+        example: '11700062'
+      - name: trackId
+        in: query
+        description: Purchased track to deliver.
+        schema:
+          type: string
+        example: '123456'
+      responses:
+        '200':
+          description: A delivery URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deliveryUrl:
+                    type: string
+                    format: uri
+                    description: The signed delivery URL.
+                    example: https://download.7digital.com/abc123
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/signup:
+    post:
+      operationId: signupUser
+      summary: 7digital Signup User
+      description: Sign up a new user with a 7digital account.
+      tags:
+      - User
+      security:
+      - oauth1_two_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSignupRequest'
+      responses:
+        '200':
+          description: The newly created user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/create:
+    get:
+      operationId: createUser
+      summary: 7digital Create User
+      description: Create a new user partner-side (typically as part of an integrated signup flow).
+      tags:
+      - User
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - name: email
+        in: query
+        required: true
+        description: Email address of the new user.
+        schema:
+          type: string
+          format: email
+        example: jane.smith@example.com
+      responses:
+        '200':
+          description: The newly created user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/details:
+    get:
+      operationId: getUserDetails
+      summary: 7digital Get User Details
+      description: Get the profile of a user (partner-scoped lookup).
+      tags:
+      - User
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        description: The user id to look up.
+        schema:
+          type: string
+        example: '500123'
+      responses:
+        '200':
+          description: The user profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /user/authenticate:
+    post:
+      operationId: authenticateUser
+      summary: 7digital Authenticate User
+      description: Authenticate a user by email and password and return a partner-scoped access token.
+      tags:
+      - User
+      security:
+      - oauth1_two_legged: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User email.
+                  example: jane.smith@example.com
+                password:
+                  type: string
+                  format: password
+                  description: User password.
+                  example: P@ssw0rd123!
+              required:
+              - email
+              - password
+      responses:
+        '200':
+          description: An authenticated user payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CardRegistration:
+      type: object
+      properties:
+        registrationId:
+          type: string
+          example: cardreg-789012
+        status:
+          type: string
+          enum:
+          - pending
+          - registered
+          - failed
+          example: registered
+        cardId:
+          type: string
+          nullable: true
+          example: card-789012
+    Locker:
+      type: object
+      description: A user's locker of purchased tracks and releases.
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    BasketItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          example: item-789012
+        releaseId:
+          type: string
+          nullable: true
+          example: '11700062'
+        trackId:
+          type: string
+          nullable: true
+          example: '123456'
+        price:
+          $ref: '#/components/schemas/Price'
+    SubscriptionStatus:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        status:
+          type: string
+          enum:
+          - active
+          - cancelled
+          - expired
+          example: active
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-01'
+        endDate:
+          type: string
+          format: date
+          example: '2026-02-01'
+        productId:
+          type: string
+          example: unlimited-streaming
+    Purchase:
+      type: object
+      properties:
+        purchaseId:
+          type: string
+          example: purchase-789012
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - failed
+          example: completed
+        total:
+          $ref: '#/components/schemas/Price'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        receiptUrl:
+          type: string
+          format: uri
+          example: https://www.7digital.com/receipts/purchase-789012
+    Track:
+      type: object
+      description: A 7digital track.
+      properties:
+        id:
+          type: string
+          description: 7digital track id.
+          example: '123456'
+        title:
+          type: string
+          description: Track title.
+          example: Come Together
+        version:
+          type: string
+          description: Track version (e.g. `Remastered 2019`).
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          description: Track number on the release.
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          description: International Standard Recording Code.
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          description: URL for the 30-second preview clip.
+          example: https://previews.7digital.com/clip/123456
+        price:
+          $ref: '#/components/schemas/Price'
+    UserSignupRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        password:
+          type: string
+          format: password
+          example: P@ssw0rd123!
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
+      required:
+      - email
+      - password
+      - country
+    CardRegistrationRequest:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          example: '4242424242424242'
+        expiryMonth:
+          type: integer
+          example: 12
+        expiryYear:
+          type: integer
+          example: 2028
+        cvv:
+          type: string
+          example: '123'
+        cardholderName:
+          type: string
+          example: Jane Smith
+      required:
+      - cardNumber
+      - expiryMonth
+      - expiryYear
+      - cvv
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '500123'
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
+        accessToken:
+          type: string
+          description: Partner-scoped user access token (returned on signup / authenticate).
+          example: tok-a1b2c3d4
+        accessTokenSecret:
+          type: string
+          description: Partner-scoped user access token secret.
+          example: sec-a1b2c3d4
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Artist:
+      type: object
+      description: A 7digital artist.
+      properties:
+        id:
+          type: string
+          description: 7digital artist id.
+          example: '12345'
+        name:
+          type: string
+          description: Artist name.
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
+    Release:
+      type: object
+      description: A 7digital release (album, single, EP, compilation).
+      properties:
+        id:
+          type: string
+          description: 7digital release id.
+          example: '11700062'
+        title:
+          type: string
+          description: Release title.
+          example: Abbey Road
+        version:
+          type: string
+          description: Release version (e.g. `Remastered`).
+          example: Remastered
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        explicit:
+          type: boolean
+          example: false
+        upc:
+          type: string
+          description: Universal Product Code (UPC/EAN).
+          example: 00602445912025
+        price:
+          $ref: '#/components/schemas/Price'
+    PaymentCard:
+      type: object
+      properties:
+        cardId:
+          type: string
+          example: card-789012
+        last4:
+          type: string
+          example: '4242'
+        brand:
+          type: string
+          enum:
+          - visa
+          - mastercard
+          - amex
+          - discover
+          example: visa
+        expiryMonth:
+          type: integer
+          example: 12
+        expiryYear:
+          type: integer
+          example: 2028
+        isDefault:
+          type: boolean
+          example: true
+  parameters:
+    BasketId:
+      name: basketId
+      in: query
+      required: true
+      description: 7digital basket id.
+      schema:
+        type: string
+        format: uuid
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

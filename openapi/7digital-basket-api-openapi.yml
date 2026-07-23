@@ -1,0 +1,349 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Basket API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Basket
+  description: Manage purchase baskets, apply vouchers, and complete PayPal checkout.
+paths:
+  /basket:
+    get:
+      operationId: getBasket
+      summary: 7digital Get Basket
+      description: Get the current contents of a basket.
+      tags:
+      - Basket
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      responses:
+        '200':
+          description: The basket contents.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/create:
+    get:
+      operationId: createBasket
+      summary: 7digital Create Basket
+      description: Create a new basket for a session or user.
+      tags:
+      - Basket
+      responses:
+        '200':
+          description: The newly created basket.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/addItem:
+    get:
+      operationId: addBasketItem
+      summary: 7digital Add Basket Item
+      description: Add a track or release to a basket.
+      tags:
+      - Basket
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      - name: releaseId
+        in: query
+        description: Release id to add.
+        schema:
+          type: string
+        example: '11700062'
+      - name: trackId
+        in: query
+        description: Track id to add.
+        schema:
+          type: string
+        example: '123456'
+      responses:
+        '200':
+          description: The updated basket.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/removeItem:
+    get:
+      operationId: removeBasketItem
+      summary: 7digital Remove Basket Item
+      description: Remove a track or release from a basket.
+      tags:
+      - Basket
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      - name: itemId
+        in: query
+        required: true
+        description: Basket item id to remove.
+        schema:
+          type: string
+        example: item-789012
+      responses:
+        '200':
+          description: The updated basket.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/applyVoucher:
+    post:
+      operationId: applyBasketVoucher
+      summary: 7digital Apply Basket Voucher
+      description: Apply a discount voucher to a basket.
+      tags:
+      - Basket
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      requestBody:
+        required: true
+        description: Voucher application payload.
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                voucherCode:
+                  type: string
+                  description: Voucher code to apply.
+                  example: SUMMER25
+              required:
+              - voucherCode
+      responses:
+        '200':
+          description: The basket with voucher applied.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/addpriceditem:
+    get:
+      operationId: addPricedBasketItem
+      summary: 7digital Add Priced Basket Item
+      description: Add an item with a specific price to a basket (partner pricing flow).
+      tags:
+      - Basket
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      - name: releaseId
+        in: query
+        description: Release id to add.
+        schema:
+          type: string
+        example: '11700062'
+      - name: price
+        in: query
+        required: true
+        description: Price to apply to the item (in minor units).
+        schema:
+          type: number
+        example: 999
+      responses:
+        '200':
+          description: The updated basket.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Basket'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/paypalurl:
+    get:
+      operationId: getBasketPayPalUrl
+      summary: 7digital Get Basket PayPal Url
+      description: Generate a PayPal checkout URL for a basket.
+      tags:
+      - Basket
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      responses:
+        '200':
+          description: A PayPal checkout URL.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  paypalUrl:
+                    type: string
+                    format: uri
+                    description: The PayPal checkout URL.
+                    example: https://www.paypal.com/checkoutnow?token=EC-1234
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /basket/completepaypalpurchase:
+    post:
+      operationId: completeBasketPayPalPurchase
+      summary: 7digital Complete Basket PayPal Purchase
+      description: Complete a PayPal purchase after the user has authorised payment.
+      tags:
+      - Basket
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/BasketId'
+      requestBody:
+        required: true
+        description: PayPal purchase completion payload.
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                payerId:
+                  type: string
+                  description: PayPal payer id.
+                  example: AB12CD34EF
+                token:
+                  type: string
+                  description: PayPal token returned to the callback URL.
+                  example: EC-1234
+              required:
+              - payerId
+              - token
+      responses:
+        '200':
+          description: The completed purchase.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Purchase'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    BasketItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          example: item-789012
+        releaseId:
+          type: string
+          nullable: true
+          example: '11700062'
+        trackId:
+          type: string
+          nullable: true
+          example: '123456'
+        price:
+          $ref: '#/components/schemas/Price'
+    Purchase:
+      type: object
+      properties:
+        purchaseId:
+          type: string
+          example: purchase-789012
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - failed
+          example: completed
+        total:
+          $ref: '#/components/schemas/Price'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        receiptUrl:
+          type: string
+          format: uri
+          example: https://www.7digital.com/receipts/purchase-789012
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Basket:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        total:
+          $ref: '#/components/schemas/Price'
+        voucherCode:
+          type: string
+          nullable: true
+          example: SUMMER25
+  parameters:
+    BasketId:
+      name: basketId
+      in: query
+      required: true
+      description: 7digital basket id.
+      schema:
+        type: string
+        format: uuid
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

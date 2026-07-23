@@ -1,0 +1,640 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Releases API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Releases
+  description: Browse, search, recommend, and chart 7digital releases (albums, singles, EPs).
+paths:
+  /release/byDate:
+    get:
+      operationId: getReleasesByDate
+      summary: 7digital Get Releases By Date
+      description: List releases by release date window. Supports paging and territory filters.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/Country'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/AuthError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/details:
+    get:
+      operationId: getReleaseDetails
+      summary: 7digital Get Release Details
+      description: Get all available metadata for a release by 7digital release id.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/ReleaseId'
+      - $ref: '#/components/parameters/Country'
+      responses:
+        '200':
+          description: Release metadata payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseDetailsResponse'
+        '401':
+          $ref: '#/components/responses/AuthError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/editorial:
+    get:
+      operationId: getReleaseEditorial
+      summary: 7digital Get Release Editorial
+      description: Get editorial commentary and review copy for a release.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/ReleaseId'
+      responses:
+        '200':
+          description: Editorial copy for the release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditorialResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/chart:
+    get:
+      operationId: getReleaseChart
+      summary: 7digital Get Release Chart
+      description: Get the current release chart for a given period and territory.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/Country'
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A chart of releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/recommend:
+    get:
+      operationId: getReleaseRecommendations
+      summary: 7digital Get Release Recommendations
+      description: Get recommended releases that fans of a seed release also purchase or stream.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/ReleaseId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A list of recommended releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/search:
+    get:
+      operationId: searchReleases
+      summary: 7digital Search Releases
+      description: Free-text search the 7digital catalogue for releases matching a query.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/Query'
+      - $ref: '#/components/parameters/Country'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A paged list of matching releases.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/tracks:
+    get:
+      operationId: getReleaseTracks
+      summary: 7digital Get Release Tracks
+      description: Get the track listing for a given release.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/ReleaseId'
+      responses:
+        '200':
+          description: A track listing for the release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/tags:
+    get:
+      operationId: getReleaseTags
+      summary: 7digital Get Release Tags
+      description: Get the tags / genre labels applied to a release.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/ReleaseId'
+      responses:
+        '200':
+          description: A list of tags for the release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/match/byId:
+    get:
+      operationId: matchReleaseById
+      summary: 7digital Match Release By Id
+      description: Match a release in a partner system to the 7digital release using an external identifier (UPC/EAN/GRid).
+      tags:
+      - Releases
+      security:
+      - oauth1_two_legged: []
+      parameters:
+      - name: id
+        in: query
+        required: true
+        description: The external identifier to match (e.g., UPC).
+        schema:
+          type: string
+        example: 00602445912025
+      responses:
+        '200':
+          description: A matched release.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseDetailsResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/bytag/new:
+    get:
+      operationId: getNewReleasesByTags
+      summary: 7digital Get New Releases By Tags
+      description: List new releases for a given tag or set of tags.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/Tags'
+      - $ref: '#/components/parameters/Country'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A list of new releases for the tag(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /release/bytag/top:
+    get:
+      operationId: getTopReleasesByTags
+      summary: 7digital Get Top Releases By Tags
+      description: List top-performing releases for a given tag or set of tags.
+      tags:
+      - Releases
+      parameters:
+      - $ref: '#/components/parameters/Tags'
+      - $ref: '#/components/parameters/Country'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: A list of top releases for the tag(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReleaseListResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    Tags:
+      name: tags
+      in: query
+      required: true
+      description: One or more tag identifiers, comma-separated.
+      schema:
+        type: string
+      example: rock,indie
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    ReleaseId:
+      name: releaseId
+      in: query
+      required: true
+      description: 7digital release id.
+      schema:
+        type: string
+      example: '11700062'
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+  schemas:
+    Tag:
+      type: object
+      description: A genre/tag label.
+      properties:
+        id:
+          type: string
+          example: rock
+        name:
+          type: string
+          example: Rock
+        parentId:
+          type: string
+          nullable: true
+          example: null
+    Release:
+      type: object
+      description: A 7digital release (album, single, EP, compilation).
+      properties:
+        id:
+          type: string
+          description: 7digital release id.
+          example: '11700062'
+        title:
+          type: string
+          description: Release title.
+          example: Abbey Road
+        version:
+          type: string
+          description: Release version (e.g. `Remastered`).
+          example: Remastered
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        explicit:
+          type: boolean
+          example: false
+        upc:
+          type: string
+          description: Universal Product Code (UPC/EAN).
+          example: 00602445912025
+        price:
+          $ref: '#/components/schemas/Price'
+    Track:
+      type: object
+      description: A 7digital track.
+      properties:
+        id:
+          type: string
+          description: 7digital track id.
+          example: '123456'
+        title:
+          type: string
+          description: Track title.
+          example: Come Together
+        version:
+          type: string
+          description: Track version (e.g. `Remastered 2019`).
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          description: Track number on the release.
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          description: International Standard Recording Code.
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          description: URL for the 30-second preview clip.
+          example: https://previews.7digital.com/clip/123456
+        price:
+          $ref: '#/components/schemas/Price'
+    TagListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ErrorResponse:
+      type: object
+      description: Standard 7digital error envelope.
+      properties:
+        status:
+          type: string
+          description: Always `error` on a failure.
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
+              example: 2001
+            message:
+              type: string
+              description: Human-readable error message.
+              example: Resource not found
+            errors:
+              type: array
+              description: Per-item errors for batch requests (code 1008).
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  index:
+                    type: integer
+    EditorialResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        editorial:
+          $ref: '#/components/schemas/EditorialItem'
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    Artist:
+      type: object
+      description: A 7digital artist.
+      properties:
+        id:
+          type: string
+          description: 7digital artist id.
+          example: '12345'
+        name:
+          type: string
+          description: Artist name.
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    EditorialItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: editorial-789012
+        title:
+          type: string
+          example: New Releases This Week
+        description:
+          type: string
+          example: Our pick of the freshest releases this week.
+        type:
+          type: string
+          enum:
+          - feature
+          - banner
+          - slot
+          example: feature
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/editorial/new-releases-this-week
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/editorial/789012.jpg
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    ReleaseDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        release:
+          $ref: '#/components/schemas/Release'
+  responses:
+    ValidationError:
+      description: Request validation failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    AuthError:
+      description: Authentication failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFoundError:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).

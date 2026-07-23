@@ -1,0 +1,242 @@
+openapi: 3.0.3
+info:
+  title: 7digital Artists Streaming API
+  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
+  version: '1.2'
+  contact:
+    name: 7digital / MassiveMusic Client Success
+    url: https://docs.massivemusic.com/docs/support
+  license:
+    name: Commercial — 7digital / MassiveMusic
+    url: https://docs.massivemusic.com/docs/sla
+  x-last-validated: '2026-05-28'
+  x-generated-from: documentation
+  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+servers:
+- url: https://api.7digital.com/1.2
+  description: 7digital Public API v1.2 (production)
+security:
+- oauth1: []
+tags:
+- name: Streaming
+  description: HLS and HTTP Progressive streaming for previews, catalogue, locker and subscriber playback.
+paths:
+  /streaming/preview/{trackId}:
+    get:
+      operationId: streamPreviewClip
+      summary: 7digital Stream Preview Clip
+      description: Stream a track preview clip (HTTP Progressive). All preview clip plays must be reported via the preview logging endpoint.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      - $ref: '#/components/parameters/StreamFormat'
+      responses:
+        '200':
+          description: Audio stream bytes (preview clip).
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/catalogue/{trackId}/hls:
+    get:
+      operationId: streamCatalogueTrackHls
+      summary: 7digital Stream Catalogue Track Hls
+      description: Stream any catalogue track available in the user's region (HLS). Designed for non-subscription radio-style plays. Tracks can be cached in an encrypted format and all plays must be reported via the catalogue logging endpoint.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/catalogue/{trackId}/progressive:
+    get:
+      operationId: streamCatalogueTrackProgressive
+      summary: 7digital Stream Catalogue Track Progressive
+      description: HTTP Progressive variant of catalogue streaming. Same usage rules as the HLS variant.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/locker/{trackId}/hls:
+    get:
+      operationId: streamLockerTrackHls
+      summary: 7digital Stream Locker Track Hls
+      description: Stream a previously purchased track from a user's locker (HLS). Supports online plays and offline caching.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/locker/{trackId}/progressive:
+    get:
+      operationId: streamLockerTrackProgressive
+      summary: 7digital Stream Locker Track Progressive
+      description: HTTP Progressive variant of locker streaming.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/hls:
+    get:
+      operationId: streamSubscriptionTrackHls
+      summary: 7digital Stream Subscription Track Hls
+      description: Stream a track to a valid subscriber (HLS). Requires an active subscription in the user's region. When a clientId is supplied, concurrent multi-device playback is blocked.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      - name: clientId
+        in: query
+        description: Identifier of the device requesting playback (used for concurrency control).
+        schema:
+          type: string
+        example: device-789012
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/progressive:
+    get:
+      operationId: streamSubscriptionTrackProgressive
+      summary: 7digital Stream Subscription Track Progressive
+      description: HTTP Progressive variant of subscription streaming.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/offline/hls:
+    get:
+      operationId: streamSubscriptionTrackOfflineHls
+      summary: 7digital Stream Subscription Track Offline Hls
+      description: Bulk-cache a subscription track for offline playback (HLS). Requires the device to be pre-authorised via the offline streaming endpoint. All offline plays must be reported when connectivity is restored.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: HLS manifest (m3u8).
+          content:
+            application/vnd.apple.mpegurl: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /streaming/subscription/{trackId}/offline/progressive:
+    get:
+      operationId: streamSubscriptionTrackOfflineProgressive
+      summary: 7digital Stream Subscription Track Offline Progressive
+      description: HTTP Progressive variant of offline subscription streaming.
+      tags:
+      - Streaming
+      security:
+      - oauth1_three_legged: []
+      parameters:
+      - $ref: '#/components/parameters/TrackIdPath'
+      responses:
+        '200':
+          description: Audio stream bytes.
+          content:
+            audio/mpeg: {}
+            audio/aac: {}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    StreamFormat:
+      name: format
+      in: query
+      description: Audio format for the stream.
+      schema:
+        type: string
+        enum:
+        - mp3
+        - aac
+      example: mp3
+    TrackIdPath:
+      name: trackId
+      in: path
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
+  securitySchemes:
+    oauth1:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 7digital uses OAuth 1.0 signing. Every request MUST include `oauth_consumer_key` as either a query parameter or in the Authorization header. Sensitive operations require a 2-legged or 3-legged signature with a user access token.
+    oauth1_two_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 2-legged OAuth 1.0 (partner-scoped — consumer key + secret only).
+    oauth1_three_legged:
+      type: apiKey
+      in: query
+      name: oauth_consumer_key
+      description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).
