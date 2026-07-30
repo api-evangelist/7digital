@@ -1,4 +1,18 @@
 aid: 7digital
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/7digital.png
 name: 7digital
 description: >-
   7digital (now operating as MassiveMusic following a corporate pivot toward Songtradr-affiliated business music
@@ -24,104 +38,1207 @@ tags:
   - Royalty Reporting
   - Public APIs
 apis:
-  - name: 7digital API
-    description: >-
-      Classic 7digital REST API (v1.2). Covers catalogue browse / search / charts, artist / release / track lookup and
-      recommendations, baskets, vouchers, purchase delivery, lockers, payment cards, editorial, translations,
-      IP-to-country lookup, and user signup / authentication. OAuth 1.0 signed; partner consumer key required.
-    humanURL: https://docs.massivemusic.com/reference
-    baseURL: https://api.7digital.com/1.2
-    tags:
-      - Catalogue
-      - Search
-      - Commerce
-      - Payments
-      - Accounts
-    properties:
-      - type: Documentation
-        url: https://docs.massivemusic.com/reference
-      - type: APIReference
-        url: https://docs.massivemusic.com/reference/about-this-api
-      - type: Authentication
-        url: https://docs.massivemusic.com/reference/authentication
-      - type: OpenAPI
-        url: openapi/7digital-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/
-      - type: JSONStructure
-        url: json-structure/
-      - type: JSONLD
-        url: json-ld/7digital-api-context.jsonld
-      - type: Examples
-        url: examples/
-      - type: SDKs
-        title: Node.js SDK
-        url: https://github.com/7digital/7digital-api
-      - type: SDKs
-        title: Python SDK
-        url: https://github.com/7digital/python-7digital-api
-      - type: SDKs
-        title: .NET (C#) Wrapper
-        url: https://github.com/7digital/SevenDigital.Api.Wrapper
-      - type: SDKs
-        title: .NET (C#) Schema
-        url: https://github.com/7digital/SevenDigital.Api.Schema
-      - type: SDKs
-        title: Java Client (Scala)
-        url: https://github.com/7digital/SevenDigital.Api.Client
-      - type: SDKs
-        title: iOS SDK (archived)
-        url: https://github.com/7digital/7digital-iOS-SDK
-      - type: SDKs
-        title: Android SDK (archived)
-        url: https://github.com/7digital/7digital-Android-SDK
-      - type: CodeExamples
-        title: API Walkthroughs
-        url: https://github.com/7digital/7digital-API-walkthroughs
-      - type: CodeExamples
-        title: Catalogue Feed Fetcher (Ruby)
-        url: https://github.com/7digital/7digital-feed-fetcher-example
-      - type: CodeExamples
-        title: Ruby API Examples (archived)
-        url: https://github.com/7digital/7digital_api_examples
-  - name: MassiveMusic Streaming Platform API
-    description: >-
-      Modern MassiveMusic Streaming Platform API. Covers catalogue with batch lookup, Interactive Radio (DMCA / GVL
-      ruleset listening sessions), Logging (catalogue / preview / subscriber stream reporting required for licensor
-      royalty), HLS and HTTP Progressive streaming (preview, catalogue, locker, subscriber, offline), Offline Device
-      authorisation, Download Purchases (single + ZIP), Playlists, Sales (credit / refund / locker), Subscriptions, User
-      Management, and Content Delivery / bulk media transfer. OAuth 1.0 signed; partner consumer key required.
-    humanURL: https://docs.massivemusic.com/reference
-    baseURL: https://api.7digital.com
-    tags:
-      - Streaming
-      - Interactive Radio
-      - Royalty Reporting
-      - Content Delivery
-      - Playlists
-      - Subscriptions
-    properties:
-      - type: Documentation
-        url: https://docs.massivemusic.com/reference
-      - type: APIReference
-        url: https://docs.massivemusic.com/reference/introduction
-      - type: Authentication
-        url: https://docs.massivemusic.com/reference/authentication
-      - type: RateLimits
-        url: https://docs.massivemusic.com/reference/usage-limits
-      - type: OpenAPI
-        url: openapi/7digital-streaming-platform-openapi.yml
-      - type: JSONSchema
-        url: json-schema/
-      - type: JSONStructure
-        url: json-structure/
-      - type: JSONLD
-        url: json-ld/7digital-streaming-platform-context.jsonld
-      - type: Examples
-        url: examples/
-      - type: PostmanCollection
-        url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-artists-api
+  name: 7digital Artists API
+  description: Browse, search, chart, and resolve 7digital artists and their releases.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Artists
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-artists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-basket-api
+  name: 7digital Basket API
+  description: Manage purchase baskets, apply vouchers, and complete PayPal checkout.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Basket
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-basket-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-catalogue-api
+  name: 7digital Catalogue API
+  description: Resolve catalogue entities (artist, release) from 7digital web URLs.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Catalogue
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-catalogue-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-content-delivery-api
+  name: 7digital Content Delivery API
+  description: Bulk media transfer for content delivery / catalogue ingestion partners.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Content Delivery
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-content-delivery-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-download-purchases-api
+  name: 7digital Download Purchases API
+  description: Download a previously purchased track or release (ZIP or single-file).
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Download Purchases
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-download-purchases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-editorial-api
+  name: 7digital Editorial API
+  description: List 7digital editorial features, banners, and curated content slots.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Editorial
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-editorial-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-interactive-radio-api
+  name: 7digital Interactive Radio API
+  description: Lean-back, ruleset-governed (DMCA, GVL) radio listening sessions.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Interactive Radio
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-interactive-radio-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-iplookup-api
+  name: 7digital IpLookup API
+  description: Resolve an end-user's country from an IP address.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - IpLookup
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-iplookup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-logging-api
+  name: 7digital Logging API
+  description: >-
+    Stream / preview / subscription play reporting required for licensor royalty calculations.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Logging
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-logging-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-offline-devices-api
+  name: 7digital Offline Devices API
+  description: Authorise, list, and inspect devices registered for offline subscription playback.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Offline Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-offline-devices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-payment-api
+  name: 7digital Payment API
+  description: Payment metadata — supported card types and voucher details.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Payment
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-payment-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-playlists-api
+  name: 7digital Playlists API
+  description: Partner-level playlist management — create, list, update and add tracks.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Playlists
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-playlists-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-releases-api
+  name: 7digital Releases API
+  description: Browse, search, recommend, and chart 7digital releases (albums, singles, EPs).
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Releases
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-releases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-sales-api
+  name: 7digital Sales API
+  description: Log sales, log refunds, and manage a user's locker of purchased content.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-sales-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-streaming-api
+  name: 7digital Streaming API
+  description: >-
+    HLS and HTTP Progressive streaming for previews, catalogue, locker and subscriber playback.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Streaming
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-streaming-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-subscriptions-api
+  name: 7digital Subscriptions API
+  description: Notify the platform of subscription state — required for royalty + entitlement.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-tags-api
+  name: 7digital Tags API
+  description: List the curated tag vocabulary used across the 7digital catalogue.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-territories-api
+  name: 7digital Territories API
+  description: List supported countries / sales territories.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Territories
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-territories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-tracks-api
+  name: 7digital Tracks API
+  description: Search, chart, and look up 7digital track metadata.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Tracks
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-tracks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-translations-api
+  name: 7digital Translations API
+  description: Localised translation bundles for the 7digital catalogue.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Translations
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-translations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-user-api
+  name: 7digital User API
+  description: Per-user account operations — locker, purchases, payment cards, subscriptions, signup.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-user-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-user-management-api
+  name: 7digital User Management API
+  description: Create and manage user accounts on the partner's behalf.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - User Management
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-user-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-users-api
+  name: 7digital Users API
+  description: Partner-scoped user directory operations — find and update users.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/7digital/overview
   - type: AgenticAccess
     url: agentic-access/7digital-agentic-access.yml
   - type: DomainSecurity
