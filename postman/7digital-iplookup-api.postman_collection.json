@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "88c260f8-7a62-43b9-93f8-96aceb48a344",
+    "name": "7digital Artists IpLookup API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:27.000Z",
+    "updatedAt": "2026-07-28T00:27:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-88c260f8-7a62-43b9-93f8-96aceb48a344"
+  },
+  "item": [
+    {
+      "name": "country",
+      "item": [
+        {
+          "name": "resolve",
+          "item": [
+            {
+              "name": "7digital Resolve Country For Ip",
+              "id": "cfa59eb4-d69e-40f1-98f9-bd68f56c9b0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/country/resolve?ip=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "country",
+                    "resolve"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) IPv4 or IPv6 address to look up.",
+                      "key": "ip",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Resolve the country for an end-user's IP address (for geo-restriction checks)."
+              },
+              "response": [
+                {
+                  "id": "ee04fcab-75bf-4b70-a8e8-4299e4bfb6aa",
+                  "name": "A country resolution.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/country/resolve?ip=<string>&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "country",
+                        "resolve"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) IPv4 or IPv6 address to look up.",
+                          "key": "ip",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"countryCode\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:28.000Z",
+                  "updatedAt": "2026-07-28T00:27:28.000Z",
+                  "uid": "35240-ee04fcab-75bf-4b70-a8e8-4299e4bfb6aa"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:28.000Z",
+              "updatedAt": "2026-07-28T00:27:28.000Z",
+              "uid": "35240-cfa59eb4-d69e-40f1-98f9-bd68f56c9b0e"
+            }
+          ],
+          "id": "4a5aa0d6-9c33-4b67-acaa-11ff67a7a140",
+          "createdAt": "2026-07-28T00:27:28.000Z",
+          "updatedAt": "2026-07-28T00:27:28.000Z",
+          "uid": "35240-4a5aa0d6-9c33-4b67-acaa-11ff67a7a140"
+        }
+      ],
+      "id": "8b6f1a39-e6e1-4531-ae0f-3c172e12291f",
+      "createdAt": "2026-07-28T00:27:28.000Z",
+      "updatedAt": "2026-07-28T00:27:28.000Z",
+      "uid": "35240-8b6f1a39-e6e1-4531-ae0f-3c172e12291f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

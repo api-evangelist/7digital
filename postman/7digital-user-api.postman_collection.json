@@ -1,0 +1,2295 @@
+{
+  "info": {
+    "_postman_id": "8c9df540-74b7-4e3e-bd75-09a6af8d3481",
+    "name": "7digital Artists User API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:46.000Z",
+    "updatedAt": "2026-07-28T00:27:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8c9df540-74b7-4e3e-bd75-09a6af8d3481"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "unlimitedStreaming",
+          "item": [
+            {
+              "name": "7digital Get User Unlimited Streaming",
+              "id": "e20e0801-494d-4bfa-bc66-d136021104e1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/unlimitedStreaming",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "unlimitedStreaming"
+                  ]
+                },
+                "description": "Get the status of the unlimited streaming subscription for the authenticated user."
+              },
+              "response": [
+                {
+                  "id": "35ba3b8e-a452-4024-881d-a9825822a9ae",
+                  "name": "Unlimited streaming subscription details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/unlimitedStreaming?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "unlimitedStreaming"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"userId\": \"<string>\",\n  \"status\": \"active\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"productId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-35ba3b8e-a452-4024-881d-a9825822a9ae"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-e20e0801-494d-4bfa-bc66-d136021104e1"
+            },
+            {
+              "name": "7digital Update User Unlimited Streaming",
+              "id": "e39595f2-3057-4852-9184-7f20aa4c4d1a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The user id whose subscription is being updated.",
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) New subscription status.",
+                      "key": "status",
+                      "value": "active"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/unlimitedStreaming",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "unlimitedStreaming"
+                  ]
+                },
+                "description": "Create or update the unlimited streaming subscription for a user (partner-scoped)."
+              },
+              "response": [
+                {
+                  "id": "69654d11-dec2-45dd-925e-7b951e7579f2",
+                  "name": "The updated subscription status.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The user id whose subscription is being updated.",
+                          "key": "userId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) New subscription status.",
+                          "key": "status",
+                          "value": "active"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/unlimitedStreaming?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "unlimitedStreaming"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"userId\": \"<string>\",\n  \"status\": \"active\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\",\n  \"productId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-69654d11-dec2-45dd-925e-7b951e7579f2"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-e39595f2-3057-4852-9184-7f20aa4c4d1a"
+            }
+          ],
+          "id": "1b178166-d178-4792-bcb4-8e916692c6f3",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-1b178166-d178-4792-bcb4-8e916692c6f3"
+        },
+        {
+          "name": "locker",
+          "item": [
+            {
+              "name": "7digital Get User Locker",
+              "id": "8f97a026-49c8-4569-bd91-f46bb8c8b93d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/locker?page=1&pageSize=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "locker"
+                  ],
+                  "query": [
+                    {
+                      "description": "1-based page number for paged endpoints.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of items per page.",
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Get the locker (all purchased tracks and releases) for the authenticated user."
+              },
+              "response": [
+                {
+                  "id": "0a9e9ad6-3531-4921-a31f-962ee6f0a570",
+                  "name": "The user's locker contents.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/locker?page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "locker"
+                      ],
+                      "query": [
+                        {
+                          "description": "1-based page number for paged endpoints.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"releases\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"type\": \"ep\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\",\n        \"appearsAs\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"upc\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"type\": \"compilation\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\",\n        \"appearsAs\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"explicit\": \"<boolean>\",\n      \"upc\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"tracks\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\",\n        \"appearsAs\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"version\": \"<string>\",\n        \"type\": \"ep\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\",\n          \"appearsAs\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"upc\": \"<string>\",\n        \"price\": {\n          \"formattedPrice\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\",\n        \"appearsAs\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"version\": \"<string>\",\n        \"type\": \"compilation\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\",\n          \"appearsAs\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"explicit\": \"<boolean>\",\n        \"upc\": \"<string>\",\n        \"price\": {\n          \"formattedPrice\": \"<string>\",\n          \"amount\": \"<number>\",\n          \"currency\": \"<string>\"\n        }\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-0a9e9ad6-3531-4921-a31f-962ee6f0a570"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-8f97a026-49c8-4569-bd91-f46bb8c8b93d"
+            }
+          ],
+          "id": "5b4fa3f4-53b2-45ce-a109-e4bc499e1a28",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-5b4fa3f4-53b2-45ce-a109-e4bc499e1a28"
+        },
+        {
+          "name": "purchase",
+          "item": [
+            {
+              "name": "item",
+              "item": [
+                {
+                  "name": "7digital Purchase User Item",
+                  "id": "f0b36326-1c96-44a7-9f16-77c0ad3a71a8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/purchase/item?releaseId=<string>&trackId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "purchase",
+                        "item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Release id to purchase.",
+                          "key": "releaseId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Track id to purchase.",
+                          "key": "trackId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Purchase a single track or release for the authenticated user using their default payment method."
+                  },
+                  "response": [
+                    {
+                      "id": "bfb005d8-90dd-4a91-9279-cd906f864839",
+                      "name": "The completed purchase.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/purchase/item?releaseId=<string>&trackId=<string>&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "purchase",
+                            "item"
+                          ],
+                          "query": [
+                            {
+                              "description": "Release id to purchase.",
+                              "key": "releaseId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Track id to purchase.",
+                              "key": "trackId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"purchaseId\": \"<string>\",\n  \"status\": \"failed\",\n  \"total\": {\n    \"formattedPrice\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-bfb005d8-90dd-4a91-9279-cd906f864839"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-f0b36326-1c96-44a7-9f16-77c0ad3a71a8"
+                }
+              ],
+              "id": "8d0e54db-e589-4da2-a436-a95814bf8f9d",
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-8d0e54db-e589-4da2-a436-a95814bf8f9d"
+            },
+            {
+              "name": "rrpitem",
+              "item": [
+                {
+                  "name": "7digital Purchase User Rrp Item",
+                  "id": "34866441-f35d-4a6e-86de-ea1ea92c9e3f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/purchase/rrpitem?releaseId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "purchase",
+                        "rrpitem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Release id to purchase.",
+                          "key": "releaseId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Purchase an item at RRP for the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "a0030686-3bb4-4ad9-9919-4ccedf60d4dd",
+                      "name": "The completed purchase.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/purchase/rrpitem?releaseId=<string>&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "purchase",
+                            "rrpitem"
+                          ],
+                          "query": [
+                            {
+                              "description": "Release id to purchase.",
+                              "key": "releaseId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"purchaseId\": \"<string>\",\n  \"status\": \"failed\",\n  \"total\": {\n    \"formattedPrice\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-a0030686-3bb4-4ad9-9919-4ccedf60d4dd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-34866441-f35d-4a6e-86de-ea1ea92c9e3f"
+                }
+              ],
+              "id": "bdd43e23-6735-49ca-ae63-43b24474660c",
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-bdd43e23-6735-49ca-ae63-43b24474660c"
+            },
+            {
+              "name": "basket",
+              "item": [
+                {
+                  "name": "7digital Purchase User Basket",
+                  "id": "bc0fff99-a70a-4076-a726-2b82e9bbd405",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/purchase/basket?basketId=<uuid>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "purchase",
+                        "basket"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) 7digital basket id.",
+                          "key": "basketId",
+                          "value": "<uuid>"
+                        }
+                      ]
+                    },
+                    "description": "Purchase the entire contents of the user's basket."
+                  },
+                  "response": [
+                    {
+                      "id": "0048c98f-e92f-406d-a6a2-6f75ab7ae208",
+                      "name": "The completed purchase.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/purchase/basket?basketId=<uuid>&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "purchase",
+                            "basket"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) 7digital basket id.",
+                              "key": "basketId",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"purchaseId\": \"<string>\",\n  \"status\": \"failed\",\n  \"total\": {\n    \"formattedPrice\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-0048c98f-e92f-406d-a6a2-6f75ab7ae208"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-bc0fff99-a70a-4076-a726-2b82e9bbd405"
+                }
+              ],
+              "id": "2b75b827-ab1d-41fc-8c30-34e91b129c3d",
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-2b75b827-ab1d-41fc-8c30-34e91b129c3d"
+            },
+            {
+              "name": "priceditem",
+              "item": [
+                {
+                  "name": "7digital Purchase User Priced Item",
+                  "id": "0b0cd38d-7970-4349-b805-939603c1ca48",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/purchase/priceditem?releaseId=<string>&price=<number>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "purchase",
+                        "priceditem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Release id to purchase.",
+                          "key": "releaseId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Partner-supplied price (in minor units).",
+                          "key": "price",
+                          "value": "<number>"
+                        }
+                      ]
+                    },
+                    "description": "Purchase an item at a partner-supplied price."
+                  },
+                  "response": [
+                    {
+                      "id": "8cca82f5-53b3-4d66-99f7-d5d73de0b112",
+                      "name": "The completed purchase.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/purchase/priceditem?releaseId=<string>&price=<number>&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "purchase",
+                            "priceditem"
+                          ],
+                          "query": [
+                            {
+                              "description": "Release id to purchase.",
+                              "key": "releaseId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Partner-supplied price (in minor units).",
+                              "key": "price",
+                              "value": "<number>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"purchaseId\": \"<string>\",\n  \"status\": \"failed\",\n  \"total\": {\n    \"formattedPrice\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    },\n    {\n      \"itemId\": \"<string>\",\n      \"releaseId\": \"<string>\",\n      \"trackId\": \"<string>\",\n      \"price\": {\n        \"formattedPrice\": \"<string>\",\n        \"amount\": \"<number>\",\n        \"currency\": \"<string>\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-8cca82f5-53b3-4d66-99f7-d5d73de0b112"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-0b0cd38d-7970-4349-b805-939603c1ca48"
+                }
+              ],
+              "id": "c3971d50-7132-447f-9ebf-626ddbeb80e4",
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-c3971d50-7132-447f-9ebf-626ddbeb80e4"
+            }
+          ],
+          "id": "ae54b16e-858a-4538-b91c-86ac11aa6446",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-ae54b16e-858a-4538-b91c-86ac11aa6446"
+        },
+        {
+          "name": "payment",
+          "item": [
+            {
+              "name": "card",
+              "item": [
+                {
+                  "name": "select",
+                  "item": [
+                    {
+                      "name": "7digital Select User Payment Card",
+                      "id": "bbd7b8c8-2075-42ec-9c5f-049410643f98",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "oauth_consumer_key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "query",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The card id to mark as default.",
+                              "key": "cardId",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/payment/card/select",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "payment",
+                            "card",
+                            "select"
+                          ]
+                        },
+                        "description": "Set a registered payment card as the user's default card."
+                      },
+                      "response": [
+                        {
+                          "id": "5d865adf-f7f5-4d7c-a09a-5ade7545e287",
+                          "name": "Card selected.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) The card id to mark as default.",
+                                  "key": "cardId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/payment/card/select?oauth_consumer_key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "payment",
+                                "card",
+                                "select"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "oauth_consumer_key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:27:46.000Z",
+                          "updatedAt": "2026-07-28T00:27:46.000Z",
+                          "uid": "35240-5d865adf-f7f5-4d7c-a09a-5ade7545e287"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-bbd7b8c8-2075-42ec-9c5f-049410643f98"
+                    }
+                  ],
+                  "id": "4edac413-325f-44cd-b04e-fbb1ff706139",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-4edac413-325f-44cd-b04e-fbb1ff706139"
+                },
+                {
+                  "name": "delete",
+                  "item": [
+                    {
+                      "name": "7digital Delete User Payment Card",
+                      "id": "2f4dd12e-2426-4ca2-8055-9c4094d8bdd5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "oauth_consumer_key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "query",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The card id to delete.",
+                              "key": "cardId",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/payment/card/delete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "payment",
+                            "card",
+                            "delete"
+                          ]
+                        },
+                        "description": "Delete a payment card from the authenticated user."
+                      },
+                      "response": [
+                        {
+                          "id": "28a807c8-57fc-46d9-8d41-b7a781a1289f",
+                          "name": "Card deleted.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "urlencoded",
+                              "urlencoded": [
+                                {
+                                  "description": "(Required) The card id to delete.",
+                                  "key": "cardId",
+                                  "value": "<string>"
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/user/payment/card/delete?oauth_consumer_key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "payment",
+                                "card",
+                                "delete"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "oauth_consumer_key",
+                                  "value": "<API Key>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:27:46.000Z",
+                          "updatedAt": "2026-07-28T00:27:46.000Z",
+                          "uid": "35240-28a807c8-57fc-46d9-8d41-b7a781a1289f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-2f4dd12e-2426-4ca2-8055-9c4094d8bdd5"
+                    }
+                  ],
+                  "id": "d4e358fc-be32-4750-9757-6a64eee930c7",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-d4e358fc-be32-4750-9757-6a64eee930c7"
+                },
+                {
+                  "name": "7digital List User Payment Cards",
+                  "id": "140a5964-0911-42a4-ad3f-87c704328c71",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/payment/card",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "payment",
+                        "card"
+                      ]
+                    },
+                    "description": "List the payment cards registered to the authenticated user."
+                  },
+                  "response": [
+                    {
+                      "id": "f86bf23d-8782-462c-a056-efcfa7aa2d4a",
+                      "name": "A list of payment cards.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/payment/card?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "payment",
+                            "card"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cards\": [\n    {\n      \"cardId\": \"<string>\",\n      \"last4\": \"<string>\",\n      \"brand\": \"visa\",\n      \"expiryMonth\": \"<integer>\",\n      \"expiryYear\": \"<integer>\",\n      \"isDefault\": \"<boolean>\"\n    },\n    {\n      \"cardId\": \"<string>\",\n      \"last4\": \"<string>\",\n      \"brand\": \"mastercard\",\n      \"expiryMonth\": \"<integer>\",\n      \"expiryYear\": \"<integer>\",\n      \"isDefault\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-f86bf23d-8782-462c-a056-efcfa7aa2d4a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-140a5964-0911-42a4-ad3f-87c704328c71"
+                }
+              ],
+              "id": "43fd377b-8ab6-425e-95a8-4cf244e59ca7",
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-43fd377b-8ab6-425e-95a8-4cf244e59ca7"
+            },
+            {
+              "name": "cardregistration",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "7digital Get User Card Registration",
+                      "id": "677f85b5-7bf1-4b55-860f-4c5c20b2a64f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "oauth_consumer_key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "query",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/user/payment/cardregistration/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "payment",
+                            "cardregistration",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b04fbb1a-65ab-40be-91ce-14186b0af1e3",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Card registration id."
+                            }
+                          ]
+                        },
+                        "description": "Poll the status of a pending card registration."
+                      },
+                      "response": [
+                        {
+                          "id": "c63594b8-a5de-4348-86e8-77f54c7caa08",
+                          "name": "The card registration record.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/user/payment/cardregistration/:id?oauth_consumer_key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "user",
+                                "payment",
+                                "cardregistration",
+                                ":id"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "oauth_consumer_key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"registrationId\": \"<string>\",\n  \"status\": \"pending\",\n  \"cardId\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:27:46.000Z",
+                          "updatedAt": "2026-07-28T00:27:46.000Z",
+                          "uid": "35240-c63594b8-a5de-4348-86e8-77f54c7caa08"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-677f85b5-7bf1-4b55-860f-4c5c20b2a64f"
+                    }
+                  ],
+                  "id": "93484242-8d23-496e-b05c-acf90fa6d7bd",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-93484242-8d23-496e-b05c-acf90fa6d7bd"
+                },
+                {
+                  "name": "7digital Register User Payment Card",
+                  "id": "f0871fac-4d18-4234-b8a7-db4c91450e6e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "cardNumber",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "expiryMonth",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "expiryYear",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "cvv",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "cardholderName",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/payment/cardregistration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "payment",
+                        "cardregistration"
+                      ]
+                    },
+                    "description": "Start the registration flow for a new payment card."
+                  },
+                  "response": [
+                    {
+                      "id": "99f22e44-e3d7-4904-9ce0-d78e4b5a67f8",
+                      "name": "A card registration handle.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) ",
+                              "key": "cardNumber",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "expiryMonth",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "expiryYear",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "cvv",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "cardholderName",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/user/payment/cardregistration?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "user",
+                            "payment",
+                            "cardregistration"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"registrationId\": \"<string>\",\n  \"status\": \"pending\",\n  \"cardId\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:27:46.000Z",
+                      "updatedAt": "2026-07-28T00:27:46.000Z",
+                      "uid": "35240-99f22e44-e3d7-4904-9ce0-d78e4b5a67f8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-f0871fac-4d18-4234-b8a7-db4c91450e6e"
+                }
+              ],
+              "id": "f51b3820-0079-433b-8b20-9928c3762026",
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-f51b3820-0079-433b-8b20-9928c3762026"
+            }
+          ],
+          "id": "d040c5d8-123d-4c97-9866-016eac71fd4b",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-d040c5d8-123d-4c97-9866-016eac71fd4b"
+        },
+        {
+          "name": "deliveritem",
+          "item": [
+            {
+              "name": "7digital Deliver User Item",
+              "id": "08ca8289-fd63-4f77-8e7d-d090bbe65c9c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/deliveritem?releaseId=<string>&trackId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "deliveritem"
+                  ],
+                  "query": [
+                    {
+                      "description": "Purchased release to deliver.",
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Purchased track to deliver.",
+                      "key": "trackId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Get a delivery URL for a purchased item (download or stream link)."
+              },
+              "response": [
+                {
+                  "id": "264e7fcb-248a-42fc-a6e1-29496d23bf96",
+                  "name": "A delivery URL.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/deliveritem?releaseId=<string>&trackId=<string>&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "deliveritem"
+                      ],
+                      "query": [
+                        {
+                          "description": "Purchased release to deliver.",
+                          "key": "releaseId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Purchased track to deliver.",
+                          "key": "trackId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"deliveryUrl\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-264e7fcb-248a-42fc-a6e1-29496d23bf96"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-08ca8289-fd63-4f77-8e7d-d090bbe65c9c"
+            }
+          ],
+          "id": "da88e4ba-5438-45ea-a891-b4a928952e33",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-da88e4ba-5438-45ea-a891-b4a928952e33"
+        },
+        {
+          "name": "signup",
+          "item": [
+            {
+              "name": "7digital Signup User",
+              "id": "a003aa7b-3999-4bdd-ad74-5fc0842076c1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/signup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "signup"
+                  ]
+                },
+                "description": "Sign up a new user with a 7digital account."
+              },
+              "response": [
+                {
+                  "id": "5113e881-8d13-4c96-9b2d-ed6cd8a73822",
+                  "name": "The newly created user.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "password",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "country",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "firstName",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "lastName",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/signup?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "signup"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"accessTokenSecret\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-5113e881-8d13-4c96-9b2d-ed6cd8a73822"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-a003aa7b-3999-4bdd-ad74-5fc0842076c1"
+            }
+          ],
+          "id": "7dee419d-2475-4b0f-842f-bf30b5746af7",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-7dee419d-2475-4b0f-842f-bf30b5746af7"
+        },
+        {
+          "name": "create",
+          "item": [
+            {
+              "name": "7digital Create User",
+              "id": "4fba733b-11f1-4131-aadd-f0e6905d0c51",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/create?email=<email>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "create"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Email address of the new user.",
+                      "key": "email",
+                      "value": "<email>"
+                    }
+                  ]
+                },
+                "description": "Create a new user partner-side (typically as part of an integrated signup flow)."
+              },
+              "response": [
+                {
+                  "id": "6519d607-fd1e-4f8d-95ee-4d890173962e",
+                  "name": "The newly created user.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/create?email=<email>&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "create"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Email address of the new user.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"accessTokenSecret\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-6519d607-fd1e-4f8d-95ee-4d890173962e"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-4fba733b-11f1-4131-aadd-f0e6905d0c51"
+            }
+          ],
+          "id": "074f50ea-2b6c-4b1a-b7f7-2e208ead277a",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-074f50ea-2b6c-4b1a-b7f7-2e208ead277a"
+        },
+        {
+          "name": "details",
+          "item": [
+            {
+              "name": "7digital Get User Details",
+              "id": "28da02bb-2da5-4dbb-aa40-c37ddafb90e1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/user/details?userId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "details"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The user id to look up.",
+                      "key": "userId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Get the profile of a user (partner-scoped lookup)."
+              },
+              "response": [
+                {
+                  "id": "6d12baa4-75c6-4a6b-8306-00d218bf0986",
+                  "name": "The user profile.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/user/details?userId=<string>&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "details"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The user id to look up.",
+                          "key": "userId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"accessTokenSecret\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-6d12baa4-75c6-4a6b-8306-00d218bf0986"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-28da02bb-2da5-4dbb-aa40-c37ddafb90e1"
+            }
+          ],
+          "id": "cd632e76-4d75-48a5-af77-170368261042",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-cd632e76-4d75-48a5-af77-170368261042"
+        },
+        {
+          "name": "authenticate",
+          "item": [
+            {
+              "name": "7digital Authenticate User",
+              "id": "dc0f6d57-6bea-4fe2-a133-13bcbb8819ff",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) User email.",
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "description": "(Required) User password.",
+                      "key": "password",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/user/authenticate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "user",
+                    "authenticate"
+                  ]
+                },
+                "description": "Authenticate a user by email and password and return a partner-scoped access token."
+              },
+              "response": [
+                {
+                  "id": "ee93a9e3-001b-41f6-9f05-49955dfd6949",
+                  "name": "An authenticated user payload.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) User email.",
+                          "key": "email",
+                          "value": "<email>"
+                        },
+                        {
+                          "description": "(Required) User password.",
+                          "key": "password",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/user/authenticate?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "user",
+                        "authenticate"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"country\": \"<string>\",\n  \"accessToken\": \"<string>\",\n  \"accessTokenSecret\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:46.000Z",
+                  "updatedAt": "2026-07-28T00:27:46.000Z",
+                  "uid": "35240-ee93a9e3-001b-41f6-9f05-49955dfd6949"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:46.000Z",
+              "updatedAt": "2026-07-28T00:27:46.000Z",
+              "uid": "35240-dc0f6d57-6bea-4fe2-a133-13bcbb8819ff"
+            }
+          ],
+          "id": "d57475a8-b909-4e0d-b541-14c02a8e0c8a",
+          "createdAt": "2026-07-28T00:27:46.000Z",
+          "updatedAt": "2026-07-28T00:27:46.000Z",
+          "uid": "35240-d57475a8-b909-4e0d-b541-14c02a8e0c8a"
+        }
+      ],
+      "id": "a9b6445a-656b-427f-976b-a5d8d6f34dbc",
+      "createdAt": "2026-07-28T00:27:46.000Z",
+      "updatedAt": "2026-07-28T00:27:46.000Z",
+      "uid": "35240-a9b6445a-656b-427f-976b-a5d8d6f34dbc"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

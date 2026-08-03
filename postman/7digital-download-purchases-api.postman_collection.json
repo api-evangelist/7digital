@@ -1,0 +1,496 @@
+{
+  "info": {
+    "_postman_id": "c22e6c00-af2c-46a8-966d-8183c0024ee9",
+    "name": "7digital Artists Download Purchases API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:23.000Z",
+    "updatedAt": "2026-07-28T00:27:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c22e6c00-af2c-46a8-966d-8183c0024ee9"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "downloads",
+              "item": [
+                {
+                  "name": "purchases",
+                  "item": [
+                    {
+                      "name": "{purchaseId}",
+                      "item": [
+                        {
+                          "name": "7digital Download Purchase Zip",
+                          "id": "10fea4d8-448e-4825-8a51-dcb2d0adfd74",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "oauth_consumer_key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "query",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/zip"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:userId/downloads/purchases/:purchaseId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":userId",
+                                "downloads",
+                                "purchases",
+                                ":purchaseId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "70fc33f2-9f80-424f-a8a4-824f8aa19e6a",
+                                  "key": "userId",
+                                  "value": "<string>",
+                                  "description": "(Required) Partner-scoped 7digital user id."
+                                },
+                                {
+                                  "id": "0ab4f511-2e50-4ea7-b81d-fec5a953750e",
+                                  "key": "purchaseId",
+                                  "value": "<string>",
+                                  "description": "(Required) 7digital purchase id."
+                                }
+                              ]
+                            },
+                            "description": "Download all tracks purchased in a transaction as a single ZIP file. Highest available quality is used."
+                          },
+                          "response": [
+                            {
+                              "id": "9a661a02-8957-4858-92af-bd1ee445d276",
+                              "name": "ZIP file containing the purchased tracks.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/zip"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:userId/downloads/purchases/:purchaseId?oauth_consumer_key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":userId",
+                                    "downloads",
+                                    "purchases",
+                                    ":purchaseId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "oauth_consumer_key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    },
+                                    {
+                                      "key": "purchaseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/zip"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "",
+                              "createdAt": "2026-07-28T00:27:24.000Z",
+                              "updatedAt": "2026-07-28T00:27:24.000Z",
+                              "uid": "35240-9a661a02-8957-4858-92af-bd1ee445d276"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T00:27:24.000Z",
+                          "updatedAt": "2026-07-28T00:27:24.000Z",
+                          "uid": "35240-10fea4d8-448e-4825-8a51-dcb2d0adfd74"
+                        }
+                      ],
+                      "id": "5c96f168-60a2-442b-bb34-bce13ac26e0e",
+                      "createdAt": "2026-07-28T00:27:24.000Z",
+                      "updatedAt": "2026-07-28T00:27:24.000Z",
+                      "uid": "35240-5c96f168-60a2-442b-bb34-bce13ac26e0e"
+                    }
+                  ],
+                  "id": "ece17e3c-639f-4eb8-9b72-817d35716636",
+                  "createdAt": "2026-07-28T00:27:24.000Z",
+                  "updatedAt": "2026-07-28T00:27:24.000Z",
+                  "uid": "35240-ece17e3c-639f-4eb8-9b72-817d35716636"
+                },
+                {
+                  "name": "releases",
+                  "item": [
+                    {
+                      "name": "{releaseId}",
+                      "item": [
+                        {
+                          "name": "7digital Download Purchased Release Zip",
+                          "id": "6fa97570-1670-458c-ac0f-1c8e46467a4a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "oauth_consumer_key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "query",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/zip"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:userId/downloads/releases/:releaseId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":userId",
+                                "downloads",
+                                "releases",
+                                ":releaseId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "3aaa5e8a-6510-4f5d-b3e8-68aa92dc0336",
+                                  "key": "userId",
+                                  "value": "<string>",
+                                  "description": "(Required) Partner-scoped 7digital user id."
+                                },
+                                {
+                                  "id": "e96879ed-ad7a-48ac-b02f-8a4928d50b3d",
+                                  "key": "releaseId",
+                                  "value": "<string>",
+                                  "description": "(Required) 7digital release id."
+                                }
+                              ]
+                            },
+                            "description": "Download all tracks in a purchased release as a single ZIP file."
+                          },
+                          "response": [
+                            {
+                              "id": "64d9598e-c93d-4493-826d-23e91ab7daf1",
+                              "name": "ZIP file containing the release tracks.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/zip"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:userId/downloads/releases/:releaseId?oauth_consumer_key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":userId",
+                                    "downloads",
+                                    "releases",
+                                    ":releaseId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "oauth_consumer_key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    },
+                                    {
+                                      "key": "releaseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/zip"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "",
+                              "createdAt": "2026-07-28T00:27:24.000Z",
+                              "updatedAt": "2026-07-28T00:27:24.000Z",
+                              "uid": "35240-64d9598e-c93d-4493-826d-23e91ab7daf1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T00:27:24.000Z",
+                          "updatedAt": "2026-07-28T00:27:24.000Z",
+                          "uid": "35240-6fa97570-1670-458c-ac0f-1c8e46467a4a"
+                        }
+                      ],
+                      "id": "d14934cb-957b-4cf0-b70d-7dbd656def86",
+                      "createdAt": "2026-07-28T00:27:24.000Z",
+                      "updatedAt": "2026-07-28T00:27:24.000Z",
+                      "uid": "35240-d14934cb-957b-4cf0-b70d-7dbd656def86"
+                    }
+                  ],
+                  "id": "772aea7a-232e-44f9-b640-73fd65a6e2c7",
+                  "createdAt": "2026-07-28T00:27:24.000Z",
+                  "updatedAt": "2026-07-28T00:27:24.000Z",
+                  "uid": "35240-772aea7a-232e-44f9-b640-73fd65a6e2c7"
+                },
+                {
+                  "name": "tracks",
+                  "item": [
+                    {
+                      "name": "{trackId}",
+                      "item": [
+                        {
+                          "name": "7digital Download Purchased Track",
+                          "id": "3f52ce90-34c4-4752-9b05-3696fcf1db36",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "oauth_consumer_key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "query",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "audio/mpeg"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:userId/downloads/tracks/:trackId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":userId",
+                                "downloads",
+                                "tracks",
+                                ":trackId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b5cd3924-7bde-453f-a7da-d111b14c6c64",
+                                  "key": "userId",
+                                  "value": "<string>",
+                                  "description": "(Required) Partner-scoped 7digital user id."
+                                },
+                                {
+                                  "id": "c019a05a-5ef4-4c79-a056-7c59d9e888b3",
+                                  "key": "trackId",
+                                  "value": "<string>",
+                                  "description": "(Required) 7digital track id."
+                                }
+                              ]
+                            },
+                            "description": "Download a purchased track."
+                          },
+                          "response": [
+                            {
+                              "id": "9757fbf1-ad02-45f3-8a0c-d2adb966a6e5",
+                              "name": "Audio file bytes.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "audio/mpeg"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:userId/downloads/tracks/:trackId?oauth_consumer_key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":userId",
+                                    "downloads",
+                                    "tracks",
+                                    ":trackId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "oauth_consumer_key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    },
+                                    {
+                                      "key": "trackId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "audio/mpeg"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "",
+                              "createdAt": "2026-07-28T00:27:24.000Z",
+                              "updatedAt": "2026-07-28T00:27:24.000Z",
+                              "uid": "35240-9757fbf1-ad02-45f3-8a0c-d2adb966a6e5"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T00:27:24.000Z",
+                          "updatedAt": "2026-07-28T00:27:24.000Z",
+                          "uid": "35240-3f52ce90-34c4-4752-9b05-3696fcf1db36"
+                        }
+                      ],
+                      "id": "271bceb1-d8c1-40ac-946f-e3a32252469d",
+                      "createdAt": "2026-07-28T00:27:24.000Z",
+                      "updatedAt": "2026-07-28T00:27:24.000Z",
+                      "uid": "35240-271bceb1-d8c1-40ac-946f-e3a32252469d"
+                    }
+                  ],
+                  "id": "1c36eb24-f9be-473c-9007-d71581075993",
+                  "createdAt": "2026-07-28T00:27:24.000Z",
+                  "updatedAt": "2026-07-28T00:27:24.000Z",
+                  "uid": "35240-1c36eb24-f9be-473c-9007-d71581075993"
+                }
+              ],
+              "id": "a5f59ed4-b306-4400-b737-a4af9bb44b2a",
+              "createdAt": "2026-07-28T00:27:24.000Z",
+              "updatedAt": "2026-07-28T00:27:24.000Z",
+              "uid": "35240-a5f59ed4-b306-4400-b737-a4af9bb44b2a"
+            }
+          ],
+          "id": "e1f04832-a808-4b0b-8d02-6365e6063d9c",
+          "createdAt": "2026-07-28T00:27:24.000Z",
+          "updatedAt": "2026-07-28T00:27:24.000Z",
+          "uid": "35240-e1f04832-a808-4b0b-8d02-6365e6063d9c"
+        }
+      ],
+      "id": "9f668b63-8a33-4a3a-8da5-5f89081815bb",
+      "createdAt": "2026-07-28T00:27:24.000Z",
+      "updatedAt": "2026-07-28T00:27:24.000Z",
+      "uid": "35240-9f668b63-8a33-4a3a-8da5-5f89081815bb"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

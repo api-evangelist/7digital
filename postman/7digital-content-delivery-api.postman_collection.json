@@ -1,0 +1,167 @@
+{
+  "info": {
+    "_postman_id": "ad1c33a9-db66-4bd1-9dd5-302756da80cd",
+    "name": "7digital Artists Content Delivery API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:22.000Z",
+    "updatedAt": "2026-07-28T00:27:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ad1c33a9-db66-4bd1-9dd5-302756da80cd"
+  },
+  "item": [
+    {
+      "name": "content-delivery",
+      "item": [
+        {
+          "name": "media-transfer",
+          "item": [
+            {
+              "name": "7digital Transfer Media",
+              "id": "a2632076-d0ae-4cae-bd74-780337f10f6a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/content-delivery/media-transfer?trackId=<string>&format=flac&bitrate=320",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "content-delivery",
+                    "media-transfer"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) 7digital track id.",
+                      "key": "trackId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Audio format to retrieve.",
+                      "key": "format",
+                      "value": "flac"
+                    },
+                    {
+                      "description": "Audio bitrate (kbps).",
+                      "key": "bitrate",
+                      "value": "320"
+                    }
+                  ]
+                },
+                "description": "Retrieve media files for any track \u2014 enables the download of an entire licensed catalogue in any supported format/bitrate. Acceptable usage is 50 requests per second. Use of this endpoint requires additional licensor due diligence."
+              },
+              "response": [
+                {
+                  "id": "354147b8-3c2d-4c47-b9de-5f38e8841b94",
+                  "name": "Audio file bytes.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "audio/mpeg"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/content-delivery/media-transfer?trackId=<string>&format=flac&bitrate=320&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "content-delivery",
+                        "media-transfer"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) 7digital track id.",
+                          "key": "trackId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Audio format to retrieve.",
+                          "key": "format",
+                          "value": "flac"
+                        },
+                        {
+                          "description": "Audio bitrate (kbps).",
+                          "key": "bitrate",
+                          "value": "320"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "audio/mpeg"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-07-28T00:27:23.000Z",
+                  "updatedAt": "2026-07-28T00:27:23.000Z",
+                  "uid": "35240-354147b8-3c2d-4c47-b9de-5f38e8841b94"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:23.000Z",
+              "updatedAt": "2026-07-28T00:27:23.000Z",
+              "uid": "35240-a2632076-d0ae-4cae-bd74-780337f10f6a"
+            }
+          ],
+          "id": "7fc7a5d5-38df-4e47-a31b-5dd79c26f274",
+          "createdAt": "2026-07-28T00:27:23.000Z",
+          "updatedAt": "2026-07-28T00:27:23.000Z",
+          "uid": "35240-7fc7a5d5-38df-4e47-a31b-5dd79c26f274"
+        }
+      ],
+      "id": "5fd0b77e-b929-4b71-b091-3e13fa4574d7",
+      "createdAt": "2026-07-28T00:27:23.000Z",
+      "updatedAt": "2026-07-28T00:27:23.000Z",
+      "uid": "35240-5fd0b77e-b929-4b71-b091-3e13fa4574d7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

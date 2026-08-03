@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "373a9b48-7d7c-4085-9701-25d972068579",
+    "name": "7digital Artists Territories API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:43.000Z",
+    "updatedAt": "2026-07-28T00:27:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-373a9b48-7d7c-4085-9701-25d972068579"
+  },
+  "item": [
+    {
+      "name": "countries",
+      "item": [
+        {
+          "name": "7digital Get Countries",
+          "id": "603f038f-2040-424f-960f-d76dc0d962ab",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/countries",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "countries"
+              ]
+            },
+            "description": "List the supported sales territories with ISO country codes."
+          },
+          "response": [
+            {
+              "id": "35fa3e08-6c4b-4bf4-8cc3-fd589ba81886",
+              "name": "A list of supported countries.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/countries?oauth_consumer_key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "countries"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"countries\": [\n    {\n      \"countryCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currency\": \"<string>\"\n    },\n    {\n      \"countryCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currency\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:27:43.000Z",
+              "updatedAt": "2026-07-28T00:27:43.000Z",
+              "uid": "35240-35fa3e08-6c4b-4bf4-8cc3-fd589ba81886"
+            }
+          ],
+          "createdAt": "2026-07-28T00:27:43.000Z",
+          "updatedAt": "2026-07-28T00:27:43.000Z",
+          "uid": "35240-603f038f-2040-424f-960f-d76dc0d962ab"
+        }
+      ],
+      "id": "6e3a744b-cfa9-48b6-b274-1bf3d1b76cbf",
+      "createdAt": "2026-07-28T00:27:43.000Z",
+      "updatedAt": "2026-07-28T00:27:43.000Z",
+      "uid": "35240-6e3a744b-cfa9-48b6-b274-1bf3d1b76cbf"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

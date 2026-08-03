@@ -1,0 +1,210 @@
+{
+  "info": {
+    "_postman_id": "7751758c-deb4-42c0-9fa3-2c67ecb94fc8",
+    "name": "7digital Artists Subscriptions API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:40.000Z",
+    "updatedAt": "2026-07-28T00:27:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7751758c-deb4-42c0-9fa3-2c67ecb94fc8"
+  },
+  "item": [
+    {
+      "name": "subscriptions",
+      "item": [
+        {
+          "name": "7digital Create Subscription",
+          "id": "59079d2d-5e69-43d2-a0c9-aac741e4c61d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key",
+                  "type": "string"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}",
+                  "type": "string"
+                },
+                {
+                  "key": "in",
+                  "value": "query",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "(Required) ",
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "productId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "startDate",
+                  "value": "<date>"
+                },
+                {
+                  "description": "(Required) Subscription expiry. Maximum one month from startDate.",
+                  "key": "endDate",
+                  "value": "<date>"
+                },
+                {
+                  "key": "country",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscriptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "subscriptions"
+              ]
+            },
+            "description": "Create a user's subscription. The platform must be notified of all new subscriptions to grant streaming access and to support royalty and usage reporting. Subscriptions last for at most one month and must be renewed each cycle."
+          },
+          "response": [
+            {
+              "id": "3fb47442-d1dc-4673-88d2-23b1c14127c0",
+              "name": "The new subscription.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "productId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "startDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "(Required) Subscription expiry. Maximum one month from startDate.",
+                      "key": "endDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/subscriptions?oauth_consumer_key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"subscriptionId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"status\": \"expired\",\n  \"startDate\": \"<date>\",\n  \"endDate\": \"<date>\"\n}",
+              "createdAt": "2026-07-28T00:27:41.000Z",
+              "updatedAt": "2026-07-28T00:27:41.000Z",
+              "uid": "35240-3fb47442-d1dc-4673-88d2-23b1c14127c0"
+            }
+          ],
+          "createdAt": "2026-07-28T00:27:40.000Z",
+          "updatedAt": "2026-07-28T00:27:40.000Z",
+          "uid": "35240-59079d2d-5e69-43d2-a0c9-aac741e4c61d"
+        }
+      ],
+      "id": "894e2c0a-9787-4ffd-bf0a-cc77cc30a55f",
+      "createdAt": "2026-07-28T00:27:40.000Z",
+      "updatedAt": "2026-07-28T00:27:40.000Z",
+      "uid": "35240-894e2c0a-9787-4ffd-bf0a-cc77cc30a55f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

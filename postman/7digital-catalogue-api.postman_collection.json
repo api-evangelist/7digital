@@ -1,0 +1,1845 @@
+{
+  "info": {
+    "_postman_id": "afbab157-5e5b-4a25-87ae-3d610e2cafcb",
+    "name": "7digital Artists Catalogue API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:21.000Z",
+    "updatedAt": "2026-07-28T00:27:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-afbab157-5e5b-4a25-87ae-3d610e2cafcb"
+  },
+  "item": [
+    {
+      "name": "catalogue",
+      "item": [
+        {
+          "name": "artist-byurl",
+          "item": [
+            {
+              "name": "7digital Get Artist Id By Url",
+              "id": "acdb302b-1d1b-40af-8c3e-515cd06998cc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/catalogue/artist-byurl?url=<uri>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "catalogue",
+                    "artist-byurl"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A 7digital artist web URL.",
+                      "key": "url",
+                      "value": "<uri>"
+                    }
+                  ]
+                },
+                "description": "Resolve a 7digital artist id from a 7digital web URL."
+              },
+              "response": [
+                {
+                  "id": "f7e418f9-bdc2-4b60-9c8e-0d913606bae8",
+                  "name": "The resolved artist id.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/catalogue/artist-byurl?url=<uri>&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "catalogue",
+                        "artist-byurl"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A 7digital artist web URL.",
+                          "key": "url",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"artistId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-f7e418f9-bdc2-4b60-9c8e-0d913606bae8"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-acdb302b-1d1b-40af-8c3e-515cd06998cc"
+            }
+          ],
+          "id": "78a994aa-05d0-48e7-b82e-9f816d8320f9",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-78a994aa-05d0-48e7-b82e-9f816d8320f9"
+        },
+        {
+          "name": "release-byurl",
+          "item": [
+            {
+              "name": "7digital Get Release Id By Url",
+              "id": "59268874-d9d2-4c8a-b5f9-46f6994ce1da",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/catalogue/release-byurl?url=<uri>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "catalogue",
+                    "release-byurl"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A 7digital release web URL.",
+                      "key": "url",
+                      "value": "<uri>"
+                    }
+                  ]
+                },
+                "description": "Resolve a 7digital release id from a 7digital web URL."
+              },
+              "response": [
+                {
+                  "id": "79859ddc-acab-4f63-b233-988b3842e720",
+                  "name": "The resolved release id.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/catalogue/release-byurl?url=<uri>&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "catalogue",
+                        "release-byurl"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) A 7digital release web URL.",
+                          "key": "url",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"releaseId\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-79859ddc-acab-4f63-b233-988b3842e720"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-59268874-d9d2-4c8a-b5f9-46f6994ce1da"
+            }
+          ],
+          "id": "fe593df9-55a9-4914-8c0c-5997b4d41dd0",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-fe593df9-55a9-4914-8c0c-5997b4d41dd0"
+        }
+      ],
+      "id": "dcdc273e-4eb9-4572-a7ba-def742190485",
+      "createdAt": "2026-07-28T00:27:22.000Z",
+      "updatedAt": "2026-07-28T00:27:22.000Z",
+      "uid": "35240-dcdc273e-4eb9-4572-a7ba-def742190485"
+    },
+    {
+      "name": "artists",
+      "item": [
+        {
+          "name": "browse",
+          "item": [
+            {
+              "name": "7digital Browse Artists By Name",
+              "id": "e0e315ba-1c67-4d27-83a4-9ca68d22eedf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/artists/browse?letter=<string>&page=1&pageSize=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "artists",
+                    "browse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) One or more starting letters to filter artists by.",
+                      "key": "letter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "1-based page number.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of items per page.",
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Get a list of artists from the catalogue whose names match the start letter(s) supplied."
+              },
+              "response": [
+                {
+                  "id": "57e080a0-ca79-4cd7-b3f0-139ec857022c",
+                  "name": "A paged list of artists.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/artists/browse?letter=<string>&page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "artists",
+                        "browse"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) One or more starting letters to filter artists by.",
+                          "key": "letter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "1-based page number.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"artists\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"sortName\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"sortName\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-57e080a0-ca79-4cd7-b3f0-139ec857022c"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-e0e315ba-1c67-4d27-83a4-9ca68d22eedf"
+            }
+          ],
+          "id": "c17a11e9-1601-4fd6-a9de-8c035fa22fad",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-c17a11e9-1601-4fd6-a9de-8c035fa22fad"
+        },
+        {
+          "name": "{artistId}",
+          "item": [
+            {
+              "name": "details",
+              "item": [
+                {
+                  "name": "7digital Get Artist Details",
+                  "id": "105987db-88eb-4bbb-b822-582950d8cb89",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/artists/:artistId/details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "artists",
+                        ":artistId",
+                        "details"
+                      ],
+                      "variable": [
+                        {
+                          "id": "066c0178-f17f-4f6a-88d1-f572d4659e7a",
+                          "key": "artistId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital artist id."
+                        }
+                      ]
+                    },
+                    "description": "Get all available artist details."
+                  },
+                  "response": [
+                    {
+                      "id": "2fdeb0ce-fd65-45a0-994e-ef68e53c8352",
+                      "name": "The artist record.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/artists/:artistId/details?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "artists",
+                            ":artistId",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "artistId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"image\": \"<uri>\",\n  \"sortName\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-2fdeb0ce-fd65-45a0-994e-ef68e53c8352"
+                    },
+                    {
+                      "id": "9f26b044-9ad5-47fc-802e-0f7ef83cd05c",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/artists/:artistId/details?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "artists",
+                            ":artistId",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "artistId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-9f26b044-9ad5-47fc-802e-0f7ef83cd05c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-105987db-88eb-4bbb-b822-582950d8cb89"
+                }
+              ],
+              "id": "050f312f-840e-4f2f-b113-93d2c9408bac",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-050f312f-840e-4f2f-b113-93d2c9408bac"
+            },
+            {
+              "name": "releases",
+              "item": [
+                {
+                  "name": "7digital Get Artist Releases",
+                  "id": "358266c1-06f1-45d7-8262-704abaa5b042",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/artists/:artistId/releases?type=single&page=1&pageSize=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "artists",
+                        ":artistId",
+                        "releases"
+                      ],
+                      "query": [
+                        {
+                          "description": "Release type filter.",
+                          "key": "type",
+                          "value": "single"
+                        },
+                        {
+                          "description": "1-based page number.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cc115268-54cd-4b66-ab16-75c66ca15670",
+                          "key": "artistId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital artist id."
+                        }
+                      ]
+                    },
+                    "description": "Get a list of releases by a given artist. Releases can be filtered by type."
+                  },
+                  "response": [
+                    {
+                      "id": "38ce16a8-7b1c-49b2-8d43-b29793f90e40",
+                      "name": "A paged list of releases.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/artists/:artistId/releases?type=single&page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "artists",
+                            ":artistId",
+                            "releases"
+                          ],
+                          "query": [
+                            {
+                              "description": "Release type filter.",
+                              "key": "type",
+                              "value": "single"
+                            },
+                            {
+                              "description": "1-based page number.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of items per page.",
+                              "key": "pageSize",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "artistId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"releases\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"single\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-38ce16a8-7b1c-49b2-8d43-b29793f90e40"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-358266c1-06f1-45d7-8262-704abaa5b042"
+                }
+              ],
+              "id": "947d24ff-7456-4ced-a09f-75d77b655da1",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-947d24ff-7456-4ced-a09f-75d77b655da1"
+            }
+          ],
+          "id": "0bf79cf8-5719-4a8f-8752-8f32fa6cad2d",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-0bf79cf8-5719-4a8f-8752-8f32fa6cad2d"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "7digital Search Artists",
+              "id": "3b34e017-19b3-421b-961d-1e2757709e63",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/artists/search?q=<string>&page=1&pageSize=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "artists",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Free-text search query.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "1-based page number.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of items per page.",
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Search the catalogue for artists matching the search query. Responses are weighted by popularity based on platform usage."
+              },
+              "response": [
+                {
+                  "id": "5dda201d-6f2c-42ee-89c5-79b1eabe3ae0",
+                  "name": "A paged list of matching artists.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/artists/search?q=<string>&page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "artists",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Free-text search query.",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "1-based page number.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"artists\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"sortName\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"sortName\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-5dda201d-6f2c-42ee-89c5-79b1eabe3ae0"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-3b34e017-19b3-421b-961d-1e2757709e63"
+            }
+          ],
+          "id": "fea1eb6d-5f51-4c39-afc9-2254ba12d240",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-fea1eb6d-5f51-4c39-afc9-2254ba12d240"
+        }
+      ],
+      "id": "6576a452-6564-44a7-b812-d4bf7ab8e524",
+      "createdAt": "2026-07-28T00:27:22.000Z",
+      "updatedAt": "2026-07-28T00:27:22.000Z",
+      "uid": "35240-6576a452-6564-44a7-b812-d4bf7ab8e524"
+    },
+    {
+      "name": "releases",
+      "item": [
+        {
+          "name": "details",
+          "item": [
+            {
+              "name": "batch",
+              "item": [
+                {
+                  "name": "7digital Get Releases Batch Details",
+                  "id": "431fce77-6bf2-456b-849f-fe47359db06a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"releaseIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"showErrors\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/releases/details/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "releases",
+                        "details",
+                        "batch"
+                      ]
+                    },
+                    "description": "Get details of multiple releases in one request. Invalid releases are omitted unless `showErrors` is true."
+                  },
+                  "response": [
+                    {
+                      "id": "88b190b7-f307-40fa-b041-4768fa4532b1",
+                      "name": "A batch of release records.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"releaseIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"showErrors\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/releases/details/batch?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "releases",
+                            "details",
+                            "batch"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"releases\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"single\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"code\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"index\": \"<integer>\"\n    },\n    {\n      \"code\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"index\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-88b190b7-f307-40fa-b041-4768fa4532b1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-431fce77-6bf2-456b-849f-fe47359db06a"
+                }
+              ],
+              "id": "2c9dfc78-b9d7-4755-a2d6-07354ff4c59a",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-2c9dfc78-b9d7-4755-a2d6-07354ff4c59a"
+            }
+          ],
+          "id": "695314fd-6f0a-4b78-8941-122c055f9f2d",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-695314fd-6f0a-4b78-8941-122c055f9f2d"
+        },
+        {
+          "name": "{releaseId}",
+          "item": [
+            {
+              "name": "details",
+              "item": [
+                {
+                  "name": "7digital Get Release Details",
+                  "id": "ec243bd6-0ccc-49be-9c1e-df9ec62f495e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/releases/:releaseId/details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "releases",
+                        ":releaseId",
+                        "details"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6a47a84f-6cf1-4e56-84e1-0cf444140092",
+                          "key": "releaseId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital release id."
+                        }
+                      ]
+                    },
+                    "description": "Get all available details for a given release."
+                  },
+                  "response": [
+                    {
+                      "id": "f939da08-354d-48af-bacf-c2b5d6823c2f",
+                      "name": "The release record.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/releases/:releaseId/details?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "releases",
+                            ":releaseId",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "releaseId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"album\",\n  \"artist\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"image\": \"<uri>\",\n    \"sortName\": \"<string>\"\n  },\n  \"url\": \"<uri>\",\n  \"image\": \"<uri>\",\n  \"releaseDate\": \"<date>\",\n  \"label\": \"<string>\",\n  \"upc\": \"<string>\",\n  \"explicit\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-f939da08-354d-48af-bacf-c2b5d6823c2f"
+                    },
+                    {
+                      "id": "2d042266-9340-48d7-8333-335b30163c94",
+                      "name": "Resource not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/releases/:releaseId/details?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "releases",
+                            ":releaseId",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "releaseId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-2d042266-9340-48d7-8333-335b30163c94"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-ec243bd6-0ccc-49be-9c1e-df9ec62f495e"
+                }
+              ],
+              "id": "8bc5e4d6-c452-47e1-b57e-58cfaf7db090",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-8bc5e4d6-c452-47e1-b57e-58cfaf7db090"
+            },
+            {
+              "name": "tracks",
+              "item": [
+                {
+                  "name": "7digital Get Release Track Listing",
+                  "id": "177d6c23-7605-441b-9b59-396995658d2e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/releases/:releaseId/tracks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "releases",
+                        ":releaseId",
+                        "tracks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "886f4e13-7043-4021-a1b4-e4e7699c480f",
+                          "key": "releaseId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital release id."
+                        }
+                      ]
+                    },
+                    "description": "Get a list of all tracks constituting the release."
+                  },
+                  "response": [
+                    {
+                      "id": "8f5a0d01-af60-41b0-83f3-16852811c778",
+                      "name": "A track listing.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/releases/:releaseId/tracks?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "releases",
+                            ":releaseId",
+                            "tracks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "releaseId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"tracks\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"ep\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-8f5a0d01-af60-41b0-83f3-16852811c778"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-177d6c23-7605-441b-9b59-396995658d2e"
+                }
+              ],
+              "id": "72990d13-416c-4049-a227-4240f28db0ad",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-72990d13-416c-4049-a227-4240f28db0ad"
+            }
+          ],
+          "id": "251a8b59-7541-44e0-957b-c14109cc3893",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-251a8b59-7541-44e0-957b-c14109cc3893"
+        },
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "7digital Search Releases",
+              "id": "a8bfb722-88ce-48d2-9383-8d9cf95838f5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/releases/search?q=<string>&page=1&pageSize=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "releases",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Free-text search query.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "1-based page number.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of items per page.",
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Search the catalogue for releases matching the search query. Responses are weighted by popularity based on platform usage."
+              },
+              "response": [
+                {
+                  "id": "e130bf52-e359-47b4-892c-ba017cd47a6b",
+                  "name": "A paged list of matching releases.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/releases/search?q=<string>&page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "releases",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Free-text search query.",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "1-based page number.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"releases\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"single\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-e130bf52-e359-47b4-892c-ba017cd47a6b"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-a8bfb722-88ce-48d2-9383-8d9cf95838f5"
+            }
+          ],
+          "id": "9244c4a6-a5b5-492d-933a-4a89b7323d99",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-9244c4a6-a5b5-492d-933a-4a89b7323d99"
+        }
+      ],
+      "id": "08610c65-fb2b-4a4b-b50b-1ce11ade076a",
+      "createdAt": "2026-07-28T00:27:22.000Z",
+      "updatedAt": "2026-07-28T00:27:22.000Z",
+      "uid": "35240-08610c65-fb2b-4a4b-b50b-1ce11ade076a"
+    },
+    {
+      "name": "tracks",
+      "item": [
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "7digital Search Tracks",
+              "id": "37dc954b-4c68-4000-8313-b18a1a1d4d10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tracks/search?q=<string>&page=1&pageSize=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tracks",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Free-text search query.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "1-based page number.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of items per page.",
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ]
+                },
+                "description": "Search the catalogue for tracks matching the search query. Responses are weighted by popularity based on platform usage."
+              },
+              "response": [
+                {
+                  "id": "0a058f0d-b6e6-433c-8ab2-0d4434dc92ea",
+                  "name": "A paged list of matching tracks.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tracks/search?q=<string>&page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tracks",
+                        "search"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Free-text search query.",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "1-based page number.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"tracks\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"ep\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-0a058f0d-b6e6-433c-8ab2-0d4434dc92ea"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-37dc954b-4c68-4000-8313-b18a1a1d4d10"
+            }
+          ],
+          "id": "f6c148a8-caef-4438-a303-2ac5eda50912",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-f6c148a8-caef-4438-a303-2ac5eda50912"
+        },
+        {
+          "name": "details",
+          "item": [
+            {
+              "name": "batch",
+              "item": [
+                {
+                  "name": "7digital Get Tracks Batch Details",
+                  "id": "826e14bc-ecc2-405e-97d9-3ebd5b9055d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"trackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"showErrors\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tracks/details/batch",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tracks",
+                        "details",
+                        "batch"
+                      ]
+                    },
+                    "description": "Get details of multiple tracks in one request. Invalid tracks are omitted unless `showErrors` is true."
+                  },
+                  "response": [
+                    {
+                      "id": "8f33608a-05a1-4722-9fae-2632d9d8aaa9",
+                      "name": "A batch of track records.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"trackIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"showErrors\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tracks/details/batch?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tracks",
+                            "details",
+                            "batch"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"tracks\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"code\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"index\": \"<integer>\"\n    },\n    {\n      \"code\": \"<integer>\",\n      \"message\": \"<string>\",\n      \"index\": \"<integer>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-8f33608a-05a1-4722-9fae-2632d9d8aaa9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-826e14bc-ecc2-405e-97d9-3ebd5b9055d9"
+                }
+              ],
+              "id": "629f8b82-1770-476e-a995-9c1debf10a8e",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-629f8b82-1770-476e-a995-9c1debf10a8e"
+            }
+          ],
+          "id": "6257b1fb-1610-4614-ae24-1a822b964ed9",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-6257b1fb-1610-4614-ae24-1a822b964ed9"
+        },
+        {
+          "name": "{trackId}",
+          "item": [
+            {
+              "name": "details",
+              "item": [
+                {
+                  "name": "7digital Get Track Details",
+                  "id": "4ad03194-abd8-40f8-9301-09de37ed77a8",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tracks/:trackId/details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tracks",
+                        ":trackId",
+                        "details"
+                      ],
+                      "variable": [
+                        {
+                          "id": "606dd0e4-f9e2-4d82-96e8-abe398933578",
+                          "key": "trackId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital track id."
+                        }
+                      ]
+                    },
+                    "description": "Get all available details for a given track."
+                  },
+                  "response": [
+                    {
+                      "id": "2c36176a-ed4a-4a02-9124-d8f3c73c98f9",
+                      "name": "The track record.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tracks/:trackId/details?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tracks",
+                            ":trackId",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "trackId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"version\": \"<string>\",\n  \"artist\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"image\": \"<uri>\",\n    \"sortName\": \"<string>\"\n  },\n  \"release\": {\n    \"id\": \"<string>\",\n    \"title\": \"<string>\",\n    \"type\": \"ep\",\n    \"artist\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"sortName\": \"<string>\"\n    },\n    \"url\": \"<uri>\",\n    \"image\": \"<uri>\",\n    \"releaseDate\": \"<date>\",\n    \"label\": \"<string>\",\n    \"upc\": \"<string>\",\n    \"explicit\": \"<boolean>\"\n  },\n  \"trackNumber\": \"<integer>\",\n  \"duration\": \"<integer>\",\n  \"explicit\": \"<boolean>\",\n  \"isrc\": \"<string>\",\n  \"previewUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-2c36176a-ed4a-4a02-9124-d8f3c73c98f9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-4ad03194-abd8-40f8-9301-09de37ed77a8"
+                }
+              ],
+              "id": "4ea4ea94-fdea-41f3-a033-f328baa07610",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-4ea4ea94-fdea-41f3-a033-f328baa07610"
+            },
+            {
+              "name": "download",
+              "item": [
+                {
+                  "name": "7digital Download Track",
+                  "id": "8e24a19b-0df6-4993-9ca1-f11ee625543c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tracks/:trackId/download",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tracks",
+                        ":trackId",
+                        "download"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fa933bfe-3420-4ea9-8d9d-c185429bbf35",
+                          "key": "trackId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital track id."
+                        }
+                      ]
+                    },
+                    "description": "Get a signed URL or stream of the track's media file."
+                  },
+                  "response": [
+                    {
+                      "id": "8e44b65e-7fb9-45a3-b7bd-9136b911b860",
+                      "name": "A signed download URL.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/tracks/:trackId/download?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tracks",
+                            ":trackId",
+                            "download"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "trackId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"url\": \"<uri>\",\n  \"expiresAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T00:27:22.000Z",
+                      "updatedAt": "2026-07-28T00:27:22.000Z",
+                      "uid": "35240-8e44b65e-7fb9-45a3-b7bd-9136b911b860"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:22.000Z",
+                  "updatedAt": "2026-07-28T00:27:22.000Z",
+                  "uid": "35240-8e24a19b-0df6-4993-9ca1-f11ee625543c"
+                }
+              ],
+              "id": "61a9b77c-dc48-4e46-b526-000282a2f17d",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-61a9b77c-dc48-4e46-b526-000282a2f17d"
+            }
+          ],
+          "id": "bab9b0e9-383e-4088-97d7-02cbf47da274",
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-bab9b0e9-383e-4088-97d7-02cbf47da274"
+        }
+      ],
+      "id": "238c29ce-adbf-4f33-8f69-cf94d5284a51",
+      "createdAt": "2026-07-28T00:27:22.000Z",
+      "updatedAt": "2026-07-28T00:27:22.000Z",
+      "uid": "35240-238c29ce-adbf-4f33-8f69-cf94d5284a51"
+    },
+    {
+      "name": "usage-types",
+      "item": [
+        {
+          "name": "7digital Get Usage Type Information",
+          "id": "d993d4ab-0c8f-46a1-924d-1c4cbde38aff",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/usage-types",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usage-types"
+              ]
+            },
+            "description": "List usage types available for content in the catalogue (licensing scopes)."
+          },
+          "response": [
+            {
+              "id": "7f977c78-f0fb-4be7-9f16-0b5fae5e2dca",
+              "name": "A list of usage types.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/usage-types?oauth_consumer_key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usage-types"
+                  ],
+                  "query": [
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"usageTypes\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:27:22.000Z",
+              "updatedAt": "2026-07-28T00:27:22.000Z",
+              "uid": "35240-7f977c78-f0fb-4be7-9f16-0b5fae5e2dca"
+            }
+          ],
+          "createdAt": "2026-07-28T00:27:22.000Z",
+          "updatedAt": "2026-07-28T00:27:22.000Z",
+          "uid": "35240-d993d4ab-0c8f-46a1-924d-1c4cbde38aff"
+        }
+      ],
+      "id": "ba596263-f84f-4139-8e65-9864a4156d56",
+      "createdAt": "2026-07-28T00:27:22.000Z",
+      "updatedAt": "2026-07-28T00:27:22.000Z",
+      "uid": "35240-ba596263-f84f-4139-8e65-9864a4156d56"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

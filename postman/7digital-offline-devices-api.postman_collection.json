@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "8bdd8369-a5d1-4b27-b23e-0f55868283a8",
+    "name": "7digital Artists Offline Devices API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:31.000Z",
+    "updatedAt": "2026-07-28T00:27:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8bdd8369-a5d1-4b27-b23e-0f55868283a8"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "unlimitedStreaming",
+              "item": [
+                {
+                  "name": "offline",
+                  "item": [
+                    {
+                      "name": "{deviceId}",
+                      "item": [
+                        {
+                          "name": "7digital Get Offline Device Status",
+                          "id": "82029a4a-db15-40e3-8c43-e52dac5ca20f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "oauth_consumer_key",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "query",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:userId/unlimitedStreaming/offline/:deviceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":userId",
+                                "unlimitedStreaming",
+                                "offline",
+                                ":deviceId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b5fb59c0-cd28-4c10-9026-30dc3cb785a7",
+                                  "key": "userId",
+                                  "value": "<string>",
+                                  "description": "(Required) Partner-scoped 7digital user id."
+                                },
+                                {
+                                  "id": "0a59effa-73ab-4cab-aa4e-bf1d75add537",
+                                  "key": "deviceId",
+                                  "value": "<string>",
+                                  "description": "(Required) Identifier of a registered offline device."
+                                }
+                              ]
+                            },
+                            "description": "Get the offline status of a specified device."
+                          },
+                          "response": [
+                            {
+                              "id": "c34c9e30-83e0-4499-9aeb-e7980d63b455",
+                              "name": "Device authorisation status.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/users/:userId/unlimitedStreaming/offline/:deviceId?oauth_consumer_key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "users",
+                                    ":userId",
+                                    "unlimitedStreaming",
+                                    "offline",
+                                    ":deviceId"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "oauth_consumer_key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "userId"
+                                    },
+                                    {
+                                      "key": "deviceId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"deviceId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"platform\": \"web\",\n  \"status\": \"deauthorised\",\n  \"authorisedAt\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T00:27:32.000Z",
+                              "updatedAt": "2026-07-28T00:27:32.000Z",
+                              "uid": "35240-c34c9e30-83e0-4499-9aeb-e7980d63b455"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T00:27:32.000Z",
+                          "updatedAt": "2026-07-28T00:27:32.000Z",
+                          "uid": "35240-82029a4a-db15-40e3-8c43-e52dac5ca20f"
+                        }
+                      ],
+                      "id": "5357ed22-db00-4a39-97ab-86277ef8dfb0",
+                      "createdAt": "2026-07-28T00:27:32.000Z",
+                      "updatedAt": "2026-07-28T00:27:32.000Z",
+                      "uid": "35240-5357ed22-db00-4a39-97ab-86277ef8dfb0"
+                    },
+                    {
+                      "name": "7digital Authorize Offline Device",
+                      "id": "db23e820-2c00-447a-a6bf-5b7238508de4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "oauth_consumer_key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "query",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"deviceId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"platform\": \"ios\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:userId/unlimitedStreaming/offline",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":userId",
+                            "unlimitedStreaming",
+                            "offline"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b438c77c-b441-4df3-83de-58467b183f6a",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) Partner-scoped 7digital user id."
+                            }
+                          ]
+                        },
+                        "description": "Authorise a device for offline subscription streaming. POST body can be JSON or XML."
+                      },
+                      "response": [
+                        {
+                          "id": "2f45ebed-37be-492d-82d8-9514b24e4d4a",
+                          "name": "Device authorisation record.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"deviceId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"platform\": \"ios\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:userId/unlimitedStreaming/offline?oauth_consumer_key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":userId",
+                                "unlimitedStreaming",
+                                "offline"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "oauth_consumer_key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"deviceId\": \"<string>\",\n  \"deviceName\": \"<string>\",\n  \"platform\": \"web\",\n  \"status\": \"deauthorised\",\n  \"authorisedAt\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T00:27:32.000Z",
+                          "updatedAt": "2026-07-28T00:27:32.000Z",
+                          "uid": "35240-2f45ebed-37be-492d-82d8-9514b24e4d4a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:27:32.000Z",
+                      "updatedAt": "2026-07-28T00:27:32.000Z",
+                      "uid": "35240-db23e820-2c00-447a-a6bf-5b7238508de4"
+                    }
+                  ],
+                  "id": "5f8118fa-02b2-4dd6-84e5-db0999f86380",
+                  "createdAt": "2026-07-28T00:27:32.000Z",
+                  "updatedAt": "2026-07-28T00:27:32.000Z",
+                  "uid": "35240-5f8118fa-02b2-4dd6-84e5-db0999f86380"
+                },
+                {
+                  "name": "devices",
+                  "item": [
+                    {
+                      "name": "7digital List Offline Devices",
+                      "id": "e5f5b28e-7560-4494-8e16-efa1934167f1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "oauth_consumer_key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "query",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:userId/unlimitedStreaming/devices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":userId",
+                            "unlimitedStreaming",
+                            "devices"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e34e76a2-1d95-42e2-b5ee-a4ec6c2fa0c6",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) Partner-scoped 7digital user id."
+                            }
+                          ]
+                        },
+                        "description": "Get a list of all of the user's registered devices."
+                      },
+                      "response": [
+                        {
+                          "id": "59236402-dbce-41a2-a57d-92e87a1871d4",
+                          "name": "A list of devices.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/users/:userId/unlimitedStreaming/devices?oauth_consumer_key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "users",
+                                ":userId",
+                                "unlimitedStreaming",
+                                "devices"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "oauth_consumer_key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"devices\": [\n    {\n      \"deviceId\": \"<string>\",\n      \"deviceName\": \"<string>\",\n      \"platform\": \"ios\",\n      \"status\": \"authorised\",\n      \"authorisedAt\": \"<dateTime>\"\n    },\n    {\n      \"deviceId\": \"<string>\",\n      \"deviceName\": \"<string>\",\n      \"platform\": \"web\",\n      \"status\": \"authorised\",\n      \"authorisedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T00:27:32.000Z",
+                          "updatedAt": "2026-07-28T00:27:32.000Z",
+                          "uid": "35240-59236402-dbce-41a2-a57d-92e87a1871d4"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:27:32.000Z",
+                      "updatedAt": "2026-07-28T00:27:32.000Z",
+                      "uid": "35240-e5f5b28e-7560-4494-8e16-efa1934167f1"
+                    }
+                  ],
+                  "id": "d67d8733-d194-47fb-9713-f0d3de1812a4",
+                  "createdAt": "2026-07-28T00:27:32.000Z",
+                  "updatedAt": "2026-07-28T00:27:32.000Z",
+                  "uid": "35240-d67d8733-d194-47fb-9713-f0d3de1812a4"
+                }
+              ],
+              "id": "baacf8ce-8c04-47b6-9dfb-5577d509a7d5",
+              "createdAt": "2026-07-28T00:27:32.000Z",
+              "updatedAt": "2026-07-28T00:27:32.000Z",
+              "uid": "35240-baacf8ce-8c04-47b6-9dfb-5577d509a7d5"
+            }
+          ],
+          "id": "65c33200-f3a3-468a-938d-a6d1e2fac9c2",
+          "createdAt": "2026-07-28T00:27:32.000Z",
+          "updatedAt": "2026-07-28T00:27:32.000Z",
+          "uid": "35240-65c33200-f3a3-468a-938d-a6d1e2fac9c2"
+        }
+      ],
+      "id": "a88b8304-1a25-4023-93e8-64cec110b846",
+      "createdAt": "2026-07-28T00:27:32.000Z",
+      "updatedAt": "2026-07-28T00:27:32.000Z",
+      "uid": "35240-a88b8304-1a25-4023-93e8-64cec110b846"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

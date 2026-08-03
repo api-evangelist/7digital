@@ -1,0 +1,275 @@
+{
+  "info": {
+    "_postman_id": "d15677c2-f278-418b-9e56-e2595ab537f7",
+    "name": "7digital Artists Payment API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:32.000Z",
+    "updatedAt": "2026-07-28T00:27:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d15677c2-f278-418b-9e56-e2595ab537f7"
+  },
+  "item": [
+    {
+      "name": "payment",
+      "item": [
+        {
+          "name": "card",
+          "item": [
+            {
+              "name": "type",
+              "item": [
+                {
+                  "name": "7digital Get Payment Card Types",
+                  "id": "add3575c-fe86-4661-8fb3-95f5371cb6f2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/card/type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "card",
+                        "type"
+                      ]
+                    },
+                    "description": "List the payment card types supported by 7digital."
+                  },
+                  "response": [
+                    {
+                      "id": "51b42aed-ca8c-4e61-9d4a-ab88a8ada364",
+                      "name": "A list of card types.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/card/type?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "card",
+                            "type"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cardTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:33.000Z",
+                      "updatedAt": "2026-07-28T00:27:33.000Z",
+                      "uid": "35240-51b42aed-ca8c-4e61-9d4a-ab88a8ada364"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:33.000Z",
+                  "updatedAt": "2026-07-28T00:27:33.000Z",
+                  "uid": "35240-add3575c-fe86-4661-8fb3-95f5371cb6f2"
+                }
+              ],
+              "id": "a40addbd-66c7-4717-92bb-233d90e79d1d",
+              "createdAt": "2026-07-28T00:27:33.000Z",
+              "updatedAt": "2026-07-28T00:27:33.000Z",
+              "uid": "35240-a40addbd-66c7-4717-92bb-233d90e79d1d"
+            }
+          ],
+          "id": "5db06007-f265-47d1-954b-a3f7eaf02f5c",
+          "createdAt": "2026-07-28T00:27:33.000Z",
+          "updatedAt": "2026-07-28T00:27:33.000Z",
+          "uid": "35240-5db06007-f265-47d1-954b-a3f7eaf02f5c"
+        },
+        {
+          "name": "voucher",
+          "item": [
+            {
+              "name": "details",
+              "item": [
+                {
+                  "name": "7digital Get Payment Voucher Details",
+                  "id": "06d4720b-ba74-411e-837a-24720c26ca07",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/voucher/details?voucherCode=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "voucher",
+                        "details"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Voucher code to look up.",
+                          "key": "voucherCode",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Look up details for a voucher code (validity, value, redemption status)."
+                  },
+                  "response": [
+                    {
+                      "id": "097e01b3-69d1-4a0a-a242-9b9812f2e9f6",
+                      "name": "Voucher details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/voucher/details?voucherCode=<string>&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "voucher",
+                            "details"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Voucher code to look up.",
+                              "key": "voucherCode",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"value\": {\n    \"formattedPrice\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"currency\": \"<string>\"\n  },\n  \"type\": \"fixed\",\n  \"expiresAt\": \"<dateTime>\",\n  \"redeemed\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T00:27:33.000Z",
+                      "updatedAt": "2026-07-28T00:27:33.000Z",
+                      "uid": "35240-097e01b3-69d1-4a0a-a242-9b9812f2e9f6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:33.000Z",
+                  "updatedAt": "2026-07-28T00:27:33.000Z",
+                  "uid": "35240-06d4720b-ba74-411e-837a-24720c26ca07"
+                }
+              ],
+              "id": "708bc28e-5355-4ac6-b3ec-b0c99fc7338a",
+              "createdAt": "2026-07-28T00:27:33.000Z",
+              "updatedAt": "2026-07-28T00:27:33.000Z",
+              "uid": "35240-708bc28e-5355-4ac6-b3ec-b0c99fc7338a"
+            }
+          ],
+          "id": "f2c3ca75-2c31-47d0-b33c-4ad2250cd388",
+          "createdAt": "2026-07-28T00:27:33.000Z",
+          "updatedAt": "2026-07-28T00:27:33.000Z",
+          "uid": "35240-f2c3ca75-2c31-47d0-b33c-4ad2250cd388"
+        }
+      ],
+      "id": "243ad0bf-2d73-4bc9-9c0c-333ab5bbbe94",
+      "createdAt": "2026-07-28T00:27:33.000Z",
+      "updatedAt": "2026-07-28T00:27:33.000Z",
+      "uid": "35240-243ad0bf-2d73-4bc9-9c0c-333ab5bbbe94"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

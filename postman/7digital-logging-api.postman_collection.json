@@ -1,0 +1,392 @@
+{
+  "info": {
+    "_postman_id": "b156d33a-a1f7-41e1-b087-44c5ed4795ac",
+    "name": "7digital Artists Logging API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:28.000Z",
+    "updatedAt": "2026-07-28T00:27:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b156d33a-a1f7-41e1-b087-44c5ed4795ac"
+  },
+  "item": [
+    {
+      "name": "logging",
+      "item": [
+        {
+          "name": "catalogue",
+          "item": [
+            {
+              "name": "7digital Report Catalogue Stream",
+              "id": "49cb7e2e-1054-4406-a9f7-454fa1180ddf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logs\": [\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/logging/catalogue",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "logging",
+                    "catalogue"
+                  ]
+                },
+                "description": "Report a track that has been streamed to a user listening in a radio-style playback. Streams should be logged in near real time, or the same day in batch."
+              },
+              "response": [
+                {
+                  "id": "ca9a01a0-f8df-4a56-a713-c73713549750",
+                  "name": "Stream logs accepted.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logs\": [\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/logging/catalogue?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "logging",
+                        "catalogue"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T00:27:28.000Z",
+                  "updatedAt": "2026-07-28T00:27:28.000Z",
+                  "uid": "35240-ca9a01a0-f8df-4a56-a713-c73713549750"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:28.000Z",
+              "updatedAt": "2026-07-28T00:27:28.000Z",
+              "uid": "35240-49cb7e2e-1054-4406-a9f7-454fa1180ddf"
+            }
+          ],
+          "id": "dddd60e2-32c5-4072-93dd-53edccf78a47",
+          "createdAt": "2026-07-28T00:27:28.000Z",
+          "updatedAt": "2026-07-28T00:27:28.000Z",
+          "uid": "35240-dddd60e2-32c5-4072-93dd-53edccf78a47"
+        },
+        {
+          "name": "preview",
+          "item": [
+            {
+              "name": "7digital Report Preview Stream",
+              "id": "53b3b8f1-ff58-4b8c-8649-15f32e14514a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logs\": [\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/logging/preview",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "logging",
+                    "preview"
+                  ]
+                },
+                "description": "Report a preview clip that has been played. Acceptable usage is 5 POST requests per second with batches of up to 500 logs per request."
+              },
+              "response": [
+                {
+                  "id": "13dd3aad-1a24-41b9-8a87-6b350aec7574",
+                  "name": "Preview logs accepted.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logs\": [\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/logging/preview?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "logging",
+                        "preview"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T00:27:28.000Z",
+                  "updatedAt": "2026-07-28T00:27:28.000Z",
+                  "uid": "35240-13dd3aad-1a24-41b9-8a87-6b350aec7574"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:28.000Z",
+              "updatedAt": "2026-07-28T00:27:28.000Z",
+              "uid": "35240-53b3b8f1-ff58-4b8c-8649-15f32e14514a"
+            }
+          ],
+          "id": "437421ac-213c-42a7-bfa7-6347d7377281",
+          "createdAt": "2026-07-28T00:27:28.000Z",
+          "updatedAt": "2026-07-28T00:27:28.000Z",
+          "uid": "35240-437421ac-213c-42a7-bfa7-6347d7377281"
+        },
+        {
+          "name": "subscriber",
+          "item": [
+            {
+              "name": "7digital Report Subscriber Stream",
+              "id": "b5c49dde-8652-4489-9a1e-0f8c74ec2729",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"logs\": [\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/logging/subscriber",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "logging",
+                    "subscriber"
+                  ]
+                },
+                "description": "Report a track that has been streamed by a subscriber. Logs should be sent in near real-time, or the same day in batches of 10\u201320 logs per request."
+              },
+              "response": [
+                {
+                  "id": "9c5d226d-2a14-4d42-ae4f-1d8c2d4dead4",
+                  "name": "Subscriber stream logs accepted.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"logs\": [\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"userId\": \"<string>\",\n      \"clientId\": \"<string>\",\n      \"durationPlayed\": \"<integer>\",\n      \"country\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/logging/subscriber?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "logging",
+                        "subscriber"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T00:27:28.000Z",
+                  "updatedAt": "2026-07-28T00:27:28.000Z",
+                  "uid": "35240-9c5d226d-2a14-4d42-ae4f-1d8c2d4dead4"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:28.000Z",
+              "updatedAt": "2026-07-28T00:27:28.000Z",
+              "uid": "35240-b5c49dde-8652-4489-9a1e-0f8c74ec2729"
+            }
+          ],
+          "id": "1cc6d759-bcc0-46e2-9ece-b2402c4fd7ce",
+          "createdAt": "2026-07-28T00:27:28.000Z",
+          "updatedAt": "2026-07-28T00:27:28.000Z",
+          "uid": "35240-1cc6d759-bcc0-46e2-9ece-b2402c4fd7ce"
+        }
+      ],
+      "id": "fa16a96a-0dad-42a0-80ef-f55c7a0461c4",
+      "createdAt": "2026-07-28T00:27:28.000Z",
+      "updatedAt": "2026-07-28T00:27:28.000Z",
+      "uid": "35240-fa16a96a-0dad-42a0-80ef-f55c7a0461c4"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

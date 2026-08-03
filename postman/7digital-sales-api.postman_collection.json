@@ -1,0 +1,595 @@
+{
+  "info": {
+    "_postman_id": "b3583ddf-87ea-4a26-b8d4-3e42cb2d38e0",
+    "name": "7digital Artists Sales API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:35.000Z",
+    "updatedAt": "2026-07-28T00:27:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b3583ddf-87ea-4a26-b8d4-3e42cb2d38e0"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "{userId}",
+          "item": [
+            {
+              "name": "locker",
+              "item": [
+                {
+                  "name": "7digital Get User Locker",
+                  "id": "460b8696-fbdf-45b3-995f-754cf7c8015a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "oauth_consumer_key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:userId/locker?page=1&pageSize=20",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":userId",
+                        "locker"
+                      ],
+                      "query": [
+                        {
+                          "description": "1-based page number.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of items per page.",
+                          "key": "pageSize",
+                          "value": "20"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "617a06fc-67c9-4091-be20-4b72222afb06",
+                          "key": "userId",
+                          "value": "<string>",
+                          "description": "(Required) Partner-scoped 7digital user id."
+                        }
+                      ]
+                    },
+                    "description": "Get a paged list of releases and tracks in a user's locker."
+                  },
+                  "response": [
+                    {
+                      "id": "11e52d85-7b70-4638-83a9-6f4074fc2ede",
+                      "name": "The user's locker.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:userId/locker?page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":userId",
+                            "locker"
+                          ],
+                          "query": [
+                            {
+                              "description": "1-based page number.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of items per page.",
+                              "key": "pageSize",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"releases\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"single\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"compilation\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"url\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"releaseDate\": \"<date>\",\n      \"label\": \"<string>\",\n      \"upc\": \"<string>\",\n      \"explicit\": \"<boolean>\"\n    }\n  ],\n  \"tracks\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"single\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"version\": \"<string>\",\n      \"artist\": {\n        \"id\": \"<string>\",\n        \"name\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"sortName\": \"<string>\"\n      },\n      \"release\": {\n        \"id\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"single\",\n        \"artist\": {\n          \"id\": \"<string>\",\n          \"name\": \"<string>\",\n          \"url\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"sortName\": \"<string>\"\n        },\n        \"url\": \"<uri>\",\n        \"image\": \"<uri>\",\n        \"releaseDate\": \"<date>\",\n        \"label\": \"<string>\",\n        \"upc\": \"<string>\",\n        \"explicit\": \"<boolean>\"\n      },\n      \"trackNumber\": \"<integer>\",\n      \"duration\": \"<integer>\",\n      \"explicit\": \"<boolean>\",\n      \"isrc\": \"<string>\",\n      \"previewUrl\": \"<uri>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T00:27:36.000Z",
+                      "updatedAt": "2026-07-28T00:27:36.000Z",
+                      "uid": "35240-11e52d85-7b70-4638-83a9-6f4074fc2ede"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:36.000Z",
+                  "updatedAt": "2026-07-28T00:27:36.000Z",
+                  "uid": "35240-460b8696-fbdf-45b3-995f-754cf7c8015a"
+                }
+              ],
+              "id": "745de7bd-2c6c-4120-97ff-c1ddefce4c89",
+              "createdAt": "2026-07-28T00:27:36.000Z",
+              "updatedAt": "2026-07-28T00:27:36.000Z",
+              "uid": "35240-745de7bd-2c6c-4120-97ff-c1ddefce4c89"
+            }
+          ],
+          "id": "1e495437-3307-4d1b-a21f-035e07e02347",
+          "createdAt": "2026-07-28T00:27:36.000Z",
+          "updatedAt": "2026-07-28T00:27:36.000Z",
+          "uid": "35240-1e495437-3307-4d1b-a21f-035e07e02347"
+        }
+      ],
+      "id": "b38803e9-93d2-477c-b745-b9b36cf68e62",
+      "createdAt": "2026-07-28T00:27:36.000Z",
+      "updatedAt": "2026-07-28T00:27:36.000Z",
+      "uid": "35240-b38803e9-93d2-477c-b745-b9b36cf68e62"
+    },
+    {
+      "name": "sales",
+      "item": [
+        {
+          "name": "credit-item",
+          "item": [
+            {
+              "name": "7digital Credit Sales Item",
+              "id": "d303decb-ba61-429e-9465-4cefb0f1f67f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "oauth_consumer_key",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "query",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ISO 4217 currency code matching the supplied wholesale price.",
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Retail price charged to the user.",
+                      "key": "price",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "trackId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sales/credit-item",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sales",
+                    "credit-item"
+                  ]
+                },
+                "description": "Log a sale of a track or release for the specified user and add it to their locker. Currency must match the one provided for the content (typically USD). Returns XML responses only."
+              },
+              "response": [
+                {
+                  "id": "949f71d0-46e5-40a8-98bc-f6c18085c471",
+                  "name": "Sale logged.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "userId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ISO 4217 currency code matching the supplied wholesale price.",
+                          "key": "currency",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Retail price charged to the user.",
+                          "key": "price",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "releaseId",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "trackId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sales/credit-item?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sales",
+                        "credit-item"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "xml",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/xml"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "",
+                  "createdAt": "2026-07-28T00:27:36.000Z",
+                  "updatedAt": "2026-07-28T00:27:36.000Z",
+                  "uid": "35240-949f71d0-46e5-40a8-98bc-f6c18085c471"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:36.000Z",
+              "updatedAt": "2026-07-28T00:27:36.000Z",
+              "uid": "35240-d303decb-ba61-429e-9465-4cefb0f1f67f"
+            }
+          ],
+          "id": "9e7ce3bf-50e2-4174-9d05-c1c6cb73731a",
+          "createdAt": "2026-07-28T00:27:36.000Z",
+          "updatedAt": "2026-07-28T00:27:36.000Z",
+          "uid": "35240-9e7ce3bf-50e2-4174-9d05-c1c6cb73731a"
+        },
+        {
+          "name": "refund",
+          "item": [
+            {
+              "name": "release",
+              "item": [
+                {
+                  "name": "7digital Report Release Refund",
+                  "id": "19e74a55-43cc-4c86-b4f9-1d38f542040d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"userId\": \"<string>\",\n  \"purchaseId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sales/refund/release",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sales",
+                        "refund",
+                        "release"
+                      ]
+                    },
+                    "description": "Remove a purchase of a release from the sales report when the purchase has been refunded."
+                  },
+                  "response": [
+                    {
+                      "id": "ff4d81a2-a967-403d-b861-fa304ef2eeb6",
+                      "name": "Refund reported.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"<string>\",\n  \"purchaseId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sales/refund/release?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sales",
+                            "refund",
+                            "release"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T00:27:36.000Z",
+                      "updatedAt": "2026-07-28T00:27:36.000Z",
+                      "uid": "35240-ff4d81a2-a967-403d-b861-fa304ef2eeb6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:36.000Z",
+                  "updatedAt": "2026-07-28T00:27:36.000Z",
+                  "uid": "35240-19e74a55-43cc-4c86-b4f9-1d38f542040d"
+                }
+              ],
+              "id": "cc15156f-6768-4c38-8614-f11933af0ae8",
+              "createdAt": "2026-07-28T00:27:36.000Z",
+              "updatedAt": "2026-07-28T00:27:36.000Z",
+              "uid": "35240-cc15156f-6768-4c38-8614-f11933af0ae8"
+            },
+            {
+              "name": "track",
+              "item": [
+                {
+                  "name": "7digital Report Track Refund",
+                  "id": "98ca3c11-7766-43c0-860d-1e40139aa00c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"userId\": \"<string>\",\n  \"purchaseId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/sales/refund/track",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sales",
+                        "refund",
+                        "track"
+                      ]
+                    },
+                    "description": "Remove a purchase of a track from the sales report when the purchase has been refunded."
+                  },
+                  "response": [
+                    {
+                      "id": "ac33ce87-2a05-47fe-8913-42ef4c3d8105",
+                      "name": "Refund reported.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userId\": \"<string>\",\n  \"purchaseId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sales/refund/track?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sales",
+                            "refund",
+                            "track"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T00:27:36.000Z",
+                      "updatedAt": "2026-07-28T00:27:36.000Z",
+                      "uid": "35240-ac33ce87-2a05-47fe-8913-42ef4c3d8105"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:36.000Z",
+                  "updatedAt": "2026-07-28T00:27:36.000Z",
+                  "uid": "35240-98ca3c11-7766-43c0-860d-1e40139aa00c"
+                }
+              ],
+              "id": "272a40e5-bc3c-4f05-8f12-b4009d1b7b18",
+              "createdAt": "2026-07-28T00:27:36.000Z",
+              "updatedAt": "2026-07-28T00:27:36.000Z",
+              "uid": "35240-272a40e5-bc3c-4f05-8f12-b4009d1b7b18"
+            }
+          ],
+          "id": "44064d69-fe1c-466e-b8f0-5f1eac91145c",
+          "createdAt": "2026-07-28T00:27:36.000Z",
+          "updatedAt": "2026-07-28T00:27:36.000Z",
+          "uid": "35240-44064d69-fe1c-466e-b8f0-5f1eac91145c"
+        }
+      ],
+      "id": "dc6c4c0c-6fc0-4f16-8115-0ed29db47cf3",
+      "createdAt": "2026-07-28T00:27:36.000Z",
+      "updatedAt": "2026-07-28T00:27:36.000Z",
+      "uid": "35240-dc6c4c0c-6fc0-4f16-8115-0ed29db47cf3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

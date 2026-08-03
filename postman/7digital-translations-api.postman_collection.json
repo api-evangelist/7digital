@@ -1,0 +1,136 @@
+{
+  "info": {
+    "_postman_id": "3512d212-06bd-4dee-a1a5-c502da125007",
+    "name": "7digital Artists Translations API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:45.000Z",
+    "updatedAt": "2026-07-28T00:27:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3512d212-06bd-4dee-a1a5-c502da125007"
+  },
+  "item": [
+    {
+      "name": "translations",
+      "item": [
+        {
+          "name": "7digital Get Translations",
+          "id": "4dc2ee8e-2b0d-405a-b6f6-fa61006569d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/translations?locale=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "translations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Locale identifier (BCP 47).",
+                  "key": "locale",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Get localised translation bundles for catalogue strings."
+          },
+          "response": [
+            {
+              "id": "54f4bbd5-8bf7-4ef1-80af-a495af43173a",
+              "name": "A translation bundle.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/translations?locale=<string>&oauth_consumer_key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "translations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Locale identifier (BCP 47).",
+                      "key": "locale",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"locale\": \"<string>\",\n  \"translations\": {\n    \"fugiat8fb\": \"<string>\",\n    \"Excepteur_4\": \"<string>\",\n    \"consectetur_e1\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T00:27:45.000Z",
+              "updatedAt": "2026-07-28T00:27:45.000Z",
+              "uid": "35240-54f4bbd5-8bf7-4ef1-80af-a495af43173a"
+            }
+          ],
+          "createdAt": "2026-07-28T00:27:45.000Z",
+          "updatedAt": "2026-07-28T00:27:45.000Z",
+          "uid": "35240-4dc2ee8e-2b0d-405a-b6f6-fa61006569d3"
+        }
+      ],
+      "id": "c61f4941-c143-4711-b14f-b64874ce093f",
+      "createdAt": "2026-07-28T00:27:45.000Z",
+      "updatedAt": "2026-07-28T00:27:45.000Z",
+      "uid": "35240-c61f4941-c143-4711-b14f-b64874ce093f"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}

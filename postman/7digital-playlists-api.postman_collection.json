@@ -1,0 +1,527 @@
+{
+  "info": {
+    "_postman_id": "05837202-9084-4bb3-a769-743cee7c6fa8",
+    "name": "7digital Artists Playlists API",
+    "description": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:27:33.000Z",
+    "updatedAt": "2026-07-28T00:27:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-05837202-9084-4bb3-a769-743cee7c6fa8"
+  },
+  "item": [
+    {
+      "name": "playlists",
+      "item": [
+        {
+          "name": "{playlistId}",
+          "item": [
+            {
+              "name": "tracks",
+              "item": [
+                {
+                  "name": "7digital Add Tracks To Playlist",
+                  "id": "dd4b3358-b2fb-4074-8cb4-da880c5339ef",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/playlists/:playlistId/tracks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "playlists",
+                        ":playlistId",
+                        "tracks"
+                      ],
+                      "variable": [
+                        {
+                          "id": "dd4750c7-60d8-4f12-8c11-3fdfdf81df9d",
+                          "key": "playlistId",
+                          "value": "<string>",
+                          "description": "(Required) 7digital playlist id."
+                        }
+                      ]
+                    },
+                    "description": "Add tracks to the playlist. All metadata must be provided in the call. The `source` and `audioUrl` properties are optional and may indicate an alternative source for the physical file."
+                  },
+                  "response": [
+                    {
+                      "id": "51e9cec5-c000-4338-8738-573f01fb55c5",
+                      "name": "The updated playlist.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/playlists/:playlistId/tracks?oauth_consumer_key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "playlists",
+                            ":playlistId",
+                            "tracks"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "oauth_consumer_key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "playlistId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"public\",\n  \"userId\": \"<string>\",\n  \"trackCount\": \"<integer>\",\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"position\": \"<integer>\",\n      \"addedAt\": \"<dateTime>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"position\": \"<integer>\",\n      \"addedAt\": \"<dateTime>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"modifiedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T00:27:34.000Z",
+                      "updatedAt": "2026-07-28T00:27:34.000Z",
+                      "uid": "35240-51e9cec5-c000-4338-8738-573f01fb55c5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:27:34.000Z",
+                  "updatedAt": "2026-07-28T00:27:34.000Z",
+                  "uid": "35240-dd4b3358-b2fb-4074-8cb4-da880c5339ef"
+                }
+              ],
+              "id": "ec1ab18d-29a8-4380-af5f-b97eca7b38b2",
+              "createdAt": "2026-07-28T00:27:34.000Z",
+              "updatedAt": "2026-07-28T00:27:34.000Z",
+              "uid": "35240-ec1ab18d-29a8-4380-af5f-b97eca7b38b2"
+            },
+            {
+              "name": "7digital Update Playlist Details",
+              "id": "f0b0809b-d232-41f6-9264-7f4e8fda1ac4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"private\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/playlists/:playlistId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "playlists",
+                    ":playlistId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ef82dc51-dff5-425f-8cac-7f210b345b21",
+                      "key": "playlistId",
+                      "value": "<string>",
+                      "description": "(Required) 7digital playlist id."
+                    }
+                  ]
+                },
+                "description": "Update a playlist's details. Does not affect playlist tracks. Use to, e.g., change visibility from private to public. Descriptions are truncated to 500 characters."
+              },
+              "response": [
+                {
+                  "id": "cab49cc1-f7ef-4a3d-aec2-5de81177bc12",
+                  "name": "The updated playlist.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"private\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/playlists/:playlistId?oauth_consumer_key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "playlists",
+                        ":playlistId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "oauth_consumer_key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "playlistId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"public\",\n  \"userId\": \"<string>\",\n  \"trackCount\": \"<integer>\",\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"position\": \"<integer>\",\n      \"addedAt\": \"<dateTime>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"position\": \"<integer>\",\n      \"addedAt\": \"<dateTime>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"modifiedAt\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T00:27:34.000Z",
+                  "updatedAt": "2026-07-28T00:27:34.000Z",
+                  "uid": "35240-cab49cc1-f7ef-4a3d-aec2-5de81177bc12"
+                }
+              ],
+              "createdAt": "2026-07-28T00:27:34.000Z",
+              "updatedAt": "2026-07-28T00:27:34.000Z",
+              "uid": "35240-f0b0809b-d232-41f6-9264-7f4e8fda1ac4"
+            }
+          ],
+          "id": "2acd8008-4d75-4e6b-bea4-e0e79fc04236",
+          "createdAt": "2026-07-28T00:27:34.000Z",
+          "updatedAt": "2026-07-28T00:27:34.000Z",
+          "uid": "35240-2acd8008-4d75-4e6b-bea4-e0e79fc04236"
+        },
+        {
+          "name": "7digital List Playlists",
+          "id": "c75c8aa5-9bcc-4115-b1c5-107db1709b10",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/playlists?userId=<string>&page=1&pageSize=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "playlists"
+              ],
+              "query": [
+                {
+                  "description": "Filter playlists by user.",
+                  "key": "userId",
+                  "value": "<string>"
+                },
+                {
+                  "description": "1-based page number.",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of items per page.",
+                  "key": "pageSize",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Get a list of the partner's playlists."
+          },
+          "response": [
+            {
+              "id": "927df673-5204-4bbb-8d74-5b0ad7c9185d",
+              "name": "A paged list of playlists.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/playlists?userId=<string>&page=1&pageSize=20&oauth_consumer_key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "playlists"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter playlists by user.",
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "1-based page number.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of items per page.",
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<string>\",\n  \"page\": \"<integer>\",\n  \"pageSize\": \"<integer>\",\n  \"totalItems\": \"<integer>\",\n  \"playlists\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"visibility\": \"private\",\n      \"userId\": \"<string>\",\n      \"trackCount\": \"<integer>\",\n      \"tracks\": [\n        {\n          \"trackId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"artist\": \"<string>\",\n          \"source\": \"<string>\",\n          \"audioUrl\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"position\": \"<integer>\",\n          \"addedAt\": \"<dateTime>\"\n        },\n        {\n          \"trackId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"artist\": \"<string>\",\n          \"source\": \"<string>\",\n          \"audioUrl\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"position\": \"<integer>\",\n          \"addedAt\": \"<dateTime>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\",\n      \"modifiedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"visibility\": \"private\",\n      \"userId\": \"<string>\",\n      \"trackCount\": \"<integer>\",\n      \"tracks\": [\n        {\n          \"trackId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"artist\": \"<string>\",\n          \"source\": \"<string>\",\n          \"audioUrl\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"position\": \"<integer>\",\n          \"addedAt\": \"<dateTime>\"\n        },\n        {\n          \"trackId\": \"<string>\",\n          \"title\": \"<string>\",\n          \"artist\": \"<string>\",\n          \"source\": \"<string>\",\n          \"audioUrl\": \"<uri>\",\n          \"image\": \"<uri>\",\n          \"position\": \"<integer>\",\n          \"addedAt\": \"<dateTime>\"\n        }\n      ],\n      \"createdAt\": \"<dateTime>\",\n      \"modifiedAt\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:27:34.000Z",
+              "updatedAt": "2026-07-28T00:27:34.000Z",
+              "uid": "35240-927df673-5204-4bbb-8d74-5b0ad7c9185d"
+            }
+          ],
+          "createdAt": "2026-07-28T00:27:34.000Z",
+          "updatedAt": "2026-07-28T00:27:34.000Z",
+          "uid": "35240-c75c8aa5-9bcc-4115-b1c5-107db1709b10"
+        },
+        {
+          "name": "7digital Create Playlist",
+          "id": "42f715d0-9fdf-4fb2-9adc-e9419aa553e0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"private\",\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/playlists?userId=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "playlists"
+              ],
+              "query": [
+                {
+                  "description": "User to associate the playlist with.",
+                  "key": "userId",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Create a new playlist tied to your partner consumer key. Can optionally be associated with a user. Initial tracks may be supplied or the playlist can be created empty."
+          },
+          "response": [
+            {
+              "id": "f1834006-5480-4805-a593-c5203d84c343",
+              "name": "The newly created playlist.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"private\",\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/playlists?userId=<string>&oauth_consumer_key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "playlists"
+                  ],
+                  "query": [
+                    {
+                      "description": "User to associate the playlist with.",
+                      "key": "userId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"public\",\n  \"userId\": \"<string>\",\n  \"trackCount\": \"<integer>\",\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"position\": \"<integer>\",\n      \"addedAt\": \"<dateTime>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\",\n      \"position\": \"<integer>\",\n      \"addedAt\": \"<dateTime>\"\n    }\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"modifiedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T00:27:34.000Z",
+              "updatedAt": "2026-07-28T00:27:34.000Z",
+              "uid": "35240-f1834006-5480-4805-a593-c5203d84c343"
+            }
+          ],
+          "createdAt": "2026-07-28T00:27:34.000Z",
+          "updatedAt": "2026-07-28T00:27:34.000Z",
+          "uid": "35240-42f715d0-9fdf-4fb2-9adc-e9419aa553e0"
+        }
+      ],
+      "id": "1c237a64-051b-46b2-a550-8fc7c23eaea0",
+      "createdAt": "2026-07-28T00:27:34.000Z",
+      "updatedAt": "2026-07-28T00:27:34.000Z",
+      "uid": "35240-1c237a64-051b-46b2-a550-8fc7c23eaea0"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.7digital.com/1.2"
+    }
+  ]
+}
