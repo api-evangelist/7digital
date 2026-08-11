@@ -1237,6 +1237,11 @@ apis:
   - type: PostmanCollection
     url: https://docs.massivemusic.com/docs/postman-sample-requests
 common:
+  - type: IssueTracker
+    url: https://github.com/7digital/7digital-api/issues
+  - type: License
+    name: ISC
+    url: https://github.com/7digital/7digital-api/blob/master/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/7digital/overview
   - type: AgenticAccess
