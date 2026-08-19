@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Download Purchases API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Download Purchases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Download Purchase Zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/users/:userId/downloads/purchases/:purchaseId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "purchaseId",
+                "value": "purchase-789012",
+                "type": "path",
+                "description": "7digital purchase id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Download all tracks purchased in a transaction as a single ZIP file. Highest available quality is used."
+        },
+        {
+          "info": {
+            "name": "7digital Download Purchased Release Zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/users/:userId/downloads/releases/:releaseId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "path",
+                "description": "7digital release id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Download all tracks in a purchased release as a single ZIP file."
+        },
+        {
+          "info": {
+            "name": "7digital Download Purchased Track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/users/:userId/downloads/tracks/:trackId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Download a purchased track."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

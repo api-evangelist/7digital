@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Artists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Browse Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/browse",
+            "params": [
+              {
+                "name": "letter",
+                "value": "B",
+                "type": "query",
+                "description": "The starting letter or letters to browse by (e.g. `A`, `Be`)."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Browse artists in the 7digital catalogue whose names start with the given letter(s)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/chart",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "period",
+                "value": "week",
+                "type": "query",
+                "description": "Chart period — typically `day`, `week`, `month`, `year`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get the current artist chart for a given period and territory."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/details",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              }
+            ]
+          },
+          "docs": "Get all available metadata for an artist by 7digital artist id."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/releases",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "type",
+                "value": "album",
+                "type": "query",
+                "description": "Release type filter."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List releases by a given artist, optionally filtered by release type (album, single, etc.)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Similar Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/similar",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List artists similar to the seed artist."
+        },
+        {
+          "info": {
+            "name": "7digital Search Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Free-text search the 7digital catalogue for artists matching a query."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Top Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/topTracks",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List the top-streamed tracks by an artist."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/tags",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "query",
+                "description": "7digital artist id."
+              }
+            ]
+          },
+          "docs": "Get the tags / genre labels applied to an artist."
+        },
+        {
+          "info": {
+            "name": "7digital Match Artist By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/match/byId",
+            "params": [
+              {
+                "name": "id",
+                "value": "mbid:5b11f4ce-a62d-471e-81fc-a69a8278c7da",
+                "type": "query",
+                "description": "External artist identifier to match."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Match an artist in a partner system to the 7digital artist using an external identifier (e.g. MusicBrainz id)."
+        },
+        {
+          "info": {
+            "name": "7digital Get Top Artists By Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artist/bytag/top",
+            "params": [
+              {
+                "name": "tags",
+                "value": "rock,indie",
+                "type": "query",
+                "description": "One or more tag identifiers, comma-separated."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List top-performing artists for a given tag or set of tags."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

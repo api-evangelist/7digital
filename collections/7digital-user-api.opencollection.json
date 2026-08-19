@@ -1,0 +1,463 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists User API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get User Unlimited Streaming",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/unlimitedStreaming",
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the status of the unlimited streaming subscription for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Update User Unlimited Streaming",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/unlimitedStreaming",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "userId",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create or update the unlimited streaming subscription for a user (partner-scoped)."
+        },
+        {
+          "info": {
+            "name": "7digital Get User Locker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/locker",
+            "params": [
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the locker (all purchased tracks and releases) for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/item",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to purchase."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "Track id to purchase."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase a single track or release for the authenticated user using their default payment method."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Rrp Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/rrpitem",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to purchase."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase an item at RRP for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Basket",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/basket",
+            "params": [
+              {
+                "name": "basketId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "query",
+                "description": "7digital basket id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase the entire contents of the user's basket."
+        },
+        {
+          "info": {
+            "name": "7digital Purchase User Priced Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/purchase/priceditem",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Release id to purchase."
+              },
+              {
+                "name": "price",
+                "value": "999",
+                "type": "query",
+                "description": "Partner-supplied price (in minor units)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Purchase an item at a partner-supplied price."
+        },
+        {
+          "info": {
+            "name": "7digital List User Payment Cards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/payment/card",
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "List the payment cards registered to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Select User Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/payment/card/select",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "cardId",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Set a registered payment card as the user's default card."
+        },
+        {
+          "info": {
+            "name": "7digital Delete User Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/payment/card/delete",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "cardId",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Delete a payment card from the authenticated user."
+        },
+        {
+          "info": {
+            "name": "7digital Register User Payment Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/payment/cardregistration",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Start the registration flow for a new payment card."
+        },
+        {
+          "info": {
+            "name": "7digital Get User Card Registration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/payment/cardregistration/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "cardreg-789012",
+                "type": "path",
+                "description": "Card registration id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Poll the status of a pending card registration."
+        },
+        {
+          "info": {
+            "name": "7digital Deliver User Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/deliveritem",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "Purchased release to deliver."
+              },
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "Purchased track to deliver."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a delivery URL for a purchased item (download or stream link)."
+        },
+        {
+          "info": {
+            "name": "7digital Signup User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/signup",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Sign up a new user with a 7digital account."
+        },
+        {
+          "info": {
+            "name": "7digital Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/create",
+            "params": [
+              {
+                "name": "email",
+                "value": "jane.smith@example.com",
+                "type": "query",
+                "description": "Email address of the new user."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Create a new user partner-side (typically as part of an integrated signup flow)."
+        },
+        {
+          "info": {
+            "name": "7digital Get User Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/user/details",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "query",
+                "description": "The user id to look up."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the profile of a user (partner-scoped lookup)."
+        },
+        {
+          "info": {
+            "name": "7digital Authenticate User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/user/authenticate",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "email",
+                  "value": ""
+                },
+                {
+                  "name": "password",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Authenticate a user by email and password and return a partner-scoped access token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

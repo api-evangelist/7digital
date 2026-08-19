@@ -1,0 +1,343 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Releases API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Releases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Releases By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/byDate",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List releases by release date window. Supports paging and territory filters."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/details",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              }
+            ]
+          },
+          "docs": "Get all available metadata for a release by 7digital release id."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Editorial",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/editorial",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get editorial commentary and review copy for a release."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/chart",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "period",
+                "value": "week",
+                "type": "query",
+                "description": "Chart period — typically `day`, `week`, `month`, `year`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get the current release chart for a given period and territory."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/recommend",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get recommended releases that fans of a seed release also purchase or stream."
+        },
+        {
+          "info": {
+            "name": "7digital Search Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Free-text search the 7digital catalogue for releases matching a query."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/tracks",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get the track listing for a given release."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/tags",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "query",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get the tags / genre labels applied to a release."
+        },
+        {
+          "info": {
+            "name": "7digital Match Release By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/match/byId",
+            "params": [
+              {
+                "name": "id",
+                "value": "602445912025",
+                "type": "query",
+                "description": "The external identifier to match (e.g., UPC)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Match a release in a partner system to the 7digital release using an external identifier (UPC/EAN/GRid)."
+        },
+        {
+          "info": {
+            "name": "7digital Get New Releases By Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/bytag/new",
+            "params": [
+              {
+                "name": "tags",
+                "value": "rock,indie",
+                "type": "query",
+                "description": "One or more tag identifiers, comma-separated."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List new releases for a given tag or set of tags."
+        },
+        {
+          "info": {
+            "name": "7digital Get Top Releases By Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/release/bytag/top",
+            "params": [
+              {
+                "name": "tags",
+                "value": "rock,indie",
+                "type": "query",
+                "description": "One or more tag identifiers, comma-separated."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "List top-performing releases for a given tag or set of tags."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

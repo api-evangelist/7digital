@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists IpLookup API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IpLookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Resolve Country For Ip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/country/resolve",
+            "params": [
+              {
+                "name": "ip",
+                "value": "10.0.0.1",
+                "type": "query",
+                "description": "IPv4 or IPv6 address to look up."
+              }
+            ]
+          },
+          "docs": "Resolve the country for an end-user's IP address (for geo-restriction checks)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

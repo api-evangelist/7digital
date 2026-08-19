@@ -1,0 +1,435 @@
+{
+  "item": [
+    {
+      "id": "680a6f07-11be-4a7c-bcf5-efa87c0849d1",
+      "name": "Interactive Radio",
+      "description": {
+        "content": "Lean-back, ruleset-governed (DMCA, GVL) radio listening sessions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc2cbdd1-9912-4114-8bef-3cb0d8b4de04",
+          "name": "7digital Create Interactive Radio Session",
+          "request": {
+            "name": "7digital Create Interactive Radio Session",
+            "description": {
+              "content": "Create an Interactive Radio listening session from one or more playlists. A listening session is required per user, each time they launch a station. It governs which tracks can be played and tracks the skip budget within the configured ruleset (e.g. DMCA, GVL).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "interactive-radio",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"playlistIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ruleset\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "43b4977a-9a90-48d8-ae8e-8789aa0eae02",
+              "name": "A listening session.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interactive-radio",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"500123\",\n  \"playlistIds\": [\n    \"playlist-789012\"\n  ],\n  \"ruleset\": \"dmca\",\n  \"country\": \"GB\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"userId\": \"500123\",\n  \"ruleset\": \"dmca\",\n  \"skipsRemaining\": 6,\n  \"createdAt\": \"2026-05-28T14:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee58e1a6-68ad-4a3d-a368-c49c79713d37",
+          "name": "7digital Delete Interactive Radio Session",
+          "request": {
+            "name": "7digital Delete Interactive Radio Session",
+            "description": {
+              "content": "Delete an active listening session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "interactive-radio",
+                "sessions",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "sessionId",
+                  "description": "(Required) Interactive Radio session id."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b97a1e5-2b69-4ebc-8bd9-e2974bfdddb6",
+              "name": "Session deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interactive-radio",
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "sessionId",
+                      "description": "(Required) Interactive Radio session id."
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f43f1039-4510-415a-bea3-e6d8f6caf5d3",
+          "name": "7digital Get Interactive Radio Next Track",
+          "request": {
+            "name": "7digital Get Interactive Radio Next Track",
+            "description": {
+              "content": "Get the next playable track within the listening session, governed by the ruleset configured for your service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "interactive-radio",
+                "sessions",
+                ":sessionId",
+                "next-track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "sessionId",
+                  "description": "(Required) Interactive Radio session id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db10ab9d-36ea-467b-83d1-a47ece61cb0a",
+              "name": "The next track to play.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interactive-radio",
+                    "sessions",
+                    ":sessionId",
+                    "next-track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "sessionId",
+                      "description": "(Required) Interactive Radio session id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"track\": {\n    \"id\": \"123456\",\n    \"title\": \"Come Together\",\n    \"version\": \"Remastered 2019\",\n    \"artist\": {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\"\n    },\n    \"release\": {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"upc\": \"string\",\n      \"explicit\": false\n    },\n    \"trackNumber\": 1,\n    \"duration\": 259,\n    \"explicit\": false,\n    \"isrc\": \"GBAYE6900477\",\n    \"previewUrl\": \"https://previews.7digital.com/clip/123456\"\n  },\n  \"streamUrl\": \"https://streaming.7digital.com/hls/123456.m3u8\",\n  \"skipAllowed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "faefa546-acba-4042-8d8d-84c346a5dcb3",
+          "name": "7digital Post Interactive Radio Playback Events",
+          "request": {
+            "name": "7digital Post Interactive Radio Playback Events",
+            "description": {
+              "content": "Send the user's playback events. These events influence which tracks are allowed to be played and skipped in the current listening session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "interactive-radio",
+                "sessions",
+                ":sessionId",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "sessionId",
+                  "description": "(Required) Interactive Radio session id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"events\": [\n    {\n      \"trackId\": \"<string>\",\n      \"eventType\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"durationPlayed\": \"<integer>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"eventType\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"durationPlayed\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5e10bff-5555-499b-943b-125e8966d3c1",
+              "name": "Events accepted for processing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "interactive-radio",
+                    "sessions",
+                    ":sessionId",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "sessionId",
+                      "description": "(Required) Interactive Radio session id."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"events\": [\n    {\n      \"trackId\": \"123456\",\n      \"eventType\": \"complete\",\n      \"timestamp\": \"2026-05-28T14:30:45Z\",\n      \"durationPlayed\": 259\n    },\n    {\n      \"trackId\": \"123456\",\n      \"eventType\": \"complete\",\n      \"timestamp\": \"2026-05-28T14:30:45Z\",\n      \"durationPlayed\": 259\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8404380f-157b-4749-a9ba-55f11b195dc5",
+    "name": "7digital Artists Interactive Radio API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

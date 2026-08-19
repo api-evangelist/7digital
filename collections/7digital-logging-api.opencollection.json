@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Logging API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Logging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Report Catalogue Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/logging/catalogue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Report a track that has been streamed to a user listening in a radio-style playback. Streams should be logged in near real time, or the same day in batch."
+        },
+        {
+          "info": {
+            "name": "7digital Report Preview Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/logging/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Report a preview clip that has been played. Acceptable usage is 5 POST requests per second with batches of up to 500 logs per request."
+        },
+        {
+          "info": {
+            "name": "7digital Report Subscriber Stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/logging/subscriber",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Report a track that has been streamed by a subscriber. Logs should be sent in near real-time, or the same day in batches of 10–20 logs per request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

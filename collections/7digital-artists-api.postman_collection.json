@@ -1,0 +1,1164 @@
+{
+  "item": [
+    {
+      "id": "4fac72f6-d8b5-44b1-b68f-ec4f20c1730c",
+      "name": "Artists",
+      "description": {
+        "content": "Browse, search, chart, and resolve 7digital artists and their releases.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dfd6c958-4e5c-45d4-bf71-c7fbaf1fa1a1",
+          "name": "7digital Browse Artists",
+          "request": {
+            "name": "7digital Browse Artists",
+            "description": {
+              "content": "Browse artists in the 7digital catalogue whose names start with the given letter(s).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "browse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "letter",
+                  "value": "<string>",
+                  "description": "(Required) The starting letter or letters to browse by (e.g. `A`, `Be`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8282de8e-e2da-4d95-8d05-5ec1bdc98c87",
+              "name": "A paged list of artists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "browse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "letter",
+                      "value": "B"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"artists\": [\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cad5a71-9d19-4a55-a2a0-f2344f16861a",
+          "name": "7digital Get Artist Chart",
+          "request": {
+            "name": "7digital Get Artist Chart",
+            "description": {
+              "content": "Get the current artist chart for a given period and territory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "chart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "Chart period — typically `day`, `week`, `month`, `year`."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40e5f65d-172e-4d95-a44d-4417aa1a9a13",
+              "name": "A chart of artists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "chart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"artists\": [\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1d47f2c-638f-4ebc-842c-9bc75ec2519b",
+          "name": "7digital Get Artist Details",
+          "request": {
+            "name": "7digital Get Artist Details",
+            "description": {
+              "content": "Get all available metadata for an artist by 7digital artist id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "artistId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital artist id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1914a7d-41cb-4fe9-99b1-35d001aed93d",
+              "name": "Artist metadata payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "artistId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"artist\": {\n    \"id\": \"12345\",\n    \"name\": \"The Beatles\",\n    \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n    \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n    \"sortName\": \"Beatles, The\",\n    \"appearsAs\": \"Beatles, The\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d60e037-adf2-4dc3-a79b-888bd6f56467",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "artistId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"code\": 2001,\n    \"message\": \"Resource not found\",\n    \"errors\": [\n      {\n        \"code\": 1778,\n        \"message\": \"string\",\n        \"index\": 2350\n      },\n      {\n        \"code\": 8007,\n        \"message\": \"string\",\n        \"index\": 8688\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5923b137-6220-48a1-a5be-57f875ac6143",
+          "name": "7digital Get Artist Releases",
+          "request": {
+            "name": "7digital Get Artist Releases",
+            "description": {
+              "content": "List releases by a given artist, optionally filtered by release type (album, single, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "releases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "artistId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital artist id."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Release type filter."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6861b61f-a7f5-4ec7-90d9-103fc66378e2",
+              "name": "A list of releases by the artist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "releases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "artistId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "type",
+                      "value": "album"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99532fe4-d861-4008-a65a-98c2ea5c6c93",
+          "name": "7digital Get Similar Artists",
+          "request": {
+            "name": "7digital Get Similar Artists",
+            "description": {
+              "content": "List artists similar to the seed artist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "similar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "artistId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital artist id."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "452bda23-b982-4312-a1ef-aae1db5457ab",
+              "name": "A list of similar artists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "similar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "artistId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"artists\": [\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d22422c-a9be-429b-8690-61a999cced30",
+          "name": "7digital Search Artists",
+          "request": {
+            "name": "7digital Search Artists",
+            "description": {
+              "content": "Free-text search the 7digital catalogue for artists matching a query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Free-text search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b24e03e3-6ae9-459c-8916-0a6e1863baa6",
+              "name": "A paged list of matching artists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "beatles"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"artists\": [\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72b4bbbb-54e8-4b10-bbbd-9b76e2fc369d",
+          "name": "7digital Get Artist Top Tracks",
+          "request": {
+            "name": "7digital Get Artist Top Tracks",
+            "description": {
+              "content": "List the top-streamed tracks by an artist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "topTracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "artistId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital artist id."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce0aa21c-04ae-4e03-b690-f8163419512e",
+              "name": "A list of top tracks by the artist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "topTracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "artistId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 13,\n  \"tracks\": [\n    {\n      \"id\": \"123456\",\n      \"title\": \"Come Together\",\n      \"version\": \"Remastered 2019\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"release\": {\n        \"id\": \"11700062\",\n        \"title\": \"Abbey Road\",\n        \"version\": \"Remastered\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"12345\",\n          \"name\": \"The Beatles\",\n          \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n          \"sortName\": \"Beatles, The\",\n          \"appearsAs\": \"Beatles, The\"\n        },\n        \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n        \"releaseDate\": \"1969-09-26\",\n        \"label\": \"Apple Records\",\n        \"explicit\": false,\n        \"upc\": \"string\",\n        \"price\": {\n          \"formattedPrice\": \"£9.99\",\n          \"amount\": 9.99,\n          \"currency\": \"GBP\"\n        }\n      },\n      \"trackNumber\": 1,\n      \"duration\": 259,\n      \"explicit\": false,\n      \"isrc\": \"GBAYE6900477\",\n      \"previewUrl\": \"https://previews.7digital.com/clip/123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"123456\",\n      \"title\": \"Come Together\",\n      \"version\": \"Remastered 2019\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"release\": {\n        \"id\": \"11700062\",\n        \"title\": \"Abbey Road\",\n        \"version\": \"Remastered\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"12345\",\n          \"name\": \"The Beatles\",\n          \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n          \"sortName\": \"Beatles, The\",\n          \"appearsAs\": \"Beatles, The\"\n        },\n        \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n        \"releaseDate\": \"1969-09-26\",\n        \"label\": \"Apple Records\",\n        \"explicit\": false,\n        \"upc\": \"string\",\n        \"price\": {\n          \"formattedPrice\": \"£9.99\",\n          \"amount\": 9.99,\n          \"currency\": \"GBP\"\n        }\n      },\n      \"trackNumber\": 1,\n      \"duration\": 259,\n      \"explicit\": false,\n      \"isrc\": \"GBAYE6900477\",\n      \"previewUrl\": \"https://previews.7digital.com/clip/123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cacbf61-3ee5-4852-8e34-49f960ed6730",
+          "name": "7digital Get Artist Tags",
+          "request": {
+            "name": "7digital Get Artist Tags",
+            "description": {
+              "content": "Get the tags / genre labels applied to an artist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "artistId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital artist id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fbf901a-ae0f-4300-a450-9d85b5b1e4af",
+              "name": "A list of tags for the artist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "artistId",
+                      "value": "12345"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"tags\": [\n    {\n      \"id\": \"rock\",\n      \"name\": \"Rock\",\n      \"parentId\": null\n    },\n    {\n      \"id\": \"rock\",\n      \"name\": \"Rock\",\n      \"parentId\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da1b75c1-385c-4fe5-8e98-10d3255d53ee",
+          "name": "7digital Match Artist By Id",
+          "request": {
+            "name": "7digital Match Artist By Id",
+            "description": {
+              "content": "Match an artist in a partner system to the 7digital artist using an external identifier (e.g. MusicBrainz id).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "match",
+                "byId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) External artist identifier to match."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e54be13-cef4-4190-8dda-4de6ccf36c8f",
+              "name": "A matched artist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "match",
+                    "byId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "mbid:5b11f4ce-a62d-471e-81fc-a69a8278c7da"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"artist\": {\n    \"id\": \"12345\",\n    \"name\": \"The Beatles\",\n    \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n    \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n    \"sortName\": \"Beatles, The\",\n    \"appearsAs\": \"Beatles, The\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2db95cf7-8c19-4129-946e-c4d7b80fd129",
+          "name": "7digital Get Top Artists By Tags",
+          "request": {
+            "name": "7digital Get Top Artists By Tags",
+            "description": {
+              "content": "List top-performing artists for a given tag or set of tags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "artist",
+                "bytag",
+                "top"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "(Required) One or more tag identifiers, comma-separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1a5cbf8-4075-4374-9a93-5f5fbe7c3494",
+              "name": "A list of top artists for the tag(s).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "artist",
+                    "bytag",
+                    "top"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "rock,indie"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"artists\": [\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "edaf4cc8-45d2-4724-a3ac-0002ede7ca94",
+    "name": "7digital Artists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Payment API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Payment Card Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/payment/card/type"
+          },
+          "docs": "List the payment card types supported by 7digital."
+        },
+        {
+          "info": {
+            "name": "7digital Get Payment Voucher Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/payment/voucher/details",
+            "params": [
+              {
+                "name": "voucherCode",
+                "value": "SUMMER25",
+                "type": "query",
+                "description": "Voucher code to look up."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Look up details for a voucher code (validity, value, redemption status)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

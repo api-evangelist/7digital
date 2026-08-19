@@ -1,0 +1,909 @@
+{
+  "item": [
+    {
+      "id": "24ec77d7-9d1a-421f-bcf7-7c19b2698db4",
+      "name": "Basket",
+      "description": {
+        "content": "Manage purchase baskets, apply vouchers, and complete PayPal checkout.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7606760-340d-4a20-8383-dcbee04ab990",
+          "name": "7digital Get Basket",
+          "request": {
+            "name": "7digital Get Basket",
+            "description": {
+              "content": "Get the current contents of a basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cff7f31e-49ca-48f6-9213-97db6ce9553f",
+              "name": "The basket contents.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"voucherCode\": \"SUMMER25\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77e7ea74-e0ad-46f8-9a4e-95b30c0c6a61",
+          "name": "7digital Create Basket",
+          "request": {
+            "name": "7digital Create Basket",
+            "description": {
+              "content": "Create a new basket for a session or user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6484de30-e2be-47e6-a78f-d2d986334e55",
+              "name": "The newly created basket.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"voucherCode\": \"SUMMER25\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5dd6824-a6fb-4322-bfdc-5a17b6fd7b60",
+          "name": "7digital Add Basket Item",
+          "request": {
+            "name": "7digital Add Basket Item",
+            "description": {
+              "content": "Add a track or release to a basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "addItem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "Release id to add."
+                },
+                {
+                  "disabled": false,
+                  "key": "trackId",
+                  "value": "<string>",
+                  "description": "Track id to add."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "131f7e22-9836-492a-b059-09b46e72c028",
+              "name": "The updated basket.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "addItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "trackId",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"voucherCode\": \"SUMMER25\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0592a005-c760-4102-9772-9c44e2b0c820",
+          "name": "7digital Remove Basket Item",
+          "request": {
+            "name": "7digital Remove Basket Item",
+            "description": {
+              "content": "Remove a track or release from a basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "removeItem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                },
+                {
+                  "disabled": false,
+                  "key": "itemId",
+                  "value": "<string>",
+                  "description": "(Required) Basket item id to remove."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d92501c0-1f0d-4a90-b970-30d84e0c6ece",
+              "name": "The updated basket.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "removeItem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "itemId",
+                      "value": "item-789012"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"voucherCode\": \"SUMMER25\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b98ab1fd-ee1b-40eb-bad9-eb9138de4aaa",
+          "name": "7digital Apply Basket Voucher",
+          "request": {
+            "name": "7digital Apply Basket Voucher",
+            "description": {
+              "content": "Apply a discount voucher to a basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "applyVoucher"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "voucherCode",
+                  "value": "<string>",
+                  "description": "(Required) Voucher code to apply."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "49349b43-a733-4d25-9880-7709ac9d2fae",
+              "name": "The basket with voucher applied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "applyVoucher"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Voucher code to apply.",
+                        "type": "text/plain"
+                      },
+                      "key": "voucherCode",
+                      "value": "SUMMER25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"voucherCode\": \"SUMMER25\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "125c79c1-8ab7-4fab-a39d-0812dacc9f3e",
+          "name": "7digital Add Priced Basket Item",
+          "request": {
+            "name": "7digital Add Priced Basket Item",
+            "description": {
+              "content": "Add an item with a specific price to a basket (partner pricing flow).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "addpriceditem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                },
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "Release id to add."
+                },
+                {
+                  "disabled": false,
+                  "key": "price",
+                  "value": "<number>",
+                  "description": "(Required) Price to apply to the item (in minor units)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "39e101ea-a610-4fa0-9502-d552a7e3e10b",
+              "name": "The updated basket.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "addpriceditem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "price",
+                      "value": "999"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"voucherCode\": \"SUMMER25\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "841a0d3e-4c63-49fc-b7d0-c705bf04b110",
+          "name": "7digital Get Basket PayPal Url",
+          "request": {
+            "name": "7digital Get Basket PayPal Url",
+            "description": {
+              "content": "Generate a PayPal checkout URL for a basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "paypalurl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9dc0c29a-8eda-416c-aec8-68552b7e1fd6",
+              "name": "A PayPal checkout URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "paypalurl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"paypalUrl\": \"https://www.paypal.com/checkoutnow?token=EC-1234\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2d372d5-ff5b-4198-afef-1c22cd2a3f25",
+          "name": "7digital Complete Basket PayPal Purchase",
+          "request": {
+            "name": "7digital Complete Basket PayPal Purchase",
+            "description": {
+              "content": "Complete a PayPal purchase after the user has authorised payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "basket",
+                "completepaypalpurchase"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "payerId",
+                  "value": "<string>",
+                  "description": "(Required) PayPal payer id."
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) PayPal token returned to the callback URL."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "10e3c740-7d4f-4b23-9c17-3a2be4230081",
+              "name": "The completed purchase.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "basket",
+                    "completepaypalpurchase"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) PayPal payer id.",
+                        "type": "text/plain"
+                      },
+                      "key": "payerId",
+                      "value": "AB12CD34EF"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) PayPal token returned to the callback URL.",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "EC-1234"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"purchaseId\": \"purchase-789012\",\n  \"status\": \"completed\",\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"https://www.7digital.com/receipts/purchase-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8fc4ff75-1dbb-4b09-8796-1e7a178fab50",
+    "name": "7digital Artists Basket API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

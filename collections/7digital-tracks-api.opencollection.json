@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Tracks API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Track Chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/chart",
+            "params": [
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              },
+              {
+                "name": "period",
+                "value": "week",
+                "type": "query",
+                "description": "Chart period — typically `day`, `week`, `month`, `year`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get the current track chart for a given period and territory."
+        },
+        {
+          "info": {
+            "name": "7digital Get Track Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/details",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "7digital track id."
+              },
+              {
+                "name": "country",
+                "value": "GB",
+                "type": "query",
+                "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+              }
+            ]
+          },
+          "docs": "Get all available metadata for a track by 7digital track id."
+        },
+        {
+          "info": {
+            "name": "7digital Search Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number for paged endpoints."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Free-text search the 7digital catalogue for tracks matching a query."
+        },
+        {
+          "info": {
+            "name": "7digital Match Track By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/track/match/byId",
+            "params": [
+              {
+                "name": "id",
+                "value": "isrc:USRC17607839",
+                "type": "query",
+                "description": "External track identifier to match (e.g. ISRC)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Match a track in a partner system to the 7digital track using an external identifier (e.g. ISRC)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

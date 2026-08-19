@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Offline Devices API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Offline Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Authorize Offline Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/users/:userId/unlimitedStreaming/offline",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Authorise a device for offline subscription streaming. POST body can be JSON or XML."
+        },
+        {
+          "info": {
+            "name": "7digital Get Offline Device Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/users/:userId/unlimitedStreaming/offline/:deviceId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              },
+              {
+                "name": "deviceId",
+                "value": "device-789012",
+                "type": "path",
+                "description": "Identifier of a registered offline device."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get the offline status of a specified device."
+        },
+        {
+          "info": {
+            "name": "7digital List Offline Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/users/:userId/unlimitedStreaming/devices",
+            "params": [
+              {
+                "name": "userId",
+                "value": "500123",
+                "type": "path",
+                "description": "Partner-scoped 7digital user id."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "oauth_consumer_key",
+              "value": "{{oauth_consumer_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Get a list of all of the user's registered devices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

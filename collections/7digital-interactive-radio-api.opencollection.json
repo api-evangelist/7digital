@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Interactive Radio API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Interactive Radio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Create Interactive Radio Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/interactive-radio/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an Interactive Radio listening session from one or more playlists. A listening session is required per user, each time they launch a station. It governs which tracks can be played and tracks the skip budget within the configured ruleset (e.g. DMCA, GVL)."
+        },
+        {
+          "info": {
+            "name": "7digital Delete Interactive Radio Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.7digital.com/1.2/interactive-radio/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "Interactive Radio session id."
+              }
+            ]
+          },
+          "docs": "Delete an active listening session."
+        },
+        {
+          "info": {
+            "name": "7digital Get Interactive Radio Next Track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/interactive-radio/sessions/:sessionId/next-track",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "Interactive Radio session id."
+              }
+            ]
+          },
+          "docs": "Get the next playable track within the listening session, governed by the ruleset configured for your service."
+        },
+        {
+          "info": {
+            "name": "7digital Post Interactive Radio Playback Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/interactive-radio/sessions/:sessionId/events",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                "type": "path",
+                "description": "Interactive Radio session id."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send the user's playback events. These events influence which tracks are allowed to be played and skipped in the current listening session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

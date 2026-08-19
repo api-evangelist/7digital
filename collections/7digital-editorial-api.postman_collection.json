@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "f0620ab7-78bd-497f-bd63-b2f0a9451c9e",
+      "name": "Editorial",
+      "description": {
+        "content": "List 7digital editorial features, banners, and curated content slots.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd121a79-7ebb-4b64-8715-1662ac07fe2d",
+          "name": "7digital Get Editorial List",
+          "request": {
+            "name": "7digital Get Editorial List",
+            "description": {
+              "content": "List 7digital editorial features, banners and curated slots for a territory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "editorial",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc854538-8d19-4a19-8330-20c37ef48014",
+              "name": "A list of editorial items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "editorial",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"editorial\": [\n    {\n      \"id\": \"editorial-789012\",\n      \"title\": \"New Releases This Week\",\n      \"description\": \"Our pick of the freshest releases this week.\",\n      \"type\": \"feature\",\n      \"url\": \"https://uk.7digital.com/editorial/new-releases-this-week\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/editorial/789012.jpg\"\n    },\n    {\n      \"id\": \"editorial-789012\",\n      \"title\": \"New Releases This Week\",\n      \"description\": \"Our pick of the freshest releases this week.\",\n      \"type\": \"feature\",\n      \"url\": \"https://uk.7digital.com/editorial/new-releases-this-week\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/editorial/789012.jpg\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51f6df4c-880f-47df-bacd-780ede8900f3",
+    "name": "7digital Artists Editorial API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

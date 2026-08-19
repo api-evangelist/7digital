@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Content Delivery API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content Delivery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Transfer Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/content-delivery/media-transfer",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "query",
+                "description": "7digital track id."
+              },
+              {
+                "name": "format",
+                "value": "mp3",
+                "type": "query",
+                "description": "Audio format to retrieve."
+              },
+              {
+                "name": "bitrate",
+                "value": "320",
+                "type": "query",
+                "description": "Audio bitrate (kbps)."
+              }
+            ]
+          },
+          "docs": "Retrieve media files for any track — enables the download of an entire licensed catalogue in any supported format/bitrate. Acceptable usage is 50 requests per second. Use of this endpoint requires additional licensor due diligence."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

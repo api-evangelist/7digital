@@ -1,0 +1,492 @@
+{
+  "item": [
+    {
+      "id": "4a4aa90c-0ba9-45fb-90fa-a49ae3bfad33",
+      "name": "Playlists",
+      "description": {
+        "content": "Partner-level playlist management — create, list, update and add tracks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91cbb22c-0c09-4aeb-ad06-4cdb284a5c3a",
+          "name": "7digital List Playlists",
+          "request": {
+            "name": "7digital List Playlists",
+            "description": {
+              "content": "Get a list of the partner's playlists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "playlists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "Filter playlists by user."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acb59ac0-2400-4469-8a38-099695d8c051",
+              "name": "A paged list of playlists.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 12,\n  \"playlists\": [\n    {\n      \"id\": \"playlist-789012\",\n      \"name\": \"Morning Run\",\n      \"description\": \"High-energy tracks for early-morning runs.\",\n      \"visibility\": \"public\",\n      \"userId\": \"500123\",\n      \"trackCount\": 24,\n      \"tracks\": [\n        {\n          \"trackId\": \"123456\",\n          \"title\": \"Come Together\",\n          \"artist\": \"The Beatles\",\n          \"source\": \"7digital\",\n          \"audioUrl\": \"file://a.specific.file.location.mp3\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n          \"position\": 1,\n          \"addedAt\": \"2026-05-28T14:30:00Z\"\n        },\n        {\n          \"trackId\": \"123456\",\n          \"title\": \"Come Together\",\n          \"artist\": \"The Beatles\",\n          \"source\": \"7digital\",\n          \"audioUrl\": \"file://a.specific.file.location.mp3\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n          \"position\": 1,\n          \"addedAt\": \"2026-05-28T14:30:00Z\"\n        }\n      ],\n      \"createdAt\": \"2026-05-28T14:30:00Z\",\n      \"modifiedAt\": \"2026-05-28T15:00:00Z\"\n    },\n    {\n      \"id\": \"playlist-789012\",\n      \"name\": \"Morning Run\",\n      \"description\": \"High-energy tracks for early-morning runs.\",\n      \"visibility\": \"public\",\n      \"userId\": \"500123\",\n      \"trackCount\": 24,\n      \"tracks\": [\n        {\n          \"trackId\": \"123456\",\n          \"title\": \"Come Together\",\n          \"artist\": \"The Beatles\",\n          \"source\": \"7digital\",\n          \"audioUrl\": \"file://a.specific.file.location.mp3\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n          \"position\": 1,\n          \"addedAt\": \"2026-05-28T14:30:00Z\"\n        },\n        {\n          \"trackId\": \"123456\",\n          \"title\": \"Come Together\",\n          \"artist\": \"The Beatles\",\n          \"source\": \"7digital\",\n          \"audioUrl\": \"file://a.specific.file.location.mp3\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n          \"position\": 1,\n          \"addedAt\": \"2026-05-28T14:30:00Z\"\n        }\n      ],\n      \"createdAt\": \"2026-05-28T14:30:00Z\",\n      \"modifiedAt\": \"2026-05-28T15:00:00Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f485f51-ba2f-4b64-acd7-ce1cc0a43e98",
+          "name": "7digital Create Playlist",
+          "request": {
+            "name": "7digital Create Playlist",
+            "description": {
+              "content": "Create a new playlist tied to your partner consumer key. Can optionally be associated with a user. Initial tracks may be supplied or the playlist can be created empty.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "playlists"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "User to associate the playlist with."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b2671f3-1145-4004-be57-03869918a181",
+              "name": "The newly created playlist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlists"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Morning Run\",\n  \"description\": \"High-energy tracks for early-morning runs.\",\n  \"visibility\": \"public\",\n  \"tracks\": [\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\"\n    },\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"playlist-789012\",\n  \"name\": \"Morning Run\",\n  \"description\": \"High-energy tracks for early-morning runs.\",\n  \"visibility\": \"public\",\n  \"userId\": \"500123\",\n  \"trackCount\": 24,\n  \"tracks\": [\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"position\": 1,\n      \"addedAt\": \"2026-05-28T14:30:00Z\"\n    },\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"position\": 1,\n      \"addedAt\": \"2026-05-28T14:30:00Z\"\n    }\n  ],\n  \"createdAt\": \"2026-05-28T14:30:00Z\",\n  \"modifiedAt\": \"2026-05-28T15:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6ff7b21-ec52-47a0-b318-536207842425",
+          "name": "7digital Update Playlist Details",
+          "request": {
+            "name": "7digital Update Playlist Details",
+            "description": {
+              "content": "Update a playlist's details. Does not affect playlist tracks. Use to, e.g., change visibility from private to public. Descriptions are truncated to 500 characters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "playlists",
+                ":playlistId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "playlistId",
+                  "description": "(Required) 7digital playlist id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"visibility\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18728384-71ec-47e8-b477-aabdffdcd9b4",
+              "name": "The updated playlist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlists",
+                    ":playlistId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playlistId",
+                      "description": "(Required) 7digital playlist id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Morning Run\",\n  \"description\": \"High-energy tracks for early-morning runs.\",\n  \"visibility\": \"public\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"playlist-789012\",\n  \"name\": \"Morning Run\",\n  \"description\": \"High-energy tracks for early-morning runs.\",\n  \"visibility\": \"public\",\n  \"userId\": \"500123\",\n  \"trackCount\": 24,\n  \"tracks\": [\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"position\": 1,\n      \"addedAt\": \"2026-05-28T14:30:00Z\"\n    },\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"position\": 1,\n      \"addedAt\": \"2026-05-28T14:30:00Z\"\n    }\n  ],\n  \"createdAt\": \"2026-05-28T14:30:00Z\",\n  \"modifiedAt\": \"2026-05-28T15:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e79589dd-1e71-462b-aed6-c0e9e20cd469",
+          "name": "7digital Add Tracks To Playlist",
+          "request": {
+            "name": "7digital Add Tracks To Playlist",
+            "description": {
+              "content": "Add tracks to the playlist. All metadata must be provided in the call. The `source` and `audioUrl` properties are optional and may indicate an alternative source for the physical file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "playlists",
+                ":playlistId",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "playlistId",
+                  "description": "(Required) 7digital playlist id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tracks\": [\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    },\n    {\n      \"trackId\": \"<string>\",\n      \"title\": \"<string>\",\n      \"artist\": \"<string>\",\n      \"source\": \"<string>\",\n      \"audioUrl\": \"<uri>\",\n      \"image\": \"<uri>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "def5652f-940b-437b-a18c-235adad9fde3",
+              "name": "The updated playlist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "playlists",
+                    ":playlistId",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "playlistId",
+                      "description": "(Required) 7digital playlist id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tracks\": [\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\"\n    },\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"playlist-789012\",\n  \"name\": \"Morning Run\",\n  \"description\": \"High-energy tracks for early-morning runs.\",\n  \"visibility\": \"public\",\n  \"userId\": \"500123\",\n  \"trackCount\": 24,\n  \"tracks\": [\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"position\": 1,\n      \"addedAt\": \"2026-05-28T14:30:00Z\"\n    },\n    {\n      \"trackId\": \"123456\",\n      \"title\": \"Come Together\",\n      \"artist\": \"The Beatles\",\n      \"source\": \"7digital\",\n      \"audioUrl\": \"file://a.specific.file.location.mp3\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"position\": 1,\n      \"addedAt\": \"2026-05-28T14:30:00Z\"\n    }\n  ],\n  \"createdAt\": \"2026-05-28T14:30:00Z\",\n  \"modifiedAt\": \"2026-05-28T15:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e09d32b1-0b02-41c3-ac08-19a47ad6fb2e",
+    "name": "7digital Artists Playlists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "item": [
+    {
+      "id": "1e17556c-5510-48e5-bff0-6023be06eb63",
+      "name": "Content Delivery",
+      "description": {
+        "content": "Bulk media transfer for content delivery / catalogue ingestion partners.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f695f1f8-242f-40e2-87fe-0fa3ff2e4046",
+          "name": "7digital Transfer Media",
+          "request": {
+            "name": "7digital Transfer Media",
+            "description": {
+              "content": "Retrieve media files for any track — enables the download of an entire licensed catalogue in any supported format/bitrate. Acceptable usage is 50 requests per second. Use of this endpoint requires additional licensor due diligence.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "content-delivery",
+                "media-transfer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "trackId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital track id."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Audio format to retrieve."
+                },
+                {
+                  "disabled": false,
+                  "key": "bitrate",
+                  "value": "<integer>",
+                  "description": "Audio bitrate (kbps)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c751614e-72b3-4452-bf9d-195d6f30e68e",
+              "name": "Audio file bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "content-delivery",
+                    "media-transfer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "trackId",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "format",
+                      "value": "mp3"
+                    },
+                    {
+                      "key": "bitrate",
+                      "value": "320"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6dc8f509-b8e4-4b7b-9aa1-1e8d7dec2461",
+    "name": "7digital Artists Content Delivery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Translations API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Translations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Translations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/translations",
+            "params": [
+              {
+                "name": "locale",
+                "value": "en-GB",
+                "type": "query",
+                "description": "Locale identifier (BCP 47)."
+              }
+            ]
+          },
+          "docs": "Get localised translation bundles for catalogue strings."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

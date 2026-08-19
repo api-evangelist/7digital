@@ -1,0 +1,234 @@
+{
+  "item": [
+    {
+      "id": "1dde8197-7e23-4c44-9f7c-378742a28088",
+      "name": "Payment",
+      "description": {
+        "content": "Payment metadata — supported card types and voucher details.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9bb7aa78-dfb9-4cce-bc18-e880635dc47b",
+          "name": "7digital Get Payment Card Types",
+          "request": {
+            "name": "7digital Get Payment Card Types",
+            "description": {
+              "content": "List the payment card types supported by 7digital.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "card",
+                "type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ab0e702-77dc-4dbf-82ea-5e65f6c11b44",
+              "name": "A list of card types.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "card",
+                    "type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cardTypes\": [\n    \"visa\",\n    \"visa\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b0b6674-b839-4bad-abf3-19d54c609bbe",
+          "name": "7digital Get Payment Voucher Details",
+          "request": {
+            "name": "7digital Get Payment Voucher Details",
+            "description": {
+              "content": "Look up details for a voucher code (validity, value, redemption status).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment",
+                "voucher",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "voucherCode",
+                  "value": "<string>",
+                  "description": "(Required) Voucher code to look up."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3dd53816-8c7a-403b-a9eb-03b62bfefe9b",
+              "name": "Voucher details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment",
+                    "voucher",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "voucherCode",
+                      "value": "SUMMER25"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"SUMMER25\",\n  \"value\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"type\": \"percentage\",\n  \"expiresAt\": \"2026-12-31T23:59:59Z\",\n  \"redeemed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "275b1c85-a235-456d-adbb-7edceb22c26d",
+    "name": "7digital Artists Payment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

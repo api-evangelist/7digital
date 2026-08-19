@@ -1,0 +1,1413 @@
+{
+  "item": [
+    {
+      "id": "53031fe5-524e-406b-a2a9-8f35b4bbe825",
+      "name": "Releases",
+      "description": {
+        "content": "Browse, search, recommend, and chart 7digital releases (albums, singles, EPs).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3dfbab5-5d67-4427-98b8-43281902f012",
+          "name": "7digital Get Releases By Date",
+          "request": {
+            "name": "7digital Get Releases By Date",
+            "description": {
+              "content": "List releases by release date window. Supports paging and territory filters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "byDate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "339ca446-8853-42c8-9a8d-5d399c72c732",
+              "name": "A paged list of releases.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "byDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7512e4c9-f4a5-49bc-8568-e2bd48331add",
+              "name": "Request validation failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "byDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"code\": 2001,\n    \"message\": \"Resource not found\",\n    \"errors\": [\n      {\n        \"code\": 144,\n        \"message\": \"string\",\n        \"index\": 8804\n      },\n      {\n        \"code\": 6631,\n        \"message\": \"string\",\n        \"index\": 8284\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fc5fc26-be84-4fbc-8c73-c8d2160fd0df",
+              "name": "Authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "byDate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"code\": 2001,\n    \"message\": \"Resource not found\",\n    \"errors\": [\n      {\n        \"code\": 1017,\n        \"message\": \"string\",\n        \"index\": 5731\n      },\n      {\n        \"code\": 5068,\n        \"message\": \"string\",\n        \"index\": 7186\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5124d027-500e-454d-86e8-037d2f0d68c1",
+          "name": "7digital Get Release Details",
+          "request": {
+            "name": "7digital Get Release Details",
+            "description": {
+              "content": "Get all available metadata for a release by 7digital release id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital release id."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a582b3d-ca5f-4e63-9eea-7887b11e9ddf",
+              "name": "Release metadata payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"release\": {\n    \"id\": \"11700062\",\n    \"title\": \"Abbey Road\",\n    \"version\": \"Remastered\",\n    \"type\": \"album\",\n    \"artist\": {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n    \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n    \"releaseDate\": \"1969-09-26\",\n    \"label\": \"Apple Records\",\n    \"explicit\": false,\n    \"upc\": \"string\",\n    \"price\": {\n      \"formattedPrice\": \"£9.99\",\n      \"amount\": 9.99,\n      \"currency\": \"GBP\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bac248e-6aaa-46ea-9018-a64fcdde1f64",
+              "name": "Authentication failed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"code\": 2001,\n    \"message\": \"Resource not found\",\n    \"errors\": [\n      {\n        \"code\": 1017,\n        \"message\": \"string\",\n        \"index\": 5731\n      },\n      {\n        \"code\": 5068,\n        \"message\": \"string\",\n        \"index\": 7186\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fa9f704-d31d-438c-b32d-21423cc0391b",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"error\",\n  \"error\": {\n    \"code\": 2001,\n    \"message\": \"Resource not found\",\n    \"errors\": [\n      {\n        \"code\": 1017,\n        \"message\": \"string\",\n        \"index\": 5731\n      },\n      {\n        \"code\": 5068,\n        \"message\": \"string\",\n        \"index\": 7186\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "751bb168-133d-4f95-abd9-81f7b3703e03",
+          "name": "7digital Get Release Editorial",
+          "request": {
+            "name": "7digital Get Release Editorial",
+            "description": {
+              "content": "Get editorial commentary and review copy for a release.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "editorial"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital release id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86311561-3ac1-4c6f-a21a-872233be13a7",
+              "name": "Editorial copy for the release.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "editorial"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"editorial\": {\n    \"id\": \"editorial-789012\",\n    \"title\": \"New Releases This Week\",\n    \"description\": \"Our pick of the freshest releases this week.\",\n    \"type\": \"feature\",\n    \"url\": \"https://uk.7digital.com/editorial/new-releases-this-week\",\n    \"image\": \"https://artwork-cdn.7static.com/static/img/editorial/789012.jpg\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de09d894-2d4f-41a8-9f8a-3d4213e62a11",
+          "name": "7digital Get Release Chart",
+          "request": {
+            "name": "7digital Get Release Chart",
+            "description": {
+              "content": "Get the current release chart for a given period and territory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "chart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "Chart period — typically `day`, `week`, `month`, `year`."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17733925-5f45-4624-913a-bcb5d62aa91e",
+              "name": "A chart of releases.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "chart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "period",
+                      "value": "week"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc21fd7-28f4-4e1b-8518-ad368f47c4d3",
+          "name": "7digital Get Release Recommendations",
+          "request": {
+            "name": "7digital Get Release Recommendations",
+            "description": {
+              "content": "Get recommended releases that fans of a seed release also purchase or stream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "recommend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital release id."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d930f2e4-60d5-4054-b1e5-041c27f69317",
+              "name": "A list of recommended releases.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "recommend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00356de2-f9cd-4380-8015-4f7bd55c106c",
+          "name": "7digital Search Releases",
+          "request": {
+            "name": "7digital Search Releases",
+            "description": {
+              "content": "Free-text search the 7digital catalogue for releases matching a query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Free-text search query."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccbcb1a3-7056-4d25-a05b-8cccd8e051b4",
+              "name": "A paged list of matching releases.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "beatles"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddbb42c3-292b-4621-b35a-2ea8e7faf4e8",
+          "name": "7digital Get Release Tracks",
+          "request": {
+            "name": "7digital Get Release Tracks",
+            "description": {
+              "content": "Get the track listing for a given release.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital release id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86ab7c84-0fe4-48b6-b38c-f5dd8e3e04df",
+              "name": "A track listing for the release.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 13,\n  \"tracks\": [\n    {\n      \"id\": \"123456\",\n      \"title\": \"Come Together\",\n      \"version\": \"Remastered 2019\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"release\": {\n        \"id\": \"11700062\",\n        \"title\": \"Abbey Road\",\n        \"version\": \"Remastered\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"12345\",\n          \"name\": \"The Beatles\",\n          \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n          \"sortName\": \"Beatles, The\",\n          \"appearsAs\": \"Beatles, The\"\n        },\n        \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n        \"releaseDate\": \"1969-09-26\",\n        \"label\": \"Apple Records\",\n        \"explicit\": false,\n        \"upc\": \"string\",\n        \"price\": {\n          \"formattedPrice\": \"£9.99\",\n          \"amount\": 9.99,\n          \"currency\": \"GBP\"\n        }\n      },\n      \"trackNumber\": 1,\n      \"duration\": 259,\n      \"explicit\": false,\n      \"isrc\": \"GBAYE6900477\",\n      \"previewUrl\": \"https://previews.7digital.com/clip/123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"123456\",\n      \"title\": \"Come Together\",\n      \"version\": \"Remastered 2019\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"release\": {\n        \"id\": \"11700062\",\n        \"title\": \"Abbey Road\",\n        \"version\": \"Remastered\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"12345\",\n          \"name\": \"The Beatles\",\n          \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n          \"sortName\": \"Beatles, The\",\n          \"appearsAs\": \"Beatles, The\"\n        },\n        \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n        \"releaseDate\": \"1969-09-26\",\n        \"label\": \"Apple Records\",\n        \"explicit\": false,\n        \"upc\": \"string\",\n        \"price\": {\n          \"formattedPrice\": \"£9.99\",\n          \"amount\": 9.99,\n          \"currency\": \"GBP\"\n        }\n      },\n      \"trackNumber\": 1,\n      \"duration\": 259,\n      \"explicit\": false,\n      \"isrc\": \"GBAYE6900477\",\n      \"previewUrl\": \"https://previews.7digital.com/clip/123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "363efd63-e7c7-4f55-a55c-c5a7c252b6b3",
+          "name": "7digital Get Release Tags",
+          "request": {
+            "name": "7digital Get Release Tags",
+            "description": {
+              "content": "Get the tags / genre labels applied to a release.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "(Required) 7digital release id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d53cd0ad-a171-4c4e-b9ec-229d2da8e95d",
+              "name": "A list of tags for the release.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"tags\": [\n    {\n      \"id\": \"rock\",\n      \"name\": \"Rock\",\n      \"parentId\": null\n    },\n    {\n      \"id\": \"rock\",\n      \"name\": \"Rock\",\n      \"parentId\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38047962-1711-4b85-a662-9185c33afcf8",
+          "name": "7digital Match Release By Id",
+          "request": {
+            "name": "7digital Match Release By Id",
+            "description": {
+              "content": "Match a release in a partner system to the 7digital release using an external identifier (UPC/EAN/GRid).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "match",
+                "byId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) The external identifier to match (e.g., UPC)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "597218a7-b588-44f4-8f44-dcc6a663071b",
+              "name": "A matched release.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "match",
+                    "byId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"release\": {\n    \"id\": \"11700062\",\n    \"title\": \"Abbey Road\",\n    \"version\": \"Remastered\",\n    \"type\": \"album\",\n    \"artist\": {\n      \"id\": \"12345\",\n      \"name\": \"The Beatles\",\n      \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n      \"sortName\": \"Beatles, The\",\n      \"appearsAs\": \"Beatles, The\"\n    },\n    \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n    \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n    \"releaseDate\": \"1969-09-26\",\n    \"label\": \"Apple Records\",\n    \"explicit\": false,\n    \"upc\": \"string\",\n    \"price\": {\n      \"formattedPrice\": \"£9.99\",\n      \"amount\": 9.99,\n      \"currency\": \"GBP\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc009c25-c8c8-4223-8225-019e9b335393",
+          "name": "7digital Get New Releases By Tags",
+          "request": {
+            "name": "7digital Get New Releases By Tags",
+            "description": {
+              "content": "List new releases for a given tag or set of tags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "bytag",
+                "new"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "(Required) One or more tag identifiers, comma-separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5900364-94fc-4537-9ebf-3a49a38125fd",
+              "name": "A list of new releases for the tag(s).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "bytag",
+                    "new"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "rock,indie"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5758322e-d485-489e-9354-41e164d795e8",
+          "name": "7digital Get Top Releases By Tags",
+          "request": {
+            "name": "7digital Get Top Releases By Tags",
+            "description": {
+              "content": "List top-performing releases for a given tag or set of tags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "release",
+                "bytag",
+                "top"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "(Required) One or more tag identifiers, comma-separated."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "ISO 3166-1 alpha-2 country code for the sales territory."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24422df9-d447-4e9d-9212-fc2ae66a0d7b",
+              "name": "A list of top releases for the tag(s).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "release",
+                    "bytag",
+                    "top"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tags",
+                      "value": "rock,indie"
+                    },
+                    {
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f67dfa1c-0993-4907-8efd-4d3c61cf91fc",
+    "name": "7digital Artists Releases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

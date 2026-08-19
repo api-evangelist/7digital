@@ -1,0 +1,1090 @@
+{
+  "item": [
+    {
+      "id": "4da9b575-f799-471f-b75f-3585ec7d242a",
+      "name": "Streaming",
+      "description": {
+        "content": "HLS and HTTP Progressive streaming for previews, catalogue, locker and subscriber playback.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1948b897-758d-4893-a827-ef0703d87bf2",
+          "name": "7digital Stream Preview Clip",
+          "request": {
+            "name": "7digital Stream Preview Clip",
+            "description": {
+              "content": "Stream a track preview clip (HTTP Progressive). All preview clip plays must be reported via the preview logging endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "preview",
+                ":trackId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Audio format for the stream."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "565fdd8f-fbab-49cc-9597-efce52db3ce7",
+              "name": "Audio stream bytes (preview clip).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "preview",
+                    ":trackId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "mp3"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34c554a2-5d3a-45d2-8c94-0a595dba644e",
+          "name": "7digital Stream Catalogue Track Hls",
+          "request": {
+            "name": "7digital Stream Catalogue Track Hls",
+            "description": {
+              "content": "Stream any catalogue track available in the user's region (HLS). Designed for non-subscription radio-style plays. Tracks can be cached in an encrypted format and all plays must be reported via the catalogue logging endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "catalogue",
+                ":trackId",
+                "hls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.apple.mpegurl"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4abc671f-674b-4a1f-98cd-95b4c6adad04",
+              "name": "HLS manifest (m3u8).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "catalogue",
+                    ":trackId",
+                    "hls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.apple.mpegurl"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.apple.mpegurl"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aea6ac11-2ef6-458c-9059-fe0cbc4d4084",
+          "name": "7digital Stream Catalogue Track Progressive",
+          "request": {
+            "name": "7digital Stream Catalogue Track Progressive",
+            "description": {
+              "content": "HTTP Progressive variant of catalogue streaming. Same usage rules as the HLS variant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "catalogue",
+                ":trackId",
+                "progressive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d4d2f3d8-ef7b-4834-8c53-05268b8ddac6",
+              "name": "Audio stream bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "catalogue",
+                    ":trackId",
+                    "progressive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c50b9b8-38cb-4600-8ea7-7aa2a7ec70d0",
+          "name": "7digital Stream Locker Track Hls",
+          "request": {
+            "name": "7digital Stream Locker Track Hls",
+            "description": {
+              "content": "Stream a previously purchased track from a user's locker (HLS). Supports online plays and offline caching.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "locker",
+                ":trackId",
+                "hls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.apple.mpegurl"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "04250b8d-04bd-4b70-854f-65c974d1266e",
+              "name": "HLS manifest (m3u8).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "locker",
+                    ":trackId",
+                    "hls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.apple.mpegurl"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.apple.mpegurl"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e630e74e-b0d7-4c29-b006-dc2cddbbecf9",
+          "name": "7digital Stream Locker Track Progressive",
+          "request": {
+            "name": "7digital Stream Locker Track Progressive",
+            "description": {
+              "content": "HTTP Progressive variant of locker streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "locker",
+                ":trackId",
+                "progressive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e5e41798-3697-441b-ac12-402e23ba2d17",
+              "name": "Audio stream bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "locker",
+                    ":trackId",
+                    "progressive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98a4e47e-2ed9-44d9-b81c-73ad3f8486fe",
+          "name": "7digital Stream Subscription Track Hls",
+          "request": {
+            "name": "7digital Stream Subscription Track Hls",
+            "description": {
+              "content": "Stream a track to a valid subscriber (HLS). Requires an active subscription in the user's region. When a clientId is supplied, concurrent multi-device playback is blocked.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "subscription",
+                ":trackId",
+                "hls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<string>",
+                  "description": "Identifier of the device requesting playback (used for concurrency control)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.apple.mpegurl"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3326a04f-c5bb-4d74-b55e-80297b0fd246",
+              "name": "HLS manifest (m3u8).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "subscription",
+                    ":trackId",
+                    "hls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "device-789012"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.apple.mpegurl"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.apple.mpegurl"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e294c293-fc2b-4cb4-86b3-e01234e4b63c",
+          "name": "7digital Stream Subscription Track Progressive",
+          "request": {
+            "name": "7digital Stream Subscription Track Progressive",
+            "description": {
+              "content": "HTTP Progressive variant of subscription streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "subscription",
+                ":trackId",
+                "progressive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fa3bd132-4313-43a1-aac6-bcb18facd538",
+              "name": "Audio stream bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "subscription",
+                    ":trackId",
+                    "progressive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24f3372b-89f4-4377-a16b-52abd6eda768",
+          "name": "7digital Stream Subscription Track Offline Hls",
+          "request": {
+            "name": "7digital Stream Subscription Track Offline Hls",
+            "description": {
+              "content": "Bulk-cache a subscription track for offline playback (HLS). Requires the device to be pre-authorised via the offline streaming endpoint. All offline plays must be reported when connectivity is restored.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "subscription",
+                ":trackId",
+                "offline",
+                "hls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.apple.mpegurl"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "306ebd39-cc3a-4fb6-9918-452cdb802f21",
+              "name": "HLS manifest (m3u8).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "subscription",
+                    ":trackId",
+                    "offline",
+                    "hls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.apple.mpegurl"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.apple.mpegurl"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f408a6a3-76ed-4039-b15f-0c68d8b4dd31",
+          "name": "7digital Stream Subscription Track Offline Progressive",
+          "request": {
+            "name": "7digital Stream Subscription Track Offline Progressive",
+            "description": {
+              "content": "HTTP Progressive variant of offline subscription streaming.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "streaming",
+                "subscription",
+                ":trackId",
+                "offline",
+                "progressive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) 7digital track id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e44a1be4-869a-41c2-aa6e-8c0188d9f8a2",
+              "name": "Audio stream bytes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "streaming",
+                    "subscription",
+                    ":trackId",
+                    "offline",
+                    "progressive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) 7digital track id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "487483a0-7274-4d17-85ef-9a6916ebc3ec",
+    "name": "7digital Artists Streaming API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}

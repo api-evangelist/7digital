@@ -1,0 +1,361 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "7digital Artists Catalogue API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "oauth_consumer_key",
+      "value": "{{oauth_consumer_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalogue",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "7digital Get Artist Id By Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/catalogue/artist-byurl",
+            "params": [
+              {
+                "name": "url",
+                "value": "https://uk.7digital.com/artist/the-beatles",
+                "type": "query",
+                "description": "A 7digital artist web URL."
+              }
+            ]
+          },
+          "docs": "Resolve a 7digital artist id from a 7digital web URL."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Id By Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/catalogue/release-byurl",
+            "params": [
+              {
+                "name": "url",
+                "value": "https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062",
+                "type": "query",
+                "description": "A 7digital release web URL."
+              }
+            ]
+          },
+          "docs": "Resolve a 7digital release id from a 7digital web URL."
+        },
+        {
+          "info": {
+            "name": "7digital Browse Artists By Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artists/browse",
+            "params": [
+              {
+                "name": "letter",
+                "value": "B",
+                "type": "query",
+                "description": "One or more starting letters to filter artists by."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get a list of artists from the catalogue whose names match the start letter(s) supplied."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artists/:artistId/details",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "path",
+                "description": "7digital artist id."
+              }
+            ]
+          },
+          "docs": "Get all available artist details."
+        },
+        {
+          "info": {
+            "name": "7digital Get Artist Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artists/:artistId/releases",
+            "params": [
+              {
+                "name": "artistId",
+                "value": "12345",
+                "type": "path",
+                "description": "7digital artist id."
+              },
+              {
+                "name": "type",
+                "value": "album",
+                "type": "query",
+                "description": "Release type filter."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Get a list of releases by a given artist. Releases can be filtered by type."
+        },
+        {
+          "info": {
+            "name": "7digital Search Artists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/artists/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Search the catalogue for artists matching the search query. Responses are weighted by popularity based on platform usage."
+        },
+        {
+          "info": {
+            "name": "7digital Get Releases Batch Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/releases/details/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get details of multiple releases in one request. Invalid releases are omitted unless `showErrors` is true."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/releases/:releaseId/details",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "path",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get all available details for a given release."
+        },
+        {
+          "info": {
+            "name": "7digital Get Release Track Listing",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/releases/:releaseId/tracks",
+            "params": [
+              {
+                "name": "releaseId",
+                "value": "11700062",
+                "type": "path",
+                "description": "7digital release id."
+              }
+            ]
+          },
+          "docs": "Get a list of all tracks constituting the release."
+        },
+        {
+          "info": {
+            "name": "7digital Search Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/releases/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Search the catalogue for releases matching the search query. Responses are weighted by popularity based on platform usage."
+        },
+        {
+          "info": {
+            "name": "7digital Search Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/tracks/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "beatles",
+                "type": "query",
+                "description": "Free-text search query."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "1-based page number."
+              },
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "description": "Number of items per page."
+              }
+            ]
+          },
+          "docs": "Search the catalogue for tracks matching the search query. Responses are weighted by popularity based on platform usage."
+        },
+        {
+          "info": {
+            "name": "7digital Get Tracks Batch Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.7digital.com/1.2/tracks/details/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get details of multiple tracks in one request. Invalid tracks are omitted unless `showErrors` is true."
+        },
+        {
+          "info": {
+            "name": "7digital Get Track Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/tracks/:trackId/details",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ]
+          },
+          "docs": "Get all available details for a given track."
+        },
+        {
+          "info": {
+            "name": "7digital Download Track",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/tracks/:trackId/download",
+            "params": [
+              {
+                "name": "trackId",
+                "value": "123456",
+                "type": "path",
+                "description": "7digital track id."
+              }
+            ]
+          },
+          "docs": "Get a signed URL or stream of the track's media file."
+        },
+        {
+          "info": {
+            "name": "7digital Get Usage Type Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.7digital.com/1.2/usage-types"
+          },
+          "docs": "List usage types available for content in the catalogue (licensing scopes)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2101 @@
+{
+  "item": [
+    {
+      "id": "1ff91e9f-a6ac-4622-8040-741eac667e0d",
+      "name": "User",
+      "description": {
+        "content": "Per-user account operations — locker, purchases, payment cards, subscriptions, signup.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0eb00bb3-c8ef-47c0-af4d-97b63275e8d1",
+          "name": "7digital Get User Unlimited Streaming",
+          "request": {
+            "name": "7digital Get User Unlimited Streaming",
+            "description": {
+              "content": "Get the status of the unlimited streaming subscription for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "unlimitedStreaming"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "44708d48-7ecc-4451-92f1-d1517c32c746",
+              "name": "Unlimited streaming subscription details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "unlimitedStreaming"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"500123\",\n  \"status\": \"active\",\n  \"startDate\": \"2026-01-01\",\n  \"endDate\": \"2026-02-01\",\n  \"productId\": \"unlimited-streaming\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d389d923-6b45-4e5c-aaa5-88ba8f95ccf8",
+          "name": "7digital Update User Unlimited Streaming",
+          "request": {
+            "name": "7digital Update User Unlimited Streaming",
+            "description": {
+              "content": "Create or update the unlimited streaming subscription for a user (partner-scoped).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "unlimitedStreaming"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) The user id whose subscription is being updated."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) New subscription status."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba0e009b-1a7b-4b89-80bf-1e0c051532a9",
+              "name": "The updated subscription status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "unlimitedStreaming"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The user id whose subscription is being updated.",
+                        "type": "text/plain"
+                      },
+                      "key": "userId",
+                      "value": "500123"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) New subscription status.",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "active"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userId\": \"500123\",\n  \"status\": \"active\",\n  \"startDate\": \"2026-01-01\",\n  \"endDate\": \"2026-02-01\",\n  \"productId\": \"unlimited-streaming\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f731a14f-60bc-4bb2-b182-6fc38c74b2f5",
+          "name": "7digital Get User Locker",
+          "request": {
+            "name": "7digital Get User Locker",
+            "description": {
+              "content": "Get the locker (all purchased tracks and releases) for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "locker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "1-based page number for paged endpoints."
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of items per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1196ab08-8698-4ef7-833a-6168f7eff1ae",
+              "name": "The user's locker contents.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "locker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\",\n  \"page\": 1,\n  \"pageSize\": 20,\n  \"totalItems\": 42,\n  \"releases\": [\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"11700062\",\n      \"title\": \"Abbey Road\",\n      \"version\": \"Remastered\",\n      \"type\": \"album\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n      \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n      \"releaseDate\": \"1969-09-26\",\n      \"label\": \"Apple Records\",\n      \"explicit\": false,\n      \"upc\": \"string\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"tracks\": [\n    {\n      \"id\": \"123456\",\n      \"title\": \"Come Together\",\n      \"version\": \"Remastered 2019\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"release\": {\n        \"id\": \"11700062\",\n        \"title\": \"Abbey Road\",\n        \"version\": \"Remastered\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"12345\",\n          \"name\": \"The Beatles\",\n          \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n          \"sortName\": \"Beatles, The\",\n          \"appearsAs\": \"Beatles, The\"\n        },\n        \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n        \"releaseDate\": \"1969-09-26\",\n        \"label\": \"Apple Records\",\n        \"explicit\": false,\n        \"upc\": \"string\",\n        \"price\": {\n          \"formattedPrice\": \"£9.99\",\n          \"amount\": 9.99,\n          \"currency\": \"GBP\"\n        }\n      },\n      \"trackNumber\": 1,\n      \"duration\": 259,\n      \"explicit\": false,\n      \"isrc\": \"GBAYE6900477\",\n      \"previewUrl\": \"https://previews.7digital.com/clip/123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"id\": \"123456\",\n      \"title\": \"Come Together\",\n      \"version\": \"Remastered 2019\",\n      \"artist\": {\n        \"id\": \"12345\",\n        \"name\": \"The Beatles\",\n        \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n        \"sortName\": \"Beatles, The\",\n        \"appearsAs\": \"Beatles, The\"\n      },\n      \"release\": {\n        \"id\": \"11700062\",\n        \"title\": \"Abbey Road\",\n        \"version\": \"Remastered\",\n        \"type\": \"album\",\n        \"artist\": {\n          \"id\": \"12345\",\n          \"name\": \"The Beatles\",\n          \"url\": \"https://uk.7digital.com/artist/the-beatles\",\n          \"image\": \"https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg\",\n          \"sortName\": \"Beatles, The\",\n          \"appearsAs\": \"Beatles, The\"\n        },\n        \"url\": \"https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062\",\n        \"image\": \"https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg\",\n        \"releaseDate\": \"1969-09-26\",\n        \"label\": \"Apple Records\",\n        \"explicit\": false,\n        \"upc\": \"string\",\n        \"price\": {\n          \"formattedPrice\": \"£9.99\",\n          \"amount\": 9.99,\n          \"currency\": \"GBP\"\n        }\n      },\n      \"trackNumber\": 1,\n      \"duration\": 259,\n      \"explicit\": false,\n      \"isrc\": \"GBAYE6900477\",\n      \"previewUrl\": \"https://previews.7digital.com/clip/123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c38b7245-f000-4500-9f5d-5063fd201b19",
+          "name": "7digital Purchase User Item",
+          "request": {
+            "name": "7digital Purchase User Item",
+            "description": {
+              "content": "Purchase a single track or release for the authenticated user using their default payment method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "purchase",
+                "item"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "Release id to purchase."
+                },
+                {
+                  "disabled": false,
+                  "key": "trackId",
+                  "value": "<string>",
+                  "description": "Track id to purchase."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b86d4630-ee6d-4e3e-9c7d-4c9606dc5c9c",
+              "name": "The completed purchase.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "purchase",
+                    "item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "trackId",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"purchaseId\": \"purchase-789012\",\n  \"status\": \"completed\",\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"https://www.7digital.com/receipts/purchase-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4eeadba-a76e-4ef2-9571-a979399ef196",
+          "name": "7digital Purchase User Rrp Item",
+          "request": {
+            "name": "7digital Purchase User Rrp Item",
+            "description": {
+              "content": "Purchase an item at RRP for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "purchase",
+                "rrpitem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "Release id to purchase."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ddd33a85-dfb1-4cae-8f58-e1cf9d348600",
+              "name": "The completed purchase.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "purchase",
+                    "rrpitem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"purchaseId\": \"purchase-789012\",\n  \"status\": \"completed\",\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"https://www.7digital.com/receipts/purchase-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8771609b-4853-4d84-9764-056ada06de73",
+          "name": "7digital Purchase User Basket",
+          "request": {
+            "name": "7digital Purchase User Basket",
+            "description": {
+              "content": "Purchase the entire contents of the user's basket.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "purchase",
+                "basket"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "basketId",
+                  "value": "<uuid>",
+                  "description": "(Required) 7digital basket id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5da8cad2-890f-48d3-8679-d639dd211ac7",
+              "name": "The completed purchase.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "purchase",
+                    "basket"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "basketId",
+                      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"purchaseId\": \"purchase-789012\",\n  \"status\": \"completed\",\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"https://www.7digital.com/receipts/purchase-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0e6cb38-66e9-4b1b-8798-b57ca90297b8",
+          "name": "7digital Purchase User Priced Item",
+          "request": {
+            "name": "7digital Purchase User Priced Item",
+            "description": {
+              "content": "Purchase an item at a partner-supplied price.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "purchase",
+                "priceditem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "Release id to purchase."
+                },
+                {
+                  "disabled": false,
+                  "key": "price",
+                  "value": "<number>",
+                  "description": "(Required) Partner-supplied price (in minor units)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "965e110d-1d62-45ad-bad7-28c0f46cfea9",
+              "name": "The completed purchase.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "purchase",
+                    "priceditem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "price",
+                      "value": "999"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"purchaseId\": \"purchase-789012\",\n  \"status\": \"completed\",\n  \"total\": {\n    \"formattedPrice\": \"£9.99\",\n    \"amount\": 9.99,\n    \"currency\": \"GBP\"\n  },\n  \"items\": [\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    },\n    {\n      \"itemId\": \"item-789012\",\n      \"releaseId\": \"11700062\",\n      \"trackId\": \"123456\",\n      \"price\": {\n        \"formattedPrice\": \"£9.99\",\n        \"amount\": 9.99,\n        \"currency\": \"GBP\"\n      }\n    }\n  ],\n  \"receiptUrl\": \"https://www.7digital.com/receipts/purchase-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a37173e-dcf5-4cca-b78a-60d1ba14c90c",
+          "name": "7digital List User Payment Cards",
+          "request": {
+            "name": "7digital List User Payment Cards",
+            "description": {
+              "content": "List the payment cards registered to the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "payment",
+                "card"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "24ce109c-39b0-4ea8-9776-66da201ebf94",
+              "name": "A list of payment cards.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "payment",
+                    "card"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cards\": [\n    {\n      \"cardId\": \"card-789012\",\n      \"last4\": \"4242\",\n      \"brand\": \"visa\",\n      \"expiryMonth\": 12,\n      \"expiryYear\": 2028,\n      \"isDefault\": true\n    },\n    {\n      \"cardId\": \"card-789012\",\n      \"last4\": \"4242\",\n      \"brand\": \"visa\",\n      \"expiryMonth\": 12,\n      \"expiryYear\": 2028,\n      \"isDefault\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "150ecda4-7de9-4ac3-a00f-f4930b54707c",
+          "name": "7digital Select User Payment Card",
+          "request": {
+            "name": "7digital Select User Payment Card",
+            "description": {
+              "content": "Set a registered payment card as the user's default card.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "payment",
+                "card",
+                "select"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cardId",
+                  "value": "<string>",
+                  "description": "(Required) The card id to mark as default."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2abf29f9-c3f0-4f9c-a1aa-8836faf91ae4",
+              "name": "Card selected.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "payment",
+                    "card",
+                    "select"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The card id to mark as default.",
+                        "type": "text/plain"
+                      },
+                      "key": "cardId",
+                      "value": "card-789012"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6aa0497-78d1-4592-8e93-a86030701b03",
+          "name": "7digital Delete User Payment Card",
+          "request": {
+            "name": "7digital Delete User Payment Card",
+            "description": {
+              "content": "Delete a payment card from the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "payment",
+                "card",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cardId",
+                  "value": "<string>",
+                  "description": "(Required) The card id to delete."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d21b64d8-3512-4309-9a72-c564c3142ed3",
+              "name": "Card deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "payment",
+                    "card",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) The card id to delete.",
+                        "type": "text/plain"
+                      },
+                      "key": "cardId",
+                      "value": "card-789012"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea6906fa-afc4-4c7b-80c5-516e155a0222",
+          "name": "7digital Register User Payment Card",
+          "request": {
+            "name": "7digital Register User Payment Card",
+            "description": {
+              "content": "Start the registration flow for a new payment card.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "payment",
+                "cardregistration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "cardNumber",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "expiryMonth",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "expiryYear",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "cvv",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "cardholderName",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a95475b3-8677-420c-98b7-62389277fb5a",
+              "name": "A card registration handle.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "payment",
+                    "cardregistration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cardNumber",
+                      "value": "4242424242424242"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryMonth",
+                      "value": "12"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "expiryYear",
+                      "value": "2028"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "cvv",
+                      "value": "123"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "cardholderName",
+                      "value": "Jane Smith"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registrationId\": \"cardreg-789012\",\n  \"status\": \"registered\",\n  \"cardId\": \"card-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e277a803-ee11-4190-b630-f12cbeadf850",
+          "name": "7digital Get User Card Registration",
+          "request": {
+            "name": "7digital Get User Card Registration",
+            "description": {
+              "content": "Poll the status of a pending card registration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "payment",
+                "cardregistration",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Card registration id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8fdee64d-1a08-407d-980c-eaf784d93f74",
+              "name": "The card registration record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "payment",
+                    "cardregistration",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Card registration id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"registrationId\": \"cardreg-789012\",\n  \"status\": \"registered\",\n  \"cardId\": \"card-789012\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9ca1d2c-72f7-4beb-8b67-1d64eb17c708",
+          "name": "7digital Deliver User Item",
+          "request": {
+            "name": "7digital Deliver User Item",
+            "description": {
+              "content": "Get a delivery URL for a purchased item (download or stream link).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "deliveritem"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "releaseId",
+                  "value": "<string>",
+                  "description": "Purchased release to deliver."
+                },
+                {
+                  "disabled": false,
+                  "key": "trackId",
+                  "value": "<string>",
+                  "description": "Purchased track to deliver."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8ee85700-9c86-49ab-85ad-781ccd975012",
+              "name": "A delivery URL.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "deliveritem"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "releaseId",
+                      "value": "11700062"
+                    },
+                    {
+                      "key": "trackId",
+                      "value": "123456"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryUrl\": \"https://download.7digital.com/abc123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a571c79c-6e65-4078-9115-4844b936ee81",
+          "name": "7digital Signup User",
+          "request": {
+            "name": "7digital Signup User",
+            "description": {
+              "content": "Sign up a new user with a 7digital account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<password>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "firstName",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastName",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5dbd55a4-2aaa-4769-b68e-4b1261d0562b",
+              "name": "The newly created user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "jane.smith@example.com"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "P@ssw0rd123!"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": "GB"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "firstName",
+                      "value": "Jane"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "lastName",
+                      "value": "Smith"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"500123\",\n  \"email\": \"jane.smith@example.com\",\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"country\": \"GB\",\n  \"accessToken\": \"tok-a1b2c3d4\",\n  \"accessTokenSecret\": \"sec-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "320336e7-daec-45d6-8795-41f840db4aea",
+          "name": "7digital Create User",
+          "request": {
+            "name": "7digital Create User",
+            "description": {
+              "content": "Create a new user partner-side (typically as part of an integrated signup flow).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) Email address of the new user."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1688f5ed-36bf-45b9-b10e-d9293700e384",
+              "name": "The newly created user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "jane.smith@example.com"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"500123\",\n  \"email\": \"jane.smith@example.com\",\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"country\": \"GB\",\n  \"accessToken\": \"tok-a1b2c3d4\",\n  \"accessTokenSecret\": \"sec-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a710f01-86c3-4755-bf49-01f20750d96f",
+          "name": "7digital Get User Details",
+          "request": {
+            "name": "7digital Get User Details",
+            "description": {
+              "content": "Get the profile of a user (partner-scoped lookup).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userId",
+                  "value": "<string>",
+                  "description": "(Required) The user id to look up."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "770e853c-debb-4f20-9eb9-3787c322b468",
+              "name": "The user profile.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"500123\",\n  \"email\": \"jane.smith@example.com\",\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"country\": \"GB\",\n  \"accessToken\": \"tok-a1b2c3d4\",\n  \"accessTokenSecret\": \"sec-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85e47248-1e36-48a8-862d-054686e6474b",
+          "name": "7digital Authenticate User",
+          "request": {
+            "name": "7digital Authenticate User",
+            "description": {
+              "content": "Authenticate a user by email and password and return a partner-scoped access token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user",
+                "authenticate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "oauth_consumer_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) User email."
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<password>",
+                  "description": "(Required) User password."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ca5bb259-1834-4f73-96f9-9a03b26ac1b8",
+              "name": "An authenticated user payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user",
+                    "authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "oauth_consumer_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User email.",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "jane.smith@example.com"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) User password.",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "P@ssw0rd123!"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"500123\",\n  \"email\": \"jane.smith@example.com\",\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"country\": \"GB\",\n  \"accessToken\": \"tok-a1b2c3d4\",\n  \"accessTokenSecret\": \"sec-a1b2c3d4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.7digital.com/1.2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "oauth_consumer_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9fe9247-7805-416c-b76d-d4ee3d43d7bc",
+    "name": "7digital Artists User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.\n\nContact Support:\n Name: 7digital / MassiveMusic Client Success",
+      "type": "text/plain"
+    }
+  }
+}
