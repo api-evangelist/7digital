@@ -22,7 +22,7 @@ description: >-
   streaming services. The API surface is split into a classic REST API (v1.2) and a modern MassiveMusic Streaming
   Platform API, both signed with OAuth 1.0 and gated behind a commercial agreement.
 url: https://docs.massivemusic.com/reference
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-05-28'
 modified: '2026-05-28'
 x-source: public-apis/public-apis
