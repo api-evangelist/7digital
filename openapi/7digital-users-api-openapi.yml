@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 7digital Artists Users API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
@@ -88,6 +88,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    UserUpdateRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
     User:
       type: object
       properties:
@@ -115,22 +131,6 @@ components:
           type: string
           description: Partner-scoped user access token secret.
           example: sec-a1b2c3d4
-    UserUpdateRequest:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          example: jane.smith@example.com
-        firstName:
-          type: string
-          example: Jane
-        lastName:
-          type: string
-          example: Smith
-        country:
-          type: string
-          example: GB
   securitySchemes:
     oauth1:
       type: apiKey

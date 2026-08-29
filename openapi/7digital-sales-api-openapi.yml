@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 7digital Artists Sales API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
@@ -106,34 +106,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    UserIdPath:
-      name: userId
-      in: path
-      required: true
-      description: Partner-scoped 7digital user id.
-      schema:
-        type: string
-      example: '500123'
-    Page:
-      name: page
-      in: query
-      description: 1-based page number.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   schemas:
     Locker:
       type: object
@@ -158,45 +130,46 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Track'
-    RefundRequest:
+    Release:
       type: object
       properties:
-        userId:
-          type: string
-          example: '500123'
-        purchaseId:
-          type: string
-          example: purchase-789012
-        reason:
-          type: string
-          example: Customer request
-      required:
-      - userId
-      - purchaseId
-    CreditItemRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: '500123'
-        releaseId:
+        id:
           type: string
           example: '11700062'
-        trackId:
+        title:
           type: string
-          example: '123456'
-        currency:
+          example: Abbey Road
+        type:
           type: string
-          description: ISO 4217 currency code matching the supplied wholesale price.
-          example: USD
-        price:
-          type: number
-          description: Retail price charged to the user.
-          example: 9.99
-      required:
-      - userId
-      - currency
-      - price
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        upc:
+          type: string
+          example: 00602445912025
+        explicit:
+          type: boolean
+          example: false
     Track:
       type: object
       properties:
@@ -250,46 +223,73 @@ components:
         sortName:
           type: string
           example: Beatles, The
-    Release:
+    RefundRequest:
       type: object
       properties:
-        id:
+        userId:
+          type: string
+          example: '500123'
+        purchaseId:
+          type: string
+          example: purchase-789012
+        reason:
+          type: string
+          example: Customer request
+      required:
+      - userId
+      - purchaseId
+    CreditItemRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        releaseId:
           type: string
           example: '11700062'
-        title:
+        trackId:
           type: string
-          example: Abbey Road
-        type:
+          example: '123456'
+        currency:
           type: string
-          enum:
-          - album
-          - single
-          - ep
-          - compilation
-          example: album
-        artist:
-          $ref: '#/components/schemas/Artist'
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
-        releaseDate:
-          type: string
-          format: date
-          example: '1969-09-26'
-        label:
-          type: string
-          example: Apple Records
-        upc:
-          type: string
-          example: 00602445912025
-        explicit:
-          type: boolean
-          example: false
+          description: ISO 4217 currency code matching the supplied wholesale price.
+          example: USD
+        price:
+          type: number
+          description: Retail price charged to the user.
+          example: 9.99
+      required:
+      - userId
+      - currency
+      - price
+  parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    Page:
+      name: page
+      in: query
+      description: 1-based page number.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: Partner-scoped 7digital user id.
+      schema:
+        type: string
+      example: '500123'
   securitySchemes:
     oauth1:
       type: apiKey

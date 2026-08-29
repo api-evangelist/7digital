@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 7digital Artists Releases API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
@@ -264,86 +264,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Tags:
-      name: tags
-      in: query
-      required: true
-      description: One or more tag identifiers, comma-separated.
-      schema:
-        type: string
-      example: rock,indie
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-    Country:
-      name: country
-      in: query
-      description: ISO 3166-1 alpha-2 country code for the sales territory.
-      schema:
-        type: string
-        minLength: 2
-        maxLength: 2
-      example: GB
-    Query:
-      name: q
-      in: query
-      required: true
-      description: Free-text search query.
-      schema:
-        type: string
-      example: beatles
-    ReleaseId:
-      name: releaseId
-      in: query
-      required: true
-      description: 7digital release id.
-      schema:
-        type: string
-      example: '11700062'
-    Period:
-      name: period
-      in: query
-      description: Chart period — typically `day`, `week`, `month`, `year`.
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-      example: week
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   schemas:
-    Tag:
-      type: object
-      description: A genre/tag label.
-      properties:
-        id:
-          type: string
-          example: rock
-        name:
-          type: string
-          example: Rock
-        parentId:
-          type: string
-          nullable: true
-          example: null
     Release:
       type: object
       description: A 7digital release (album, single, EP, compilation).
@@ -394,6 +315,117 @@ components:
           example: 00602445912025
         price:
           $ref: '#/components/schemas/Price'
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    EditorialResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        editorial:
+          $ref: '#/components/schemas/EditorialItem'
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    ReleaseDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        release:
+          $ref: '#/components/schemas/Release'
+    Tag:
+      type: object
+      description: A genre/tag label.
+      properties:
+        id:
+          type: string
+          example: rock
+        name:
+          type: string
+          example: Rock
+        parentId:
+          type:
+          - string
+          - 'null'
+          example: null
+    EditorialItem:
+      type: object
+      properties:
+        id:
+          type: string
+          example: editorial-789012
+        title:
+          type: string
+          example: New Releases This Week
+        description:
+          type: string
+          example: Our pick of the freshest releases this week.
+        type:
+          type: string
+          enum:
+          - feature
+          - banner
+          - slot
+          example: feature
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/editorial/new-releases-this-week
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/editorial/789012.jpg
     Track:
       type: object
       description: A 7digital track.
@@ -436,16 +468,6 @@ components:
           example: https://previews.7digital.com/clip/123456
         price:
           $ref: '#/components/schemas/Price'
-    TagListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
     ErrorResponse:
       type: object
       description: Standard 7digital error envelope.
@@ -477,33 +499,6 @@ components:
                     type: string
                   index:
                     type: integer
-    EditorialResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        editorial:
-          $ref: '#/components/schemas/EditorialItem'
-    ReleaseListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
     Artist:
       type: object
       description: A 7digital artist.
@@ -534,75 +529,81 @@ components:
           type: string
           description: Alternative spellings under which the artist appears.
           example: Beatles, The
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
-    EditorialItem:
-      type: object
-      properties:
-        id:
-          type: string
-          example: editorial-789012
-        title:
-          type: string
-          example: New Releases This Week
-        description:
-          type: string
-          example: Our pick of the freshest releases this week.
-        type:
-          type: string
-          enum:
-          - feature
-          - banner
-          - slot
-          example: feature
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/editorial/new-releases-this-week
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/editorial/789012.jpg
-    TrackListResponse:
+    TagListResponse:
       type: object
       properties:
         status:
           type: string
           example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 13
-        tracks:
+        tags:
           type: array
           items:
-            $ref: '#/components/schemas/Track'
-    ReleaseDetailsResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        release:
-          $ref: '#/components/schemas/Release'
+            $ref: '#/components/schemas/Tag'
+  parameters:
+    Tags:
+      name: tags
+      in: query
+      required: true
+      description: One or more tag identifiers, comma-separated.
+      schema:
+        type: string
+      example: rock,indie
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
+    ReleaseId:
+      name: releaseId
+      in: query
+      required: true
+      description: 7digital release id.
+      schema:
+        type: string
+      example: '11700062'
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
   responses:
     ValidationError:
       description: Request validation failed.

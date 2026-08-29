@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 7digital Artists Tracks API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
@@ -114,64 +114,115 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Period:
-      name: period
-      in: query
-      description: Chart period — typically `day`, `week`, `month`, `year`.
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-      example: week
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-    TrackId:
-      name: trackId
-      in: query
-      required: true
-      description: 7digital track id.
-      schema:
-        type: string
-      example: '123456'
-    Query:
-      name: q
-      in: query
-      required: true
-      description: Free-text search query.
-      schema:
-        type: string
-      example: beatles
-    Country:
-      name: country
-      in: query
-      description: ISO 3166-1 alpha-2 country code for the sales territory.
-      schema:
-        type: string
-        minLength: 2
-        maxLength: 2
-      example: GB
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   schemas:
+    Release:
+      type: object
+      description: A 7digital release (album, single, EP, compilation).
+      properties:
+        id:
+          type: string
+          description: 7digital release id.
+          example: '11700062'
+        title:
+          type: string
+          description: Release title.
+          example: Abbey Road
+        version:
+          type: string
+          description: Release version (e.g. `Remastered`).
+          example: Remastered
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        explicit:
+          type: boolean
+          example: false
+        upc:
+          type: string
+          description: Universal Product Code (UPC/EAN).
+          example: 00602445912025
+        price:
+          $ref: '#/components/schemas/Price'
+    TrackDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        track:
+          $ref: '#/components/schemas/Track'
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    ErrorResponse:
+      type: object
+      description: Standard 7digital error envelope.
+      properties:
+        status:
+          type: string
+          description: Always `error` on a failure.
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
+              example: 2001
+            message:
+              type: string
+              description: Human-readable error message.
+              example: Resource not found
+            errors:
+              type: array
+              description: Per-item errors for batch requests (code 1008).
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  index:
+                    type: integer
     Track:
       type: object
       description: A 7digital track.
@@ -259,114 +310,63 @@ components:
           type: string
           description: ISO 4217 currency code.
           example: GBP
-    Release:
-      type: object
-      description: A 7digital release (album, single, EP, compilation).
-      properties:
-        id:
-          type: string
-          description: 7digital release id.
-          example: '11700062'
-        title:
-          type: string
-          description: Release title.
-          example: Abbey Road
-        version:
-          type: string
-          description: Release version (e.g. `Remastered`).
-          example: Remastered
-        type:
-          type: string
-          enum:
-          - album
-          - single
-          - ep
-          - compilation
-          example: album
-        artist:
-          $ref: '#/components/schemas/Artist'
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
-        releaseDate:
-          type: string
-          format: date
-          example: '1969-09-26'
-        label:
-          type: string
-          example: Apple Records
-        explicit:
-          type: boolean
-          example: false
-        upc:
-          type: string
-          description: Universal Product Code (UPC/EAN).
-          example: 00602445912025
-        price:
-          $ref: '#/components/schemas/Price'
-    ErrorResponse:
-      type: object
-      description: Standard 7digital error envelope.
-      properties:
-        status:
-          type: string
-          description: Always `error` on a failure.
-          example: error
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
-              example: 2001
-            message:
-              type: string
-              description: Human-readable error message.
-              example: Resource not found
-            errors:
-              type: array
-              description: Per-item errors for batch requests (code 1008).
-              items:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  message:
-                    type: string
-                  index:
-                    type: integer
-    TrackListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 13
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-    TrackDetailsResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        track:
-          $ref: '#/components/schemas/Track'
+  parameters:
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    TrackId:
+      name: trackId
+      in: query
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
   responses:
     NotFoundError:
       description: Resource not found.

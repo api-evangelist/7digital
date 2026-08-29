@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 7digital Artists Catalogue API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
@@ -358,71 +358,31 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    TrackIdPath:
-      name: trackId
-      in: path
-      required: true
-      description: 7digital track id.
-      schema:
-        type: string
-      example: '123456'
-    ReleaseType:
-      name: type
-      in: query
-      description: Release type filter.
-      schema:
-        type: string
-        enum:
-        - album
-        - single
-        - ep
-        - compilation
-      example: album
-    ReleaseIdPath:
-      name: releaseId
-      in: path
-      required: true
-      description: 7digital release id.
-      schema:
-        type: string
-      example: '11700062'
-    Page:
-      name: page
-      in: query
-      description: 1-based page number.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-    Query:
-      name: q
-      in: query
-      required: true
-      description: Free-text search query.
-      schema:
-        type: string
-      example: beatles
-    ArtistIdPath:
-      name: artistId
-      in: path
-      required: true
-      description: 7digital artist id.
-      schema:
-        type: string
-      example: '12345'
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   schemas:
+    BatchReleaseResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 2001
+              message:
+                type: string
+                example: Release not found
+              index:
+                type: integer
+                example: 1
     Release:
       type: object
       properties:
@@ -463,6 +423,97 @@ components:
         explicit:
           type: boolean
           example: false
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    ArtistListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Artist'
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    BatchTrackResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 2001
+              message:
+                type: string
+                example: Track not found
+              index:
+                type: integer
+                example: 1
+    UsageTypeListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        usageTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageType'
     BatchTrackRequest:
       type: object
       properties:
@@ -478,6 +529,44 @@ components:
           example: true
       required:
       - trackIds
+    DownloadUrl:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: https://download.7digital.com/abc123
+        expiresAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T16:30:00Z'
+    BatchReleaseRequest:
+      type: object
+      properties:
+        releaseIds:
+          type: array
+          items:
+            type: string
+          example:
+          - '11700062'
+          - '11700063'
+        showErrors:
+          type: boolean
+          example: true
+      required:
+      - releaseIds
+    UsageType:
+      type: object
+      properties:
+        id:
+          type: string
+          example: subscription-streaming
+        name:
+          type: string
+          example: Subscription Streaming
+        description:
+          type: string
+          example: Streaming to subscribers in interactive playback.
     Track:
       type: object
       properties:
@@ -511,89 +600,6 @@ components:
           type: string
           format: uri
           example: https://previews.7digital.com/clip/123456
-    BatchReleaseResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: integer
-                example: 2001
-              message:
-                type: string
-                example: Release not found
-              index:
-                type: integer
-                example: 1
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              example: 2001
-            message:
-              type: string
-              example: Resource not found
-    BatchReleaseRequest:
-      type: object
-      properties:
-        releaseIds:
-          type: array
-          items:
-            type: string
-          example:
-          - '11700062'
-          - '11700063'
-        showErrors:
-          type: boolean
-          example: true
-      required:
-      - releaseIds
-    UsageTypeListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        usageTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageType'
-    ReleaseListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
     Artist:
       type: object
       properties:
@@ -614,91 +620,85 @@ components:
         sortName:
           type: string
           example: Beatles, The
-    TrackListResponse:
+    ErrorResponse:
       type: object
       properties:
         status:
           type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 13
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-    ArtistListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        artists:
-          type: array
-          items:
-            $ref: '#/components/schemas/Artist'
-    DownloadUrl:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          example: https://download.7digital.com/abc123
-        expiresAt:
-          type: string
-          format: date-time
-          example: '2026-05-28T16:30:00Z'
-    BatchTrackResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: integer
-                example: 2001
-              message:
-                type: string
-                example: Track not found
-              index:
-                type: integer
-                example: 1
-    UsageType:
-      type: object
-      properties:
-        id:
-          type: string
-          example: subscription-streaming
-        name:
-          type: string
-          example: Subscription Streaming
-        description:
-          type: string
-          example: Streaming to subscribers in interactive playback.
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 2001
+            message:
+              type: string
+              example: Resource not found
+  parameters:
+    ReleaseType:
+      name: type
+      in: query
+      description: Release type filter.
+      schema:
+        type: string
+        enum:
+        - album
+        - single
+        - ep
+        - compilation
+      example: album
+    TrackIdPath:
+      name: trackId
+      in: path
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
+    ArtistIdPath:
+      name: artistId
+      in: path
+      required: true
+      description: 7digital artist id.
+      schema:
+        type: string
+      example: '12345'
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    ReleaseIdPath:
+      name: releaseId
+      in: path
+      required: true
+      description: 7digital release id.
+      schema:
+        type: string
+      example: '11700062'
+    Page:
+      name: page
+      in: query
+      description: 1-based page number.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
   responses:
     NotFoundError:
       description: Resource not found.

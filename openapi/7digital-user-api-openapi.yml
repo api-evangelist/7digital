@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: 7digital Artists User API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
@@ -521,23 +521,32 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CardRegistration:
+    PaymentCard:
       type: object
       properties:
-        registrationId:
-          type: string
-          example: cardreg-789012
-        status:
-          type: string
-          enum:
-          - pending
-          - registered
-          - failed
-          example: registered
         cardId:
           type: string
-          nullable: true
           example: card-789012
+        last4:
+          type: string
+          example: '4242'
+        brand:
+          type: string
+          enum:
+          - visa
+          - mastercard
+          - amex
+          - discover
+          example: visa
+        expiryMonth:
+          type: integer
+          example: 12
+        expiryYear:
+          type: integer
+          example: 2028
+        isDefault:
+          type: boolean
+          example: true
     Locker:
       type: object
       description: A user's locker of purchased tracks and releases.
@@ -562,230 +571,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Track'
-    BasketItem:
-      type: object
-      properties:
-        itemId:
-          type: string
-          example: item-789012
-        releaseId:
-          type: string
-          nullable: true
-          example: '11700062'
-        trackId:
-          type: string
-          nullable: true
-          example: '123456'
-        price:
-          $ref: '#/components/schemas/Price'
-    SubscriptionStatus:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: '500123'
-        status:
-          type: string
-          enum:
-          - active
-          - cancelled
-          - expired
-          example: active
-        startDate:
-          type: string
-          format: date
-          example: '2026-01-01'
-        endDate:
-          type: string
-          format: date
-          example: '2026-02-01'
-        productId:
-          type: string
-          example: unlimited-streaming
-    Purchase:
-      type: object
-      properties:
-        purchaseId:
-          type: string
-          example: purchase-789012
-        status:
-          type: string
-          enum:
-          - completed
-          - pending
-          - failed
-          example: completed
-        total:
-          $ref: '#/components/schemas/Price'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BasketItem'
-        receiptUrl:
-          type: string
-          format: uri
-          example: https://www.7digital.com/receipts/purchase-789012
-    Track:
-      type: object
-      description: A 7digital track.
-      properties:
-        id:
-          type: string
-          description: 7digital track id.
-          example: '123456'
-        title:
-          type: string
-          description: Track title.
-          example: Come Together
-        version:
-          type: string
-          description: Track version (e.g. `Remastered 2019`).
-          example: Remastered 2019
-        artist:
-          $ref: '#/components/schemas/Artist'
-        release:
-          $ref: '#/components/schemas/Release'
-        trackNumber:
-          type: integer
-          description: Track number on the release.
-          example: 1
-        duration:
-          type: integer
-          description: Duration in seconds.
-          example: 259
-        explicit:
-          type: boolean
-          example: false
-        isrc:
-          type: string
-          description: International Standard Recording Code.
-          example: GBAYE6900477
-        previewUrl:
-          type: string
-          format: uri
-          description: URL for the 30-second preview clip.
-          example: https://previews.7digital.com/clip/123456
-        price:
-          $ref: '#/components/schemas/Price'
-    UserSignupRequest:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          example: jane.smith@example.com
-        password:
-          type: string
-          format: password
-          example: P@ssw0rd123!
-        firstName:
-          type: string
-          example: Jane
-        lastName:
-          type: string
-          example: Smith
-        country:
-          type: string
-          example: GB
-      required:
-      - email
-      - password
-      - country
-    CardRegistrationRequest:
-      type: object
-      properties:
-        cardNumber:
-          type: string
-          example: '4242424242424242'
-        expiryMonth:
-          type: integer
-          example: 12
-        expiryYear:
-          type: integer
-          example: 2028
-        cvv:
-          type: string
-          example: '123'
-        cardholderName:
-          type: string
-          example: Jane Smith
-      required:
-      - cardNumber
-      - expiryMonth
-      - expiryYear
-      - cvv
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '500123'
-        email:
-          type: string
-          format: email
-          example: jane.smith@example.com
-        firstName:
-          type: string
-          example: Jane
-        lastName:
-          type: string
-          example: Smith
-        country:
-          type: string
-          example: GB
-        accessToken:
-          type: string
-          description: Partner-scoped user access token (returned on signup / authenticate).
-          example: tok-a1b2c3d4
-        accessTokenSecret:
-          type: string
-          description: Partner-scoped user access token secret.
-          example: sec-a1b2c3d4
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
-    Artist:
-      type: object
-      description: A 7digital artist.
-      properties:
-        id:
-          type: string
-          description: 7digital artist id.
-          example: '12345'
-        name:
-          type: string
-          description: Artist name.
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          description: Artist page URL on 7digital.
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          description: Artist image URL.
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          description: Sort form of the artist name.
-          example: Beatles, The
-        appearsAs:
-          type: string
-          description: Alternative spellings under which the artist appears.
-          example: Beatles, The
     Release:
       type: object
       description: A 7digital release (album, single, EP, compilation).
@@ -836,33 +621,261 @@ components:
           example: 00602445912025
         price:
           $ref: '#/components/schemas/Price'
-    PaymentCard:
+    UserSignupRequest:
       type: object
       properties:
-        cardId:
+        email:
           type: string
-          example: card-789012
-        last4:
+          format: email
+          example: jane.smith@example.com
+        password:
           type: string
-          example: '4242'
-        brand:
+          format: password
+          example: P@ssw0rd123!
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
+      required:
+      - email
+      - password
+      - country
+    Track:
+      type: object
+      description: A 7digital track.
+      properties:
+        id:
+          type: string
+          description: 7digital track id.
+          example: '123456'
+        title:
+          type: string
+          description: Track title.
+          example: Come Together
+        version:
+          type: string
+          description: Track version (e.g. `Remastered 2019`).
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          description: Track number on the release.
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          description: International Standard Recording Code.
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          description: URL for the 30-second preview clip.
+          example: https://previews.7digital.com/clip/123456
+        price:
+          $ref: '#/components/schemas/Price'
+    Artist:
+      type: object
+      description: A 7digital artist.
+      properties:
+        id:
+          type: string
+          description: 7digital artist id.
+          example: '12345'
+        name:
+          type: string
+          description: Artist name.
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
+    CardRegistration:
+      type: object
+      properties:
+        registrationId:
+          type: string
+          example: cardreg-789012
+        status:
           type: string
           enum:
-          - visa
-          - mastercard
-          - amex
-          - discover
-          example: visa
+          - pending
+          - registered
+          - failed
+          example: registered
+        cardId:
+          type:
+          - string
+          - 'null'
+          example: card-789012
+    Purchase:
+      type: object
+      properties:
+        purchaseId:
+          type: string
+          example: purchase-789012
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - failed
+          example: completed
+        total:
+          $ref: '#/components/schemas/Price'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        receiptUrl:
+          type: string
+          format: uri
+          example: https://www.7digital.com/receipts/purchase-789012
+    SubscriptionStatus:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        status:
+          type: string
+          enum:
+          - active
+          - cancelled
+          - expired
+          example: active
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-01'
+        endDate:
+          type: string
+          format: date
+          example: '2026-02-01'
+        productId:
+          type: string
+          example: unlimited-streaming
+    CardRegistrationRequest:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          example: '4242424242424242'
         expiryMonth:
           type: integer
           example: 12
         expiryYear:
           type: integer
           example: 2028
-        isDefault:
-          type: boolean
-          example: true
+        cvv:
+          type: string
+          example: '123'
+        cardholderName:
+          type: string
+          example: Jane Smith
+      required:
+      - cardNumber
+      - expiryMonth
+      - expiryYear
+      - cvv
+    BasketItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          example: item-789012
+        releaseId:
+          type:
+          - string
+          - 'null'
+          example: '11700062'
+        trackId:
+          type:
+          - string
+          - 'null'
+          example: '123456'
+        price:
+          $ref: '#/components/schemas/Price'
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '500123'
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
+        accessToken:
+          type: string
+          description: Partner-scoped user access token (returned on signup / authenticate).
+          example: tok-a1b2c3d4
+        accessTokenSecret:
+          type: string
+          description: Partner-scoped user access token secret.
+          example: sec-a1b2c3d4
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
   parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
     BasketId:
       name: basketId
       in: query
@@ -881,16 +894,6 @@ components:
         minimum: 1
         default: 1
       example: 1
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   securitySchemes:
     oauth1:
       type: apiKey
