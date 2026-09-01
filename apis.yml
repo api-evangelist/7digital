@@ -422,7 +422,7 @@ apis:
   humanURL: https://docs.massivemusic.com/reference
   baseURL: https://api.7digital.com/1.2
   tags:
-  - IpLookup
+  - IP Lookup
   tags_raw:
   - IpLookup
   properties:
