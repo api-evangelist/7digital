@@ -416,60 +416,6 @@ apis:
     url: json-ld/7digital-streaming-platform-context.jsonld
   - type: PostmanCollection
     url: https://docs.massivemusic.com/docs/postman-sample-requests
-- aid: 7digital:7digital-iplookup-api
-  name: 7digital IpLookup API
-  description: Resolve an end-user's country from an IP address.
-  humanURL: https://docs.massivemusic.com/reference
-  baseURL: https://api.7digital.com/1.2
-  tags:
-  - IP Lookup
-  tags_raw:
-  - IpLookup
-  properties:
-  - type: OpenAPI
-    url: openapi/7digital-iplookup-api-openapi.yml
-  - type: Documentation
-    url: https://docs.massivemusic.com/reference
-  - type: APIReference
-    url: https://docs.massivemusic.com/reference/about-this-api
-  - type: Authentication
-    url: https://docs.massivemusic.com/reference/authentication
-  - type: JSONSchema
-    url: json-schema/
-  - type: JSONStructure
-    url: json-structure/
-  - type: JSONLD
-    url: json-ld/7digital-api-context.jsonld
-  - type: Examples
-    url: examples/
-  - type: SDKs
-    url: https://github.com/7digital/7digital-api
-  - type: SDKs
-    url: https://github.com/7digital/python-7digital-api
-  - type: SDKs
-    url: https://github.com/7digital/SevenDigital.Api.Wrapper
-  - type: SDKs
-    url: https://github.com/7digital/SevenDigital.Api.Schema
-  - type: SDKs
-    url: https://github.com/7digital/SevenDigital.Api.Client
-  - type: SDKs
-    url: https://github.com/7digital/7digital-iOS-SDK
-  - type: SDKs
-    url: https://github.com/7digital/7digital-Android-SDK
-  - type: CodeExamples
-    url: https://github.com/7digital/7digital-API-walkthroughs
-  - type: CodeExamples
-    url: https://github.com/7digital/7digital-feed-fetcher-example
-  - type: CodeExamples
-    url: https://github.com/7digital/7digital_api_examples
-  - type: APIReference
-    url: https://docs.massivemusic.com/reference/introduction
-  - type: RateLimits
-    url: https://docs.massivemusic.com/reference/usage-limits
-  - type: JSONLD
-    url: json-ld/7digital-streaming-platform-context.jsonld
-  - type: PostmanCollection
-    url: https://docs.massivemusic.com/docs/postman-sample-requests
 - aid: 7digital:7digital-logging-api
   name: 7digital Logging API
   description: >-
@@ -1214,6 +1160,58 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/7digital-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.massivemusic.com/reference
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/about-this-api
+  - type: Authentication
+    url: https://docs.massivemusic.com/reference/authentication
+  - type: JSONSchema
+    url: json-schema/
+  - type: JSONStructure
+    url: json-structure/
+  - type: JSONLD
+    url: json-ld/7digital-api-context.jsonld
+  - type: Examples
+    url: examples/
+  - type: SDKs
+    url: https://github.com/7digital/7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/python-7digital-api
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Wrapper
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Schema
+  - type: SDKs
+    url: https://github.com/7digital/SevenDigital.Api.Client
+  - type: SDKs
+    url: https://github.com/7digital/7digital-iOS-SDK
+  - type: SDKs
+    url: https://github.com/7digital/7digital-Android-SDK
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-API-walkthroughs
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital-feed-fetcher-example
+  - type: CodeExamples
+    url: https://github.com/7digital/7digital_api_examples
+  - type: APIReference
+    url: https://docs.massivemusic.com/reference/introduction
+  - type: RateLimits
+    url: https://docs.massivemusic.com/reference/usage-limits
+  - type: JSONLD
+    url: json-ld/7digital-streaming-platform-context.jsonld
+  - type: PostmanCollection
+    url: https://docs.massivemusic.com/docs/postman-sample-requests
+- aid: 7digital:7digital-ip-lookup-api
+  name: 7digital IP Lookup API
+  description: Resolve an end-user's country from an IP address.
+  humanURL: https://docs.massivemusic.com/reference
+  baseURL: https://api.7digital.com/1.2
+  tags:
+  - IP Lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/7digital-ip-lookup-api-openapi.yml
   - type: Documentation
     url: https://docs.massivemusic.com/reference
   - type: APIReference
