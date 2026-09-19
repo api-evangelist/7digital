@@ -43,6 +43,9 @@ x-source: public-apis/public-apis
 x-category: Music
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis; enriched via full pipeline pass on 2026-05-28
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-17
 tags:
   - Music
   - Streaming
@@ -527,6 +530,8 @@ apis:
   humanURL: https://docs.massivemusic.com/reference
   baseURL: https://api.7digital.com/1.2
   tags:
+  - Payments
+  tags_raw:
   - Payment
   properties:
   - type: OpenAPI
@@ -998,6 +1003,8 @@ apis:
   humanURL: https://docs.massivemusic.com/reference
   baseURL: https://api.7digital.com/1.2
   tags:
+  - Translation
+  tags_raw:
   - Translations
   properties:
   - type: OpenAPI
