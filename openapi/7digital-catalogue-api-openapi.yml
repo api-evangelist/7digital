@@ -1,20 +1,20 @@
 openapi: 3.2.0
 info:
-  title: 7digital Artists Catalogue API
-  description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
-  version: '1.2'
-  contact:
-    name: 7digital / MassiveMusic Client Success
-    url: https://docs.massivemusic.com/docs/support
+  title: 7digital Catalogue API
   license:
     name: Commercial — 7digital / MassiveMusic
     url: https://docs.massivemusic.com/docs/sla
-  x-last-validated: '2026-05-28'
   x-generated-from: documentation
-  x-source-url: https://github.com/7digital/7digital-api/blob/master/assets/7digital-api-schema.json
+  x-last-validated: '2026-05-28'
+  x-refined-note:
+  - x-source-url differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Catalogue across 2 of this provider''s published API definitions: 7digital-api-openapi.yml, 7digital-streaming-platform-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.7digital.com/1.2
   description: 7digital Public API v1.2 (production)
+- url: https://api.7digital.com
+  description: 7digital / MassiveMusic Streaming Platform API (production)
 security:
 - oauth1: []
 tags:
@@ -52,6 +52,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com/1.2
+      description: 7digital Public API v1.2 (production)
   /catalogue/release-byurl:
     get:
       operationId: getReleaseIdByUrl
@@ -83,6 +86,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com/1.2
+      description: 7digital Public API v1.2 (production)
   /artists/browse:
     get:
       operationId: browseArtistsByName
@@ -110,6 +116,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /artists/{artistId}/details:
     get:
       operationId: getArtistDetails
@@ -131,6 +140,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /artists/{artistId}/releases:
     get:
       operationId: getArtistReleases
@@ -153,6 +165,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /artists/search:
     get:
       operationId: searchArtists
@@ -174,6 +189,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /releases/details/batch:
     post:
       operationId: getReleasesBatchDetails
@@ -197,6 +215,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /releases/{releaseId}/details:
     get:
       operationId: getReleaseDetails
@@ -218,6 +239,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /releases/{releaseId}/tracks:
     get:
       operationId: getReleaseTrackListing
@@ -237,6 +261,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /releases/search:
     get:
       operationId: searchReleases
@@ -258,6 +285,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /tracks/search:
     get:
       operationId: searchTracks
@@ -279,6 +309,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /tracks/details/batch:
     post:
       operationId: getTracksBatchDetails
@@ -302,6 +335,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /tracks/{trackId}/details:
     get:
       operationId: getTrackDetails
@@ -321,6 +357,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /tracks/{trackId}/download:
     get:
       operationId: downloadTrack
@@ -340,6 +379,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
   /usage-types:
     get:
       operationId: getUsageTypeInformation
@@ -357,8 +399,230 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.7digital.com
+      description: 7digital / MassiveMusic Streaming Platform API (production)
 components:
+  responses:
+    NotFoundError:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    UsageTypeListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        usageTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageType'
+    ArtistListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Artist'
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    BatchTrackResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: integer
+                example: 2001
+              message:
+                type: string
+                example: Track not found
+              index:
+                type: integer
+                example: 1
+    DownloadUrl:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          example: https://download.7digital.com/abc123
+        expiresAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T16:30:00Z'
+    BatchTrackRequest:
+      type: object
+      properties:
+        trackIds:
+          type: array
+          items:
+            type: string
+          example:
+          - '123456'
+          - '123457'
+        showErrors:
+          type: boolean
+          example: true
+      required:
+      - trackIds
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              example: 2001
+            message:
+              type: string
+              example: Resource not found
+    Artist:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '12345'
+        name:
+          type: string
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          example: Beatles, The
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    UsageType:
+      type: object
+      properties:
+        id:
+          type: string
+          example: subscription-streaming
+        name:
+          type: string
+          example: Subscription Streaming
+        description:
+          type: string
+          example: Streaming to subscribers in interactive playback.
+    BatchReleaseRequest:
+      type: object
+      properties:
+        releaseIds:
+          type: array
+          items:
+            type: string
+          example:
+          - '11700062'
+          - '11700063'
+        showErrors:
+          type: boolean
+          example: true
+      required:
+      - releaseIds
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: Come Together
+        version:
+          type: string
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          example: https://previews.7digital.com/clip/123456
     BatchReleaseResponse:
       type: object
       properties:
@@ -423,231 +687,7 @@ components:
         explicit:
           type: boolean
           example: false
-    ReleaseListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
-    ArtistListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        artists:
-          type: array
-          items:
-            $ref: '#/components/schemas/Artist'
-    TrackListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 13
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-    BatchTrackResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: integer
-                example: 2001
-              message:
-                type: string
-                example: Track not found
-              index:
-                type: integer
-                example: 1
-    UsageTypeListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        usageTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageType'
-    BatchTrackRequest:
-      type: object
-      properties:
-        trackIds:
-          type: array
-          items:
-            type: string
-          example:
-          - '123456'
-          - '123457'
-        showErrors:
-          type: boolean
-          example: true
-      required:
-      - trackIds
-    DownloadUrl:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          example: https://download.7digital.com/abc123
-        expiresAt:
-          type: string
-          format: date-time
-          example: '2026-05-28T16:30:00Z'
-    BatchReleaseRequest:
-      type: object
-      properties:
-        releaseIds:
-          type: array
-          items:
-            type: string
-          example:
-          - '11700062'
-          - '11700063'
-        showErrors:
-          type: boolean
-          example: true
-      required:
-      - releaseIds
-    UsageType:
-      type: object
-      properties:
-        id:
-          type: string
-          example: subscription-streaming
-        name:
-          type: string
-          example: Subscription Streaming
-        description:
-          type: string
-          example: Streaming to subscribers in interactive playback.
-    Track:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '123456'
-        title:
-          type: string
-          example: Come Together
-        version:
-          type: string
-          example: Remastered 2019
-        artist:
-          $ref: '#/components/schemas/Artist'
-        release:
-          $ref: '#/components/schemas/Release'
-        trackNumber:
-          type: integer
-          example: 1
-        duration:
-          type: integer
-          description: Duration in seconds.
-          example: 259
-        explicit:
-          type: boolean
-          example: false
-        isrc:
-          type: string
-          example: GBAYE6900477
-        previewUrl:
-          type: string
-          format: uri
-          example: https://previews.7digital.com/clip/123456
-    Artist:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        name:
-          type: string
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          example: Beatles, The
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: error
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              example: 2001
-            message:
-              type: string
-              example: Resource not found
   parameters:
-    ReleaseType:
-      name: type
-      in: query
-      description: Release type filter.
-      schema:
-        type: string
-        enum:
-        - album
-        - single
-        - ep
-        - compilation
-      example: album
     TrackIdPath:
       name: trackId
       in: path
@@ -664,14 +704,14 @@ components:
       schema:
         type: string
       example: '12345'
-    Query:
-      name: q
-      in: query
+    ReleaseIdPath:
+      name: releaseId
+      in: path
       required: true
-      description: Free-text search query.
+      description: 7digital release id.
       schema:
         type: string
-      example: beatles
+      example: '11700062'
     PageSize:
       name: pageSize
       in: query
@@ -682,14 +722,14 @@ components:
         maximum: 100
         default: 20
       example: 20
-    ReleaseIdPath:
-      name: releaseId
-      in: path
+    Query:
+      name: q
+      in: query
       required: true
-      description: 7digital release id.
+      description: Free-text search query.
       schema:
         type: string
-      example: '11700062'
+      example: beatles
     Page:
       name: page
       in: query
@@ -699,13 +739,18 @@ components:
         minimum: 1
         default: 1
       example: 1
-  responses:
-    NotFoundError:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    ReleaseType:
+      name: type
+      in: query
+      description: Release type filter.
+      schema:
+        type: string
+        enum:
+        - album
+        - single
+        - ep
+        - compilation
+      example: album
   securitySchemes:
     oauth1:
       type: apiKey
@@ -722,3 +767,6 @@ components:
       in: query
       name: oauth_consumer_key
       description: 3-legged OAuth 1.0 (consumer key + secret plus a user access token + secret).
+x-refined-from:
+- 7digital-api-openapi.yml
+- 7digital-streaming-platform-openapi.yml

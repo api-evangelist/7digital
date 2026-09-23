@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 7digital Artists Basket API
+  title: 7digital Basket API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
   version: '1.2'
   contact:
@@ -249,35 +249,22 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    BasketId:
-      name: basketId
-      in: query
-      required: true
-      description: 7digital basket id.
-      schema:
-        type: string
-        format: uuid
-      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
   schemas:
-    Basket:
+    Price:
       type: object
+      description: A price quoted in the requested territory's currency.
       properties:
-        id:
+        formattedPrice:
           type: string
-          format: uuid
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BasketItem'
-        total:
-          $ref: '#/components/schemas/Price'
-        voucherCode:
-          type:
-          - string
-          - 'null'
-          example: SUMMER25
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
     Purchase:
       type: object
       properties:
@@ -319,21 +306,34 @@ components:
           example: '123456'
         price:
           $ref: '#/components/schemas/Price'
-    Price:
+    Basket:
       type: object
-      description: A price quoted in the requested territory's currency.
       properties:
-        formattedPrice:
+        id:
           type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
+          format: uuid
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        total:
+          $ref: '#/components/schemas/Price'
+        voucherCode:
+          type:
+          - string
+          - 'null'
+          example: SUMMER25
+  parameters:
+    BasketId:
+      name: basketId
+      in: query
+      required: true
+      description: 7digital basket id.
+      schema:
+        type: string
+        format: uuid
+      example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
   securitySchemes:
     oauth1:
       type: apiKey

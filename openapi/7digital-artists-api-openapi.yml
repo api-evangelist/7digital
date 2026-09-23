@@ -245,7 +245,299 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    ArtistId:
+      name: artistId
+      in: query
+      required: true
+      description: 7digital artist id.
+      schema:
+        type: string
+      example: '12345'
+    Tags:
+      name: tags
+      in: query
+      required: true
+      description: One or more tag identifiers, comma-separated.
+      schema:
+        type: string
+      example: rock,indie
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    ReleaseType:
+      name: type
+      in: query
+      description: Release type filter.
+      schema:
+        type: string
+        enum:
+        - album
+        - single
+        - ep
+        - compilation
+      example: album
+  responses:
+    NotFoundError:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ArtistListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        artists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Artist'
+    TrackListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    ArtistDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        artist:
+          $ref: '#/components/schemas/Artist'
+    Tag:
+      type: object
+      description: A genre/tag label.
+      properties:
+        id:
+          type: string
+          example: rock
+        name:
+          type: string
+          example: Rock
+        parentId:
+          type:
+          - string
+          - 'null'
+          example: null
+    ErrorResponse:
+      type: object
+      description: Standard 7digital error envelope.
+      properties:
+        status:
+          type: string
+          description: Always `error` on a failure.
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
+              example: 2001
+            message:
+              type: string
+              description: Human-readable error message.
+              example: Resource not found
+            errors:
+              type: array
+              description: Per-item errors for batch requests (code 1008).
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  index:
+                    type: integer
+    TagListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    Artist:
+      type: object
+      description: A 7digital artist.
+      properties:
+        id:
+          type: string
+          description: 7digital artist id.
+          example: '12345'
+        name:
+          type: string
+          description: Artist name.
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Track:
+      type: object
+      description: A 7digital track.
+      properties:
+        id:
+          type: string
+          description: 7digital track id.
+          example: '123456'
+        title:
+          type: string
+          description: Track title.
+          example: Come Together
+        version:
+          type: string
+          description: Track version (e.g. `Remastered 2019`).
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          description: Track number on the release.
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          description: International Standard Recording Code.
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          description: URL for the 30-second preview clip.
+          example: https://previews.7digital.com/clip/123456
+        price:
+          $ref: '#/components/schemas/Price'
     Release:
       type: object
       description: A 7digital release (album, single, EP, compilation).
@@ -296,298 +588,6 @@ components:
           example: 00602445912025
         price:
           $ref: '#/components/schemas/Price'
-    ReleaseListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
-    ArtistListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        artists:
-          type: array
-          items:
-            $ref: '#/components/schemas/Artist'
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
-    TrackListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 13
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-    Tag:
-      type: object
-      description: A genre/tag label.
-      properties:
-        id:
-          type: string
-          example: rock
-        name:
-          type: string
-          example: Rock
-        parentId:
-          type:
-          - string
-          - 'null'
-          example: null
-    ArtistDetailsResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        artist:
-          $ref: '#/components/schemas/Artist'
-    Track:
-      type: object
-      description: A 7digital track.
-      properties:
-        id:
-          type: string
-          description: 7digital track id.
-          example: '123456'
-        title:
-          type: string
-          description: Track title.
-          example: Come Together
-        version:
-          type: string
-          description: Track version (e.g. `Remastered 2019`).
-          example: Remastered 2019
-        artist:
-          $ref: '#/components/schemas/Artist'
-        release:
-          $ref: '#/components/schemas/Release'
-        trackNumber:
-          type: integer
-          description: Track number on the release.
-          example: 1
-        duration:
-          type: integer
-          description: Duration in seconds.
-          example: 259
-        explicit:
-          type: boolean
-          example: false
-        isrc:
-          type: string
-          description: International Standard Recording Code.
-          example: GBAYE6900477
-        previewUrl:
-          type: string
-          format: uri
-          description: URL for the 30-second preview clip.
-          example: https://previews.7digital.com/clip/123456
-        price:
-          $ref: '#/components/schemas/Price'
-    ErrorResponse:
-      type: object
-      description: Standard 7digital error envelope.
-      properties:
-        status:
-          type: string
-          description: Always `error` on a failure.
-          example: error
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
-              example: 2001
-            message:
-              type: string
-              description: Human-readable error message.
-              example: Resource not found
-            errors:
-              type: array
-              description: Per-item errors for batch requests (code 1008).
-              items:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  message:
-                    type: string
-                  index:
-                    type: integer
-    Artist:
-      type: object
-      description: A 7digital artist.
-      properties:
-        id:
-          type: string
-          description: 7digital artist id.
-          example: '12345'
-        name:
-          type: string
-          description: Artist name.
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          description: Artist page URL on 7digital.
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          description: Artist image URL.
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          description: Sort form of the artist name.
-          example: Beatles, The
-        appearsAs:
-          type: string
-          description: Alternative spellings under which the artist appears.
-          example: Beatles, The
-    TagListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
-  parameters:
-    ReleaseType:
-      name: type
-      in: query
-      description: Release type filter.
-      schema:
-        type: string
-        enum:
-        - album
-        - single
-        - ep
-        - compilation
-      example: album
-    Tags:
-      name: tags
-      in: query
-      required: true
-      description: One or more tag identifiers, comma-separated.
-      schema:
-        type: string
-      example: rock,indie
-    Query:
-      name: q
-      in: query
-      required: true
-      description: Free-text search query.
-      schema:
-        type: string
-      example: beatles
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
-    ArtistId:
-      name: artistId
-      in: query
-      required: true
-      description: 7digital artist id.
-      schema:
-        type: string
-      example: '12345'
-    Country:
-      name: country
-      in: query
-      description: ISO 3166-1 alpha-2 country code for the sales territory.
-      schema:
-        type: string
-        minLength: 2
-        maxLength: 2
-      example: GB
-    Period:
-      name: period
-      in: query
-      description: Chart period — typically `day`, `week`, `month`, `year`.
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-      example: week
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-  responses:
-    NotFoundError:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth1:
       type: apiKey

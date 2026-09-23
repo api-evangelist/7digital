@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 7digital Artists Ip Lookup API
+  title: 7digital Ip Lookup API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
   version: '1.2'
   contact:
@@ -18,7 +18,7 @@ servers:
 security:
 - oauth1: []
 tags:
-- name: IpLookup
+- name: IP Lookup
   description: Resolve an end-user's country from an IP address.
 paths:
   /country/resolve:
@@ -27,7 +27,7 @@ paths:
       summary: 7digital Resolve Country For Ip
       description: Resolve the country for an end-user's IP address (for geo-restriction checks).
       tags:
-      - IpLookup
+      - IP Lookup
       parameters:
       - name: ip
         in: query

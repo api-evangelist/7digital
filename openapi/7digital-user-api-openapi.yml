@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: 7digital Artists User API
+  title: 7digital User API
   description: The classic 7digital REST API (v1.2) provides access to the 7digital music catalogue (artists, releases, tracks, tags), user lockers, basket/checkout, payment, editorial, territories and IP-lookup. All operations are signed with OAuth 1.0 and scoped by a consumer key issued under a commercial agreement.
   version: '1.2'
   contact:
@@ -521,6 +521,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
     PaymentCard:
       type: object
       properties:
@@ -547,80 +562,6 @@ components:
         isDefault:
           type: boolean
           example: true
-    Locker:
-      type: object
-      description: A user's locker of purchased tracks and releases.
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-    Release:
-      type: object
-      description: A 7digital release (album, single, EP, compilation).
-      properties:
-        id:
-          type: string
-          description: 7digital release id.
-          example: '11700062'
-        title:
-          type: string
-          description: Release title.
-          example: Abbey Road
-        version:
-          type: string
-          description: Release version (e.g. `Remastered`).
-          example: Remastered
-        type:
-          type: string
-          enum:
-          - album
-          - single
-          - ep
-          - compilation
-          example: album
-        artist:
-          $ref: '#/components/schemas/Artist'
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
-        releaseDate:
-          type: string
-          format: date
-          example: '1969-09-26'
-        label:
-          type: string
-          example: Apple Records
-        explicit:
-          type: boolean
-          example: false
-        upc:
-          type: string
-          description: Universal Product Code (UPC/EAN).
-          example: 00602445912025
-        price:
-          $ref: '#/components/schemas/Price'
     UserSignupRequest:
       type: object
       properties:
@@ -687,6 +628,195 @@ components:
           example: https://previews.7digital.com/clip/123456
         price:
           $ref: '#/components/schemas/Price'
+    Purchase:
+      type: object
+      properties:
+        purchaseId:
+          type: string
+          example: purchase-789012
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - failed
+          example: completed
+        total:
+          $ref: '#/components/schemas/Price'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        receiptUrl:
+          type: string
+          format: uri
+          example: https://www.7digital.com/receipts/purchase-789012
+    BasketItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          example: item-789012
+        releaseId:
+          type:
+          - string
+          - 'null'
+          example: '11700062'
+        trackId:
+          type:
+          - string
+          - 'null'
+          example: '123456'
+        price:
+          $ref: '#/components/schemas/Price'
+    SubscriptionStatus:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        status:
+          type: string
+          enum:
+          - active
+          - cancelled
+          - expired
+          example: active
+        startDate:
+          type: string
+          format: date
+          example: '2026-01-01'
+        endDate:
+          type: string
+          format: date
+          example: '2026-02-01'
+        productId:
+          type: string
+          example: unlimited-streaming
+    Locker:
+      type: object
+      description: A user's locker of purchased tracks and releases.
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '500123'
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
+        accessToken:
+          type: string
+          description: Partner-scoped user access token (returned on signup / authenticate).
+          example: tok-a1b2c3d4
+        accessTokenSecret:
+          type: string
+          description: Partner-scoped user access token secret.
+          example: sec-a1b2c3d4
+    Release:
+      type: object
+      description: A 7digital release (album, single, EP, compilation).
+      properties:
+        id:
+          type: string
+          description: 7digital release id.
+          example: '11700062'
+        title:
+          type: string
+          description: Release title.
+          example: Abbey Road
+        version:
+          type: string
+          description: Release version (e.g. `Remastered`).
+          example: Remastered
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        explicit:
+          type: boolean
+          example: false
+        upc:
+          type: string
+          description: Universal Product Code (UPC/EAN).
+          example: 00602445912025
+        price:
+          $ref: '#/components/schemas/Price'
+    CardRegistrationRequest:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          example: '4242424242424242'
+        expiryMonth:
+          type: integer
+          example: 12
+        expiryYear:
+          type: integer
+          example: 2028
+        cvv:
+          type: string
+          example: '123'
+        cardholderName:
+          type: string
+          example: Jane Smith
+      required:
+      - cardNumber
+      - expiryMonth
+      - expiryYear
+      - cvv
     Artist:
       type: object
       description: A 7digital artist.
@@ -735,147 +865,7 @@ components:
           - string
           - 'null'
           example: card-789012
-    Purchase:
-      type: object
-      properties:
-        purchaseId:
-          type: string
-          example: purchase-789012
-        status:
-          type: string
-          enum:
-          - completed
-          - pending
-          - failed
-          example: completed
-        total:
-          $ref: '#/components/schemas/Price'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BasketItem'
-        receiptUrl:
-          type: string
-          format: uri
-          example: https://www.7digital.com/receipts/purchase-789012
-    SubscriptionStatus:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: '500123'
-        status:
-          type: string
-          enum:
-          - active
-          - cancelled
-          - expired
-          example: active
-        startDate:
-          type: string
-          format: date
-          example: '2026-01-01'
-        endDate:
-          type: string
-          format: date
-          example: '2026-02-01'
-        productId:
-          type: string
-          example: unlimited-streaming
-    CardRegistrationRequest:
-      type: object
-      properties:
-        cardNumber:
-          type: string
-          example: '4242424242424242'
-        expiryMonth:
-          type: integer
-          example: 12
-        expiryYear:
-          type: integer
-          example: 2028
-        cvv:
-          type: string
-          example: '123'
-        cardholderName:
-          type: string
-          example: Jane Smith
-      required:
-      - cardNumber
-      - expiryMonth
-      - expiryYear
-      - cvv
-    BasketItem:
-      type: object
-      properties:
-        itemId:
-          type: string
-          example: item-789012
-        releaseId:
-          type:
-          - string
-          - 'null'
-          example: '11700062'
-        trackId:
-          type:
-          - string
-          - 'null'
-          example: '123456'
-        price:
-          $ref: '#/components/schemas/Price'
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '500123'
-        email:
-          type: string
-          format: email
-          example: jane.smith@example.com
-        firstName:
-          type: string
-          example: Jane
-        lastName:
-          type: string
-          example: Smith
-        country:
-          type: string
-          example: GB
-        accessToken:
-          type: string
-          description: Partner-scoped user access token (returned on signup / authenticate).
-          example: tok-a1b2c3d4
-        accessTokenSecret:
-          type: string
-          description: Partner-scoped user access token secret.
-          example: sec-a1b2c3d4
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
   parameters:
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
     BasketId:
       name: basketId
       in: query
@@ -894,6 +884,16 @@ components:
         minimum: 1
         default: 1
       example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
   securitySchemes:
     oauth1:
       type: apiKey
