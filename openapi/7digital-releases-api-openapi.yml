@@ -264,42 +264,101 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    Query:
+      name: q
+      in: query
+      required: true
+      description: Free-text search query.
+      schema:
+        type: string
+      example: beatles
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    ReleaseId:
+      name: releaseId
+      in: query
+      required: true
+      description: 7digital release id.
+      schema:
+        type: string
+      example: '11700062'
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    Tags:
+      name: tags
+      in: query
+      required: true
+      description: One or more tag identifiers, comma-separated.
+      schema:
+        type: string
+      example: rock,indie
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
   schemas:
-    ReleaseDetailsResponse:
+    TagListResponse:
       type: object
       properties:
         status:
           type: string
           example: ok
-        release:
-          $ref: '#/components/schemas/Release'
-    EditorialItem:
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ReleaseListResponse:
       type: object
       properties:
-        id:
+        status:
           type: string
-          example: editorial-789012
-        title:
-          type: string
-          example: New Releases This Week
-        description:
-          type: string
-          example: Our pick of the freshest releases this week.
-        type:
-          type: string
-          enum:
-          - feature
-          - banner
-          - slot
-          example: feature
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/editorial/new-releases-this-week
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/editorial/789012.jpg
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
     TrackListResponse:
       type: object
       properties:
@@ -319,21 +378,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Track'
-    Tag:
+    EditorialResponse:
       type: object
-      description: A genre/tag label.
       properties:
-        id:
+        status:
           type: string
-          example: rock
-        name:
-          type: string
-          example: Rock
-        parentId:
-          type:
-          - string
-          - 'null'
-          example: null
+          example: ok
+        editorial:
+          $ref: '#/components/schemas/EditorialItem'
     ErrorResponse:
       type: object
       description: Standard 7digital error envelope.
@@ -365,16 +417,6 @@ components:
                     type: string
                   index:
                     type: integer
-    TagListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
     Artist:
       type: object
       description: A 7digital artist.
@@ -405,33 +447,79 @@ components:
           type: string
           description: Alternative spellings under which the artist appears.
           example: Beatles, The
-    EditorialResponse:
+    ReleaseDetailsResponse:
       type: object
       properties:
         status:
           type: string
           example: ok
-        editorial:
-          $ref: '#/components/schemas/EditorialItem'
-    ReleaseListResponse:
+        release:
+          $ref: '#/components/schemas/Release'
+    Release:
       type: object
+      description: A 7digital release (album, single, EP, compilation).
       properties:
-        status:
+        id:
           type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
+          description: 7digital release id.
+          example: '11700062'
+        title:
+          type: string
+          description: Release title.
+          example: Abbey Road
+        version:
+          type: string
+          description: Release version (e.g. `Remastered`).
+          example: Remastered
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        explicit:
+          type: boolean
+          example: false
+        upc:
+          type: string
+          description: Universal Product Code (UPC/EAN).
+          example: 00602445912025
+        price:
+          $ref: '#/components/schemas/Price'
+    Tag:
+      type: object
+      description: A genre/tag label.
+      properties:
+        id:
+          type: string
+          example: rock
+        name:
+          type: string
+          example: Rock
+        parentId:
+          type:
+          - string
+          - 'null'
+          example: null
     Price:
       type: object
       description: A price quoted in the requested territory's currency.
@@ -489,65 +577,36 @@ components:
           example: https://previews.7digital.com/clip/123456
         price:
           $ref: '#/components/schemas/Price'
-    Release:
+    EditorialItem:
       type: object
-      description: A 7digital release (album, single, EP, compilation).
       properties:
         id:
           type: string
-          description: 7digital release id.
-          example: '11700062'
+          example: editorial-789012
         title:
           type: string
-          description: Release title.
-          example: Abbey Road
-        version:
+          example: New Releases This Week
+        description:
           type: string
-          description: Release version (e.g. `Remastered`).
-          example: Remastered
+          example: Our pick of the freshest releases this week.
         type:
           type: string
           enum:
-          - album
-          - single
-          - ep
-          - compilation
-          example: album
-        artist:
-          $ref: '#/components/schemas/Artist'
+          - feature
+          - banner
+          - slot
+          example: feature
         url:
           type: string
           format: uri
-          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+          example: https://uk.7digital.com/editorial/new-releases-this-week
         image:
           type: string
           format: uri
-          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
-        releaseDate:
-          type: string
-          format: date
-          example: '1969-09-26'
-        label:
-          type: string
-          example: Apple Records
-        explicit:
-          type: boolean
-          example: false
-        upc:
-          type: string
-          description: Universal Product Code (UPC/EAN).
-          example: 00602445912025
-        price:
-          $ref: '#/components/schemas/Price'
+          example: https://artwork-cdn.7static.com/static/img/editorial/789012.jpg
   responses:
     NotFoundError:
       description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    AuthError:
-      description: Authentication failed.
       content:
         application/json:
           schema:
@@ -558,71 +617,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    Tags:
-      name: tags
-      in: query
-      required: true
-      description: One or more tag identifiers, comma-separated.
-      schema:
-        type: string
-      example: rock,indie
-    Period:
-      name: period
-      in: query
-      description: Chart period — typically `day`, `week`, `month`, `year`.
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-      example: week
-    Country:
-      name: country
-      in: query
-      description: ISO 3166-1 alpha-2 country code for the sales territory.
-      schema:
-        type: string
-        minLength: 2
-        maxLength: 2
-      example: GB
-    ReleaseId:
-      name: releaseId
-      in: query
-      required: true
-      description: 7digital release id.
-      schema:
-        type: string
-      example: '11700062'
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
-    Query:
-      name: q
-      in: query
-      required: true
-      description: Free-text search query.
-      schema:
-        type: string
-      example: beatles
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
+    AuthError:
+      description: Authentication failed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth1:
       type: apiKey

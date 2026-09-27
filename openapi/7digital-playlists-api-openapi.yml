@@ -166,22 +166,25 @@ components:
             $ref: '#/components/schemas/PlaylistTrackInput'
       required:
       - tracks
-    UpdatePlaylistRequest:
+    PlaylistListResponse:
       type: object
       properties:
-        name:
+        status:
           type: string
-          example: Morning Run
-        description:
-          type: string
-          maxLength: 500
-          example: High-energy tracks for early-morning runs.
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          example: public
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 12
+        playlists:
+          type: array
+          items:
+            $ref: '#/components/schemas/Playlist'
     Playlist:
       type: object
       properties:
@@ -221,25 +224,34 @@ components:
           type: string
           format: date-time
           example: '2026-05-28T15:00:00Z'
-    PlaylistListResponse:
+    UpdatePlaylistRequest:
       type: object
       properties:
-        status:
+        name:
           type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 12
-        playlists:
-          type: array
-          items:
-            $ref: '#/components/schemas/Playlist'
+          example: Morning Run
+        description:
+          type: string
+          maxLength: 500
+          example: High-energy tracks for early-morning runs.
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          example: public
+    PlaylistTrack:
+      allOf:
+      - $ref: '#/components/schemas/PlaylistTrackInput'
+      - type: object
+        properties:
+          position:
+            type: integer
+            example: 1
+          addedAt:
+            type: string
+            format: date-time
+            example: '2026-05-28T14:30:00Z'
     CreatePlaylistRequest:
       type: object
       properties:
@@ -262,19 +274,17 @@ components:
             $ref: '#/components/schemas/PlaylistTrackInput'
       required:
       - name
-    PlaylistTrack:
-      allOf:
-      - $ref: '#/components/schemas/PlaylistTrackInput'
-      - type: object
-        properties:
-          position:
-            type: integer
-            example: 1
-          addedAt:
-            type: string
-            format: date-time
-            example: '2026-05-28T14:30:00Z'
   parameters:
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
     PlaylistIdPath:
       name: playlistId
       in: path
@@ -292,16 +302,6 @@ components:
         minimum: 1
         default: 1
       example: 1
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   securitySchemes:
     oauth1:
       type: apiKey

@@ -101,39 +101,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Track:
+    Artist:
       type: object
       properties:
         id:
           type: string
-          example: '123456'
-        title:
+          example: '12345'
+        name:
           type: string
-          example: Come Together
-        version:
-          type: string
-          example: Remastered 2019
-        artist:
-          $ref: '#/components/schemas/Artist'
-        release:
-          $ref: '#/components/schemas/Release'
-        trackNumber:
-          type: integer
-          example: 1
-        duration:
-          type: integer
-          description: Duration in seconds.
-          example: 259
-        explicit:
-          type: boolean
-          example: false
-        isrc:
-          type: string
-          example: GBAYE6900477
-        previewUrl:
+          example: The Beatles
+        url:
           type: string
           format: uri
-          example: https://previews.7digital.com/clip/123456
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          example: Beatles, The
+    RadioTrack:
+      type: object
+      properties:
+        track:
+          $ref: '#/components/schemas/Track'
+        streamUrl:
+          type: string
+          format: uri
+          example: https://streaming.7digital.com/hls/123456.m3u8
+        skipAllowed:
+          type: boolean
+          example: true
     CreateRadioSessionRequest:
       type: object
       properties:
@@ -162,98 +161,6 @@ components:
       required:
       - userId
       - playlistIds
-    RadioTrack:
-      type: object
-      properties:
-        track:
-          $ref: '#/components/schemas/Track'
-        streamUrl:
-          type: string
-          format: uri
-          example: https://streaming.7digital.com/hls/123456.m3u8
-        skipAllowed:
-          type: boolean
-          example: true
-    RadioSession:
-      type: object
-      properties:
-        sessionId:
-          type: string
-          format: uuid
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        userId:
-          type: string
-          example: '500123'
-        ruleset:
-          type: string
-          enum:
-          - dmca
-          - gvl
-          - custom
-          example: dmca
-        skipsRemaining:
-          type: integer
-          example: 6
-        createdAt:
-          type: string
-          format: date-time
-          example: '2026-05-28T14:30:00Z'
-    PlaybackEventBatch:
-      type: object
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaybackEvent'
-      required:
-      - events
-    Artist:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '12345'
-        name:
-          type: string
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          example: Beatles, The
-    PlaybackEvent:
-      type: object
-      properties:
-        trackId:
-          type: string
-          example: '123456'
-        eventType:
-          type: string
-          enum:
-          - start
-          - complete
-          - skip
-          - pause
-          - resume
-          example: complete
-        timestamp:
-          type: string
-          format: date-time
-          example: '2026-05-28T14:30:45Z'
-        durationPlayed:
-          type: integer
-          description: Seconds of the track that were played.
-          example: 259
-      required:
-      - trackId
-      - eventType
-      - timestamp
     Release:
       type: object
       properties:
@@ -294,6 +201,99 @@ components:
         explicit:
           type: boolean
           example: false
+    PlaybackEventBatch:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaybackEvent'
+      required:
+      - events
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: Come Together
+        version:
+          type: string
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          example: https://previews.7digital.com/clip/123456
+    PlaybackEvent:
+      type: object
+      properties:
+        trackId:
+          type: string
+          example: '123456'
+        eventType:
+          type: string
+          enum:
+          - start
+          - complete
+          - skip
+          - pause
+          - resume
+          example: complete
+        timestamp:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:45Z'
+        durationPlayed:
+          type: integer
+          description: Seconds of the track that were played.
+          example: 259
+      required:
+      - trackId
+      - eventType
+      - timestamp
+    RadioSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        userId:
+          type: string
+          example: '500123'
+        ruleset:
+          type: string
+          enum:
+          - dmca
+          - gvl
+          - custom
+          example: dmca
+        skipsRemaining:
+          type: integer
+          example: 6
+        createdAt:
+          type: string
+          format: date-time
+          example: '2026-05-28T14:30:00Z'
   parameters:
     SessionIdPath:
       name: sessionId

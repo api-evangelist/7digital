@@ -90,6 +90,14 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    ReleaseIdPath:
+      name: releaseId
+      in: path
+      required: true
+      description: 7digital release id.
+      schema:
+        type: string
+      example: '11700062'
     TrackIdPath:
       name: trackId
       in: path
@@ -106,14 +114,6 @@ components:
       schema:
         type: string
       example: '500123'
-    ReleaseIdPath:
-      name: releaseId
-      in: path
-      required: true
-      description: 7digital release id.
-      schema:
-        type: string
-      example: '11700062'
   securitySchemes:
     oauth1:
       type: apiKey

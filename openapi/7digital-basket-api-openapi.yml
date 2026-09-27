@@ -250,21 +250,24 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Price:
+    BasketItem:
       type: object
-      description: A price quoted in the requested territory's currency.
       properties:
-        formattedPrice:
+        itemId:
           type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
+          example: item-789012
+        releaseId:
+          type:
+          - string
+          - 'null'
+          example: '11700062'
+        trackId:
+          type:
+          - string
+          - 'null'
+          example: '123456'
+        price:
+          $ref: '#/components/schemas/Price'
     Purchase:
       type: object
       properties:
@@ -288,24 +291,21 @@ components:
           type: string
           format: uri
           example: https://www.7digital.com/receipts/purchase-789012
-    BasketItem:
+    Price:
       type: object
+      description: A price quoted in the requested territory's currency.
       properties:
-        itemId:
+        formattedPrice:
           type: string
-          example: item-789012
-        releaseId:
-          type:
-          - string
-          - 'null'
-          example: '11700062'
-        trackId:
-          type:
-          - string
-          - 'null'
-          example: '123456'
-        price:
-          $ref: '#/components/schemas/Price'
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
     Basket:
       type: object
       properties:
