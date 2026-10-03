@@ -206,6 +206,14 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    TrackIdPath:
+      name: trackId
+      in: path
+      required: true
+      description: 7digital track id.
+      schema:
+        type: string
+      example: '123456'
     StreamFormat:
       name: format
       in: query
@@ -216,14 +224,6 @@ components:
         - mp3
         - aac
       example: mp3
-    TrackIdPath:
-      name: trackId
-      in: path
-      required: true
-      description: 7digital track id.
-      schema:
-        type: string
-      example: '123456'
   securitySchemes:
     oauth1:
       type: apiKey

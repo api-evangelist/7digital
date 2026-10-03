@@ -115,6 +115,15 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Country:
+      name: country
+      in: query
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      schema:
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
     Query:
       name: q
       in: query
@@ -133,15 +142,6 @@ components:
         maximum: 100
         default: 20
       example: 20
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
     Period:
       name: period
       in: query
@@ -154,6 +154,15 @@ components:
         - month
         - year
       example: week
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
     TrackId:
       name: trackId
       in: query
@@ -162,54 +171,38 @@ components:
       schema:
         type: string
       example: '123456'
-    Country:
-      name: country
-      in: query
-      description: ISO 3166-1 alpha-2 country code for the sales territory.
-      schema:
-        type: string
-        minLength: 2
-        maxLength: 2
-      example: GB
   schemas:
-    Artist:
+    ErrorResponse:
       type: object
-      description: A 7digital artist.
-      properties:
-        id:
-          type: string
-          description: 7digital artist id.
-          example: '12345'
-        name:
-          type: string
-          description: Artist name.
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          description: Artist page URL on 7digital.
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          description: Artist image URL.
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          description: Sort form of the artist name.
-          example: Beatles, The
-        appearsAs:
-          type: string
-          description: Alternative spellings under which the artist appears.
-          example: Beatles, The
-    TrackDetailsResponse:
-      type: object
+      description: Standard 7digital error envelope.
       properties:
         status:
           type: string
-          example: ok
-        track:
-          $ref: '#/components/schemas/Track'
+          description: Always `error` on a failure.
+          example: error
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
+              example: 2001
+            message:
+              type: string
+              description: Human-readable error message.
+              example: Resource not found
+            errors:
+              type: array
+              description: Per-item errors for batch requests (code 1008).
+              items:
+                type: object
+                properties:
+                  code:
+                    type: integer
+                  message:
+                    type: string
+                  index:
+                    type: integer
     Release:
       type: object
       description: A 7digital release (album, single, EP, compilation).
@@ -260,40 +253,36 @@ components:
           example: 00602445912025
         price:
           $ref: '#/components/schemas/Price'
-    Price:
+    Artist:
       type: object
-      description: A price quoted in the requested territory's currency.
+      description: A 7digital artist.
       properties:
-        formattedPrice:
+        id:
           type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
+          description: 7digital artist id.
+          example: '12345'
+        name:
           type: string
-          description: ISO 4217 currency code.
-          example: GBP
-    TrackListResponse:
-      type: object
-      properties:
-        status:
+          description: Artist name.
+          example: The Beatles
+        url:
           type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 13
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
     Track:
       type: object
       description: A 7digital track.
@@ -336,37 +325,48 @@ components:
           example: https://previews.7digital.com/clip/123456
         price:
           $ref: '#/components/schemas/Price'
-    ErrorResponse:
+    TrackListResponse:
       type: object
-      description: Standard 7digital error envelope.
       properties:
         status:
           type: string
-          description: Always `error` on a failure.
-          example: error
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: 7digital error code (1xxx input, 2xxx resource, 3xxx user, 7xxx app, 9xxx server).
-              example: 2001
-            message:
-              type: string
-              description: Human-readable error message.
-              example: Resource not found
-            errors:
-              type: array
-              description: Per-item errors for batch requests (code 1008).
-              items:
-                type: object
-                properties:
-                  code:
-                    type: integer
-                  message:
-                    type: string
-                  index:
-                    type: integer
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 13
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    TrackDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        track:
+          $ref: '#/components/schemas/Track'
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
   responses:
     NotFoundError:
       description: Resource not found.

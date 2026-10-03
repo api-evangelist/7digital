@@ -84,15 +84,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    StreamLogBatch:
-      type: object
-      properties:
-        logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/StreamLog'
-      required:
-      - logs
     StreamLog:
       type: object
       properties:
@@ -119,6 +110,15 @@ components:
       required:
       - trackId
       - timestamp
+    StreamLogBatch:
+      type: object
+      properties:
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/StreamLog'
+      required:
+      - logs
   securitySchemes:
     oauth1:
       type: apiKey

@@ -88,22 +88,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserUpdateRequest:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          example: jane.smith@example.com
-        firstName:
-          type: string
-          example: Jane
-        lastName:
-          type: string
-          example: Smith
-        country:
-          type: string
-          example: GB
     User:
       type: object
       properties:
@@ -131,6 +115,22 @@ components:
           type: string
           description: Partner-scoped user access token secret.
           example: sec-a1b2c3d4
+    UserUpdateRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        country:
+          type: string
+          example: GB
   securitySchemes:
     oauth1:
       type: apiKey

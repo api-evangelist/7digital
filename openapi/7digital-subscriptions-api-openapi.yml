@@ -48,6 +48,32 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateSubscriptionRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          example: '500123'
+        productId:
+          type: string
+          example: unlimited-streaming-monthly
+        startDate:
+          type: string
+          format: date
+          example: '2026-05-28'
+        endDate:
+          type: string
+          format: date
+          description: Subscription expiry. Maximum one month from startDate.
+          example: '2026-06-28'
+        country:
+          type: string
+          example: GB
+      required:
+      - userId
+      - productId
+      - startDate
+      - endDate
     Subscription:
       type: object
       properties:
@@ -75,32 +101,6 @@ components:
           type: string
           format: date
           example: '2026-06-28'
-    CreateSubscriptionRequest:
-      type: object
-      properties:
-        userId:
-          type: string
-          example: '500123'
-        productId:
-          type: string
-          example: unlimited-streaming-monthly
-        startDate:
-          type: string
-          format: date
-          example: '2026-05-28'
-        endDate:
-          type: string
-          format: date
-          description: Subscription expiry. Maximum one month from startDate.
-          example: '2026-06-28'
-        country:
-          type: string
-          example: GB
-      required:
-      - userId
-      - productId
-      - startDate
-      - endDate
   securitySchemes:
     oauth1:
       type: apiKey
