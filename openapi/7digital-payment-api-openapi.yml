@@ -73,6 +73,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
     Voucher:
       type: object
       properties:
@@ -94,21 +109,6 @@ components:
         redeemed:
           type: boolean
           example: false
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
   securitySchemes:
     oauth1:
       type: apiKey

@@ -246,6 +246,27 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
+    Period:
+      name: period
+      in: query
+      description: Chart period — typically `day`, `week`, `month`, `year`.
+      schema:
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
     Query:
       name: q
       in: query
@@ -254,6 +275,14 @@ components:
       schema:
         type: string
       example: beatles
+    Tags:
+      name: tags
+      in: query
+      required: true
+      description: One or more tag identifiers, comma-separated.
+      schema:
+        type: string
+      example: rock,indie
     PageSize:
       name: pageSize
       in: query
@@ -264,14 +293,6 @@ components:
         maximum: 100
         default: 20
       example: 20
-    Tags:
-      name: tags
-      in: query
-      required: true
-      description: One or more tag identifiers, comma-separated.
-      schema:
-        type: string
-      example: rock,indie
     Country:
       name: country
       in: query
@@ -301,36 +322,22 @@ components:
         - ep
         - compilation
       example: album
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-    Period:
-      name: period
-      in: query
-      description: Chart period — typically `day`, `week`, `month`, `year`.
-      schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-      example: week
   schemas:
-    ArtistDetailsResponse:
+    Tag:
       type: object
+      description: A genre/tag label.
       properties:
-        status:
+        id:
           type: string
-          example: ok
-        artist:
-          $ref: '#/components/schemas/Artist'
+          example: rock
+        name:
+          type: string
+          example: Rock
+        parentId:
+          type:
+          - string
+          - 'null'
+          example: null
     TrackListResponse:
       type: object
       properties:
@@ -350,16 +357,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Track'
-    TagListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
     ErrorResponse:
       type: object
       description: Standard 7digital error envelope.
@@ -391,6 +388,73 @@ components:
                     type: string
                   index:
                     type: integer
+    ReleaseListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+    Artist:
+      type: object
+      description: A 7digital artist.
+      properties:
+        id:
+          type: string
+          description: 7digital artist id.
+          example: '12345'
+        name:
+          type: string
+          description: Artist name.
+          example: The Beatles
+        url:
+          type: string
+          format: uri
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
+    TagListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+    ArtistDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        artist:
+          $ref: '#/components/schemas/Artist'
     Release:
       type: object
       description: A 7digital release (album, single, EP, compilation).
@@ -441,22 +505,7 @@ components:
           example: 00602445912025
         price:
           $ref: '#/components/schemas/Price'
-    Tag:
-      type: object
-      description: A genre/tag label.
-      properties:
-        id:
-          type: string
-          example: rock
-        name:
-          type: string
-          example: Rock
-        parentId:
-          type:
-          - string
-          - 'null'
-          example: null
-    ReleaseListResponse:
+    ArtistListResponse:
       type: object
       properties:
         status:
@@ -471,40 +520,25 @@ components:
         totalItems:
           type: integer
           example: 42
-        releases:
+        artists:
           type: array
           items:
-            $ref: '#/components/schemas/Release'
-    Artist:
+            $ref: '#/components/schemas/Artist'
+    Price:
       type: object
-      description: A 7digital artist.
+      description: A price quoted in the requested territory's currency.
       properties:
-        id:
+        formattedPrice:
           type: string
-          description: 7digital artist id.
-          example: '12345'
-        name:
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
           type: string
-          description: Artist name.
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          description: Artist page URL on 7digital.
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          description: Artist image URL.
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          description: Sort form of the artist name.
-          example: Beatles, The
-        appearsAs:
-          type: string
-          description: Alternative spellings under which the artist appears.
-          example: Beatles, The
+          description: ISO 4217 currency code.
+          example: GBP
     Track:
       type: object
       description: A 7digital track.
@@ -547,40 +581,6 @@ components:
           example: https://previews.7digital.com/clip/123456
         price:
           $ref: '#/components/schemas/Price'
-    ArtistListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        artists:
-          type: array
-          items:
-            $ref: '#/components/schemas/Artist'
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
   responses:
     NotFoundError:
       description: Resource not found.

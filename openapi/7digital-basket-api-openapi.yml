@@ -250,6 +250,57 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    BasketItem:
+      type: object
+      properties:
+        itemId:
+          type: string
+          example: item-789012
+        releaseId:
+          type:
+          - string
+          - 'null'
+          example: '11700062'
+        trackId:
+          type:
+          - string
+          - 'null'
+          example: '123456'
+        price:
+          $ref: '#/components/schemas/Price'
+    Price:
+      type: object
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Basket:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasketItem'
+        total:
+          $ref: '#/components/schemas/Price'
+        voucherCode:
+          type:
+          - string
+          - 'null'
+          example: SUMMER25
     Purchase:
       type: object
       properties:
@@ -273,57 +324,6 @@ components:
           type: string
           format: uri
           example: https://www.7digital.com/receipts/purchase-789012
-    Basket:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/BasketItem'
-        total:
-          $ref: '#/components/schemas/Price'
-        voucherCode:
-          type:
-          - string
-          - 'null'
-          example: SUMMER25
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
-    BasketItem:
-      type: object
-      properties:
-        itemId:
-          type: string
-          example: item-789012
-        releaseId:
-          type:
-          - string
-          - 'null'
-          example: '11700062'
-        trackId:
-          type:
-          - string
-          - 'null'
-          example: '123456'
-        price:
-          $ref: '#/components/schemas/Price'
   parameters:
     BasketId:
       name: basketId

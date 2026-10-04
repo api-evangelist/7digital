@@ -44,15 +44,15 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Country:
-      name: country
+    Page:
+      name: page
       in: query
-      description: ISO 3166-1 alpha-2 country code for the sales territory.
+      description: 1-based page number for paged endpoints.
       schema:
-        type: string
-        minLength: 2
-        maxLength: 2
-      example: GB
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
     PageSize:
       name: pageSize
       in: query
@@ -63,16 +63,26 @@ components:
         maximum: 100
         default: 20
       example: 20
-    Page:
-      name: page
+    Country:
+      name: country
       in: query
-      description: 1-based page number for paged endpoints.
+      description: ISO 3166-1 alpha-2 country code for the sales territory.
       schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
+        type: string
+        minLength: 2
+        maxLength: 2
+      example: GB
   schemas:
+    EditorialListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        editorial:
+          type: array
+          items:
+            $ref: '#/components/schemas/EditorialItem'
     EditorialItem:
       type: object
       properties:
@@ -100,16 +110,6 @@ components:
           type: string
           format: uri
           example: https://artwork-cdn.7static.com/static/img/editorial/789012.jpg
-    EditorialListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        editorial:
-          type: array
-          items:
-            $ref: '#/components/schemas/EditorialItem'
   securitySchemes:
     oauth1:
       type: apiKey

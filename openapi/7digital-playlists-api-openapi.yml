@@ -128,6 +128,47 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    PlaylistTrack:
+      allOf:
+      - $ref: '#/components/schemas/PlaylistTrackInput'
+      - type: object
+        properties:
+          position:
+            type: integer
+            example: 1
+          addedAt:
+            type: string
+            format: date-time
+            example: '2026-05-28T14:30:00Z'
+    PlaylistTrackInput:
+      type: object
+      properties:
+        trackId:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: Come Together
+        artist:
+          type: string
+          example: The Beatles
+        source:
+          type: string
+          description: Source for the physical file (defaults to `7digital`).
+          example: 7digital
+        audioUrl:
+          type: string
+          format: uri
+          description: Optional alternative source URL for the physical file.
+          example: file://a.specific.file.location.mp3
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+      required:
+      - trackId
+      - title
+      - artist
     UpdatePlaylistRequest:
       type: object
       properties:
@@ -144,6 +185,37 @@ components:
           - private
           - public
           example: public
+    CreatePlaylistRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Morning Run
+        description:
+          type: string
+          maxLength: 500
+          example: High-energy tracks for early-morning runs.
+        visibility:
+          type: string
+          enum:
+          - private
+          - public
+          example: public
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistTrackInput'
+      required:
+      - name
+    AddTracksRequest:
+      type: object
+      properties:
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaylistTrackInput'
+      required:
+      - tracks
     PlaylistListResponse:
       type: object
       properties:
@@ -202,78 +274,6 @@ components:
           type: string
           format: date-time
           example: '2026-05-28T15:00:00Z'
-    PlaylistTrackInput:
-      type: object
-      properties:
-        trackId:
-          type: string
-          example: '123456'
-        title:
-          type: string
-          example: Come Together
-        artist:
-          type: string
-          example: The Beatles
-        source:
-          type: string
-          description: Source for the physical file (defaults to `7digital`).
-          example: 7digital
-        audioUrl:
-          type: string
-          format: uri
-          description: Optional alternative source URL for the physical file.
-          example: file://a.specific.file.location.mp3
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
-      required:
-      - trackId
-      - title
-      - artist
-    AddTracksRequest:
-      type: object
-      properties:
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaylistTrackInput'
-      required:
-      - tracks
-    PlaylistTrack:
-      allOf:
-      - $ref: '#/components/schemas/PlaylistTrackInput'
-      - type: object
-        properties:
-          position:
-            type: integer
-            example: 1
-          addedAt:
-            type: string
-            format: date-time
-            example: '2026-05-28T14:30:00Z'
-    CreatePlaylistRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Morning Run
-        description:
-          type: string
-          maxLength: 500
-          example: High-energy tracks for early-morning runs.
-        visibility:
-          type: string
-          enum:
-          - private
-          - public
-          example: public
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PlaylistTrackInput'
-      required:
-      - name
   parameters:
     PlaylistIdPath:
       name: playlistId
@@ -283,6 +283,15 @@ components:
       schema:
         type: string
       example: playlist-789012
+    Page:
+      name: page
+      in: query
+      description: 1-based page number.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
     PageSize:
       name: pageSize
       in: query
@@ -293,15 +302,6 @@ components:
         maximum: 100
         default: 20
       example: 20
-    Page:
-      name: page
-      in: query
-      description: 1-based page number.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
   securitySchemes:
     oauth1:
       type: apiKey
