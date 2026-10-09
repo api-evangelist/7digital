@@ -128,3 +128,24 @@ plans:
         unit: 1
         price: 'free (rate-limited to ~4,000 requests/day per non-live key)'
         userMultiplied: false
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - period
+  - transaction
+  plans:
+  - name: Platform Pricing Overview
+    access: enterprise
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    - period
+    - transaction
+    periods:
+    - day
+    - month
+    - per-use
