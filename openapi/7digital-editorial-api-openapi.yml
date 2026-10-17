@@ -44,15 +44,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: 1-based page number for paged endpoints.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
     PageSize:
       name: pageSize
       in: query
@@ -63,6 +54,15 @@ components:
         maximum: 100
         default: 20
       example: 20
+    Page:
+      name: page
+      in: query
+      description: 1-based page number for paged endpoints.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
     Country:
       name: country
       in: query

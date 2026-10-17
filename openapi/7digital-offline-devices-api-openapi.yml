@@ -97,44 +97,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    UserIdPath:
-      name: userId
-      in: path
-      required: true
-      description: Partner-scoped 7digital user id.
-      schema:
-        type: string
-      example: '500123'
-    DeviceIdPath:
-      name: deviceId
-      in: path
-      required: true
-      description: Identifier of a registered offline device.
-      schema:
-        type: string
-      example: device-789012
   schemas:
-    DeviceAuthorisationRequest:
-      type: object
-      properties:
-        deviceId:
-          type: string
-          example: device-789012
-        deviceName:
-          type: string
-          example: Jane's iPhone
-        platform:
-          type: string
-          enum:
-          - ios
-          - android
-          - web
-          - windows
-          - macos
-          example: ios
-      required:
-      - deviceId
     DeviceAuthorisation:
       type: object
       properties:
@@ -163,6 +126,43 @@ components:
           type: string
           format: date-time
           example: '2026-05-01T10:00:00Z'
+    DeviceAuthorisationRequest:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          example: device-789012
+        deviceName:
+          type: string
+          example: Jane's iPhone
+        platform:
+          type: string
+          enum:
+          - ios
+          - android
+          - web
+          - windows
+          - macos
+          example: ios
+      required:
+      - deviceId
+  parameters:
+    DeviceIdPath:
+      name: deviceId
+      in: path
+      required: true
+      description: Identifier of a registered offline device.
+      schema:
+        type: string
+      example: device-789012
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: Partner-scoped 7digital user id.
+      schema:
+        type: string
+      example: '500123'
   securitySchemes:
     oauth1:
       type: apiKey

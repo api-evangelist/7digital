@@ -106,7 +106,131 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: 1-based page number.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      example: 1
+    PageSize:
+      name: pageSize
+      in: query
+      description: Number of items per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+    UserIdPath:
+      name: userId
+      in: path
+      required: true
+      description: Partner-scoped 7digital user id.
+      schema:
+        type: string
+      example: '500123'
   schemas:
+    Locker:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        page:
+          type: integer
+          example: 1
+        pageSize:
+          type: integer
+          example: 20
+        totalItems:
+          type: integer
+          example: 42
+        releases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Release'
+        tracks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Track'
+    Track:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '123456'
+        title:
+          type: string
+          example: Come Together
+        version:
+          type: string
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          example: https://previews.7digital.com/clip/123456
+    Release:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '11700062'
+        title:
+          type: string
+          example: Abbey Road
+        type:
+          type: string
+          enum:
+          - album
+          - single
+          - ep
+          - compilation
+          example: album
+        artist:
+          $ref: '#/components/schemas/Artist'
+        url:
+          type: string
+          format: uri
+          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
+        image:
+          type: string
+          format: uri
+          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
+        releaseDate:
+          type: string
+          format: date
+          example: '1969-09-26'
+        label:
+          type: string
+          example: Apple Records
+        upc:
+          type: string
+          example: 00602445912025
+        explicit:
+          type: boolean
+          example: false
     Artist:
       type: object
       properties:
@@ -166,130 +290,6 @@ components:
       - userId
       - currency
       - price
-    Locker:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        page:
-          type: integer
-          example: 1
-        pageSize:
-          type: integer
-          example: 20
-        totalItems:
-          type: integer
-          example: 42
-        releases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Release'
-        tracks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Track'
-    Release:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '11700062'
-        title:
-          type: string
-          example: Abbey Road
-        type:
-          type: string
-          enum:
-          - album
-          - single
-          - ep
-          - compilation
-          example: album
-        artist:
-          $ref: '#/components/schemas/Artist'
-        url:
-          type: string
-          format: uri
-          example: https://uk.7digital.com/artist/the-beatles/release/abbey-road-11700062
-        image:
-          type: string
-          format: uri
-          example: https://artwork-cdn.7static.com/static/img/sleeveart/00/117/000/0011700062_350.jpg
-        releaseDate:
-          type: string
-          format: date
-          example: '1969-09-26'
-        label:
-          type: string
-          example: Apple Records
-        upc:
-          type: string
-          example: 00602445912025
-        explicit:
-          type: boolean
-          example: false
-    Track:
-      type: object
-      properties:
-        id:
-          type: string
-          example: '123456'
-        title:
-          type: string
-          example: Come Together
-        version:
-          type: string
-          example: Remastered 2019
-        artist:
-          $ref: '#/components/schemas/Artist'
-        release:
-          $ref: '#/components/schemas/Release'
-        trackNumber:
-          type: integer
-          example: 1
-        duration:
-          type: integer
-          description: Duration in seconds.
-          example: 259
-        explicit:
-          type: boolean
-          example: false
-        isrc:
-          type: string
-          example: GBAYE6900477
-        previewUrl:
-          type: string
-          format: uri
-          example: https://previews.7digital.com/clip/123456
-  parameters:
-    UserIdPath:
-      name: userId
-      in: path
-      required: true
-      description: Partner-scoped 7digital user id.
-      schema:
-        type: string
-      example: '500123'
-    Page:
-      name: page
-      in: query
-      description: 1-based page number.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      example: 1
-    PageSize:
-      name: pageSize
-      in: query
-      description: Number of items per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
   securitySchemes:
     oauth1:
       type: apiKey

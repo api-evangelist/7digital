@@ -40,6 +40,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    TagListResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
     Tag:
       type: object
       description: A genre/tag label.
@@ -55,16 +65,6 @@ components:
           - string
           - 'null'
           example: null
-    TagListResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        tags:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tag'
   securitySchemes:
     oauth1:
       type: apiKey

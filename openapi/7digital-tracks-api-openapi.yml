@@ -115,51 +115,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Artist:
-      type: object
-      description: A 7digital artist.
-      properties:
-        id:
-          type: string
-          description: 7digital artist id.
-          example: '12345'
-        name:
-          type: string
-          description: Artist name.
-          example: The Beatles
-        url:
-          type: string
-          format: uri
-          description: Artist page URL on 7digital.
-          example: https://uk.7digital.com/artist/the-beatles
-        image:
-          type: string
-          format: uri
-          description: Artist image URL.
-          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
-        sortName:
-          type: string
-          description: Sort form of the artist name.
-          example: Beatles, The
-        appearsAs:
-          type: string
-          description: Alternative spellings under which the artist appears.
-          example: Beatles, The
-    Price:
-      type: object
-      description: A price quoted in the requested territory's currency.
-      properties:
-        formattedPrice:
-          type: string
-          example: £9.99
-        amount:
-          type: number
-          description: Numeric price value.
-          example: 9.99
-        currency:
-          type: string
-          description: ISO 4217 currency code.
-          example: GBP
     TrackListResponse:
       type: object
       properties:
@@ -179,6 +134,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Track'
+    TrackDetailsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        track:
+          $ref: '#/components/schemas/Track'
+    Track:
+      type: object
+      description: A 7digital track.
+      properties:
+        id:
+          type: string
+          description: 7digital track id.
+          example: '123456'
+        title:
+          type: string
+          description: Track title.
+          example: Come Together
+        version:
+          type: string
+          description: Track version (e.g. `Remastered 2019`).
+          example: Remastered 2019
+        artist:
+          $ref: '#/components/schemas/Artist'
+        release:
+          $ref: '#/components/schemas/Release'
+        trackNumber:
+          type: integer
+          description: Track number on the release.
+          example: 1
+        duration:
+          type: integer
+          description: Duration in seconds.
+          example: 259
+        explicit:
+          type: boolean
+          example: false
+        isrc:
+          type: string
+          description: International Standard Recording Code.
+          example: GBAYE6900477
+        previewUrl:
+          type: string
+          format: uri
+          description: URL for the 30-second preview clip.
+          example: https://previews.7digital.com/clip/123456
+        price:
+          $ref: '#/components/schemas/Price'
     ErrorResponse:
       type: object
       description: Standard 7digital error envelope.
@@ -210,14 +215,6 @@ components:
                     type: string
                   index:
                     type: integer
-    TrackDetailsResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          example: ok
-        track:
-          $ref: '#/components/schemas/Track'
     Release:
       type: object
       description: A 7digital release (album, single, EP, compilation).
@@ -268,61 +265,62 @@ components:
           example: 00602445912025
         price:
           $ref: '#/components/schemas/Price'
-    Track:
+    Price:
       type: object
-      description: A 7digital track.
+      description: A price quoted in the requested territory's currency.
+      properties:
+        formattedPrice:
+          type: string
+          example: £9.99
+        amount:
+          type: number
+          description: Numeric price value.
+          example: 9.99
+        currency:
+          type: string
+          description: ISO 4217 currency code.
+          example: GBP
+    Artist:
+      type: object
+      description: A 7digital artist.
       properties:
         id:
           type: string
-          description: 7digital track id.
-          example: '123456'
-        title:
+          description: 7digital artist id.
+          example: '12345'
+        name:
           type: string
-          description: Track title.
-          example: Come Together
-        version:
-          type: string
-          description: Track version (e.g. `Remastered 2019`).
-          example: Remastered 2019
-        artist:
-          $ref: '#/components/schemas/Artist'
-        release:
-          $ref: '#/components/schemas/Release'
-        trackNumber:
-          type: integer
-          description: Track number on the release.
-          example: 1
-        duration:
-          type: integer
-          description: Duration in seconds.
-          example: 259
-        explicit:
-          type: boolean
-          example: false
-        isrc:
-          type: string
-          description: International Standard Recording Code.
-          example: GBAYE6900477
-        previewUrl:
+          description: Artist name.
+          example: The Beatles
+        url:
           type: string
           format: uri
-          description: URL for the 30-second preview clip.
-          example: https://previews.7digital.com/clip/123456
-        price:
-          $ref: '#/components/schemas/Price'
+          description: Artist page URL on 7digital.
+          example: https://uk.7digital.com/artist/the-beatles
+        image:
+          type: string
+          format: uri
+          description: Artist image URL.
+          example: https://artwork-cdn.7static.com/static/img/artistimages/00/000/012/0000001234_350.jpg
+        sortName:
+          type: string
+          description: Sort form of the artist name.
+          example: Beatles, The
+        appearsAs:
+          type: string
+          description: Alternative spellings under which the artist appears.
+          example: Beatles, The
   parameters:
-    Period:
-      name: period
+    PageSize:
+      name: pageSize
       in: query
-      description: Chart period — typically `day`, `week`, `month`, `year`.
+      description: Number of items per page.
       schema:
-        type: string
-        enum:
-        - day
-        - week
-        - month
-        - year
-      example: week
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
     Page:
       name: page
       in: query
@@ -340,16 +338,18 @@ components:
       schema:
         type: string
       example: '123456'
-    PageSize:
-      name: pageSize
+    Period:
+      name: period
       in: query
-      description: Number of items per page.
+      description: Chart period — typically `day`, `week`, `month`, `year`.
       schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
-      example: 20
+        type: string
+        enum:
+        - day
+        - week
+        - month
+        - year
+      example: week
     Query:
       name: q
       in: query
